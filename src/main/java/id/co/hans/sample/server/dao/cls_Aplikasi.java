@@ -2,17 +2,18 @@ package id.co.hans.sample.server.dao;
 
 import id.co.hans.sample.server.dao.impl.ws_MenuDaoImpl;
 import id.co.hans.sample.server.utility.CommonModule;
-import oracle.jdbc.OracleTypes;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 @Service
 public class cls_Aplikasi {
@@ -62,7 +63,7 @@ public class cls_Aplikasi {
         {
             Map<String, Object> cekBk = cekBKSudahDibuat();
 
-            if (cekBk.get("wsReturn") == false) {
+            if (Boolean.valueOf((String)cekBk.get("wsReturn")) == false) {
                 throw new Exception(cekBk.get("wsByRefError").toString());
             }
 
