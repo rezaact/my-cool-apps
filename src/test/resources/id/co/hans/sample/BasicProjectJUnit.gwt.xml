@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='id.co.hans.sample.BasicProject' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/BasicProject/greet" class="id.co.hans.sample.server.GreetingServiceImpl" />
+
+</module>
