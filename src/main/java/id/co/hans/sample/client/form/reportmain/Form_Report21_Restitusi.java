@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +22,12 @@ public class Form_Report21_Restitusi {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboJenisLaporan cbJenisLaporan;
+
+    TextButton btnCetak;
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +40,7 @@ public class Form_Report21_Restitusi {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -62,7 +72,7 @@ public class Form_Report21_Restitusi {
         panelReferensi.add(vlcPReferensi);
 
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -76,7 +86,7 @@ public class Form_Report21_Restitusi {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -93,7 +103,7 @@ public class Form_Report21_Restitusi {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan = new ComboJenisLaporan();
         cbJenisLaporan.setFormAsal("Form_Report21_Restitusi");
 
         hp1.add(cbJenisLaporan);
@@ -103,10 +113,39 @@ public class Form_Report21_Restitusi {
         p.add(panelParameter);
 
 
-        TextButton btnCetak = new TextButton("Cetak");
+        btnCetak = new TextButton("Cetak");
 
         panel.addButton(btnCetak);
 
         return panel;
+    }
+
+    private void initEvent() {
+        btnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport21Restitusi"
+                        +"&in_unitupi="+unitUpi
+                        +"&in_unitap="+unitAp
+                        +"&in_unitup="+parUp
+                        +"&in_blth="+thbl
+                        +"&in_jenis="+cbJenisLaporan.getSelectedValue();
+
+                if (cbJenisLaporan.getSelectedValue() == "REKAP")
+                    url+="&report=report/ReportMain/13/cr_21RekapRestitusi.rpt";
+                else
+                    url+="&report=report/ReportMain/13/cr_21DaftarRestitusi.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

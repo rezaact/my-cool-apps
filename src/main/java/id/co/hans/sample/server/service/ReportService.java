@@ -60,4 +60,25 @@ public class ReportService {
         reportDao.GetReport_13rekap(engine, vJenis, tBLTH, tparAp, tparUp,
                                     tPetugas);
     }
+
+    //21
+    public void GetReport_21_BA(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                String tanggal, String tanggalend, String kode, String pengelola) {
+        reportDao.GetReport_21_BA(engine, vJenis, tBLTH, tparUp, tPetugas,
+                                  tanggal, tanggalend, kode, pengelola);
+    }
+    public void GetReport_21kdpp(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                 String tanggal, String tanggalend, String kode) {
+        reportDao.GetReport_21kdpp(engine, vJenis, tBLTH, tparUp, tPetugas,
+                                   tanggal, tanggalend, kode);
+    }
+    public void GetReport_21Petugas(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                    String tanggal, String tanggalend, String kode, String kdPembayar){
+        reportDao.GetReport_21Petugas(engine, vJenis, tBLTH, tparUp, tPetugas,
+                                      tanggal, tanggalend, kode, kdPembayar);
+    }
+    public void GetReport21Restitusi(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth,
+                                     String in_jenis){
+        reportDao.GetReport21Restitusi(engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
+    }
 }

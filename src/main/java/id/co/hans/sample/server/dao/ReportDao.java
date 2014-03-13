@@ -22,4 +22,14 @@ public interface ReportDao {
     //13
     public void GetReport_13rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp,
                                   String tPetugas);
+
+    //21
+    public void GetReport_21_BA(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                String tanggal, String tanggalend, String kode, String pengelola);
+    public void GetReport_21kdpp(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                 String tanggal, String tanggalend, String kode);
+    public void GetReport_21Petugas(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                    String tanggal, String tanggalend, String kode, String kdPembayar);
+    public void GetReport21Restitusi(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth,
+                                     String in_jenis);
 }

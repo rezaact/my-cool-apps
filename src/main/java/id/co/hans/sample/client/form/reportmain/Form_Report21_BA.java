@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,13 +14,24 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
+
+import java.text.SimpleDateFormat;
 
 public class Form_Report21_BA {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    ComboKodePP cbTopKodePengelolaPaymentPoint;
+    DateField dfBeritaAcaraTanggalPelunasan;
+    DateField dfTopTanggalAwal;
+    DateField dfTopTanggalAkhir;
+    TextButton bCetakBeritaAcara;
+    TextButton bCetakRekapPelunasanTotal;
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +44,7 @@ public class Form_Report21_BA {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -62,10 +76,10 @@ public class Form_Report21_BA {
         panelReferensi.add(vlcPReferensi);
 
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
-        ComboKodePP cbTopKodePengelolaPaymentPoint = new ComboKodePP();
+        cbTopKodePengelolaPaymentPoint = new ComboKodePP();
         vlcPReferensi.add(cbTopKodePengelolaPaymentPoint);
 
         p.add(panelReferensi);
@@ -80,10 +94,10 @@ public class Form_Report21_BA {
         panelReferensiTgl.add(vlcPReferensiTgl);
 
 
-        DateField dfBeritaAcaraTanggalPelunasan = new DateField();
+        dfBeritaAcaraTanggalPelunasan = new DateField();
         vlcPReferensiTgl.add(new FieldLabel(dfBeritaAcaraTanggalPelunasan, "Pilih Tanggal Pelunasan"));
 
-        TextButton bCetakBeritaAcara = new TextButton("Cetak Berita Acara");
+        bCetakBeritaAcara = new TextButton("Cetak Berita Acara");
 
         vlcPReferensiTgl.add(bCetakBeritaAcara);
 
@@ -101,12 +115,12 @@ public class Form_Report21_BA {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        DateField dfTopTanggalAwal = new DateField();
+        dfTopTanggalAwal = new DateField();
         dfTopTanggalAwal.setWidth(100);
 
         Label lbl = new Label("Sampai");
 
-        DateField dfTopTanggalAkhir = new DateField();
+        dfTopTanggalAkhir = new DateField();
         dfTopTanggalAkhir.setWidth(100);
 
         hp1.add(dfTopTanggalAwal);
@@ -118,10 +132,72 @@ public class Form_Report21_BA {
         p.add(panelParameter);
 
 
-        TextButton bCetakRekapPelunasanTotal = new TextButton("Rekap Pelunasan Total");
+        bCetakRekapPelunasanTotal = new TextButton("Rekap Pelunasan Total");
 
         panel.addButton(bCetakRekapPelunasanTotal);
 
         return panel;
+    }
+
+    private void initEvent() {
+        bCetakBeritaAcara.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                SimpleDateFormat formatThbl = new SimpleDateFormat("YYYYmm");
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd");
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = formatThbl.format(dfBeritaAcaraTanggalPelunasan.getValue());
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21_BA"
+                        +"&vJenis="+"21BA"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+formatDate.format(dfBeritaAcaraTanggalPelunasan.getValue())
+                        +"&tanggalend="+""
+                        +"&kode="+""
+                        +"&pengelola="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_BALunasOffline.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bCetakRekapPelunasanTotal.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                SimpleDateFormat formatThbl = new SimpleDateFormat("YYYYmm");
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd");
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = formatThbl.format(dfTopTanggalAwal.getValue());
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21_BA"
+                        +"&vJenis="+"21REKAPLUNASOFFLINE"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+formatDate.format(dfTopTanggalAwal.getValue())
+                        +"&tanggalend="+formatDate.format(dfTopTanggalAkhir.getValue())
+                        +"&kode="+""
+                        +"&pengelola="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_RekapTotalPelunasan.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

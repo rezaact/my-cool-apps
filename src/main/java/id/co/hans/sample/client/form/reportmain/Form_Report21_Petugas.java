@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +22,21 @@ public class Form_Report21_Petugas {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboKodePP cbTopKodePP;
+    ComboKodePetugas cbTopKodePetugas;
+    ComboTanggal cbMiddlePilihTanggalAwal;
+    ComboTanggal cbMiddelPilihTanggalAkhir;
+
+    TextButton bBottomRekapitulasiPerTanggal;
+    TextButton bBottomRekapitulasiPerGolongan;
+    TextButton bBottomDaftarRekening;
+
+    TextButton bBottomRekapitulasiPerUnitUP;
+    TextButton bBottomRekapitulasiPerUnitUPPerGol;
+    TextButton bBottomDaftarRekeningPerUnit;
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +49,7 @@ public class Form_Report21_Petugas {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -62,13 +81,13 @@ public class Form_Report21_Petugas {
         panelReferensi.add(vlcPReferensi);
 
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
-        ComboKodePP cbTopKodePP = new ComboKodePP();
+        cbTopKodePP = new ComboKodePP();
         vlcPReferensi.add(cbTopKodePP);
 
-        ComboKodePetugas cbTopKodePetugas = new ComboKodePetugas();
+        cbTopKodePetugas = new ComboKodePetugas();
         vlcPReferensi.add(cbTopKodePetugas);
 
         p.add(panelReferensi);
@@ -82,7 +101,7 @@ public class Form_Report21_Petugas {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -99,12 +118,12 @@ public class Form_Report21_Petugas {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboTanggal cbMiddlePilihTanggalAwal = new ComboTanggal();
+        cbMiddlePilihTanggalAwal = new ComboTanggal();
         cbMiddlePilihTanggalAwal.hideLabel();
 
         Label lbl = new Label(" s/d ");
 
-        ComboTanggal cbMiddelPilihTanggalAkhir = new ComboTanggal();
+        cbMiddelPilihTanggalAkhir = new ComboTanggal();
         cbMiddelPilihTanggalAkhir.hideLabel();
 
         hp1.add(cbMiddlePilihTanggalAwal);
@@ -116,13 +135,13 @@ public class Form_Report21_Petugas {
         p.add(panelParameter);
 
 
-        TextButton bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
-        TextButton bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
-        TextButton bBottomDaftarRekening = new TextButton("Daftar Rekening");
+        bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
+        bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
+        bBottomDaftarRekening = new TextButton("Daftar Rekening");
 
-        TextButton bBottomRekapitulasiPerUnitUP = new TextButton("Rekapitulasi Per UnituP");
-        TextButton bBottomRekapitulasiPerUnitUPPerGol = new TextButton("Rekapitulasi Per UnituP Per Gol");
-        TextButton bBottomDaftarRekeningPerUnit = new TextButton("Daftar Rekening Per Unit");
+        bBottomRekapitulasiPerUnitUP = new TextButton("Rekapitulasi Per UnituP");
+        bBottomRekapitulasiPerUnitUPPerGol = new TextButton("Rekapitulasi Per UnituP Per Gol");
+        bBottomDaftarRekeningPerUnit = new TextButton("Daftar Rekening Per Unit");
 
         panel.addButton(bBottomRekapitulasiPerTanggal);
         panel.addButton(bBottomRekapitulasiPerGolongan);
@@ -133,5 +152,169 @@ public class Form_Report21_Petugas {
         panel.addButton(bBottomDaftarRekeningPerUnit);
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomRekapitulasiPerTanggal.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                        +"&vJenis="+"21petugas_pptglrekap"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePP.getSelectedValue()
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21petugas_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                        +"&vJenis="+"21petugas_pptglrekapgol"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePP.getSelectedValue()
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21petugas_gol_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarRekening.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                        +"&vJenis="+"21petugas_pptgldaftar"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePP.getSelectedValue()
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21petugas_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+
+        bBottomRekapitulasiPerUnitUP.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                        +"&vJenis="+"21petugas_unittglrekap"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePP.getSelectedValue()
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21petugas_unit_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapitulasiPerUnitUPPerGol.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                        +"&vJenis="+"21petugas_unittglrekapgol"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePP.getSelectedValue()
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21petugas_unitgol_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomDaftarRekeningPerUnit.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                        +"&vJenis="+"21petugas_unittgldaftar"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePP.getSelectedValue()
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21petugas_unit_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

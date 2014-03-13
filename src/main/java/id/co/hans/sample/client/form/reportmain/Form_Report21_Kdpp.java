@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +22,20 @@ public class Form_Report21_Kdpp {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    ComboKodePP cbTopKodePengelolaPaymentPoint;
+    ComboTahunBulan cbTahunBulan;
+    ComboTanggal cbMiddlePilihTanggalAwal;
+    ComboTanggal cbMiddelPilihTanggalAkhir;
+
+    TextButton bBottomRekapitulasiPerTanggal;
+    TextButton bBottomRekapitulasiPerGolongan;
+    TextButton bBottomDaftarRekeningLunasDPP;
+
+    TextButton bBottomRekapitulasiPerUnitUP;
+    TextButton bBottomRekapitulasiPerUnitUPPerGol;
+    TextButton bBottomDaftarRekeningPerUnit;
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +48,7 @@ public class Form_Report21_Kdpp {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -62,10 +80,10 @@ public class Form_Report21_Kdpp {
         panelReferensi.add(vlcPReferensi);
 
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
-        ComboKodePP cbTopKodePengelolaPaymentPoint = new ComboKodePP();
+        cbTopKodePengelolaPaymentPoint = new ComboKodePP();
         vlcPReferensi.add(cbTopKodePengelolaPaymentPoint);
 
         p.add(panelReferensi);
@@ -79,7 +97,7 @@ public class Form_Report21_Kdpp {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -96,12 +114,12 @@ public class Form_Report21_Kdpp {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboTanggal cbMiddlePilihTanggalAwal = new ComboTanggal();
+        cbMiddlePilihTanggalAwal = new ComboTanggal();
         cbMiddlePilihTanggalAwal.hideLabel();
 
         Label lbl = new Label(" s/d ");
 
-        ComboTanggal cbMiddelPilihTanggalAkhir = new ComboTanggal();
+        cbMiddelPilihTanggalAkhir = new ComboTanggal();
         cbMiddelPilihTanggalAkhir.hideLabel();
 
         hp1.add(cbMiddlePilihTanggalAwal);
@@ -113,13 +131,13 @@ public class Form_Report21_Kdpp {
         p.add(panelParameter);
 
 
-        TextButton bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
-        TextButton bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
-        TextButton bBottomDaftarRekeningLunasDPP = new TextButton("Daftar Rekening Lunas DPP");
+        bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
+        bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
+        bBottomDaftarRekeningLunasDPP = new TextButton("Daftar Rekening Lunas DPP");
 
-        TextButton bBottomRekapitulasiPerUnitUP = new TextButton("Rekapitulasi Per UnituP");
-        TextButton bBottomRekapitulasiPerUnitUPPerGol = new TextButton("Rekapitulasi Per UnituP Per Gol");
-        TextButton bBottomDaftarRekeningPerUnit = new TextButton("Daftar Rekening Per Unit");
+        bBottomRekapitulasiPerUnitUP = new TextButton("Rekapitulasi Per UnituP");
+        bBottomRekapitulasiPerUnitUPPerGol = new TextButton("Rekapitulasi Per UnituP Per Gol");
+        bBottomDaftarRekeningPerUnit = new TextButton("Daftar Rekening Per Unit");
 
         panel.addButton(bBottomRekapitulasiPerTanggal);
         panel.addButton(bBottomRekapitulasiPerGolongan);
@@ -130,5 +148,153 @@ public class Form_Report21_Kdpp {
         panel.addButton(bBottomDaftarRekeningPerUnit);
 
         return panel;
+    }
+
+    private void initEvent() {
+        bBottomRekapitulasiPerTanggal.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21kdpp"
+                        +"&vJenis="+"21kdpp_pptglrekap"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21kdpp_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21kdpp"
+                        +"&vJenis="+"21kdpp_pptglrekapgol"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21kdpp_gol_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarRekeningLunasDPP.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21kdpp"
+                        +"&vJenis="+"21kdpp_pptgldaftar"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21kdpp_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+
+
+        bBottomRekapitulasiPerUnitUP.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21kdpp"
+                        +"&vJenis="+"21kdpp_unittglrekap"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21kdpp_unit_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerUnitUPPerGol.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21kdpp"
+                        +"&vJenis="+"21kdpp_unittglrekapgol"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21kdpp_unitgol_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarRekeningPerUnit.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21kdpp"
+                        +"&vJenis="+"21kdpp_unittgldaftar"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+
+                url+="&report=report/ReportMain/21/cr_21kdpp_unit_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

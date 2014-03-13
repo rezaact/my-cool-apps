@@ -156,6 +156,41 @@
       <classifier>sources</classifier>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.5</version>
+    </dependency>
+
+    <!-- crystalclear -->
+    <dependency>
+      <groupId>com.inet</groupId>
+      <artifactId>crystalclear</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.inet</groupId>
+      <artifactId>cc-viewer</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.inet</groupId>
+      <artifactId>jcommon</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <!-- End crystalclear -->
+
   </dependencies>
 
     <repositories>
@@ -197,6 +232,8 @@
         <configuration>
           <runTarget>BasicProject.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
+          <generateDirectory>${project.build.directory}/sources</generateDirectory>
           <i18nMessagesBundle>id.co.hans.sample.client.Messages</i18nMessagesBundle>
         </configuration>
       </plugin>
