@@ -232,7 +232,7 @@
         <configuration>
           <runTarget>BasicProject.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
-          <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
+          <extraJvmArgs>-Xmx2048M -Xss1024k</extraJvmArgs>
           <generateDirectory>${project.build.directory}/sources</generateDirectory>
           <i18nMessagesBundle>id.co.hans.sample.client.Messages</i18nMessagesBundle>
         </configuration>

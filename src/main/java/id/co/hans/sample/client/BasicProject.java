@@ -1,6 +1,7 @@
 package id.co.hans.sample.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -24,7 +25,10 @@ public class BasicProject implements EntryPoint {
     }
 
     private void getPageByIdSession(String idSession, String page, String idUser, String unitupUser, String levelUser) {
+        GWT.log("idUser = " + idUser);
+
         Widget widgetMenu = View.getInstance().getViewByIdMenu(page, idUser, unitupUser, levelUser);
+
 
         if (widgetMenu != null) {
             RootPanel.get().add(widgetMenu);

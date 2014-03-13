@@ -1,6 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -18,7 +19,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 
 public class Form_Report21_BA {
 
@@ -145,8 +146,10 @@ public class Form_Report21_BA {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, thbl, petugas, unitAp, unitUpi;
 
-                SimpleDateFormat formatThbl = new SimpleDateFormat("YYYYmm");
-                SimpleDateFormat formatDate = new SimpleDateFormat("dd");
+                DateTimeFormat formatThbl = DateTimeFormat.getFormat("YYYYmm");
+                //SimpleDateFormat formatThbl = new SimpleDateFormat("YYYYmm");
+                DateTimeFormat formatDate = DateTimeFormat.getFormat("dd");
+                //SimpleDateFormat formatDate = new SimpleDateFormat("dd");
 
                 parUp = cbUnits.getUnitUpValue();
                 thbl = formatThbl.format(dfBeritaAcaraTanggalPelunasan.getValue());
@@ -175,8 +178,11 @@ public class Form_Report21_BA {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, thbl, petugas, unitAp, unitUpi;
 
-                SimpleDateFormat formatThbl = new SimpleDateFormat("YYYYmm");
-                SimpleDateFormat formatDate = new SimpleDateFormat("dd");
+
+                DateTimeFormat formatThbl = DateTimeFormat.getFormat("YYYYmm");
+                //SimpleDateFormat formatThbl = new SimpleDateFormat("YYYYmm");
+                DateTimeFormat formatDate = DateTimeFormat.getFormat("dd");
+                //SimpleDateFormat formatDate = new SimpleDateFormat("dd");
 
                 parUp = cbUnits.getUnitUpValue();
                 thbl = formatThbl.format(dfTopTanggalAwal.getValue());

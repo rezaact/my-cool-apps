@@ -1,6 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -18,7 +19,6 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
-import java.text.SimpleDateFormat;
 
 public class Form_Report11_Rekap {
 
@@ -210,7 +210,7 @@ public class Form_Report11_Rekap {
 
                 parUp = cbUnits.getUnitUpValue();
 
-                SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
+                DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=cetak_rekap11TglUpload"
                         +"&vJenis="  + "11rekap_perTanggalUpload"
@@ -239,7 +239,8 @@ public class Form_Report11_Rekap {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
+                DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
+                //SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
                         +"&vJenis="     + "11rekap_taripdaya"
@@ -271,7 +272,8 @@ public class Form_Report11_Rekap {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
+                DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
+                //SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
                         +"&vJenis="     + "11rekap_inkaso"
