@@ -1,4 +1,4 @@
-package id.co.hans.sample.server.utility;
+package id.co.iconpln.ap2t.fungsi4.server.utility;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

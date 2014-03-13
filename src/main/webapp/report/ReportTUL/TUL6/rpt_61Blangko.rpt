@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+  </FormulaFields>
+  <PromptFields>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="wilayah"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="cabang"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="ranting"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="alamat"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="jabatan"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="pejabat"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="nama"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="idpel"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="namapnj"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="nokontrak"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="nokontrol"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="tarip"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="6">
+      <Attribute name="name" value="daya"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="kogol"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="thblawal"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="thblakhir"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="6">
+      <Attribute name="name" value="lembar"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="6">
+      <Attribute name="name" value="rptag"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="6">
+      <Attribute name="name" value="rpbk"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="6">
+      <Attribute name="name" value="rptotal"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="notul601"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="kdgardu"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+  </SummaryFields>
+  <SortFields>
+  </SortFields>
+  <GroupNameFields count="0">
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="12240"/>
+    <Attribute name="page height" value="15840"/>
+    <Attribute name="page orientation" value="1"/>
+    <Attribute name="page margin left" value="187"/>
+    <Attribute name="page margin right" value="187"/>
+    <Attribute name="page margin top" value="187"/>
+    <Attribute name="page margin bottom" value="187"/>
+    <Attribute name="report title" value=""/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value=""/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="14 Jan 2014 01:28:15 GMT"/>
+    <Attribute name="report created" value="2 Mar 2005 22:30:00 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="0" width="11866" height="0" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="0" width="11866" height="0" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="18" width="11866" height="15075" id="2">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="10310" y2_position="10845" x_position="8530" y_position="10845" width="1780" height="0">
+          <LineProperties>
+            <Attribute name="id" value="2"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="8520" y_position="840" width="2670" height="205">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?notul601"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2760" y_position="2760" width="4950" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?nama"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2760" y_position="3000" width="1665" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?idpel"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2760" y_position="3240" width="4935" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?namapnj"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2760" y_position="4200" width="1845" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <NumberProperties>
+                <Attribute name="system default number type" value="2"/>
+                <Attribute name="n decimal places" value="0"/>
+                <Attribute name="rounding type" value="11"/>
+                <Attribute name="thousand separators symbol" value=","/>
+                <Attribute name="decimal separators symbol" value="."/>
+                <Attribute name="currency symbol" value="$"/>
+                <Attribute name="allow field clipping" value="false"/>
+              </NumberProperties>
+              <Reference name="field" type="PromptVarField" refname="?lembar"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4440" y_position="3000" width="1530" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?nokontrol"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="9380" y_position="3000" width="1990" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?nokontrak"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="5880" y_position="4440" width="1437" height="200">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <DateProperties>
+            <Attribute name="date windows default type" value="2"/>
+            <Attribute name="date order" value="1"/>
+            <Attribute name="year type" value="1"/>
+            <Attribute name="month type" value="3"/>
+            <Attribute name="date first separator" value=" "/>
+            <Attribute name="date second separator" value=" "/>
+          </DateProperties>
+          <Reference name="field" type="SpecialVarField" id="0"/>
+        </Element>
+        <Element type="Text" count="1" x_position="10080" y_position="4200" width="1665" height="255">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <NumberProperties>
+                <Attribute name="system default number type" value="2"/>
+                <Attribute name="n decimal places" value="0"/>
+                <Attribute name="rounding type" value="11"/>
+                <Attribute name="thousand separators symbol" value=","/>
+                <Attribute name="decimal separators symbol" value="."/>
+                <Attribute name="currency symbol" value="$"/>
+                <Attribute name="allow field clipping" value="false"/>
+              </NumberProperties>
+              <Reference name="field" type="PromptVarField" refname="?rptag"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="10080" y_position="4440" width="1665" height="255">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <NumberProperties>
+                <Attribute name="system default number type" value="2"/>
+                <Attribute name="n decimal places" value="0"/>
+                <Attribute name="rounding type" value="11"/>
+                <Attribute name="thousand separators symbol" value=","/>
+                <Attribute name="decimal separators symbol" value="."/>
+                <Attribute name="currency symbol" value="$"/>
+                <Attribute name="allow field clipping" value="false"/>
+              </NumberProperties>
+              <Reference name="field" type="PromptVarField" refname="?rpbk"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="10080" y_position="4920" width="1680" height="360">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <NumberProperties>
+                <Attribute name="system default number type" value="2"/>
+                <Attribute name="n decimal places" value="0"/>
+                <Attribute name="rounding type" value="11"/>
+                <Attribute name="thousand separators symbol" value=","/>
+                <Attribute name="decimal separators symbol" value="."/>
+                <Attribute name="currency symbol" value="$"/>
+                <Attribute name="allow field clipping" value="false"/>
+              </NumberProperties>
+              <Reference name="field" type="PromptVarField" refname="?rptotal"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2760" y_position="3960" width="3375" height="265">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="3">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?thblawal"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[ s/d ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?thblakhir"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2760" y_position="3720" width="5400" height="270">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="4">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?tarip"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[ / ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <NumberProperties>
+                <Attribute name="system default number type" value="2"/>
+                <Attribute name="n decimal places" value="0"/>
+                <Attribute name="rounding type" value="11"/>
+                <Attribute name="thousand separators symbol" value=","/>
+                <Attribute name="decimal separators symbol" value="."/>
+                <Attribute name="currency symbol" value="$"/>
+                <Attribute name="allow field clipping" value="false"/>
+              </NumberProperties>
+              <Reference name="field" type="PromptVarField" refname="?daya"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[ VA]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="8530" y_position="10895" width="1800" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?jabatan"/>
+        </Element>
+        <Element type="FieldElement" x_position="8530" y_position="10580" width="1800" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?pejabat"/>
+        </Element>
+        <Element type="FieldElement" x_position="9480" y_position="9600" width="2175" height="200">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <DateProperties>
+            <Attribute name="date windows default type" value="2"/>
+            <Attribute name="date order" value="1"/>
+            <Attribute name="year type" value="1"/>
+            <Attribute name="month type" value="3"/>
+            <Attribute name="date first separator" value=" "/>
+            <Attribute name="date second separator" value=" "/>
+          </DateProperties>
+          <Reference name="field" type="SpecialVarField" id="0"/>
+        </Element>
+        <Element type="FieldElement" x_position="6360" y_position="3000" width="2565" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?kdgardu"/>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="0" width="11866" height="0" id="3">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="1">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="0" width="11866" height="0" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+</inet:Report>

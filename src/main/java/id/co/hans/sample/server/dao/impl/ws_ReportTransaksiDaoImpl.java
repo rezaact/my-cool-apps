@@ -923,7 +923,8 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
         {
             ex.printStackTrace();
         }
-        return retValue;     }
+        return retValue;
+    }
 
     //---tambahan BK
     @Override

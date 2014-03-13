@@ -1,0 +1,1971 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
+    <Datasource>
+      <DataSourceConfiguration name="Pdsmon(Cis456,,SIP3SINGLEJABAR)">
+        <property name="supportsWhere" value="true"/>
+        <property name="datasource" value="Cis456"/>
+        <property name="url" value="jdbc:odbc:{datasource}"/>
+        <property name="escapeEverything" value="false"/>
+        <property name="quotesLowerCase" value="false"/>
+        <property name="savePassword" value="false"/>
+        <property name="driverClassName" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+        <property name="user" value="SIP3SINGLEJABAR"/>
+        <property name="catalog" value=""/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="driverLibrary" value=""/>
+        <property name="databaseClassName" value=""/>
+        <property name="aliasToken" value="AS"/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="supportsSQL92" value="true"/>
+      </DataSourceConfiguration>
+      <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="SIP3SINGLEJABAR.REKAPDPPMONITORINGSALDOHARI">
+        <Column name="TANGGAL" type="11" />
+        <Column name="UNITUPI" type="11" />
+        <Column name="UNITAP" type="11" />
+        <Column name="UNITUP" type="11" />
+        <Column name="JENIS_LAPORAN" type="11" />
+        <Column name="KODE" type="11" />
+        <Column name="URAIAN" type="11" />
+        <Column name="PLG_LBR_1" type="6" />
+        <Column name="RP_LBR_1" type="6" />
+        <Column name="PLG_LBR_2" type="6" />
+        <Column name="RP_LBR_2" type="6" />
+        <Column name="PLG_LBR_3" type="6" />
+        <Column name="RP_LBR_3" type="6" />
+        <Column name="PLG_LBR_4SD12" type="6" />
+        <Column name="RP_LBR_4SD12" type="6" />
+        <Column name="PLG_LBR_12LBH" type="6" />
+        <Column name="RP_LBR_12LBH" type="6" />
+        <Column name="JML_PLG" type="6" />
+        <Column name="JML_LBR" type="6" />
+        <Column name="JML_RP" type="6" />
+        <Column name="TGLCATAT" type="15" />
+        <Column name="CATATBY" type="11" />
+      </Tablesource>
+    </Datasource>
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="no"/>
+      <Attribute name="shortName" value="no"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[recordnumber]]>
+    </Field>
+  </FormulaFields>
+  <PromptFields>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="wilayah"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="cabang"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="ranting"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="alamat"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="bulantahun"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="petugascetak"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="judulsatu"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="juduldua"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="tanggal"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="tanggalend"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="judultiga"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="judulempat"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="unit"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_1)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_1"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.RP_LBR_1)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_1"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_2)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_2"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.RP_LBR_2)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_2"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_4SD12)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_4SD12"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_3)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_3"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.RP_LBR_3)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_3"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_12LBH)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_12LBH"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.RP_LBR_4SD12)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_4SD12"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.RP_LBR_12LBH)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_12LBH"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.JML_PLG)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.JML_PLG"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.JML_LBR)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.JML_LBR"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VIEW_REPORT_12DLAMA404.JML_RP)"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.JML_RP"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+  </SummaryFields>
+  <SortFields>
+    <Field type="SortField" valueType="11">
+      <Attribute name="name" value="VIEW_REPORT_12DLAMA404.KODE"/>
+      <Attribute name="shortName" value="KODE"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.KODE"/>
+      <Attribute name="operation" value="0"/>
+    </Field>
+    <Field type="SortField" valueType="11">
+      <Attribute name="name" value="VIEW_REPORT_12DLAMA404.TANGGAL"/>
+      <Attribute name="shortName" value="TANGGAL"/>
+      <Reference name="id" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.TANGGAL"/>
+      <Attribute name="operation" value="0"/>
+    </Field>
+  </SortFields>
+  <GroupNameFields count="0">
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="16839"/>
+    <Attribute name="page height" value="11907"/>
+    <Attribute name="page orientation" value="2"/>
+    <Attribute name="page margin left" value="187"/>
+    <Attribute name="page margin right" value="187"/>
+    <Attribute name="page margin top" value="357"/>
+    <Attribute name="page margin bottom" value="187"/>
+    <Attribute name="report title" value="sopp 504bulan"/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value="sopp"/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="14 Jan 2014 00:46:03 GMT"/>
+    <Attribute name="report created" value="15 Feb 2004 17:33:40 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="46" width="16457" height="2616" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="16335" y2_position="1710" x_position="83" y_position="1710" width="16252" height="0">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="13710" y2_position="1985" x_position="4185" y_position="1985" width="9525" height="0">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="60" y2_position="2616" x_position="60" y_position="1710" width="0" height="906">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="16335" y2_position="2605" x_position="60" y_position="2605" width="16275" height="0">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="585" y2_position="2600" x_position="585" y_position="1715" width="0" height="885">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="1860" y2_position="2600" x_position="1860" y_position="1715" width="0" height="885">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="4208" y2_position="2593" x_position="4208" y_position="1708" width="0" height="885">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="6090" y2_position="2610" x_position="6090" y_position="1988" width="0" height="622">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7960" y2_position="2610" x_position="7960" y_position="1985" width="0" height="625">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9875" y2_position="2603" x_position="9875" y_position="1980" width="0" height="623">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="11760" y2_position="2610" x_position="11760" y_position="1995" width="0" height="615">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="13680" y2_position="2603" x_position="13680" y_position="1740" width="0" height="863">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="16320" y2_position="2585" x_position="16320" y_position="1715" width="0" height="870">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="16313" y2_position="2290" x_position="4178" y_position="2290" width="12135" height="0">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="1152" y_position="148" width="5568" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[PT PLN (PERSERO) ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?wilayah"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="13695" y_position="1725" width="2580" height="233">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Total Tunggakan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="678" y_position="2025" width="1185" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Kode]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4228" y_position="2025" width="1850" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[1 Lembar]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4230" y_position="1728" width="9450" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Data Tunggakan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4032" y_position="320" width="10404" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?judulsatu"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4032" y_position="640" width="10404" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?juduldua"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[ ]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Picture" x_position="128" y_position="128" width="840" height="969">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <PictureProperties>
+            <Attribute name="scale width" value="0.747"/>
+            <Attribute name="scale height" value="0.593"/>
+            <Attribute name="scale option" value="1"/>
+            <Attribute name="id" value="1"/>
+          </PictureProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="1883" y_position="2025" width="2340" height="233">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Uraian]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="173" y_position="2025" width="384" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[No.]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4032" y_position="1100" width="10404" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[Data berdasarkan Saldo DPP per Tgl Server saat dibuat rekap saldo]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4220" y_position="2310" width="670" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Plg]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4965" y_position="2305" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Rupiah]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6108" y_position="2025" width="1850" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[2 Lembar]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6100" y_position="2325" width="670" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Plg]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6845" y_position="2320" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Rupiah]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="8003" y_position="2025" width="1850" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[3 Lembar]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="8005" y_position="2325" width="670" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Plg]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="8750" y_position="2320" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Rupiah]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="9908" y_position="2025" width="1850" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[4-12 Lembar]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="9910" y_position="2325" width="670" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Plg]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="10655" y_position="2320" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Rupiah]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="11805" y_position="2025" width="1850" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[>=13 Lembar]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="11815" y_position="2325" width="670" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Plg]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="12560" y_position="2320" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Rupiah]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="13718" y_position="2325" width="697" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Plg]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="15225" y_position="2320" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Rupiah]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="13770" y_position="1470" width="1816" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="SpecialVarField" id="16"/>
+        </Element>
+        <Element type="Text" count="1" x_position="14460" y_position="2318" width="723" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+              </FontProperties>
+            <![CDATA[Lbr]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1150" y_position="440" width="4338" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?cabang"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1150" y_position="705" width="4338" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?ranting"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1150" y_position="965" width="4340" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?alamat"/>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="1" width="16457" height="256" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="16320" y2_position="15" x_position="0" y_position="15" width="16320" height="0">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="1"/>
+          </LineProperties>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="0" width="16457" height="0" id="2">
+        <SectionProperties>
+          <Attribute name="drill down" value="true"/>
+          <Attribute name="suppress" value="true"/>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="14" width="16457" height="248" id="3">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="FieldElement" x_position="4244" y_position="0" width="639" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_1)"/>
+        </Element>
+        <Element type="FieldElement" x_position="5062" y_position="0" width="976" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.RP_LBR_1)"/>
+        </Element>
+        <Element type="FieldElement" x_position="6174" y_position="0" width="594" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_2)"/>
+        </Element>
+        <Element type="FieldElement" x_position="6855" y_position="0" width="1080" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.RP_LBR_2)"/>
+        </Element>
+        <Element type="FieldElement" x_position="9955" y_position="0" width="608" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_4SD12)"/>
+        </Element>
+        <Element type="FieldElement" x_position="8010" y_position="0" width="668" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_3)"/>
+        </Element>
+        <Element type="FieldElement" x_position="8865" y_position="0" width="960" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.RP_LBR_3)"/>
+        </Element>
+        <Element type="FieldElement" x_position="11871" y_position="0" width="593" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.PLG_LBR_12LBH)"/>
+        </Element>
+        <Element type="FieldElement" x_position="10695" y_position="0" width="1028" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.RP_LBR_4SD12)"/>
+        </Element>
+        <Element type="FieldElement" x_position="12608" y_position="0" width="1012" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.RP_LBR_12LBH)"/>
+        </Element>
+        <Element type="FieldElement" x_position="13733" y_position="9" width="679" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.JML_PLG)"/>
+        </Element>
+        <Element type="FieldElement" x_position="14505" y_position="0" width="660" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.JML_LBR)"/>
+        </Element>
+        <Element type="FieldElement" x_position="15255" y_position="0" width="1028" height="224">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (VIEW_REPORT_12DLAMA404.JML_RP)"/>
+        </Element>
+        <Element type="Text" count="1" x_position="2138" y_position="9" width="1848" height="202">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[Total]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="1">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="17" width="16457" height="258" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="16328" y2_position="252" x_position="0" y_position="252" width="16328" height="0">
+          <LineProperties>
+            <Attribute name="style" value="4"/>
+            <Attribute name="line width" value="0"/>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="FieldElement" x_position="158" y_position="20" width="361" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@no"/>
+        </Element>
+        <Element type="FieldElement" x_position="631" y_position="20" width="1215" height="224">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.KODE"/>
+        </Element>
+        <Element type="FieldElement" x_position="1891" y_position="20" width="2272" height="224">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.URAIAN"/>
+        </Element>
+        <Element type="FieldElement" x_position="4193" y_position="20" width="698" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_1"/>
+        </Element>
+        <Element type="FieldElement" x_position="4981" y_position="20" width="1065" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_1"/>
+        </Element>
+        <Element type="FieldElement" x_position="6128" y_position="20" width="648" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_2"/>
+        </Element>
+        <Element type="FieldElement" x_position="6855" y_position="20" width="1088" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_2"/>
+        </Element>
+        <Element type="FieldElement" x_position="7985" y_position="20" width="701" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_3"/>
+        </Element>
+        <Element type="FieldElement" x_position="8785" y_position="20" width="1048" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_3"/>
+        </Element>
+        <Element type="FieldElement" x_position="9907" y_position="20" width="664" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_4SD12"/>
+        </Element>
+        <Element type="FieldElement" x_position="10670" y_position="20" width="1061" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_4SD12"/>
+        </Element>
+        <Element type="FieldElement" x_position="11825" y_position="20" width="647" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.PLG_LBR_12LBH"/>
+        </Element>
+        <Element type="FieldElement" x_position="12585" y_position="20" width="1043" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.RP_LBR_12LBH"/>
+        </Element>
+        <Element type="FieldElement" x_position="13711" y_position="20" width="708" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.JML_PLG"/>
+        </Element>
+        <Element type="FieldElement" x_position="14483" y_position="20" width="690" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.JML_LBR"/>
+        </Element>
+        <Element type="FieldElement" x_position="15240" y_position="20" width="1043" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_12DLAMA404.JML_RP"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+<Image count="9398" name="embedding 1">
+<![CDATA[
+66 77 -74 36 0 0 0 0 0 0 54 4 0 0 40 0 0 0 75 0 0 0 109 0 0 0 1 0 8 0 0 0 0 
+0 0 0 0 0 -61 14 0 0 -61 14 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 64 0 0 -1 -128 0 0 
+-1 -1 0 0 -1 0 32 0 -1 64 32 0 -1 -128 32 0 -1 -1 32 0 -1 0 64 0 -1 64 64 0 -1 -128 64 0 
+-1 -1 64 0 -1 0 96 0 -1 64 96 0 -1 -128 96 0 -1 -1 96 0 -1 0 -128 0 -1 64 -128 0 -1 -128 -128 0 
+-1 -1 -128 0 -1 0 -96 0 -1 64 -96 0 -1 -128 -96 0 -1 -1 -96 0 -1 0 -64 0 -1 64 -64 0 -1 -128 -64 0 
+-1 -1 -64 0 -1 0 -1 0 -1 64 -1 0 -1 -128 -1 0 -1 -1 -1 0 -1 0 0 32 -1 64 0 32 -1 -128 0 32 
+-1 -1 0 32 -1 0 32 32 -1 64 32 32 -1 -128 32 32 -1 -1 32 32 -1 0 64 32 -1 64 64 32 -1 -128 64 32 
+-1 -1 64 32 -1 0 96 32 -1 64 96 32 -1 -128 96 32 -1 -1 96 32 -1 0 -128 32 -1 64 -128 32 -1 -128 -128 32 
+-1 -1 -128 32 -1 0 -96 32 -1 64 -96 32 -1 -128 -96 32 -1 -1 -96 32 -1 0 -64 32 -1 64 -64 32 -1 -128 -64 32 
+-1 -1 -64 32 -1 0 -1 32 -1 64 -1 32 -1 -128 -1 32 -1 -1 -1 32 -1 0 0 64 -1 64 0 64 -1 -128 0 64 
+-1 -1 0 64 -1 0 32 64 -1 64 32 64 -1 -128 32 64 -1 -1 32 64 -1 0 64 64 -1 64 64 64 -1 -128 64 64 
+-1 -1 64 64 -1 0 96 64 -1 64 96 64 -1 -128 96 64 -1 -1 96 64 -1 0 -128 64 -1 64 -128 64 -1 -128 -128 64 
+-1 -1 -128 64 -1 0 -96 64 -1 64 -96 64 -1 -128 -96 64 -1 -1 -96 64 -1 0 -64 64 -1 64 -64 64 -1 -128 -64 64 
+-1 -1 -64 64 -1 0 -1 64 -1 64 -1 64 -1 -128 -1 64 -1 -1 -1 64 -1 0 0 96 -1 64 0 96 -1 -128 0 96 
+-1 -1 0 96 -1 0 32 96 -1 64 32 96 -1 -128 32 96 -1 -1 32 96 -1 0 64 96 -1 64 64 96 -1 -128 64 96 
+-1 -1 64 96 -1 0 96 96 -1 64 96 96 -1 -128 96 96 -1 -1 96 96 -1 0 -128 96 -1 64 -128 96 -1 -128 -128 96 
+-1 -1 -128 96 -1 0 -96 96 -1 64 -96 96 -1 -128 -96 96 -1 -1 -96 96 -1 0 -64 96 -1 64 -64 96 -1 -128 -64 96 
+-1 -1 -64 96 -1 0 -1 96 -1 64 -1 96 -1 -128 -1 96 -1 -1 -1 96 -1 0 0 -128 -1 64 0 -128 -1 -128 0 -128 
+-1 -1 0 -128 -1 0 32 -128 -1 64 32 -128 -1 -128 32 -128 -1 -1 32 -128 -1 0 64 -128 -1 64 64 -128 -1 -128 64 -128 
+-1 -1 64 -128 -1 0 96 -128 -1 64 96 -128 -1 -128 96 -128 -1 -1 96 -128 -1 0 -128 -128 -1 64 -128 -128 -1 -128 -128 -128 
+-1 -1 -128 -128 -1 0 -96 -128 -1 64 -96 -128 -1 -128 -96 -128 -1 -1 -96 -128 -1 0 -64 -128 -1 64 -64 -128 -1 -128 -64 -128 
+-1 -1 -64 -128 -1 0 -1 -128 -1 64 -1 -128 -1 -128 -1 -128 -1 -1 -1 -128 -1 0 0 -96 -1 64 0 -96 -1 -128 0 -96 
+-1 -1 0 -96 -1 0 32 -96 -1 64 32 -96 -1 -128 32 -96 -1 -1 32 -96 -1 0 64 -96 -1 64 64 -96 -1 -128 64 -96 
+-1 -1 64 -96 -1 0 96 -96 -1 64 96 -96 -1 -128 96 -96 -1 -1 96 -96 -1 0 -128 -96 -1 64 -128 -96 -1 -128 -128 -96 
+-1 -1 -128 -96 -1 0 -96 -96 -1 64 -96 -96 -1 -128 -96 -96 -1 -1 -96 -96 -1 0 -64 -96 -1 64 -64 -96 -1 -128 -64 -96 
+-1 -1 -64 -96 -1 0 -1 -96 -1 64 -1 -96 -1 -128 -1 -96 -1 -1 -1 -96 -1 0 0 -64 -1 64 0 -64 -1 -128 0 -64 
+-1 -1 0 -64 -1 0 32 -64 -1 64 32 -64 -1 -128 32 -64 -1 -1 32 -64 -1 0 64 -64 -1 64 64 -64 -1 -128 64 -64 
+-1 -1 64 -64 -1 0 96 -64 -1 64 96 -64 -1 -128 96 -64 -1 -1 96 -64 -1 0 -128 -64 -1 64 -128 -64 -1 -128 -128 -64 
+-1 -1 -128 -64 -1 0 -96 -64 -1 64 -96 -64 -1 -128 -96 -64 -1 -1 -96 -64 -1 0 -64 -64 -1 64 -64 -64 -1 -128 -64 -64 
+-1 -1 -64 -64 -1 0 -1 -64 -1 64 -1 -64 -1 -128 -1 -64 -1 -1 -1 -64 -1 0 0 -1 -1 64 0 -1 -1 -128 0 -1 
+-1 -1 0 -1 -1 0 32 -1 -1 64 32 -1 -1 -128 32 -1 -1 -1 32 -1 -1 0 64 -1 -1 64 64 -1 -1 -128 64 -1 
+-1 -1 64 -1 -1 0 96 -1 -1 64 96 -1 -1 -128 96 -1 -1 -1 96 -1 -1 0 -128 -1 -1 64 -128 -1 -1 -128 -128 -1 
+-1 -1 -128 -1 -1 0 -96 -1 -1 64 -96 -1 -1 -128 -96 -1 -1 -1 -96 -1 -1 0 -64 -1 -1 64 -64 -1 -1 -128 -64 -1 
+-1 -1 -64 -1 -1 0 -1 -1 -1 64 -1 -1 -1 -128 -1 -1 -1 -1 -1 -1 -1 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -8 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -48 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -48 -92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 
+-92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -48 -96 -92 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -8 -96 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -92 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -48 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -48 -96 -96 -92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -92 -96 -96 -92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -44 -96 -96 -96 -96 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 
+-96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -92 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -96 -96 -96 -96 -96 -52 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -3 -39 -75 -75 -75 -39 -3 -4 
+-4 -4 -4 -56 -96 -96 -96 -96 -92 -8 -4 -4 -4 -4 -4 -39 -75 -75 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -75 74 39 35 35 35 39 106 -39 -4 -4 -4 -52 -96 -96 -96 -96 -96 -52 -4 -4 -4 -40 110 39 35 35 39 110 
+-39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -111 74 39 35 35 35 35 35 35 35 39 -75 -4 -4 -12 -96 -96 -96 -96 
+-96 -92 -4 -4 -111 38 35 35 35 35 35 35 74 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 37 110 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 109 39 35 35 39 35 35 35 
+35 39 35 35 39 -110 -3 -4 -96 -96 -96 -96 -96 -96 -52 -75 38 35 35 35 35 39 35 35 35 110 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 38 -111 -3 -4 -4 -4 -4 
+-4 -4 -39 110 35 35 35 35 35 35 35 35 35 35 35 35 35 39 74 -75 -92 -96 -96 -96 -96 -96 -96 34 35 39 35 35 
+35 35 35 35 35 39 -111 -3 -4 -4 -4 -111 109 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -80 1 35 35 35 70 110 -111 -111 -79 -79 110 39 35 35 39 35 35 35 35 35 35 39 35 35 39 35 35 35 39 
+97 -96 -96 -96 -96 -96 -96 97 35 35 35 39 35 35 35 35 35 35 39 106 -110 -111 106 35 110 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 39 
+35 35 35 35 35 35 35 35 35 39 35 35 66 -96 -96 -96 -96 -96 -96 -96 66 35 39 35 35 35 35 39 35 35 35 35 
+35 35 35 35 -114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 
+35 35 35 35 35 39 35 35 35 39 35 35 38 74 73 37 2 2 35 35 35 35 35 35 34 -96 -96 -96 -96 -96 -96 -96 
+97 35 34 74 73 37 2 34 35 35 35 35 35 35 35 35 110 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 35 39 35 35 35 35 35 35 35 39 106 -43 -3 -4 -4 -4 -76 108 32 1 
+35 35 35 35 35 -127 -96 -96 -96 -96 -96 -96 -96 109 -39 -4 -4 -8 -112 36 2 35 35 35 35 35 39 35 -114 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 0 2 34 39 35 35 35 35 39 35 35 35 39 
+74 -75 -3 -4 -4 -4 -4 -4 -4 -4 -40 104 1 2 35 39 35 97 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -40 
+72 1 35 35 35 35 35 39 -110 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 
+108 1 1 2 34 35 35 35 35 34 74 -79 -3 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 68 1 2 34 66 -96 -96 
+-96 -96 -96 -96 -96 -96 -8 -4 -4 -4 -4 -4 -40 36 1 35 35 39 38 -111 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 -80 -112 108 105 105 -115 -111 -44 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -40 -112 104 73 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -112 72 109 -111 -39 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -48 -92 -48 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -8 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -52 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -92 -48 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -8 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -92 -96 -96 -96 -96 -96 -96 -92 -52 -12 -39 -75 -110 -114 -114 -75 -39 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 
+-96 -96 -96 -96 -88 -114 -75 -3 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 97 34 35 35 35 74 -75 
+-4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 35 74 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 -3 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 97 66 39 35 39 -111 -4 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -96 97 39 35 
+38 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 1 
+74 -75 -4 -4 -4 -4 -44 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 97 34 39 110 -39 -4 -4 -4 -4 -8 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 35 35 74 -3 -4 -4 -4 -4 -4 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 39 110 -39 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 97 66 70 -110 -39 -4 -4 -4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 97 39 35 35 110 -39 -4 -4 -3 73 
+-114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 39 74 110 110 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 97 70 110 110 74 -123 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 66 39 35 35 70 106 110 74 35 -114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -80 1 35 35 35 39 35 35 35 -127 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-128 -127 66 35 97 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -127 35 35 35 35 35 35 35 35 110 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 35 35 35 97 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 -127 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 39 35 35 
+39 35 35 35 -114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -80 1 35 35 35 35 
+35 35 35 66 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -127 34 39 35 35 35 35 35 110 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -40 68 1 34 35 35 35 39 35 34 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 33 35 35 35 35 35 39 -79 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 72 1 2 2 35 34 34 -128 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -128 1 2 35 39 74 -75 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -40 -40 -112 -80 -111 -76 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -84 108 -111 -44 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -8 -12 -52 -56 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -43 -39 -4 -4 -8 -8 -12 -52 
+-56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 97 38 -110 -3 -4 -4 -4 -4 -4 -8 -12 -48 -52 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -52 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 39 35 106 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -48 
+97 -127 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 104 69 -75 -3 -4 -4 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 35 39 
+70 -75 -4 -4 -4 -4 -4 -4 -4 -4 -39 74 35 35 39 66 97 97 -128 -96 -96 -96 -96 -96 -96 -12 -4 -40 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 35 74 -75 -3 -4 -4 -4 -4 -4 -12 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 97 35 35 35 39 110 -39 -4 -4 -4 -4 -4 -75 70 35 35 35 35 35 35 35 35 34 
+66 97 -123 -92 -96 -56 -39 73 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 
+35 35 35 39 110 -79 -75 -75 -110 70 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 38 35 35 35 35 39 74 110 -114 110 
+74 39 35 39 35 35 39 35 35 35 39 35 35 35 39 74 106 102 70 39 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 35 35 35 39 35 35 35 35 35 35 -128 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 66 35 35 35 39 35 35 35 35 35 35 35 39 35 35 35 35 35 35 35 35 35 35 35 35 35 39 35 35 39 
+-39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 35 35 35 35 35 35 35 35 
+35 39 97 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -127 39 35 35 35 39 35 35 35 39 35 35 35 35 35 39 70 73 
+69 1 1 35 35 39 35 35 35 35 35 39 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 68 2 35 35 35 35 35 35 39 35 35 35 97 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 34 35 35 35 35 
+35 35 35 35 35 35 35 35 39 -75 -4 -4 -4 -40 108 0 2 35 35 35 35 35 39 35 -39 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 108 1 2 35 35 35 35 35 35 35 35 35 66 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 64 1 34 35 35 35 35 35 35 35 35 39 106 -39 -4 -4 -4 -4 -4 -4 -76 36 1 35 35 
+39 35 35 74 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 108 37 2 34 
+35 35 39 35 35 74 -115 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -112 68 1 34 2 39 35 35 35 74 -75 -3 
+-4 -4 -4 -4 -4 -4 -4 -4 -80 0 1 34 35 34 110 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -44 -112 108 109 109 -111 -39 -4 -4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-12 -4 -76 108 72 69 37 109 -75 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 108 72 -115 -39 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -44 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-92 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -52 -56 -56 -56 -56 -56 -56 -56 -92 -56 -56 -56 -56 -56 -56 -92 -48 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 0 0 0 0 0 0 0 0 0 0 0 0 105 4 -109 
+4 2 16 0 0 120 1 -117 8 -72 16 -89 8 0 0 0 0 0 0 0 0 
+]]>
+</Image>
+</inet:Report>

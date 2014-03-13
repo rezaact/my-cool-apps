@@ -1,0 +1,1566 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
+    <Datasource>
+      <DataSourceConfiguration name="adoplus.dll">
+      </DataSourceConfiguration>
+      <Tablesource alias="Kotama" databaseIdentifier="Kotama">
+        <Column name="SATKER" type="11" />
+        <Column name="NOSURAT" type="11" />
+        <Column name="RALAT" type="11" />
+        <Column name="KETERANGAN" type="11" />
+        <Column name="LEMBAR" type="6" />
+        <Column name="PEMKWH" type="6" />
+        <Column name="RPTAG" type="6" />
+      </Tablesource>
+    </Datasource>
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+  </FormulaFields>
+  <PromptFields>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="wilayah"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="tksatker"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sysdate"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="blth"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="kotama"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign2kota"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="cabang"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign1kesatuan"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign1jabatan"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign1nama"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign1pangkat"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign1nip"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sysdate2"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign2unit"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign2jabatan"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="sign2nama"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (Kotama.LEMBAR)"/>
+      <Reference name="id" type="DatabaseField" refname="Kotama.LEMBAR"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (Kotama.PEMKWH)"/>
+      <Reference name="id" type="DatabaseField" refname="Kotama.PEMKWH"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (Kotama.RPTAG)"/>
+      <Reference name="id" type="DatabaseField" refname="Kotama.RPTAG"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+  </SummaryFields>
+  <SortFields>
+  </SortFields>
+  <GroupNameFields count="0">
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="15840"/>
+    <Attribute name="page height" value="12240"/>
+    <Attribute name="page orientation" value="2"/>
+    <Attribute name="page margin left" value="187"/>
+    <Attribute name="page margin right" value="187"/>
+    <Attribute name="page margin top" value="187"/>
+    <Attribute name="page margin bottom" value="187"/>
+    <Attribute name="report title" value=""/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value=""/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="14 Jan 2014 01:27:37 GMT"/>
+    <Attribute name="report created" value="26 Jan 2012 05:02:11 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="25" width="15466" height="2780" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Box" x2_position="14760" y2_position="455" x_position="360" y_position="2040" width="14400" height="2055">
+          <CommonProperties>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <BoxProperties>
+              <LineProperties>
+                <Attribute name="id" value="3"/>
+              </LineProperties>
+          </BoxProperties>
+        </Element>
+        <Element type="Line" x2_position="720" y2_position="0" x_position="720" y_position="2040" width="0" height="1600">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="14760" y2_position="2760" x_position="360" y_position="2760" width="14400" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="3360" y2_position="259" x_position="3360" y_position="2040" width="0" height="1299">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="5760" y2_position="259" x_position="5760" y_position="2040" width="0" height="1299">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="6720" y2_position="259" x_position="6720" y_position="2040" width="0" height="1299">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="8400" y2_position="260" x_position="8400" y_position="2040" width="0" height="1300">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="10200" y2_position="439" x_position="10200" y_position="2040" width="0" height="2039">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="11640" y2_position="439" x_position="11640" y_position="2040" width="0" height="2039">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="12840" y2_position="439" x_position="12840" y_position="2040" width="0" height="2039">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="360" y_position="2280" width="360" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[NO]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="840" y_position="2280" width="2400" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[KESATUAN]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="3360" y_position="2160" width="2400" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[NOMER SURAT]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[TAGIHAN TK SATKER]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="5760" y_position="2280" width="960" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[RALAT]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6720" y_position="2280" width="1680" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[KETERANGAN]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="10200" y_position="2160" width="1440" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[JUMLAH]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[PELANGGAN]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="11640" y_position="2160" width="1200" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[JUMLAH]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[KWH]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="12840" y_position="2160" width="1920" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[JUMLAH Rp.]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[HARUS DIBAYAR]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="3" x_position="360" y_position="240" width="5160" height="832">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[PT PLN (PERSERO)]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[WILAYAH/DISTRIBUSI ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?wilayah"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[CABANG/APJ ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?cabang"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="360" y_position="1560" width="1028" height="495">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[KOTAMA]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[ALAMAT]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="3" x_position="4920" y_position="240" width="5040" height="1186">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[DAFTAR PENGESAHAN TAGIHAN LISTRIK]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[PELANGGAN TANGGUNGAN NEGARA]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?tksatker"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="4" x_position="9960" y_position="1080" width="3000" height="960">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[NOMOR]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[TGL. PENYERAHAN DAFTAR]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[TGL. PENERIMAAN KEMBALI                  ]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[REKENING BULAN]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="3" x_position="1440" y_position="1560" width="2773" height="495">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[: ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?kotama"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[: ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign2kota"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="4" x_position="12840" y_position="1080" width="1680" height="960">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[: ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sysdate"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[: ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?blth"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="8520" y_position="2160" width="1560" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[AREA/]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[CABANG]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="0" width="15466" height="599" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="0" width="15466" height="0" id="2">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="6" width="15466" height="3070" id="3">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="14" x_position="720" y_position="600" width="4800" height="2400">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[MENGETAHUI]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign1kesatuan"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign1jabatan"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="5"/>
+                <Attribute name="underline" value="true"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign1nama"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="3">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign1pangkat"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[ NRP. ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign1nip"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[    ]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="13" x_position="9720" y_position="600" width="4680" height="2400">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="3">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign2kota"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[, ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sysdate2"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign2unit"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign2jabatan"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="5"/>
+                <Attribute name="underline" value="true"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?sign2nama"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="10320" y_position="120" width="1200" height="263">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font size" value="220"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (Kotama.LEMBAR)"/>
+        </Element>
+        <Element type="FieldElement" x_position="11760" y_position="120" width="960" height="263">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font size" value="220"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (Kotama.PEMKWH)"/>
+        </Element>
+        <Element type="FieldElement" x_position="12960" y_position="120" width="1680" height="263">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Arial"/>
+            <Attribute name="font size" value="220"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (Kotama.RPTAG)"/>
+        </Element>
+        <Element type="Text" count="1" x_position="4200" y_position="120" width="1200" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="220"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[JUMLAH]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="1">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="10" width="15466" height="260" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="14760" y2_position="240" x_position="360" y_position="240" width="14400" height="0">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="FieldElement" x_position="360" y_position="0" width="304" height="260">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SpecialVarField" id="13"/>
+        </Element>
+        <Element type="FieldElement" x_position="840" y_position="0" width="2400" height="221">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.SATKER"/>
+        </Element>
+        <Element type="FieldElement" x_position="3480" y_position="0" width="2160" height="221">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.NOSURAT"/>
+        </Element>
+        <Element type="FieldElement" x_position="5880" y_position="0" width="728" height="221">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.RALAT"/>
+        </Element>
+        <Element type="FieldElement" x_position="6840" y_position="0" width="1459" height="221">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.KETERANGAN"/>
+        </Element>
+        <Element type="FieldElement" x_position="10320" y_position="0" width="1215" height="260">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.LEMBAR"/>
+        </Element>
+        <Element type="FieldElement" x_position="11760" y_position="0" width="964" height="260">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.PEMKWH"/>
+        </Element>
+        <Element type="FieldElement" x_position="12960" y_position="0" width="1683" height="260">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="Kotama.RPTAG"/>
+        </Element>
+        <Element type="FieldElement" x_position="8520" y_position="0" width="1560" height="221">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="220"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?cabang"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+</inet:Report>

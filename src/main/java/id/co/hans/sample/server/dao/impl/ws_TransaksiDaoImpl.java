@@ -3,6 +3,7 @@ package id.co.hans.sample.server.dao.impl;
 
 import id.co.hans.sample.server.dao.clsSorek;
 import id.co.hans.sample.server.dao.clsTransaksi_Proc;
+import id.co.hans.sample.server.dao.cls_Aplikasi;
 import id.co.hans.sample.server.dao.ws_TransaksiDao;
 import id.co.hans.sample.server.utility.CommonModule;
 import oracle.jdbc.OracleTypes;
@@ -5509,26 +5510,85 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
+//        try
+//        {
+//            Connection con = jdbcTemplate.getDataSource().getConnection();
+//
+//            String sql = "getMasterUnit";
+//
+//            CallableStatement cst = con.prepareCall(sql);
+//
+//            ResultSet rs = cst.executeQuery();
+//
+//            lMapData = CommonModule.convertResultsetToListStr(rs);
+//
+//            retValue.put("getMasterUnit", lMapData);
+//
+//            con.close();
+//        } catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+//        }
+
+        String unitupi = in_unitpetugas.substring(1,2);
+
         try
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "getMasterUnit";
+            CallableStatement cst;
+            String sql;
 
-            CallableStatement cst = con.prepareCall(sql);
-
+            sql = " SELECT * FROM UNITUPI " ;
+            sql = sql + " WHERE UNITUPI = '" + unitupi + "'" ;
+            cst = con.prepareCall(sql);
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
+            retValue.put("wsReturn_UNITUPI", lMapData);
 
-            retValue.put("getMasterUnit", lMapData);
+
+            sql = " SELECT DECODE(LENGTH(UNITAP),5,UNITAP,TRIM(UNITAP) || '  ') AS UNITAP,  ";
+            sql = sql + "UNITUPI, SATUAN, NAMA, ALAMAT, TELEPON, FAXIMILE, MANAGER, KOTA  ";
+            sql = sql + "FROM UNITAP  ";
+            sql = sql + " WHERE UNITUPI = '" + unitupi + "' ";
+            sql = sql + "ORDER BY UNITAP ";
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            lMapData = CommonModule.convertResultsetToListStr(rs);
+            retValue.put("wsReturn_UNITAP", lMapData);
+
+
+            sql = "SELECT * FROM UNITUP ";
+            sql = sql + " WHERE UNITUP LIKE '" + unitupi + "%' ";
+            sql = sql + "ORDER BY UNITAP,UNITUP ";
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            lMapData = CommonModule.convertResultsetToListStr(rs);
+            retValue.put("wsReturn_UNITUP", lMapData);
+
+
+            sql = "SELECT * FROM PAYMENTPOINT ORDER BY UNITUP,KODEPP ";
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            lMapData = CommonModule.convertResultsetToListStr(rs);
+            retValue.put("wsReturn_PP", lMapData);
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn_UNITUPI", "");
+            retValue.put("wsReturn_UNITAP", "");
+            retValue.put("wsReturn_UNITUP", "");
+            retValue.put("wsReturn_PP", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;     }
+
+        return retValue;
+    }
 
     @Override
     public Map<String, Object> ubahPassword(String uname,

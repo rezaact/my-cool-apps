@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
+    <Datasource>
+      <DataSourceConfiguration name="adoplus.dll">
+      </DataSourceConfiguration>
+      <Tablesource alias="element2" databaseIdentifier="element2">
+        <Column name="NO1" type="11" />
+        <Column name="NO2" type="11" />
+        <Column name="NO3" type="11" />
+        <Column name="NO4" type="11" />
+        <Column name="TGL1" type="11" />
+        <Column name="TGL2" type="11" />
+        <Column name="TGL3" type="11" />
+        <Column name="TGL4" type="11" />
+        <Column name="RP1" type="11" />
+        <Column name="RP2" type="11" />
+        <Column name="NOSURAT" type="11" />
+        <Column name="NAMA" type="11" />
+        <Column name="JABATAN" type="11" />
+      </Tablesource>
+    </Datasource>
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+  </FormulaFields>
+  <PromptFields>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+  </SummaryFields>
+  <SortFields>
+  </SortFields>
+  <GroupNameFields count="0">
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="11907"/>
+    <Attribute name="page height" value="16839"/>
+    <Attribute name="page orientation" value="1"/>
+    <Attribute name="page margin left" value="1134"/>
+    <Attribute name="page margin right" value="1134"/>
+    <Attribute name="page margin top" value="1134"/>
+    <Attribute name="page margin bottom" value="1134"/>
+    <Attribute name="report title" value=""/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value=""/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="14 Jan 2014 02:07:28 GMT"/>
+    <Attribute name="report created" value="25 Mar 2009 05:55:21 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="4" width="9641" height="2055" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="2" x_position="240" y_position="120" width="4680" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[Nomor :]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.NOSURAT"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="240" y_position="480" width="5160" height="360">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[Perihal : Usulan Penghapusan Piutang lainnya Macet.]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="7680" y_position="240" width="1440" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="240"/>
+          </FontProperties>
+          <DateProperties>
+            <Attribute name="date windows default type" value="2"/>
+            <Attribute name="date order" value="1"/>
+            <Attribute name="year type" value="1"/>
+            <Attribute name="month type" value="3"/>
+          </DateProperties>
+          <Reference name="field" type="SpecialVarField" id="4"/>
+        </Element>
+        <Element type="Text" count="4" x_position="6120" y_position="840" width="3240" height="1200">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[Kepada Yth :]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[DD Akuntansi]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[PT. PLN (Persero) Kantor Pusat]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[di Jakarta]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="0" width="9641" height="600" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="5" width="9641" height="1680" id="2">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Picture" x_position="240" y_position="120" width="1080" height="1320">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <PictureProperties>
+            <Attribute name="scale width" value="0.96"/>
+            <Attribute name="scale height" value="0.807"/>
+            <Attribute name="scale option" value="1"/>
+            <Attribute name="id" value="1"/>
+          </PictureProperties>
+        </Element>
+        <Element type="Text" count="2" x_position="1560" y_position="240" width="2040" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[PT. PLN PERSERO]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="1560" y_position="600" width="3120" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[DISTRIBUSI JATENG & DIY]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="6600" y_position="240" width="3000" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[FORMULIR : SUPPLM - UPI]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="6600" y_position="600" width="1560" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[Lampiran : XIV]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="3" width="9641" height="3120" id="3">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="3" x_position="6240" y_position="240" width="3000" height="600">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[PT. PLN (PERSERO)]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[SATUAN ADMINISTRASI]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="6240" y_position="2520" width="3000" height="221">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="element2.NAMA"/>
+        </Element>
+        <Element type="FieldElement" x_position="6240" y_position="2880" width="3000" height="221">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="element2.JABATAN"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="1">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="1" width="9641" height="4930" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="11" x_position="240" y_position="720" width="9240" height="4080">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[Dengan ini kami sampaikan asli dan 2 (dua) copy usulan penghapusan Piutang Lainnya Macet sejumlah Rp.                           (                                dengan huruf                              ) yang terdiri dari :]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[I.	Daftar usulan Piutang Lainnya Macet.]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="6">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[	No.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.NO1"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[								Tgl.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.TGL1"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[						Rp.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.RP1"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="6">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[	No.	]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.NO2"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[								Tgl.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.TGL2"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[						Rp.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.RP2"/>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[II.	Berita Acara Penelitian Piutang Lainnya Macet.]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="5">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[	No.	]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.NO3"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[								Tgl.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.TGL3"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[						]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="5">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[	No.	]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.NO4"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[								Tgl.]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="element2.TGL4"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[						]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="240"/>
+              </FontProperties>
+            <![CDATA[Demikian agar maklum, mohon mendapat penyelesaian lebih lanjut dan terima kasih atas perhatiannya.]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+<Image count="9398" name="embedding 1">
+<![CDATA[
+66 77 -74 36 0 0 0 0 0 0 54 4 0 0 40 0 0 0 75 0 0 0 109 0 0 0 1 0 8 0 0 0 0 
+0 0 0 0 0 -61 14 0 0 -61 14 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 64 0 0 -1 -128 0 0 
+-1 -1 0 0 -1 0 32 0 -1 64 32 0 -1 -128 32 0 -1 -1 32 0 -1 0 64 0 -1 64 64 0 -1 -128 64 0 
+-1 -1 64 0 -1 0 96 0 -1 64 96 0 -1 -128 96 0 -1 -1 96 0 -1 0 -128 0 -1 64 -128 0 -1 -128 -128 0 
+-1 -1 -128 0 -1 0 -96 0 -1 64 -96 0 -1 -128 -96 0 -1 -1 -96 0 -1 0 -64 0 -1 64 -64 0 -1 -128 -64 0 
+-1 -1 -64 0 -1 0 -1 0 -1 64 -1 0 -1 -128 -1 0 -1 -1 -1 0 -1 0 0 32 -1 64 0 32 -1 -128 0 32 
+-1 -1 0 32 -1 0 32 32 -1 64 32 32 -1 -128 32 32 -1 -1 32 32 -1 0 64 32 -1 64 64 32 -1 -128 64 32 
+-1 -1 64 32 -1 0 96 32 -1 64 96 32 -1 -128 96 32 -1 -1 96 32 -1 0 -128 32 -1 64 -128 32 -1 -128 -128 32 
+-1 -1 -128 32 -1 0 -96 32 -1 64 -96 32 -1 -128 -96 32 -1 -1 -96 32 -1 0 -64 32 -1 64 -64 32 -1 -128 -64 32 
+-1 -1 -64 32 -1 0 -1 32 -1 64 -1 32 -1 -128 -1 32 -1 -1 -1 32 -1 0 0 64 -1 64 0 64 -1 -128 0 64 
+-1 -1 0 64 -1 0 32 64 -1 64 32 64 -1 -128 32 64 -1 -1 32 64 -1 0 64 64 -1 64 64 64 -1 -128 64 64 
+-1 -1 64 64 -1 0 96 64 -1 64 96 64 -1 -128 96 64 -1 -1 96 64 -1 0 -128 64 -1 64 -128 64 -1 -128 -128 64 
+-1 -1 -128 64 -1 0 -96 64 -1 64 -96 64 -1 -128 -96 64 -1 -1 -96 64 -1 0 -64 64 -1 64 -64 64 -1 -128 -64 64 
+-1 -1 -64 64 -1 0 -1 64 -1 64 -1 64 -1 -128 -1 64 -1 -1 -1 64 -1 0 0 96 -1 64 0 96 -1 -128 0 96 
+-1 -1 0 96 -1 0 32 96 -1 64 32 96 -1 -128 32 96 -1 -1 32 96 -1 0 64 96 -1 64 64 96 -1 -128 64 96 
+-1 -1 64 96 -1 0 96 96 -1 64 96 96 -1 -128 96 96 -1 -1 96 96 -1 0 -128 96 -1 64 -128 96 -1 -128 -128 96 
+-1 -1 -128 96 -1 0 -96 96 -1 64 -96 96 -1 -128 -96 96 -1 -1 -96 96 -1 0 -64 96 -1 64 -64 96 -1 -128 -64 96 
+-1 -1 -64 96 -1 0 -1 96 -1 64 -1 96 -1 -128 -1 96 -1 -1 -1 96 -1 0 0 -128 -1 64 0 -128 -1 -128 0 -128 
+-1 -1 0 -128 -1 0 32 -128 -1 64 32 -128 -1 -128 32 -128 -1 -1 32 -128 -1 0 64 -128 -1 64 64 -128 -1 -128 64 -128 
+-1 -1 64 -128 -1 0 96 -128 -1 64 96 -128 -1 -128 96 -128 -1 -1 96 -128 -1 0 -128 -128 -1 64 -128 -128 -1 -128 -128 -128 
+-1 -1 -128 -128 -1 0 -96 -128 -1 64 -96 -128 -1 -128 -96 -128 -1 -1 -96 -128 -1 0 -64 -128 -1 64 -64 -128 -1 -128 -64 -128 
+-1 -1 -64 -128 -1 0 -1 -128 -1 64 -1 -128 -1 -128 -1 -128 -1 -1 -1 -128 -1 0 0 -96 -1 64 0 -96 -1 -128 0 -96 
+-1 -1 0 -96 -1 0 32 -96 -1 64 32 -96 -1 -128 32 -96 -1 -1 32 -96 -1 0 64 -96 -1 64 64 -96 -1 -128 64 -96 
+-1 -1 64 -96 -1 0 96 -96 -1 64 96 -96 -1 -128 96 -96 -1 -1 96 -96 -1 0 -128 -96 -1 64 -128 -96 -1 -128 -128 -96 
+-1 -1 -128 -96 -1 0 -96 -96 -1 64 -96 -96 -1 -128 -96 -96 -1 -1 -96 -96 -1 0 -64 -96 -1 64 -64 -96 -1 -128 -64 -96 
+-1 -1 -64 -96 -1 0 -1 -96 -1 64 -1 -96 -1 -128 -1 -96 -1 -1 -1 -96 -1 0 0 -64 -1 64 0 -64 -1 -128 0 -64 
+-1 -1 0 -64 -1 0 32 -64 -1 64 32 -64 -1 -128 32 -64 -1 -1 32 -64 -1 0 64 -64 -1 64 64 -64 -1 -128 64 -64 
+-1 -1 64 -64 -1 0 96 -64 -1 64 96 -64 -1 -128 96 -64 -1 -1 96 -64 -1 0 -128 -64 -1 64 -128 -64 -1 -128 -128 -64 
+-1 -1 -128 -64 -1 0 -96 -64 -1 64 -96 -64 -1 -128 -96 -64 -1 -1 -96 -64 -1 0 -64 -64 -1 64 -64 -64 -1 -128 -64 -64 
+-1 -1 -64 -64 -1 0 -1 -64 -1 64 -1 -64 -1 -128 -1 -64 -1 -1 -1 -64 -1 0 0 -1 -1 64 0 -1 -1 -128 0 -1 
+-1 -1 0 -1 -1 0 32 -1 -1 64 32 -1 -1 -128 32 -1 -1 -1 32 -1 -1 0 64 -1 -1 64 64 -1 -1 -128 64 -1 
+-1 -1 64 -1 -1 0 96 -1 -1 64 96 -1 -1 -128 96 -1 -1 -1 96 -1 -1 0 -128 -1 -1 64 -128 -1 -1 -128 -128 -1 
+-1 -1 -128 -1 -1 0 -96 -1 -1 64 -96 -1 -1 -128 -96 -1 -1 -1 -96 -1 -1 0 -64 -1 -1 64 -64 -1 -1 -128 -64 -1 
+-1 -1 -64 -1 -1 0 -1 -1 -1 64 -1 -1 -1 -128 -1 -1 -1 -1 -1 -1 -1 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -8 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -48 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -48 -92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 
+-92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -48 -96 -92 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -8 -96 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -92 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -48 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -48 -96 -96 -92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -92 -96 -96 -92 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -44 -96 -96 -96 -96 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 
+-96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -92 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -96 -96 -96 -96 -96 -52 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -3 -39 -75 -75 -75 -39 -3 -4 
+-4 -4 -4 -56 -96 -96 -96 -96 -92 -8 -4 -4 -4 -4 -4 -39 -75 -75 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -75 74 39 35 35 35 39 106 -39 -4 -4 -4 -52 -96 -96 -96 -96 -96 -52 -4 -4 -4 -40 110 39 35 35 39 110 
+-39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -111 74 39 35 35 35 35 35 35 35 39 -75 -4 -4 -12 -96 -96 -96 -96 
+-96 -92 -4 -4 -111 38 35 35 35 35 35 35 74 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 37 110 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 109 39 35 35 39 35 35 35 
+35 39 35 35 39 -110 -3 -4 -96 -96 -96 -96 -96 -96 -52 -75 38 35 35 35 35 39 35 35 35 110 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 38 -111 -3 -4 -4 -4 -4 
+-4 -4 -39 110 35 35 35 35 35 35 35 35 35 35 35 35 35 39 74 -75 -92 -96 -96 -96 -96 -96 -96 34 35 39 35 35 
+35 35 35 35 35 39 -111 -3 -4 -4 -4 -111 109 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -80 1 35 35 35 70 110 -111 -111 -79 -79 110 39 35 35 39 35 35 35 35 35 35 39 35 35 39 35 35 35 39 
+97 -96 -96 -96 -96 -96 -96 97 35 35 35 39 35 35 35 35 35 35 39 106 -110 -111 106 35 110 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 39 
+35 35 35 35 35 35 35 35 35 39 35 35 66 -96 -96 -96 -96 -96 -96 -96 66 35 39 35 35 35 35 39 35 35 35 35 
+35 35 35 35 -114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 
+35 35 35 35 35 39 35 35 35 39 35 35 38 74 73 37 2 2 35 35 35 35 35 35 34 -96 -96 -96 -96 -96 -96 -96 
+97 35 34 74 73 37 2 34 35 35 35 35 35 35 35 35 110 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 35 39 35 35 35 35 35 35 35 39 106 -43 -3 -4 -4 -4 -76 108 32 1 
+35 35 35 35 35 -127 -96 -96 -96 -96 -96 -96 -96 109 -39 -4 -4 -8 -112 36 2 35 35 35 35 35 39 35 -114 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 0 2 34 39 35 35 35 35 39 35 35 35 39 
+74 -75 -3 -4 -4 -4 -4 -4 -4 -4 -40 104 1 2 35 39 35 97 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -40 
+72 1 35 35 35 35 35 39 -110 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 
+108 1 1 2 34 35 35 35 35 34 74 -79 -3 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 68 1 2 34 66 -96 -96 
+-96 -96 -96 -96 -96 -96 -8 -4 -4 -4 -4 -4 -40 36 1 35 35 39 38 -111 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 -80 -112 108 105 105 -115 -111 -44 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -40 -112 104 73 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -112 72 109 -111 -39 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -48 -92 -48 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -8 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -52 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -92 -48 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -8 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -92 -96 -96 -96 -96 -96 -96 -92 -52 -12 -39 -75 -110 -114 -114 -75 -39 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 
+-96 -96 -96 -96 -88 -114 -75 -3 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 97 34 35 35 35 74 -75 
+-4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 35 74 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 -3 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 97 66 39 35 39 -111 -4 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -96 97 39 35 
+38 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 1 
+74 -75 -4 -4 -4 -4 -44 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 97 34 39 110 -39 -4 -4 -4 -4 -8 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 35 35 74 -3 -4 -4 -4 -4 -4 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 39 110 -39 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 97 66 70 -110 -39 -4 -4 -4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 97 39 35 35 110 -39 -4 -4 -3 73 
+-114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 39 74 110 110 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 97 70 110 110 74 -123 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 66 39 35 35 70 106 110 74 35 -114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -80 1 35 35 35 39 35 35 35 -127 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-128 -127 66 35 97 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -127 35 35 35 35 35 35 35 35 110 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -112 1 35 35 35 35 35 35 35 97 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 -127 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 39 35 35 
+39 35 35 35 -114 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -80 1 35 35 35 35 
+35 35 35 66 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -127 34 39 35 35 35 35 35 110 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -40 68 1 34 35 35 35 39 35 34 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 33 35 35 35 35 35 39 -79 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 72 1 2 2 35 34 34 -128 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -128 1 2 35 39 74 -75 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -40 -40 -112 -80 -111 -76 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -84 108 -111 -44 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -8 -12 -52 -56 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -43 -39 -4 -4 -8 -8 -12 -52 
+-56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 97 38 -110 -3 -4 -4 -4 -4 -4 -8 -12 -48 -52 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -52 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -128 39 35 106 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -48 
+97 -127 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 104 69 -75 -3 -4 -4 -4 -4 -4 -4 -4 -48 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 66 35 39 
+70 -75 -4 -4 -4 -4 -4 -4 -4 -4 -39 74 35 35 39 66 97 97 -128 -96 -96 -96 -96 -96 -96 -12 -4 -40 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 35 74 -75 -3 -4 -4 -4 -4 -4 -12 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 97 35 35 35 39 110 -39 -4 -4 -4 -4 -4 -75 70 35 35 35 35 35 35 35 35 34 
+66 97 -123 -92 -96 -56 -39 73 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 
+35 35 35 39 110 -79 -75 -75 -110 70 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 38 35 35 35 35 39 74 110 -114 110 
+74 39 35 39 35 35 39 35 35 35 39 35 35 35 39 74 106 102 70 39 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 35 35 35 39 35 35 35 35 35 35 -128 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 66 35 35 35 39 35 35 35 35 35 35 35 39 35 35 35 35 35 35 35 35 35 35 35 35 35 39 35 35 39 
+-39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 68 2 35 35 35 35 35 35 35 35 
+35 39 97 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -127 39 35 35 35 39 35 35 35 39 35 35 35 35 35 39 70 73 
+69 1 1 35 35 39 35 35 35 35 35 39 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 68 2 35 35 35 35 35 35 39 35 35 35 97 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 34 35 35 35 35 
+35 35 35 35 35 35 35 35 39 -75 -4 -4 -4 -40 108 0 2 35 35 35 35 35 39 35 -39 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 108 1 2 35 35 35 35 35 35 35 35 35 66 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 64 1 34 35 35 35 35 35 35 35 35 39 106 -39 -4 -4 -4 -4 -4 -4 -76 36 1 35 35 
+39 35 35 74 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -76 108 37 2 34 
+35 35 39 35 35 74 -115 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -112 68 1 34 2 39 35 35 35 74 -75 -3 
+-4 -4 -4 -4 -4 -4 -4 -4 -80 0 1 34 35 34 110 -39 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -44 -112 108 109 109 -111 -39 -4 -4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-12 -4 -76 108 72 69 37 109 -75 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -40 108 72 -115 -39 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -44 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -92 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-92 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -48 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -56 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -56 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -52 -96 -96 -96 -96 -96 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -8 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -12 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -52 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -8 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -92 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -92 -96 -96 -96 -96 
+-96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -96 -12 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -52 -56 -56 -56 -56 -56 -56 -56 -92 -56 -56 -56 -56 -56 -56 -92 -48 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 0 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 
+-4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 0 0 0 0 0 0 0 0 0 0 0 0 0 105 4 -109 
+4 2 16 0 0 120 1 -117 8 -72 16 -89 8 0 0 0 0 0 0 0 0 
+]]>
+</Image>
+</inet:Report>

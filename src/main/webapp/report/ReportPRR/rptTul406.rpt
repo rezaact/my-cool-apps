@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
+    <Datasource>
+      <DataSourceConfiguration name="Pdsmon(Sip3jateng,,sip3single)">
+        <property name="supportsWhere" value="true"/>
+        <property name="datasource" value="Sip3jateng"/>
+        <property name="url" value="jdbc:odbc:{datasource}"/>
+        <property name="escapeEverything" value="false"/>
+        <property name="quotesLowerCase" value="false"/>
+        <property name="savePassword" value="false"/>
+        <property name="driverClassName" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+        <property name="user" value="sip3single"/>
+        <property name="catalog" value=""/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="driverLibrary" value=""/>
+        <property name="databaseClassName" value=""/>
+        <property name="aliasToken" value="AS"/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="supportsSQL92" value="true"/>
+      </DataSourceConfiguration>
+      <Tablesource alias="PRR_VIEW_REPORT406" databaseIdentifier="SIP3SINGLE.PRR_VIEW_REPORT406">
+        <Column name="HEADER1" type="11" />
+        <Column name="HEADER2" type="11" />
+        <Column name="HEADER3" type="11" />
+        <Column name="HEADER4" type="11" />
+        <Column name="KODE" type="11" />
+        <Column name="KETERANGAN" type="11" />
+        <Column name="UNIT" type="11" />
+        <Column name="THBL" type="11" />
+        <Column name="UNSUR" type="11" />
+        <Column name="PETUGAS" type="11" />
+        <Column name="LEMBAR" type="6" />
+        <Column name="RUPIAH" type="6" />
+        <Column name="ISPOSTING" type="11" />
+        <Column name="TANGGAL" type="11" />
+        <Column name="TEMP1" type="11" />
+        <Column name="TEMP2" type="11" />
+        <Column name="TEMP3" type="11" />
+        <Column name="TEMP4" type="11" />
+        <Column name="TEMP5" type="11" />
+      </Tablesource>
+    </Datasource>
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+  </FormulaFields>
+  <PromptFields>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+  </SummaryFields>
+  <SortFields>
+  </SortFields>
+  <GroupNameFields count="0">
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="12240"/>
+    <Attribute name="page height" value="15840"/>
+    <Attribute name="page orientation" value="1"/>
+    <Attribute name="page margin left" value="176"/>
+    <Attribute name="page margin right" value="113"/>
+    <Attribute name="page margin top" value="227"/>
+    <Attribute name="page margin bottom" value="170"/>
+    <Attribute name="report title" value=""/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value=""/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="14 Jan 2014 02:06:56 GMT"/>
+    <Attribute name="report created" value="11 Jul 2005 12:58:07 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="15" width="11951" height="455" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="9060" y2_position="435" x_position="116" y_position="435" width="8944" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="5553" y2_position="141" x_position="5553" y_position="0" width="0" height="896">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7776" y2_position="141" x_position="7776" y_position="0" width="0" height="896">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9008" y2_position="141" x_position="9008" y_position="0" width="0" height="896">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="6739" y2_position="141" x_position="6739" y_position="203" width="0" height="693">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="114" y2_position="141" x_position="114" y_position="0" width="0" height="896">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="638" y2_position="141" x_position="638" y_position="0" width="0" height="896">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7770" y2_position="201" x_position="5568" y_position="201" width="2202" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9045" y2_position="0" x_position="116" y_position="0" width="8929" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="1044" y_position="116" width="3986" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="160"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[U R A I A N]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="5910" y_position="274" width="480" height="151">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="120"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[Lbr.]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6840" y_position="244" width="730" height="151">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="120"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[Rp.]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6030" y_position="19" width="1317" height="127">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="120"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[JUMLAH]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7740" y_position="64" width="1317" height="127">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="120"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[KETERANGAN]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="174" y_position="58" width="406" height="319">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="120"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[NO]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="120"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[URUT]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="3" width="11951" height="673" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="1" x_position="114" y_position="171" width="2640" height="176">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="3">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial Narrow"/>
+                <Attribute name="font size" value="120"/>
+              </FontProperties>
+            <![CDATA[[ Tanggal Cetak :  ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial Narrow"/>
+                <Attribute name="font size" value="120"/>
+              </FontProperties>
+              <DateProperties>
+                <Attribute name="date windows default type" value="2"/>
+                <Attribute name="date order" value="1"/>
+                <Attribute name="year type" value="1"/>
+              </DateProperties>
+              <Reference name="field" type="SpecialVarField" id="0"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial Narrow"/>
+                <Attribute name="font size" value="120"/>
+              </FontProperties>
+            <![CDATA[ ]]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="114" y_position="342" width="2640" height="176">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial Narrow"/>
+                <Attribute name="font size" value="120"/>
+              </FontProperties>
+            <![CDATA[[Dicetak Oleh :  ]]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="120" y_position="0" width="2640" height="176">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial Narrow"/>
+                <Attribute name="font size" value="120"/>
+              </FontProperties>
+            <![CDATA[[ Laporan  TUL IV - 06 ]]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="4" width="11951" height="1151" id="2">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="1" x_position="1943" y_position="348" width="6480" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[LAPORAN PIUTANG PELANGGAN RAGU-RAGU]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="116" y_position="40" width="4680" height="174">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="140"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[PT. PLN PERSERO ]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="114" y_position="228" width="3886" height="570">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="140"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1943" y_position="580" width="6496" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Trebuchet MS"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="0" width="11951" height="0" id="3">
+        <SectionProperties>
+          <Attribute name="drill down" value="true"/>
+          <Attribute name="suppress" value="true"/>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="1">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="0" width="11951" height="546" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="suppress empty section" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+          <PropertyFormula valueType="8" propertyType="drill down">
+            <Attribute name="name" value="drill down"/>
+            <Attribute name="basic syntax" value="false"/>
+            <![CDATA[IF TRIM({T404.HEADER4})="" THEN TRUE]]>
+          </PropertyFormula>
+          <PropertyFormula valueType="8" propertyType="suppress">
+            <Attribute name="name" value="suppress"/>
+            <Attribute name="basic syntax" value="false"/>
+            <![CDATA[IF TRIM({T404.HEADER4})="" THEN TRUE]]>
+          </PropertyFormula>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+</inet:Report>

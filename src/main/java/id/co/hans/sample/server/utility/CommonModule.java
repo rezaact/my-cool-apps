@@ -7,8 +7,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 public class CommonModule {
+
+    public static CommonModule getInstance() {
+        return new CommonModule();
+    }
+
+    public static Logger getLogger(Object o) {
+        return Logger.getLogger(o.getClass());
+    }
+
 	public static List<Map<String,Object>> convertResultsetToList(ResultSet rs){
     	List<Map<String,Object>> lst = new ArrayList<Map<String,Object>>();
     	try {    	

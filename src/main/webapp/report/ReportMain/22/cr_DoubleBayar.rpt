@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="4" id="0">
+    <Datasource>
+      <DataSourceConfiguration name="fielddef.dll">
+      </DataSourceConfiguration>
+      <Tablesource alias="cr_DoubleBayar" databaseIdentifier="cr_DoubleBayar">
+        <Column name="BLTH" type="11" />
+        <Column name="UNITUP" type="11" />
+        <Column name="IDPEL" type="11" />
+        <Column name="BLNBAYAR" type="11" />
+        <Column name="TGLPELUNASAN" type="9" />
+        <Column name="WKTBAYAR" type="11" />
+        <Column name="UNITAP" type="11" />
+        <Column name="UNITLUNAS" type="11" />
+        <Column name="KDPP" type="11" />
+        <Column name="NAMAPP" type="11" />
+        <Column name="RPTAG" type="6" />
+        <Column name="RPREKENING" type="6" />
+        <Column name="RPBPJU" type="6" />
+        <Column name="RPPPN" type="6" />
+        <Column name="RPMAT" type="6" />
+        <Column name="RPANGSURAN" type="6" />
+        <Column name="RPDENDA" type="6" />
+        <Column name="TGLPELUNASAN2" type="9" />
+        <Column name="WKTBAYAR2" type="11" />
+        <Column name="UNITAP2" type="11" />
+        <Column name="UNITLUNAS2" type="11" />
+        <Column name="KDPP2" type="11" />
+        <Column name="NAMAPP2" type="11" />
+        <Column name="TGLCETAK" type="9" />
+        <Column name="KOGOL" type="11" />
+        <Column name="NAMAUP" type="11" />
+      </Tablesource>
+    </Datasource>
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="FOR_BULANTAGIH"/>
+      <Attribute name="shortName" value="FOR_BULANTAGIH"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="true"/>
+      <![CDATA[dim sTemp as string 
+dim sBulan as string
+dim sTahun as string    
+
+sbulan=right({cr_DoubleBayar.BLNBAYAR},2)
+sTahun = left({cr_DoubleBayar.BLNBAYAR},4)
+
+if sbulan="01" then
+    stemp = "Januari " & stahun
+elseif sbulan="02" then
+    stemp = "Februari " & stahun
+elseif sbulan="03" then
+    stemp = "Maret " & stahun
+elseif sbulan="04" then
+    stemp = "April " & stahun
+elseif sbulan="05" then
+    stemp = "Mei " & stahun
+elseif sbulan="06" then
+    stemp = "Juni " & stahun
+elseif sbulan="07" then
+    stemp = "Juli " & stahun
+elseif sbulan="08" then
+    stemp = "Agustus " & stahun
+elseif sbulan="09" then
+    stemp = "September " & stahun
+elseif sbulan="10" then
+    stemp = "Oktober " & stahun
+elseif sbulan="11" then
+    stemp = "November " & stahun
+elseif sbulan="12" then
+    stemp = "Desember " & stahun
+end if
+
+formula=UCASE(stemp)]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="FOR_HEADERUNIT"/>
+      <Attribute name="shortName" value="FOR_HEADERUNIT"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{cr_DoubleBayar.UNITUP} & "-" & {cr_DoubleBayar.NAMAUP}]]>
+    </Field>
+  </FormulaFields>
+  <PromptFields>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="unit"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="WILAYAH"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="KOGOL"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPTAG, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPTAG"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPTAG)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPTAG"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPREKENING, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPREKENING"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPREKENING)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPREKENING"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPBPJU, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPBPJU"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPBPJU)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPBPJU"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPPPN, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPPPN"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPPPN)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPPPN"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPMAT, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPMAT"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPMAT)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPMAT"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPANGSURAN, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPANGSURAN"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPANGSURAN)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPANGSURAN"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPDENDA, cr_DoubleBayar.UNITUP)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPDENDA"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group_number" value="1"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (cr_DoubleBayar.RPDENDA)"/>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.RPDENDA"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+  </SummaryFields>
+  <SortFields>
+  </SortFields>
+  <GroupNameFields count="1">
+    <Field type="GroupNameField" valueType="11">
+      <Attribute name="name" value=""/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="group_number" value="0"/>
+    </Field>
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="20163"/>
+    <Attribute name="page height" value="12245"/>
+    <Attribute name="page orientation" value="0"/>
+    <Attribute name="page margin left" value="216"/>
+    <Attribute name="page margin right" value="72"/>
+    <Attribute name="page margin top" value="245"/>
+    <Attribute name="page margin bottom" value="245"/>
+    <Attribute name="report title" value=""/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value=""/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="14 Jan 2014 00:06:56 GMT"/>
+    <Attribute name="report created" value="31 Jul 2008 03:24:19 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="46" width="19872" height="2087" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="15457" y2_position="1800" x_position="90" y_position="1800" width="15367" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="15486" y2_position="2030" x_position="87" y_position="2030" width="15399" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="90" y2_position="290" x_position="90" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="15457" y2_position="290" x_position="15457" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="517" y2_position="290" x_position="517" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="3857" y2_position="319" x_position="3857" y_position="1798" width="0" height="2738">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="4698" y2_position="290" x_position="4698" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="5394" y2_position="319" x_position="5394" y_position="1798" width="0" height="2738">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="6148" y2_position="290" x_position="6148" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7250" y2_position="290" x_position="7250" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9106" y2_position="290" x_position="9106" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="10092" y2_position="319" x_position="10092" y_position="1798" width="0" height="2738">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="11977" y2_position="290" x_position="11977" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="14674" y2_position="290" x_position="14674" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="13775" y2_position="290" x_position="13775" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="12905" y2_position="290" x_position="12905" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="11107" y2_position="290" x_position="11107" y_position="1798" width="0" height="2709">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="928" y2_position="2030" x_position="928" y_position="1798" width="0" height="232">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="2059" y2_position="2030" x_position="2059" y_position="1798" width="0" height="232">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="2755" y2_position="2030" x_position="2755" y_position="1798" width="0" height="232">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="87" y_position="290" width="4002" height="464">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?unit"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="87" y_position="87" width="4002" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[PT PLN (PERSERO) ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?WILAYAH"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="87" y_position="1102" width="1305" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Bulan Pelunasan :]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="87" y_position="1334" width="1421" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Tgl Cetak Laporan :]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="87" y_position="1566" width="812" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Golongan :]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="87" y_position="812" width="15399" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[LAPORAN REKENING LISTRIK DOUBLE BAYAR (BULAN BERJALAN)]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="116" y_position="1827" width="232" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[No.]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="540" y_position="1827" width="388" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Unit]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1189" y_position="1827" width="522" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Idpel]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2146" y_position="1827" width="522" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Blthtag]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2784" y_position="1827" width="1073" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Tanggal Lunas]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="3886" y_position="1827" width="783" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Jam Lunas]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4756" y_position="1827" width="580" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Unitap]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="5394" y_position="1827" width="725" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[UnitLunas]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6409" y_position="1827" width="580" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Kodepp]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7859" y_position="1827" width="667" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Namapp]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="9164" y_position="1827" width="841" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.Tagihan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="10150" y_position="1827" width="899" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.Rekening]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="11136" y_position="1827" width="841" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.PPJ]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="12006" y_position="1827" width="841" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.PPN]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="12934" y_position="1827" width="841" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.Materai]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="13775" y_position="1827" width="899" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.Angsuran]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="14703" y_position="1827" width="812" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Rp.Denda]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="1450" y_position="1102" width="1508" height="203">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@FOR_BULANTAGIH"/>
+        </Element>
+        <Element type="FieldElement" x_position="1566" y_position="1334" width="2797" height="195">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <DateProperties>
+            <Attribute name="date windows default type" value="2"/>
+            <Attribute name="date order" value="1"/>
+            <Attribute name="year type" value="1"/>
+            <Attribute name="date era type" value="1"/>
+            <Attribute name="date first separator" value="/"/>
+            <Attribute name="date second separator" value="/"/>
+          </DateProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.TGLCETAK"/>
+        </Element>
+        <Element type="FieldElement" x_position="957" y_position="1566" width="1368" height="203">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?KOGOL"/>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="0" width="19872" height="600" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="0" width="19872" height="0" id="2">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="10" width="19872" height="600" id="3">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="15457" y2_position="29" x_position="87" y_position="29" width="15370" height="0">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="15457" y2_position="290" x_position="87" y_position="290" width="15370" height="0">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="928" y_position="87" width="1247" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+                <Attribute name="font style" value="1"/>
+              </FontProperties>
+            <![CDATA[Total]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="9193" y_position="87" width="860" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPTAG)"/>
+        </Element>
+        <Element type="FieldElement" x_position="10179" y_position="87" width="889" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPREKENING)"/>
+        </Element>
+        <Element type="FieldElement" x_position="11165" y_position="87" width="773" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPBPJU)"/>
+        </Element>
+        <Element type="FieldElement" x_position="12035" y_position="87" width="831" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPPPN)"/>
+        </Element>
+        <Element type="FieldElement" x_position="12963" y_position="87" width="783" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPMAT)"/>
+        </Element>
+        <Element type="FieldElement" x_position="13833" y_position="87" width="802" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPANGSURAN)"/>
+        </Element>
+        <Element type="FieldElement" x_position="14703" y_position="87" width="725" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPDENDA)"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="GroupAreaPair" id="1">
+    <AreaPairProperties>
+      <Reference name="id" type="DatabaseField" refname="cr_DoubleBayar.UNITUP"/>
+      <Reference name="group name" type="GroupNameField" id="0"/>
+    </AreaPairProperties>
+    <Area type="GroupHeader" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="GroupHeader" count="2" width="19872" height="223" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="15457" y2_position="203" x_position="87" y_position="203" width="15370" height="0">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="FieldElement" x_position="585" y_position="0" width="3263" height="174">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="160"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@FOR_HEADERUNIT"/>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="GroupFooter" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="GroupFooter" count="8" width="19872" height="252" id="5">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Text" count="1" x_position="928" y_position="58" width="1247" height="192">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Tahoma"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Sub Total]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="9193" y_position="29" width="860" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPTAG, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+        <Element type="FieldElement" x_position="10179" y_position="29" width="889" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPREKENING, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+        <Element type="FieldElement" x_position="11165" y_position="29" width="773" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPBPJU, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+        <Element type="FieldElement" x_position="12035" y_position="29" width="831" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPPPN, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+        <Element type="FieldElement" x_position="12963" y_position="29" width="783" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPMAT, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+        <Element type="FieldElement" x_position="13833" y_position="29" width="802" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPANGSURAN, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+        <Element type="FieldElement" x_position="14703" y_position="29" width="725" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="SummaryField" refname="#Sum (cr_DoubleBayar.RPDENDA, cr_DoubleBayar.UNITUP)"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="2">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="28" width="19872" height="455" id="6">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="9106" y2_position="203" x_position="2755" y_position="203" width="6351" height="0">
+          <LineProperties>
+            <Attribute name="id" value="6"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="15486" y2_position="435" x_position="116" y_position="435" width="15370" height="0">
+          <LineProperties>
+            <Attribute name="id" value="6"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="928" y2_position="454" x_position="928" y_position="0" width="0" height="454">
+          <LineProperties>
+            <Attribute name="id" value="6"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="2755" y2_position="290" x_position="2755" y_position="0" width="0" height="1597">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="2059" y2_position="435" x_position="2059" y_position="0" width="0" height="435">
+          <LineProperties>
+            <Attribute name="id" value="6"/>
+          </LineProperties>
+        </Element>
+        <Element type="FieldElement" x_position="100" y_position="135" width="405" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SpecialVarField" id="13"/>
+        </Element>
+        <Element type="FieldElement" x_position="570" y_position="145" width="349" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.UNITUP"/>
+        </Element>
+        <Element type="FieldElement" x_position="986" y_position="145" width="835" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.IDPEL"/>
+        </Element>
+        <Element type="FieldElement" x_position="2175" y_position="145" width="418" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.BLTH"/>
+        </Element>
+        <Element type="FieldElement" x_position="2929" y_position="29" width="638" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <DateProperties>
+            <Attribute name="date windows default type" value="2"/>
+            <Attribute name="date order" value="1"/>
+            <Attribute name="year type" value="1"/>
+            <Attribute name="date first separator" value="/"/>
+            <Attribute name="date second separator" value="/"/>
+          </DateProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.TGLPELUNASAN"/>
+        </Element>
+        <Element type="FieldElement" x_position="2929" y_position="261" width="638" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <DateProperties>
+            <Attribute name="date windows default type" value="2"/>
+            <Attribute name="date order" value="1"/>
+            <Attribute name="year type" value="1"/>
+            <Attribute name="date first separator" value="/"/>
+            <Attribute name="date second separator" value="/"/>
+          </DateProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.TGLPELUNASAN2"/>
+        </Element>
+        <Element type="FieldElement" x_position="4002" y_position="29" width="557" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.WKTBAYAR"/>
+        </Element>
+        <Element type="FieldElement" x_position="4002" y_position="261" width="557" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.WKTBAYAR2"/>
+        </Element>
+        <Element type="FieldElement" x_position="4814" y_position="261" width="464" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.UNITAP2"/>
+        </Element>
+        <Element type="FieldElement" x_position="4814" y_position="29" width="464" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.UNITAP"/>
+        </Element>
+        <Element type="FieldElement" x_position="5481" y_position="29" width="348" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.UNITLUNAS"/>
+        </Element>
+        <Element type="FieldElement" x_position="5481" y_position="261" width="348" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.UNITLUNAS2"/>
+        </Element>
+        <Element type="FieldElement" x_position="6206" y_position="29" width="1044" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.KDPP"/>
+        </Element>
+        <Element type="FieldElement" x_position="6206" y_position="261" width="1044" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.KDPP2"/>
+        </Element>
+        <Element type="FieldElement" x_position="7308" y_position="29" width="1798" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.NAMAPP"/>
+        </Element>
+        <Element type="FieldElement" x_position="7308" y_position="261" width="1798" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.NAMAPP2"/>
+        </Element>
+        <Element type="FieldElement" x_position="9193" y_position="116" width="860" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPTAG"/>
+        </Element>
+        <Element type="FieldElement" x_position="10179" y_position="116" width="889" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPREKENING"/>
+        </Element>
+        <Element type="FieldElement" x_position="11165" y_position="116" width="773" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPBPJU"/>
+        </Element>
+        <Element type="FieldElement" x_position="12035" y_position="116" width="831" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPPPN"/>
+        </Element>
+        <Element type="FieldElement" x_position="12963" y_position="116" width="783" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPMAT"/>
+        </Element>
+        <Element type="FieldElement" x_position="13833" y_position="116" width="802" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPANGSURAN"/>
+        </Element>
+        <Element type="FieldElement" x_position="14703" y_position="116" width="725" height="144">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Tahoma"/>
+            <Attribute name="font size" value="120"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="cr_DoubleBayar.RPDENDA"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+</inet:Report>

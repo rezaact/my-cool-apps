@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,19 +14,44 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
+
+import java.text.SimpleDateFormat;
 
 public class Form_Report11_Rekap {
 
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    IconAlertMessageBox mb;
+
+    ComboUnits cbUnits;
+    ComboKodeSiklis cbKdSiklis;
+    Radio rGolTaripDaya;
+    Radio rTanggalUpload;
+    ComboTahunBulan cbTahunBulan;
+    DateField dfTopTanggalAwal;
+    DateField dfTopTanggalAkhir;
+
+    TextButton bBottomRekapitulasiPerGolongan;
+    TextButton bBottomRekapitulasiPerTglUpload;
+    TextButton bBottomRekapitulasiPerTaripDaya;
+    TextButton bBottomRekapitulasiPerInkaso;
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -56,10 +83,10 @@ public class Form_Report11_Rekap {
         panelReferensi.add(vlcPReferensi);
 
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
-        ComboKodeSiklis cbKdSiklis = new ComboKodeSiklis();
+        cbKdSiklis = new ComboKodeSiklis();
         vlcPReferensi.add(cbKdSiklis);
 
         p.add(panelReferensi);
@@ -76,7 +103,7 @@ public class Form_Report11_Rekap {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        Radio rGolTaripDaya = new Radio();
+        rGolTaripDaya = new Radio();
         rGolTaripDaya.setBoxLabel("Pilih Bulan dan Tahun Rekening untuk Rekap per Golongan/tarip/daya");
         rGolTaripDaya.setValue(true);
         rGolTaripDaya.setWidth(80);
@@ -87,7 +114,7 @@ public class Form_Report11_Rekap {
 
         hp1 = new HorizontalPanel();
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         cbTahunBulan.hideLabel();
 
         hp1.add(cbTahunBulan);
@@ -96,7 +123,7 @@ public class Form_Report11_Rekap {
 
         HorizontalPanel hp2 = new HorizontalPanel();
 
-        Radio rTanggalUpload = new Radio();
+        rTanggalUpload = new Radio();
         rTanggalUpload.setBoxLabel("Pilih rentang tanggal untuk rekap per tanggal upload");
         rTanggalUpload.setWidth(80);
 
@@ -106,12 +133,12 @@ public class Form_Report11_Rekap {
 
         hp2 = new HorizontalPanel();
 
-        DateField dfTopTanggalAwal = new DateField();
+        dfTopTanggalAwal = new DateField();
         dfTopTanggalAwal.setWidth(100);
 
         Label lbl = new Label("Sampai");
 
-        DateField dfTopTanggalAkhir = new DateField();
+        dfTopTanggalAkhir = new DateField();
         dfTopTanggalAkhir.setWidth(100);
 
         hp2.add(dfTopTanggalAwal);
@@ -123,10 +150,10 @@ public class Form_Report11_Rekap {
         p.add(panelParameter);
 
 
-        TextButton bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi per Golongan");
-        TextButton bBottomRekapitulasiPerTglUpload = new TextButton("Rekapitulasi per Tanggal Upload");
-        TextButton bBottomRekapitulasiPerTaripDaya = new TextButton("Rekapitulasi per Tarip Daya");
-        TextButton bBottomRekapitulasiPerInkaso = new TextButton("Rekapitulasi per Inkaso");
+        bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi per Golongan");
+        bBottomRekapitulasiPerTglUpload = new TextButton("Rekapitulasi per Tanggal Upload");
+        bBottomRekapitulasiPerTaripDaya = new TextButton("Rekapitulasi per Tarip Daya");
+        bBottomRekapitulasiPerInkaso = new TextButton("Rekapitulasi per Inkaso");
 
         panel.addButton(bBottomRekapitulasiPerGolongan);
         panel.addButton(bBottomRekapitulasiPerTglUpload);
@@ -138,5 +165,127 @@ public class Form_Report11_Rekap {
         tg.add(rTanggalUpload);
 
         return panel;
+    }
+
+    private void initEvent() {
+        bBottomRekapitulasiPerGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, tgl, tglEnd, kdSiklis, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                tgl = "";
+                tglEnd = "";
+                kdSiklis = cbKdSiklis.getSelectedValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
+                        +"&vJenis="+"11rekap_gol"
+                        +"&tBLTH="+thbl
+                        +"&tparUp="+parUp
+                        +"&tPetugas="+petugas
+                        +"&kode="+kdSiklis
+                        +"&tparAP="+unitAp
+                        +"&in_unitupi="+unitUpi;
+
+                url+="&report=report/ReportMain/11/cr_11_gol.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerTglUpload.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                if (!rTanggalUpload.getValue()) {
+                    mb = new IconAlertMessageBox("Kesalahan","Pilih terlebih dahulu tanggal yang akan di rekap.", true);
+                    return;
+                }
+
+                String parUp, thbl, petugas, tgl, tglEnd, kdSiklis, unitAp, unitUpi;
+                String tglAwal, tglAkhir;
+
+                parUp = cbUnits.getUnitUpValue();
+
+                SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=cetak_rekap11TglUpload"
+                        +"&vJenis="  + "11rekap_perTanggalUpload"
+                        +"&tparUp="  + parUp
+                        +"&tglAwal=" + format.format(dfTopTanggalAwal.getValue())
+                        +"&tglAkhir="+ format.format(dfTopTanggalAkhir.getValue());
+
+                url+="&report=report/ReportMain/11/cr_11_tglUpload.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerTaripDaya.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, tgl, tglEnd, kdSiklis, unitAp, unitUpi;
+                String tglAwal, tglAkhir;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                tgl = "";
+                tglEnd = "";
+                kdSiklis = cbKdSiklis.getSelectedValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
+                        +"&vJenis="     + "11rekap_taripdaya"
+                        +"&tBLTH="      + thbl
+                        +"&tparUp="     + parUp
+                        +"&tPetugas="   + petugas
+                        +"&kode="       + kdSiklis
+                        +"&tparAP="     + unitAp
+                        +"&in_unitupi=" + unitUpi;
+
+                url+="&report=report/ReportMain/11/cr_11_tarip.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerInkaso.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, thbl, petugas, tgl, tglEnd, kdSiklis, unitAp, unitUpi;
+                String tglAwal, tglAkhir;
+
+                parUp = cbUnits.getUnitUpValue();
+                thbl = cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue();
+                petugas = idUser;
+                tgl = "";
+                tglEnd = "";
+                kdSiklis = cbKdSiklis.getSelectedValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
+                        +"&vJenis="     + "11rekap_inkaso"
+                        +"&tBLTH="      + thbl
+                        +"&tparUp="     + parUp
+                        +"&tPetugas="   + petugas
+                        +"&kode="       + kdSiklis
+                        +"&tparAP="     + unitAp
+                        +"&in_unitupi=" + unitUpi;
+
+                url+="&report=report/ReportMain/11/cr_11_inkaso.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

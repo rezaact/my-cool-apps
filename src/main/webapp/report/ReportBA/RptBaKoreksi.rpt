@@ -1,0 +1,2514 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
+    <Datasource>
+      <DataSourceConfiguration name="adoplus.dll">
+      </DataSourceConfiguration>
+      <Tablesource alias="VI_BA_KOREKSI" databaseIdentifier="VI_BA_KOREKSI">
+        <Column name="NO_PELANGGAN" type="11" />
+        <Column name="NO_KONTRAK" type="11" />
+        <Column name="NAMA_PELANGGAN" type="11" />
+        <Column name="NAMA_JALAN" type="11" />
+        <Column name="KODE_GOLONGAN" type="11" />
+        <Column name="TARIP" type="11" />
+        <Column name="DAYA" type="6" />
+        <Column name="AWALLWBP_SBL" type="6" />
+        <Column name="AKHIRLWBP_SBL" type="6" />
+        <Column name="KWHLWBP_SBL" type="6" />
+        <Column name="AWALWBP_SBL" type="6" />
+        <Column name="AKHIRWBP_SBL" type="6" />
+        <Column name="KWHWBP_SBL" type="6" />
+        <Column name="KWHBLOK3" type="6" />
+        <Column name="AWALKVARH_SBL" type="6" />
+        <Column name="AKHIRKVARH_SBL" type="6" />
+        <Column name="KVARH_SBL" type="6" />
+        <Column name="TGL_TRANSAKSI_KWH" type="15" />
+        <Column name="BL_TH_REKENING" type="11" />
+        <Column name="AWALLWBP_STL" type="6" />
+        <Column name="AKHIRLWBP_STL" type="6" />
+        <Column name="KWHLWBP_STL" type="6" />
+        <Column name="AWALWBP_STL" type="6" />
+        <Column name="AKHIRWBP_STL" type="6" />
+        <Column name="KWHWBP_STL" type="6" />
+        <Column name="KWHBLOK3_STL" type="6" />
+        <Column name="AWALKVARH_STL" type="6" />
+        <Column name="AKHIRKVARH_STL" type="6" />
+        <Column name="KVARH_STL" type="6" />
+        <Column name="ALASAN" type="11" />
+        <Column name="MUTASILAMA" type="6" />
+        <Column name="MUTASIBARU" type="6" />
+        <Column name="NMPIUTANG" type="11" />
+        <Column name="TEMP1" type="11" />
+        <Column name="TEMP2" type="11" />
+        <Column name="TEMP3" type="11" />
+        <Column name="TEMP4" type="11" />
+        <Column name="TEMP5" type="11" />
+        <Column name="TEMP6" type="11" />
+        <Column name="TEMP7" type="11" />
+        <Column name="TEMP8" type="6" />
+        <Column name="TEMP9" type="6" />
+        <Column name="TEMP10" type="6" />
+      </Tablesource>
+    </Datasource>
+  <Database>
+    <QueryChanges mask="0" count="2">
+      <Attribute name="queryChange" value="null"/>
+      <Attribute name="queryChange" value="null"/>
+    </QueryChanges>
+  </Database>
+  <FormulaFields>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="blok1"/>
+      <Attribute name="shortName" value="blok1"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.TARIP}="S3" OR {VI_BA_KOREKSI.TARIP}="B3" OR {VI_BA_KOREKSI.TARIP}="I2" OR {VI_BA_KOREKSI.TARIP}="I3" OR {VI_BA_KOREKSI.TARIP}="P2" then
+"kWh LWBP"
+else if {VI_BA_KOREKSI.TARIP}="S2" OR {VI_BA_KOREKSI.TARIP}="R1" OR {VI_BA_KOREKSI.TARIP}="B1" OR {VI_BA_KOREKSI.TARIP}="B2" OR {VI_BA_KOREKSI.TARIP}="I1" then
+"kWh Blok1"
+else if {VI_BA_KOREKSI.TARIP}="R2" OR  {VI_BA_KOREKSI.TARIP}="R3" OR {VI_BA_KOREKSI.TARIP}="I4" OR {VI_BA_KOREKSI.TARIP}="P1" OR {VI_BA_KOREKSI.TARIP}="P3" then
+"kWh"
+
+]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="blok2"/>
+      <Attribute name="shortName" value="blok2"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if  ({VI_BA_KOREKSI.KWHWBP_SBL}>0 OR {VI_BA_KOREKSI.KWHWBP_STL}>0) AND ({VI_BA_KOREKSI.TARIP}="S3" OR {VI_BA_KOREKSI.TARIP}="B3" OR {VI_BA_KOREKSI.TARIP}="I2" OR {VI_BA_KOREKSI.TARIP}="I3" OR {VI_BA_KOREKSI.TARIP}="P2") then
+"kWh WBP"
+else if  ({VI_BA_KOREKSI.KWHWBP_SBL}>0 OR {VI_BA_KOREKSI.KWHWBP_STL}>0)  AND ({VI_BA_KOREKSI.TARIP}="S2"  OR {VI_BA_KOREKSI.TARIP}="R1"  OR {VI_BA_KOREKSI.TARIP}="B1"  OR {VI_BA_KOREKSI.TARIP}="B2"  OR {VI_BA_KOREKSI.TARIP}="I1")  then
+"kWh Blok2"
+else if {VI_BA_KOREKSI.TARIP}="R2" OR {VI_BA_KOREKSI.TARIP}="R2" OR {VI_BA_KOREKSI.TARIP}="I4" OR {VI_BA_KOREKSI.TARIP}="P1" OR {VI_BA_KOREKSI.TARIP}="P3" then
+" "
+]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="BLOK3"/>
+      <Attribute name="shortName" value="BLOK3"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.TARIP}="S3" OR {VI_BA_KOREKSI.TARIP}="B3" OR {VI_BA_KOREKSI.TARIP}="I2" OR {VI_BA_KOREKSI.TARIP}="I3" OR {VI_BA_KOREKSI.TARIP}="P2" AND ({VI_BA_KOREKSI.KWHBLOK3}>0 OR {VI_BA_KOREKSI.KWHBLOK3_STL}>0) then
+"kVARH"
+else
+"kWh Blok3"]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="NMPIUTANG"/>
+      <Attribute name="shortName" value="NMPIUTANG"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.NMPIUTANG}="Biaya Beban" then
+"Biaya Beban"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh LWBP" AND ({VI_BA_KOREKSI.Tarip}="S3" OR {VI_BA_KOREKSI.Tarip}="B3" OR {VI_BA_KOREKSI.Tarip}="I2" OR {VI_BA_KOREKSI.Tarip}="I3" OR {VI_BA_KOREKSI.Tarip}="P2") then
+"kWh LWBP"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh LWBP" AND ({VI_BA_KOREKSI.Tarip}="S2" OR {VI_BA_KOREKSI.Tarip}="R1" OR {VI_BA_KOREKSI.Tarip}="B1" OR {VI_BA_KOREKSI.Tarip}="B2" OR {VI_BA_KOREKSI.Tarip}="I1") then
+"kWh Blok 1"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh LWBP" AND ({VI_BA_KOREKSI.Tarip}="R2" OR {VI_BA_KOREKSI.Tarip}="R3" OR {VI_BA_KOREKSI.Tarip}="I4" OR {VI_BA_KOREKSI.Tarip}="P1" OR {VI_BA_KOREKSI.Tarip}="P3") then
+"kWh "
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh LWBP" AND {VI_BA_KOREKSI.Tarip}="S1" then
+"Biaya Abonemen"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh WBP" AND ({VI_BA_KOREKSI.Tarip}="S3" OR {VI_BA_KOREKSI.Tarip}="B3" OR {VI_BA_KOREKSI.Tarip}="I2" OR {VI_BA_KOREKSI.Tarip}="I3" OR {VI_BA_KOREKSI.Tarip}="P2") then
+"kWh WBP"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh WBP" AND ({VI_BA_KOREKSI.Tarip}="S2" OR {VI_BA_KOREKSI.Tarip}="R1" OR {VI_BA_KOREKSI.Tarip}="B1" OR {VI_BA_KOREKSI.Tarip}="B2" OR {VI_BA_KOREKSI.Tarip}="I1") then
+"kWh Blok 2"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh Blok3" then
+"kWh Blok 3"
+else if {VI_BA_KOREKSI.NMPIUTANG}="Pajak Penerangan Jalan Umum" then
+"Pajak Penerangan Jalan Umum"
+else if {VI_BA_KOREKSI.NMPIUTANG}="TTLB" then
+"TTLB"
+else if {VI_BA_KOREKSI.NMPIUTANG}="Materai Rekening"  then
+"Materai Rekening"
+else if {VI_BA_KOREKSI.NMPIUTANG}="Biaya Keterlambatan" then
+"Biaya Keterlambatan"
+else if {VI_BA_KOREKSI.NMPIUTANG}="Kelebihan kVARh" then
+"Kelebihan kVARh"
+else if {VI_BA_KOREKSI.NMPIUTANG}="PPN" then
+"PPN"
+else if {VI_BA_KOREKSI.NMPIUTANG}="SEWAKAP" then
+"SEWAKAP"
+else if {VI_BA_KOREKSI.NMPIUTANG}="SEWATRAFO" then
+"SEWATRAFO"
+else if {VI_BA_KOREKSI.NMPIUTANG}="Potongan" then
+"Potongan"
+else if {VI_BA_KOREKSI.NMPIUTANG}="kWh LWBP Cicilan" AND ({VI_BA_KOREKSI.Tarip}="R1" or {VI_BA_KOREKSI.Tarip}="R2" OR {VI_BA_KOREKSI.Tarip}="R3" OR {VI_BA_KOREKSI.Tarip}="I4" OR {VI_BA_KOREKSI.Tarip}="P1" OR {VI_BA_KOREKSI.Tarip}="P3") then
+"kWh Blok 1 Cicilan"]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="MUTASILAMA"/>
+      <Attribute name="shortName" value="MUTASILAMA"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {@NmPiutang}='Biaya Keterlambatan' then
+    0
+else
+    {VI_BA_KOREKSI.MUTASILAMA}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="SUMM_LAMA"/>
+      <Attribute name="shortName" value="SUMM_LAMA"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[SUM({VI_BA_KOREKSI.MUTASILAMA})]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="SUMM_BARU"/>
+      <Attribute name="shortName" value="SUMM_BARU"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[SUM({VI_BA_KOREKSI.MUTASIBARU})]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="SELISIH"/>
+      <Attribute name="shortName" value="SELISIH"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.MUTASIBARU}-{VI_BA_KOREKSI.MUTASILAMA}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="SUM_SELISIH"/>
+      <Attribute name="shortName" value="SUM_SELISIH"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[SUM({@SELISIH})]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="BLOK3ANGKA1"/>
+      <Attribute name="shortName" value="BLOK3ANGKA1"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.TARIP}="R1" AND ({VI_BA_KOREKSI.KWHBLOK3}>0 OR {VI_BA_KOREKSI.KWHBLOK3_STL}>0) then
+{VI_BA_KOREKSI.KWHBLOK3}
+else
+{VI_BA_KOREKSI.KVARH_SBL}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="BLOK3ANGKA2"/>
+      <Attribute name="shortName" value="BLOK3ANGKA2"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.TARIP}="R1" AND ({VI_BA_KOREKSI.KWHBLOK3}>0 OR {VI_BA_KOREKSI.KWHBLOK3_STL}>0) then
+{VI_BA_KOREKSI.KWHBLOK3_STL}
+else
+{VI_BA_KOREKSI.KVARH_STL}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="TOTALKWH2"/>
+      <Attribute name="shortName" value="TOTALKWH2"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.TARIP}="R1" AND ({VI_BA_KOREKSI.KWHBLOK3}>0 OR {VI_BA_KOREKSI.KWHBLOK3_STL}>0) then
+{VI_BA_KOREKSI.KWHWBP_STL}+{VI_BA_KOREKSI.KWHLWBP_STL}+{@Blok3Angka2}
+else
+{VI_BA_KOREKSI.KWHWBP_STL}+{VI_BA_KOREKSI.KWHLWBP_STL}
+]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="TOTALKWH1"/>
+      <Attribute name="shortName" value="TOTALKWH1"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {VI_BA_KOREKSI.TARIP}="R1" AND ({VI_BA_KOREKSI.KWHBLOK3}>0 OR {VI_BA_KOREKSI.KWHBLOK3_STL}>0) then
+{VI_BA_KOREKSI.KWHWBP_SBL}+{VI_BA_KOREKSI.KWHLWBP_SBL}+{@Blok3Angka1}
+else
+{VI_BA_KOREKSI.KWHWBP_SBL}+{VI_BA_KOREKSI.KWHLWBP_SBL}
+]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="SELISIH_KWHLWBP"/>
+      <Attribute name="shortName" value="SELISIH_KWHLWBP"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.KWHLWBP_STL} - {VI_BA_KOREKSI.KWHLWBP_SBL}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="SELISIH_WBP"/>
+      <Attribute name="shortName" value="SELISIH_WBP"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.KWHWBP_STL}-{VI_BA_KOREKSI.KWHWBP_SBL}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="selisih_blok3"/>
+      <Attribute name="shortName" value="selisih_blok3"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{@Blok3Angka2}-{@Blok3Angka1}]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="selisih_total_kwh"/>
+      <Attribute name="shortName" value="selisih_total_kwh"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{@totalKWH2}-{@totalKWH1}]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="blth"/>
+      <Attribute name="shortName" value="blth"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "12" then
+"Desember"+" - "+ cstr (val({VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4])+1,0,'')
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "01" then
+"Januari"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "02" then
+"Pebruari"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "03" then
+"Maret"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "04" then
+"April"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "05" then
+"Mei"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "06" then
+"Juni"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "07" then
+"Juli"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "08" then
+"Agustus"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "09" then
+"September"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "10" then
+"Oktober"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]
+else if  {VI_BA_KOREKSI.Bl_Th_Rekening}[5 to 6] = "11" then
+"Nopember"+" - "+{VI_BA_KOREKSI.Bl_Th_Rekening}[1 to 4]]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kwhmeterangkaawal"/>
+      <Attribute name="shortName" value="kwhmeterangkaawal"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.AWALWBP_sbl},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kvarhangkameterawal"/>
+      <Attribute name="shortName" value="kvarhangkameterawal"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.AWALKVARH_SBL},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kwhmeterangkaakhir"/>
+      <Attribute name="shortName" value="kwhmeterangkaakhir"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.AKHIRWBP_sbl},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kvarhmeterangkaakhir"/>
+      <Attribute name="shortName" value="kvarhmeterangkaakhir"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.akhirKVARH_SBL},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kwhmeterangkaawalkoreksi"/>
+      <Attribute name="shortName" value="kwhmeterangkaawalkoreksi"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.AWALWBP_stl},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kvarhmeterangkaawalkoreksi"/>
+      <Attribute name="shortName" value="kvarhmeterangkaawalkoreksi"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.AWALKVARH_STL},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kwhmeterangkaakhirkoreksi"/>
+      <Attribute name="shortName" value="kwhmeterangkaakhirkoreksi"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.AKHIRWBP_stl},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="11">
+      <Attribute name="name" value="kvarhmeterangkakhirkoreksi"/>
+      <Attribute name="shortName" value="kvarhmeterangkakhirkoreksi"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[if {vi_ba_koreksi.TARIP}="S3" OR {vi_ba_koreksi.TARIP}="B3" OR {vi_ba_koreksi.TARIP}="I2" OR {vi_ba_koreksi.TARIP}="I3" OR {vi_ba_koreksi.TARIP}="P2" then
+cstr({vi_ba_koreksi.akhirKVARH_STL},0,'.')
+else
+" "]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="awallwbp_sbl"/>
+      <Attribute name="shortName" value="awallwbp_sbl"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.AWALLWBP_SBL}/100
+]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="akhirlwbp_sbl"/>
+      <Attribute name="shortName" value="akhirlwbp_sbl"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.AKHIRLWBP_SBL}/100]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="awallwbp_stl"/>
+      <Attribute name="shortName" value="awallwbp_stl"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.AWALLWBP_STL}/100]]>
+    </Field>
+    <Field type="FormulaField" valueType="6">
+      <Attribute name="name" value="akhirlwbp_stl"/>
+      <Attribute name="shortName" value="akhirlwbp_stl"/>
+      <Attribute name="formula type" value="0"/>
+      <Attribute name="basic syntax" value="false"/>
+      <![CDATA[{VI_BA_KOREKSI.AKHIRLWBP_STL}/100]]>
+    </Field>
+  </FormulaFields>
+  <PromptFields>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="penagihan"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="lahta"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="manager"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="unitkd"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="unitap"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="unitup"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="judul"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="jabatan"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="pej_tagih"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="pej_cater"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+    <Field type="PromptVarField" valueType="11">
+      <Attribute name="name" value="blth"/>
+      <Attribute name="allow_multiple_values" value="false"/>
+      <Attribute name="discrete_or_range" value="0"/>
+      <Attribute name="allow editing" value="true"/>
+      <Attribute name="description_only" value="false"/>
+      <Attribute name="edit mask" value=""/>
+      <Attribute name="prompt_text" value=""/>
+      <Attribute name="use_range" value="false"/>
+    </Field>
+  </PromptFields>
+  <SQLFields>
+  </SQLFields>
+  <SummaryFields>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VI_BA_KOREKSI.MUTASIBARU)"/>
+      <Reference name="id" type="DatabaseField" refname="VI_BA_KOREKSI.MUTASIBARU"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (@SELISIH)"/>
+      <Reference name="id" type="FormulaField" refname="@SELISIH"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+    <Field type="SummaryField" valueType="6">
+      <Attribute name="name" value="Sum (VI_BA_KOREKSI.MUTASILAMA)"/>
+      <Reference name="id" type="DatabaseField" refname="VI_BA_KOREKSI.MUTASILAMA"/>
+      <Attribute name="operation" value="0"/>
+      <Attribute name="summary_nth" value="0"/>
+      <Attribute name="summary_type" value="1"/>
+      <Attribute name="chartFieldSelect" value="2"/>
+      <Attribute name="group number type" value="0"/>
+      <Attribute name="show as percent value" value="false"/>
+      <Attribute name="execute on db" value="false"/>
+    </Field>
+  </SummaryFields>
+  <SortFields>
+  </SortFields>
+  <GroupNameFields count="0">
+  </GroupNameFields>
+  <ReportProperties>
+    <Attribute name="page width" value="11907"/>
+    <Attribute name="page height" value="16839"/>
+    <Attribute name="page orientation" value="1"/>
+    <Attribute name="page margin left" value="187"/>
+    <Attribute name="page margin right" value="188"/>
+    <Attribute name="page margin top" value="187"/>
+    <Attribute name="page margin bottom" value="187"/>
+    <Attribute name="report title" value=""/>
+    <Attribute name="report author" value=""/>
+    <Attribute name="report keywords" value=""/>
+    <Attribute name="report subject" value=""/>
+    <Attribute name="report template" value=""/>
+    <Attribute name="report comments" value=""/>
+    <Attribute name="report last saved" value="13 Jan 2014 22:06:26 GMT"/>
+    <Attribute name="report created" value="30 Aug 2006 03:04:23 GMT"/>
+    <Attribute name="mailing label type 1" value=""/>
+    <Attribute name="mailing label type 2" value=""/>
+    <Attribute name="format with multiple columns" value="false"/>
+    <Attribute name="mailing label width" value="0"/>
+    <Attribute name="mailing label height" value="0"/>
+    <Attribute name="mailing label distance vertical" value="0"/>
+    <Attribute name="mailing label distance horizontal" value="0"/>
+    <Attribute name="across then down" value="false"/>
+    <Attribute name="format groups with multiple columns" value="false"/>
+    <Attribute name="distinct" value="false"/>
+    <Attribute name="show suppressed nodes" value="true"/>
+    <Attribute name="ignore filtering" value="false"/>
+    <Attribute name="ignore sorting" value="false"/>
+    <Attribute name="convert date time" value="2"/>
+    <Attribute name="suppress if no rows" value="false"/>
+    <Attribute name="convert null values to default" value="false"/>
+    <Attribute name="hide PageFooter inside ReportHeader" value="true"/>
+    <Attribute name="form print" value="false"/>
+    <Attribute name="printing enabled" value="true"/>
+    <Attribute name="clipboard enabled" value="true"/>
+    <Attribute name="export enabled" value="true"/>
+    <Attribute name="group tree visible" value="true"/>
+  </ReportProperties>
+  <AreaPair type="PageAreaPair" id="0">
+    <Area type="PageHeader" count="1">
+      <AreaProperties>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageHeader" count="90" width="11534" height="6744" id="0">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Box" x2_position="10830" y2_position="3470" x_position="150" y_position="1790" width="10680" height="1680">
+          <CommonProperties>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <BoxProperties>
+              <LineProperties>
+                <Attribute name="id" value="0"/>
+              </LineProperties>
+          </BoxProperties>
+        </Element>
+        <Element type="Box" x2_position="10800" y2_position="5880" x_position="120" y_position="3960" width="10680" height="1920">
+          <CommonProperties>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <BoxProperties>
+              <LineProperties>
+                <Attribute name="id" value="0"/>
+              </LineProperties>
+          </BoxProperties>
+        </Element>
+        <Element type="Box" x2_position="10800" y2_position="455" x_position="120" y_position="6240" width="10680" height="1860">
+          <CommonProperties>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <BoxProperties>
+              <LineProperties>
+                <Attribute name="id" value="3"/>
+              </LineProperties>
+          </BoxProperties>
+        </Element>
+        <Element type="Line" x2_position="6240" y2_position="5880" x_position="6240" y_position="3960" width="0" height="1920">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="6240" y2_position="4200" x_position="120" y_position="4200" width="6120" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="3480" y2_position="5880" x_position="3480" y_position="4200" width="0" height="1680">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="10800" y2_position="4440" x_position="120" y_position="4440" width="10680" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="1800" y2_position="5880" x_position="1800" y_position="4440" width="0" height="1440">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="4920" y2_position="5880" x_position="4920" y_position="4440" width="0" height="1440">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="8400" y2_position="5880" x_position="8400" y_position="4440" width="0" height="1440">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9720" y2_position="5880" x_position="9720" y_position="4440" width="0" height="1440">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="10800" y2_position="4680" x_position="120" y_position="4680" width="10680" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7440" y2_position="5880" x_position="7440" y_position="4680" width="0" height="1200">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="10800" y2_position="5520" x_position="6240" y_position="5520" width="4560" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="10800" y2_position="6720" x_position="120" y_position="6720" width="10680" height="0">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="5765" y2_position="6725" x_position="5765" y_position="6245" width="0" height="480">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7560" y2_position="6740" x_position="7560" y_position="6260" width="0" height="480">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9480" y2_position="6740" x_position="9480" y_position="6260" width="0" height="480">
+          <LineProperties>
+            <Attribute name="id" value="0"/>
+          </LineProperties>
+        </Element>
+        <Element type="Text" count="1" x_position="120" y_position="120" width="6705" height="225">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="2">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[PT PLN (PERSERO) ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?unitkd"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="120" y_position="480" width="4080" height="225">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?unitap"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="210" y_position="1440" width="10560" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[Perbaikan Rekening Data Pelanggan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="1920" width="2040" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Nomor Pelanggan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7080" y_position="1920" width="1200" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Tarip / Daya]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="2160" width="2040" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Nama Pelanggan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7080" y_position="2160" width="600" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Gardu]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="2400" width="960" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Alamat]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7080" y_position="2400" width="840" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[No. Tiang]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="2640" width="2040" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Kotamadya/Kabupaten]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7080" y_position="2640" width="1320" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Kode Golongan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="2880" width="480" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Telp]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7080" y_position="2880" width="1440" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Faktor Kali kWh]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="3120" width="1920" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Bulan Tahun Rekening]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="4200" y_position="3560" width="3311" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Data Perbaikan Pemakaian Energi]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1800" y_position="3960" width="2499" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Data Stand Meter]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6480" y_position="4080" width="4200" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Pemakaian Energi]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="3960" y_position="4200" width="2160" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Data Perbaikan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="360" y_position="4200" width="3000" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Data Sebelum Perbaikan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="6480" y_position="4440" width="1800" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Data Sebelum Perbaikan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="8400" y_position="4440" width="1320" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Data Perbaikan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="9840" y_position="4440" width="960" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Selisih]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="5160" y_position="4440" width="1080" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Stand Akhir]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="3720" y_position="4440" width="1080" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Stand Lalu]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2040" y_position="4440" width="1320" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[ Stand Akhir]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="360" y_position="4440" width="1320" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="160"/>
+              </FontProperties>
+            <![CDATA[Stand Awal]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="6360" width="5280" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Nama Piutang]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="9600" y_position="6360" width="960" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Selisih]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="2" x_position="7680" y_position="6240" width="1680" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Rupiah Setelah]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[ Perbaikan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="5880" y_position="6240" width="1560" height="480">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+              </FontProperties>
+            <![CDATA[Rupiah Sebelum Perbaikan]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="6360" y_position="4800" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@blok1"/>
+        </Element>
+        <Element type="FieldElement" x_position="6360" y_position="5040" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@blok2"/>
+        </Element>
+        <Element type="FieldElement" x_position="6360" y_position="5280" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@BLOK3"/>
+        </Element>
+        <Element type="FieldElement" x_position="7560" y_position="5280" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@BLOK3ANGKA1"/>
+        </Element>
+        <Element type="FieldElement" x_position="8640" y_position="5280" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@BLOK3ANGKA2"/>
+        </Element>
+        <Element type="FieldElement" x_position="7560" y_position="4800" width="780" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.KWHLWBP_SBL"/>
+        </Element>
+        <Element type="FieldElement" x_position="7560" y_position="5040" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.KWHWBP_SBL"/>
+        </Element>
+        <Element type="FieldElement" x_position="8640" y_position="4800" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.KWHLWBP_STL"/>
+        </Element>
+        <Element type="FieldElement" x_position="8640" y_position="5040" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.KWHWBP_STL"/>
+        </Element>
+        <Element type="FieldElement" x_position="8640" y_position="5640" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@TOTALKWH2"/>
+        </Element>
+        <Element type="FieldElement" x_position="7560" y_position="5640" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@TOTALKWH1"/>
+        </Element>
+        <Element type="Text" count="1" x_position="6480" y_position="5640" width="960" height="226">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[Total kWh]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="9840" y_position="4800" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@SELISIH_KWHLWBP"/>
+        </Element>
+        <Element type="FieldElement" x_position="9840" y_position="5040" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@SELISIH_WBP"/>
+        </Element>
+        <Element type="FieldElement" x_position="9840" y_position="5280" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@selisih_blok3"/>
+        </Element>
+        <Element type="FieldElement" x_position="9840" y_position="5640" width="780" height="240">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@selisih_total_kwh"/>
+        </Element>
+        <Element type="Text" count="8" x_position="2400" y_position="1920" width="120" height="1440">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="2640" y_position="1920" width="3960" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="3">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.NO_PELANGGAN"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[ / ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.NO_KONTRAK"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="2640" y_position="2160" width="3960" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.NAMA_PELANGGAN"/>
+        </Element>
+        <Element type="FieldElement" x_position="2640" y_position="2400" width="3960" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.NAMA_JALAN"/>
+        </Element>
+        <Element type="Text" count="1" x_position="2640" y_position="2640" width="3960" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TEMP1"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="6" x_position="8520" y_position="1920" width="120" height="1440">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[:]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="8760" y_position="1920" width="1920" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="4">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="4"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TARIP"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[ / ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <NumberProperties>
+                <Attribute name="thousand separators symbol" value=","/>
+                <Attribute name="decimal separators symbol" value="."/>
+                <Attribute name="currency symbol" value=""/>
+              </NumberProperties>
+              <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.DAYA"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[ VA]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="8760" y_position="2160" width="1920" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TEMP2"/>
+        </Element>
+        <Element type="FieldElement" x_position="8760" y_position="2400" width="1920" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TEMP3"/>
+        </Element>
+        <Element type="FieldElement" x_position="8760" y_position="2640" width="1920" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.KODE_GOLONGAN"/>
+        </Element>
+        <Element type="FieldElement" x_position="8760" y_position="2880" width="780" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TEMP10"/>
+        </Element>
+        <Element type="FieldElement" x_position="360" y_position="5040" width="1320" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kwhmeterangkaawal"/>
+        </Element>
+        <Element type="FieldElement" x_position="360" y_position="5280" width="1320" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kvarhangkameterawal"/>
+        </Element>
+        <Element type="FieldElement" x_position="1920" y_position="5040" width="1440" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kwhmeterangkaakhir"/>
+        </Element>
+        <Element type="FieldElement" x_position="1920" y_position="5280" width="1440" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kvarhmeterangkaakhir"/>
+        </Element>
+        <Element type="FieldElement" x_position="3600" y_position="5040" width="1200" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kwhmeterangkaawalkoreksi"/>
+        </Element>
+        <Element type="FieldElement" x_position="3600" y_position="5280" width="1200" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kvarhmeterangkaawalkoreksi"/>
+        </Element>
+        <Element type="FieldElement" x_position="5040" y_position="5040" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kwhmeterangkaakhirkoreksi"/>
+        </Element>
+        <Element type="FieldElement" x_position="5040" y_position="5280" width="1080" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@kvarhmeterangkakhirkoreksi"/>
+        </Element>
+        <Element type="FieldElement" x_position="2640" y_position="2880" width="3960" height="232">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TEMP4"/>
+        </Element>
+        <Element type="FieldElement" x_position="2660" y_position="3130" width="3915" height="226">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="4"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?blth"/>
+        </Element>
+        <Element type="FieldElement" x_position="360" y_position="4805" width="1305" height="236">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="negative type" value="3"/>
+            <Attribute name="use thousand separators" value="false"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@awallwbp_sbl"/>
+        </Element>
+        <Element type="FieldElement" x_position="1935" y_position="4800" width="1395" height="236">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="negative type" value="3"/>
+            <Attribute name="use thousand separators" value="false"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@akhirlwbp_sbl"/>
+        </Element>
+        <Element type="FieldElement" x_position="3600" y_position="4820" width="1170" height="236">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="negative type" value="3"/>
+            <Attribute name="use thousand separators" value="false"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@awallwbp_stl"/>
+        </Element>
+        <Element type="FieldElement" x_position="5040" y_position="4835" width="1050" height="236">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="negative type" value="3"/>
+            <Attribute name="use thousand separators" value="false"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value="$"/>
+            <Attribute name="allow field clipping" value="false"/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@akhirlwbp_stl"/>
+        </Element>
+        <Element type="FieldElement" x_position="165" y_position="1040" width="10620" height="260">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="220"/>
+            <Attribute name="font style" value="1"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?judul"/>
+        </Element>
+      </Section>
+    </Area>
+    <Area type="PageFooter" count="1">
+      <AreaProperties>
+        <Attribute name="print at bottom of page" value="true"/>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="keep together" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="PageFooter" count="1" width="11534" height="648" id="1">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="FieldElement" x_position="9800" y_position="185" width="840" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value=","/>
+            <Attribute name="decimal separators symbol" value="."/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="SpecialVarField" id="17"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="ReportAreaPair" id="0">
+    <Area type="ReportHeader" count="1">
+      <AreaProperties>
+        <Attribute name="new page before" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportHeader" count="0" width="11534" height="220" id="2">
+        <SectionProperties>
+          <Attribute name="drill down" value="true"/>
+          <Attribute name="suppress" value="true"/>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+      </Section>
+    </Area>
+    <Area type="ReportFooter" count="1">
+      <AreaProperties>
+        <Attribute name="new page after" value="true"/>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="ReportFooter" count="13" width="11534" height="4410" id="3">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+        </SectionProperties>
+        <Element type="Line" x2_position="10800" y2_position="0" x_position="120" y_position="0" width="10680" height="0">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="6840" y2_position="1560" x_position="240" y_position="1560" width="6600" height="0">
+          <LineProperties>
+            <Attribute name="id" value="3"/>
+          </LineProperties>
+        </Element>
+        <Element type="FieldElement" x_position="5880" y_position="120" width="1560" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@SUMM_LAMA"/>
+        </Element>
+        <Element type="FieldElement" x_position="7680" y_position="120" width="1680" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@SUMM_BARU"/>
+        </Element>
+        <Element type="FieldElement" x_position="9600" y_position="120" width="1080" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@SUM_SELISIH"/>
+        </Element>
+        <Element type="Text" count="1" x_position="1355" y_position="2600" width="2730" height="305">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?pej_cater"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="1340" y_position="3905" width="2730" height="305">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?lahta"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="7200" y_position="1800" width="3480" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="3">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <Reference name="field" type="PromptVarField" refname="?unitup"/>
+            </Element>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[ , ]]>
+            </Element>
+            <Element type="FieldPart">
+              <FontProperties>
+                <Attribute name="font name" value="Times New Roman"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+              <DateProperties>
+                <Attribute name="date order" value="2"/>
+                <Attribute name="year type" value="1"/>
+                <Attribute name="month type" value="0"/>
+                <Attribute name="day type" value="0"/>
+                <Attribute name="date first separator" value="/"/>
+                <Attribute name="date second separator" value="/"/>
+              </DateProperties>
+              <TimeProperties>
+                <Attribute name="hour type" value="1"/>
+                <Attribute name="am string" value="AM"/>
+                <Attribute name="pm string" value="PM"/>
+              </TimeProperties>
+              <DateTimeProperties>
+                <Attribute name="date time separator" value=" "/>
+              </DateTimeProperties>
+              <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.TGL_TRANSAKSI_KWH"/>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="Text" count="1" x_position="240" y_position="840" width="1560" height="225">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="1"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Arial"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[Alasan koreksi :]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="360" y_position="1200" width="5400" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.ALASAN"/>
+        </Element>
+        <Element type="Text" count="2" x_position="6850" y_position="2160" width="3450" height="350">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[Mengetahui]]>
+            </Element>
+          </Element>
+          <Element type="Paragraph" count="1">
+            <CommonProperties>
+              <Attribute name="horizontal align" value="2"/>
+            </CommonProperties>
+            <Element type="TextPart">
+              <FontProperties>
+                <Attribute name="font name" value="Verdana"/>
+                <Attribute name="font size" value="200"/>
+              </FontProperties>
+            <![CDATA[]]>
+            </Element>
+          </Element>
+        </Element>
+        <Element type="FieldElement" x_position="6885" y_position="2600" width="3420" height="260">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?jabatan"/>
+        </Element>
+        <Element type="FieldElement" x_position="6970" y_position="3905" width="3345" height="260">
+          <CommonProperties>
+            <Attribute name="horizontal align" value="2"/>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Verdana"/>
+            <Attribute name="font size" value="200"/>
+          </FontProperties>
+          <Reference name="field" type="PromptVarField" refname="?manager"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+  <AreaPair type="DetailArea" id="1">
+    <Area type="Detail" count="1">
+      <AreaProperties>
+        <Attribute name="hold minimal pagefooter free" value="1"/>
+      </AreaProperties>
+      <Section type="Detail" count="7" width="11534" height="301" id="4">
+        <SectionProperties>
+          <Attribute name="keep together" value="true"/>
+          <Attribute name="hold minimal pagefooter free" value="1"/>
+          <PropertyFormula valueType="8" propertyType="drill down">
+            <Attribute name="name" value="drill down"/>
+            <Attribute name="basic syntax" value="false"/>
+            <![CDATA[IF {VI_BA_KOREKSI.NMPIUTANG}="HEADER" THEN TRUE]]>
+          </PropertyFormula>
+          <PropertyFormula valueType="8" propertyType="suppress">
+            <Attribute name="name" value="suppress"/>
+            <Attribute name="basic syntax" value="false"/>
+            <![CDATA[IF {VI_BA_KOREKSI.NMPIUTANG}="HEADER" THEN TRUE]]>
+          </PropertyFormula>
+        </SectionProperties>
+        <Element type="Line" x2_position="5760" y2_position="300" x_position="5760" y_position="0" width="0" height="300">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="7560" y2_position="300" x_position="7560" y_position="0" width="0" height="300">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="Line" x2_position="9480" y2_position="300" x_position="9480" y_position="0" width="0" height="300">
+          <LineProperties>
+            <Attribute name="id" value="4"/>
+          </LineProperties>
+        </Element>
+        <Element type="FieldElement" x_position="7680" y_position="0" width="1680" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.MUTASIBARU"/>
+        </Element>
+        <Element type="FieldElement" x_position="263" y_position="0" width="5450" height="232">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+          </FontProperties>
+          <Reference name="field" type="FormulaField" refname="@NMPIUTANG"/>
+        </Element>
+        <Element type="FieldElement" x_position="9600" y_position="0" width="1080" height="216">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="FormulaField" refname="@SELISIH"/>
+        </Element>
+        <Element type="FieldElement" x_position="5910" y_position="41" width="1530" height="240">
+          <CommonProperties>
+            <Attribute name="keep together" value="true"/>
+            <Attribute name="close border on page break" value="false"/>
+          </CommonProperties>
+          <FontProperties>
+            <Attribute name="font name" value="Times New Roman"/>
+          </FontProperties>
+          <NumberProperties>
+            <Attribute name="system default number type" value="2"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
+            <Attribute name="thousand separators symbol" value="."/>
+            <Attribute name="decimal separators symbol" value=","/>
+            <Attribute name="currency symbol" value=""/>
+          </NumberProperties>
+          <Reference name="field" type="DatabaseField" refname="VI_BA_KOREKSI.MUTASILAMA"/>
+        </Element>
+      </Section>
+    </Area>
+  </AreaPair>
+</inet:Report>

@@ -33,7 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Form_CetakUlangBebanKantor {
-//    public static final org.apache.commons.logging.Log log = LogFactory.getLog(Form_CetakUlangBebanKantor.class);
 
     String strGlobalUnitupPetugas, strGlobalKodePetugas;
     Integer iBebanKantor = 1;

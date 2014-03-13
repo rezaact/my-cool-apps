@@ -22,7 +22,7 @@ public class Ws_502Controller {
     @Autowired
     ws_502Dao ws_502Dao;
 
-    @RequestMapping(value = "**/ambilLaporanV02.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_502Controller/ambilLaporanV02.json", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     JSONObject ambilLaporanV02(@RequestParam(value = "parUp", defaultValue = "")String parUp,
                                @RequestParam(value = "parGol", defaultValue = "")String parGol,
@@ -46,7 +46,7 @@ public class Ws_502Controller {
     }
 
 
-    @RequestMapping(value = "**/IsAp.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_502Controller/IsAp.json", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     JSONObject IsAp(@RequestParam(value = "Unit", defaultValue = "")String Unit) {
         Map<String, Object> retValue = new HashMap<String, Object>();

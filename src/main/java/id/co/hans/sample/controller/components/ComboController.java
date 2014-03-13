@@ -534,7 +534,6 @@ public class ComboController {
         Map<String, Object> wsData = ws_transaksiDao.GetView21("53551","01122010","31122010");
 
         for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsData")) {
-            log.info(tmp);
             currData = new HashMap<>();
 
             currData.put("fieldValue", tmp.get("kodekolektif"));
@@ -548,6 +547,182 @@ public class ComboController {
 
         wsData = null;
 
+        return retVal;
+    }
+
+
+    @RequestMapping(value = "**/components/getComboUnitPelayananInduk.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboUnitPelayananInduk(@RequestParam(value = "levelUnits", defaultValue = "")String levelUnits,
+                                                 @RequestParam(value = "userUnit", defaultValue = "")String userUnit,
+                                                 @RequestParam(value = "addUpiSemua", defaultValue = "0")String addUpiSemua) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = ws_transaksiDao.getMasterUnit(userUnit);
+
+        if (addUpiSemua == "1") {
+            currData = new HashMap<>();
+            currData.put("fieldValue", "SEMUA");
+            currData.put("displayValue", "SEMUA");
+            dataList.add(currData);
+        }
+
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn_UNITUPI")) {
+            switch (levelUnits) {
+                case "PLN" :
+                    currData = new HashMap<>();
+
+                    currData.put("fieldValue", tmp.get("kodekolektif"));
+                    currData.put("displayValue", tmp.get("kodekolektif"));
+
+                    dataList.add(currData);
+                    break;
+                default :
+                    if (tmp.get("UNITUPI") == userUnit.substring(1,2)) {
+                        currData = new HashMap<>();
+
+                        currData.put("fieldValue", tmp.get("kodekolektif"));
+                        currData.put("displayValue", tmp.get("kodekolektif"));
+
+                        dataList.add(currData);
+                    }
+                    break;
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboAreaPelayanan.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboAreaPelayanan(@RequestParam(value = "levelUnits", defaultValue = "")String levelUnits,
+                                            @RequestParam(value = "userUnit", defaultValue = "")String userUnit,
+                                            @RequestParam(value = "addApSemua", defaultValue = "0")String addApSemua,
+                                            @RequestParam(value = "selectedUnitUpi", defaultValue = "")String selectedUnitUpi) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = ws_transaksiDao.getMasterUnit(userUnit);
+
+        if (addApSemua == "1") {
+            currData = new HashMap<>();
+            currData.put("fieldValue", "SEMUA");
+            currData.put("displayValue", "SEMUA");
+            dataList.add(currData);
+        }
+
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn_UNITAP")) {
+            currData = new HashMap<>();
+            switch (levelUnits) {
+                case "PLN" :
+                    if (selectedUnitUpi == "") {
+                        currData.put("fieldValue", tmp.get("kodekolektif"));
+                        currData.put("displayValue", tmp.get("kodekolektif"));
+                        dataList.add(currData);
+                    } else {
+                        if (tmp.get("UNITUPI") == selectedUnitUpi) {
+                            currData.put("fieldValue", tmp.get("kodekolektif"));
+                            currData.put("displayValue", tmp.get("kodekolektif"));
+                            dataList.add(currData);
+                        }
+                    }
+                    break;
+                case "UPI" :
+                    if (selectedUnitUpi == "") {
+                        currData.put("fieldValue", tmp.get("kodekolektif"));
+                        currData.put("displayValue", tmp.get("kodekolektif"));
+                        dataList.add(currData);
+                    } else {
+                        if (tmp.get("UNITUPI") == selectedUnitUpi) {
+                            currData.put("fieldValue", tmp.get("kodekolektif"));
+                            currData.put("displayValue", tmp.get("kodekolektif"));
+                            dataList.add(currData);
+                        }
+                    }
+                    break;
+                case "AP" :
+                    if (selectedUnitUpi == "") {
+                        if (tmp.get("UNITAP") == userUnit) {
+                            currData.put("fieldValue", tmp.get("kodekolektif"));
+                            currData.put("displayValue", tmp.get("kodekolektif"));
+                            dataList.add(currData);
+                        }
+                    } else if (tmp.get("UNITUPI") == selectedUnitUpi) {
+                        currData.put("fieldValue", tmp.get("kodekolektif"));
+                        currData.put("displayValue", tmp.get("kodekolektif"));
+                        dataList.add(currData);
+                    }
+                    break;
+                case "UP" :
+                    if (selectedUnitUpi == "") {
+                        if (tmp.get("UNITUPI") == userUnit) {
+                            currData.put("fieldValue", tmp.get("kodekolektif"));
+                            currData.put("displayValue", tmp.get("kodekolektif"));
+                            dataList.add(currData);
+                        }
+                    } else if (tmp.get("UNITAP") == selectedUnitUpi) {
+                        currData.put("fieldValue", tmp.get("kodekolektif"));
+                        currData.put("displayValue", tmp.get("kodekolektif"));
+                        dataList.add(currData);
+                    }
+                    break;
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboUnitPelayanan.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboUnitPelayanan(@RequestParam(value = "levelUnits", defaultValue = "")String levelUnits,
+                                            @RequestParam(value = "userUnit", defaultValue = "")String userUnit,
+                                            @RequestParam(value = "addUpSemua", defaultValue = "0")String addUpSemua,
+                                            @RequestParam(value = "selectedUp", defaultValue = "")String selectedUp) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = ws_transaksiDao.getMasterUnit(userUnit);
+
+        if (addUpSemua == "1") {
+            currData = new HashMap<>();
+
+            currData.put("fieldValue", "SEMUA");
+            currData.put("displayValue", "SEMUA");
+
+            dataList.add(currData);
+        }
+
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn_UNITUP")) {
+            currData = new HashMap<>();
+
+            switch (levelUnits) {
+                case "PLN" :
+                    break;
+                case "UPI" :
+                    break;
+                case "AP" :
+                    break;
+                case "UP" :
+                    break;
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
         return retVal;
     }
 

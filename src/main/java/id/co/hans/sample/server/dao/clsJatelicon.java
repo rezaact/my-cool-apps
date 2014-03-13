@@ -1,20 +1,18 @@
 package id.co.hans.sample.server.dao;
 
 import id.co.hans.sample.server.utility.CommonModule;
+import oracle.jdbc.OracleTypes;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
+import java.util.*;
 
 @Service
 public class clsJatelicon {
@@ -34,7 +32,7 @@ public class clsJatelicon {
             cls_Aplikasi cCekBK = new cls_Aplikasi();
             Map<String, Object> retCCekBK = cCekBK.cekBKSudahDibuat();
 
-            if (Boolean.valueOf((String)retCCekBK.get("wsReturn")) == false) {
+            if (retCCekBK.get("wsReturn") == false) {
                 throw new Exception("Database sedang melakukan proses rekap,transaksi belum diijinkan !");
             }
 
@@ -88,7 +86,7 @@ public class clsJatelicon {
             cls_Aplikasi cCekBK = new cls_Aplikasi();
             Map<String, Object> retCCekBK = cCekBK.cekBKSudahDibuat();
 
-            if (Boolean.valueOf((String)retCCekBK.get("wsReturn")) == false) {
+            if (retCCekBK.get("wsReturn") == false) {
                 throw new Exception("Database sedang melakukan proses rekap,transaksi belum diijinkan !");
             }
 
