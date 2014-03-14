@@ -1,5 +1,8 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +15,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +23,19 @@ public class Form_Report22_Kdpp {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    ComboKodePP cbKdPP;
+    ComboTahunBulan cbTahunBulan;
+    ComboTanggal cbMiddlePilihTanggalAwal;
+    ComboTanggal cbMiddelPilihTanggalAkhir;
+
+    TextButton bBottomRekapitulasiPerTanggal;
+    TextButton bBottomRekapPerTanggalBjlnTgk;
+    TextButton bBottomRekapitulasiPerGolongan;
+
+    TextButton bBottomDaftarRekening;
+
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +48,7 @@ public class Form_Report22_Kdpp {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,10 +79,10 @@ public class Form_Report22_Kdpp {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
-        ComboKodePP cbKdPP = new ComboKodePP();
+        cbKdPP = new ComboKodePP();
         vlcPReferensi.add(cbKdPP);
 
         p.add(panelReferensi);
@@ -78,7 +96,7 @@ public class Form_Report22_Kdpp {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -94,12 +112,12 @@ public class Form_Report22_Kdpp {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboTanggal cbMiddlePilihTanggalAwal = new ComboTanggal();
+        cbMiddlePilihTanggalAwal = new ComboTanggal();
         cbMiddlePilihTanggalAwal.hideLabel();
 
         Label lbl = new Label(" s/d ");
 
-        ComboTanggal cbMiddelPilihTanggalAkhir = new ComboTanggal();
+        cbMiddelPilihTanggalAkhir = new ComboTanggal();
         cbMiddelPilihTanggalAkhir.hideLabel();
 
         hp1.add(cbMiddlePilihTanggalAwal);
@@ -111,11 +129,11 @@ public class Form_Report22_Kdpp {
         p.add(panelParameter);
 
 
-        TextButton bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
-        TextButton bBottomRekapPerTanggalBjlnTgk = new TextButton("Rekap Per Tanggal Bjln-Tgk");
-        TextButton bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
+        bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
+        bBottomRekapPerTanggalBjlnTgk = new TextButton("Rekap Per Tanggal Bjln-Tgk");
+        bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
 
-        TextButton bBottomDaftarRekening = new TextButton("Daftar Rekening");
+        bBottomDaftarRekening = new TextButton("Daftar Rekening");
 
         panel.addButton(bBottomRekapitulasiPerTanggal);
         panel.addButton(bBottomRekapPerTanggalBjlnTgk);
@@ -124,5 +142,103 @@ public class Form_Report22_Kdpp {
         panel.addButton(bBottomDaftarRekening);
 
         return panel;
+    }
+
+    private void initEvent() {
+        bBottomRekapitulasiPerTanggal.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                        +"&vJenis="+"22kdpp_pptglrekap"
+                        +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&tparUp="+parUp
+                        +"&kode="+cbKdPP.getSelectedValue();
+
+                url+="&report=report/ReportMain/22/cr_22kdpp_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapPerTanggalBjlnTgk.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                        +"&vJenis="+"22KDPP_PPTGLREKAP_JLNTGK"
+                        +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&tparUp="+parUp
+                        +"&kode="+cbKdPP.getSelectedValue();
+
+                url+="&report=report/ReportMain/22/cr_22unit_404.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                        +"&vJenis="+"22kdpp_pptglrekapgol"
+                        +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&tparUp="+parUp
+                        +"&kode="+cbKdPP.getSelectedValue();
+
+                url+="&report=report/ReportMain/22/cr_22kdpp_gol_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarRekening.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                        +"&vJenis="+"22kdpp_pptgldaftar"
+                        +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&tparUp="+parUp
+                        +"&kode="+cbKdPP.getSelectedValue();
+
+                url+="&report=report/ReportMain/22/cr_22unit_ppcbo_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

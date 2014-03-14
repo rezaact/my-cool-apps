@@ -1,5 +1,8 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +15,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +23,13 @@ public class Form_Report23_Kirim {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+
+    TextButton bBottomRekapPengirimanRekeningListrikKeUnitLain;
+    TextButton bBottomDaftarPengirimanRekeningListrikKeUnitLain;
+
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +42,7 @@ public class Form_Report23_Kirim {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -62,7 +74,7 @@ public class Form_Report23_Kirim {
         panelReferensi.add(vlcPReferensi);
 
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -76,18 +88,65 @@ public class Form_Report23_Kirim {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
 
 
-        TextButton bBottomRekapPengirimanRekeningListrikKeUnitLain = new TextButton("Rekap Pengiriman Rekening Listrik ke Unit Lain");
-        TextButton bBottomDaftarPengirimanRekeningListrikKeUnitLain = new TextButton("Daftar Pengirirman Rekening Listrik ke Unit Lain");
+        bBottomRekapPengirimanRekeningListrikKeUnitLain = new TextButton("Rekap Pengiriman Rekening Listrik ke Unit Lain");
+        bBottomDaftarPengirimanRekeningListrikKeUnitLain = new TextButton("Daftar Pengirirman Rekening Listrik ke Unit Lain");
 
         panel.addButton(bBottomRekapPengirimanRekeningListrikKeUnitLain);
         panel.addButton(bBottomDaftarPengirimanRekeningListrikKeUnitLain);
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomRekapPengirimanRekeningListrikKeUnitLain.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Kirim_Rekap"
+                        +"&vJenis="+"23KirimRekap"
+                        +"&tThbl="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tParUp="+parUp
+                        +"&tPetugas="+petugas;
+
+                url+="&report=report/ReportMain/23/rpt_23KirTer_Rekap.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarPengirimanRekeningListrikKeUnitLain.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Kirim_Daftar"
+                        +"&vJenis="+"23KirimDaftar"
+                        +"&tThbl="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tParUp="+parUp
+                        +"&tPetugas="+petugas;
+
+                url+="&report=report/ReportMain/23/rpt_23KirTer_Daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

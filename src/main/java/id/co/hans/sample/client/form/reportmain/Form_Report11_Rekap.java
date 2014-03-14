@@ -19,7 +19,6 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
-
 public class Form_Report11_Rekap {
 
 
@@ -240,7 +239,6 @@ public class Form_Report11_Rekap {
                 unitUpi = cbUnits.getUnitUpiValue();
 
                 DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
-                //SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
                         +"&vJenis="     + "11rekap_taripdaya"
@@ -273,7 +271,6 @@ public class Form_Report11_Rekap {
                 unitUpi = cbUnits.getUnitUpiValue();
 
                 DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
-                //SimpleDateFormat format = new SimpleDateFormat("MMddYYYY");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
                         +"&vJenis="     + "11rekap_inkaso"

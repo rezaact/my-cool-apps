@@ -140,9 +140,9 @@ public class Form_Report21_Restitusi {
                         +"&in_jenis="+cbJenisLaporan.getSelectedValue();
 
                 if (cbJenisLaporan.getSelectedValue() == "REKAP")
-                    url+="&report=report/ReportMain/13/cr_21RekapRestitusi.rpt";
+                    url+="&report=report/ReportMain/21/cr_21RekapRestitusi.rpt";
                 else
-                    url+="&report=report/ReportMain/13/cr_21DaftarRestitusi.rpt";
+                    url+="&report=report/ReportMain/21/cr_21DaftarRestitusi.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

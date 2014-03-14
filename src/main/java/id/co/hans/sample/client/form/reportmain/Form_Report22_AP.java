@@ -1,5 +1,8 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +15,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +23,18 @@ public class Form_Report22_AP {
 
 
     private VerticalPanel vp;
+
+    ComboUnits cbUnits;
+    DateField dfTanggalPelunasanAwal;
+    DateField dfTanggalPelunasanAkhir;
+    Radio radioUnitFilter;
+    Radio radioUnitDiBawahUnitFilter;
+
+
+    TextButton bBottomRekapitulasiPerKodeGolongan;
+    TextButton bBottomRekapitulasiPerTanggalLunas;
+    TextButton bBottomRekapitulasiPerKdpp;
+
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +47,7 @@ public class Form_Report22_AP {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,7 +78,7 @@ public class Form_Report22_AP {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -78,13 +95,11 @@ public class Form_Report22_AP {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboTanggal dfTanggalPelunasanAwal = new ComboTanggal();
-        dfTanggalPelunasanAwal.hideLabel();
+        dfTanggalPelunasanAwal = new DateField();
 
         Label lbl = new Label(" s/d ");
 
-        ComboTanggal dfTanggalPelunasanAkhir = new ComboTanggal();
-        dfTanggalPelunasanAkhir.hideLabel();
+        dfTanggalPelunasanAkhir = new DateField();
 
         hp1.add(dfTanggalPelunasanAwal);
         hp1.add(lbl);
@@ -105,10 +120,10 @@ public class Form_Report22_AP {
 
         HorizontalPanel hpRadio = new HorizontalPanel();
 
-        Radio radioUnitFilter = new Radio();
+        radioUnitFilter = new Radio();
         radioUnitFilter.setBoxLabel("Unit Filter");
 
-        Radio radioUnitDiBawahUnitFilter = new Radio();
+        radioUnitDiBawahUnitFilter = new Radio();
         radioUnitDiBawahUnitFilter.setBoxLabel("Unit Dibawah Unit Filter");
 
         hpRadio.add(radioUnitFilter);
@@ -119,14 +134,127 @@ public class Form_Report22_AP {
         p.add(panelParameterRadio);
 
 
-        TextButton bBottomRekapitulasiPerKodeGolongan = new TextButton("Rekapitulasi per Kode Golongan");
-        TextButton bBottomRekapitulasiPerTanggalLunas = new TextButton("Rekapitulasi per Tanggal Lunas");
-        TextButton bBottomRekapitulasiPerKdpp = new TextButton("Rekapitulasi per KDPP");
+        bBottomRekapitulasiPerKodeGolongan = new TextButton("Rekapitulasi per Kode Golongan");
+        bBottomRekapitulasiPerTanggalLunas = new TextButton("Rekapitulasi per Tanggal Lunas");
+        bBottomRekapitulasiPerKdpp = new TextButton("Rekapitulasi per KDPP");
 
         panel.addButton(bBottomRekapitulasiPerKodeGolongan);
         panel.addButton(bBottomRekapitulasiPerTanggalLunas);
         panel.addButton(bBottomRekapitulasiPerKdpp);
 
         return panel;
+    }
+
+    private void initEvent() {
+        bBottomRekapitulasiPerKodeGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                if (parUp == "SEMUA")
+                    parUp = "";
+
+                if (unitAp == "SEMUA")
+                    unitAp = "";
+
+                if (radioUnitFilter.getValue())
+                    jnsunit = "unit";
+                else jnsunit = "detil";
+
+                DateTimeFormat format = DateTimeFormat.getFormat("yyyyMMdd");
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22rekap_Global"
+                        +"&vJenis="+"kogol"
+                        +"&vFilterUnit="+jnsunit
+                        +"&tparUpi="+unitUpi
+                        +"&tparAp="+unitAp
+                        +"&tparUp="+parUp
+                        +"&tanggal="+format.format(dfTanggalPelunasanAwal.getValue())
+                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue());
+
+                url+="&report=report/ReportMain/22/cr_22unit_kogol.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerTanggalLunas.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                if (parUp == "SEMUA")
+                    parUp = "";
+
+                if (unitAp == "SEMUA")
+                    unitAp = "";
+
+                if (radioUnitFilter.getValue())
+                    jnsunit = "unit";
+                else jnsunit = "detil";
+
+                DateTimeFormat format = DateTimeFormat.getFormat("yyyyMMdd");
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22rekap_Global"
+                        +"&vJenis="+"tgllunas"
+                        +"&vFilterUnit="+jnsunit
+                        +"&tparUpi="+unitUpi
+                        +"&tparAp="+unitAp
+                        +"&tparUp="+parUp
+                        +"&tanggal="+format.format(dfTanggalPelunasanAwal.getValue())
+                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue());
+
+                url+="&report=report/ReportMain/22/cr_22unit_pertgllunas.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerKdpp.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jnsunit, petugas, unitAp, unitUpi;
+
+                parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
+
+                if (parUp == "SEMUA")
+                    parUp = "";
+
+                if (unitAp == "SEMUA")
+                    unitAp = "";
+
+                if (radioUnitFilter.getValue())
+                    jnsunit = "unit";
+                else jnsunit = "detil";
+
+                DateTimeFormat format = DateTimeFormat.getFormat("yyyyMMdd");
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22rekap_Global"
+                        +"&vJenis="+"kdpp"
+                        +"&vFilterUnit="+jnsunit
+                        +"&tparUpi="+unitUpi
+                        +"&tparAp="+unitAp
+                        +"&tparUp="+parUp
+                        +"&tanggal="+format.format(dfTanggalPelunasanAwal.getValue())
+                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue());
+
+                url+="&report=report/ReportMain/22/cr_22unit_perkdpp.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

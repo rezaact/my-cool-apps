@@ -81,4 +81,70 @@ public class ReportService {
                                      String in_jenis){
         reportDao.GetReport21Restitusi(engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
     }
+    public void GetReport_21rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                  String tanggal, String tanggalend, String kode){
+        reportDao.GetReport_21rekap(engine, vJenis, tBLTH, tparUp, tPetugas,
+                                    tanggal, tanggalend, kode);
+    }
+    public void GetReport_21upload(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas,
+                                   String tanggal, String tanggalend, String kode){
+        reportDao.GetReport_21upload(engine, vJenis, tBLTH, tparUp, tPetugas,
+                                    tanggal, tanggalend, kode);
+    }
+    public void GetReport_21Giral_Kode(Engine engine, String tBLTH, String tPetugas, String kode,
+                                       String jenis){
+        reportDao.GetReport_21Giral_Kode(engine, tBLTH, tPetugas, kode,
+                jenis);
+    }
+
+    //22
+    public void GetReport_22rekap_Global(Engine engine, String vJenis, String vFilterUnit, String tparUpi,
+                                         String tparAp, String tparUp, String tanggal, String tanggalend){
+        reportDao.GetReport_22rekap_Global(engine, vJenis, vFilterUnit, tparUpi,
+                tparAp, tparUp, tanggal, tanggalend);
+    }
+    public void GetReport_22kdpp(Engine engine, String vJenis, String tBLTH, String tanggal,
+                                 String tanggalend, String tparUp, String kode){
+        reportDao.GetReport_22kdpp(engine, vJenis, tBLTH, tanggal,
+                tanggalend, tparUp, kode);
+    }
+    public void GetReport_22petugas(Engine engine, String vJenis, String tBLTH, String tparUp,
+                                    String tPetugas, String tanggal, String tanggalend,
+                                    String kode, String kdPembayar, String sATM){
+        reportDao.GetReport_22petugas(engine, vJenis, tBLTH, tparUp,
+                tPetugas, tanggal, tanggalend,
+                kode, kdPembayar, sATM);
+    }
+    public void GetReport_22petugasDaya(Engine engine, String vJenis, String tBLTH, String tparUp,
+                                        String tPetugas, String tanggal, String tanggalend,
+                                        String kode, String kdPembayar, String sATM,
+                                        String vDayaAwal, String vDayaAkhir){
+        reportDao.GetReport_22petugasDaya(engine, vJenis, tBLTH, tparUp,
+                tPetugas, tanggal, tanggalend,
+                kode, kdPembayar, sATM, vDayaAwal, vDayaAkhir);
+    }
+    public void GetReport_22rekap_V2(Engine engine, String vJenis, String tBLTH, String tparUp,
+                                                 String tparAp, String tparUpi, String tPetugas,
+                                                 String kode){
+        reportDao.GetReport_22rekap_V2(engine, vJenis, tBLTH, tparUp,
+                tparAp, tparUpi, tPetugas,
+                kode);
+    }
+
+    //23
+    public void GetReport_23Kirim_Rekap(Engine engine, String tThbl, String tParUp, String tPetugas){
+        reportDao.GetReport_23Kirim_Rekap(engine, tThbl, tParUp, tPetugas);
+    }
+    public void GetReport_23Kirim_Daftar(Engine engine, String tThbl, String tParUp, String tPetugas){
+        reportDao.GetReport_23Kirim_Daftar(engine, tThbl, tParUp, tPetugas);
+    }
+    public void GetReport_23Terima_Rekap(Engine engine, String tThbl, String tParUp, String tPetugas){
+        reportDao.GetReport_23Terima_Rekap(engine, tThbl, tParUp, tPetugas);
+    }
+    public void GetReport_23Terima_Daftar(Engine engine, String tThbl, String tParUp, String tPetugas){
+        reportDao.GetReport_23Terima_Daftar(engine, tThbl, tParUp, tPetugas);
+    }
+    public void GetReport_23Nota_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis, String iBebanKantor){
+        reportDao.GetReport_23Nota_Kode( engine, tBLTH, tPetugas, kode, jenis, iBebanKantor);
+    }
 }

@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -19,6 +22,14 @@ public class Form_Report23BebanKantor_Kode {
 
 
     private VerticalPanel vp;
+
+    ComboKodeBebanKantor cbKdBebanKantor;
+    ComboTahunBulan cbTahunBulan;
+    Radio radioSemua;
+    Radio radioBelumLunas;
+    Radio radioLunas;
+
+    TextButton bBottomTampilkan;
 
     private String idUser, levelUser, unitUser;
 
@@ -31,6 +42,7 @@ public class Form_Report23BebanKantor_Kode {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,7 +73,7 @@ public class Form_Report23BebanKantor_Kode {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboKodeBebanKantor cbKdBebanKantor = new ComboKodeBebanKantor();
+        cbKdBebanKantor = new ComboKodeBebanKantor();
         vlcPReferensi.add(cbKdBebanKantor);
 
         p.add(panelReferensi);
@@ -75,7 +87,7 @@ public class Form_Report23BebanKantor_Kode {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -91,13 +103,13 @@ public class Form_Report23BebanKantor_Kode {
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        Radio radioSemua = new Radio();
+        radioSemua = new Radio();
         radioSemua.setBoxLabel("Semua");
 
-        Radio radioBelumLunas = new Radio();
+        radioBelumLunas = new Radio();
         radioBelumLunas.setBoxLabel("Belum Lunas");
 
-        Radio radioLunas = new Radio();
+        radioLunas = new Radio();
         radioLunas.setBoxLabel("Lunas");
 
         hp1.add(radioSemua);
@@ -109,7 +121,7 @@ public class Form_Report23BebanKantor_Kode {
         p.add(panelParameter);
 
 
-        TextButton bBottomTampilkan = new TextButton("Tampilkan");
+        bBottomTampilkan = new TextButton("Tampilkan");
 
         panel.addButton(bBottomTampilkan);
 
@@ -119,5 +131,42 @@ public class Form_Report23BebanKantor_Kode {
         tg.add(radioLunas);
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomTampilkan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                //parUp = cbUnits.getUnitUpValue();
+                petugas = idUser;
+                //unitAp = cbUnits.getUnitApValue();
+                //unitUpi = cbUnits.getUnitUpiValue();
+
+                if (radioSemua.getValue())
+                    jenis = "23NOTAKODESEMUA";
+                else if (radioLunas.getValue())
+                    jenis = "23NOTAKODELUNAS";
+                else if (radioBelumLunas.getValue())
+                    jenis = "23NOTAKODEBLMLUNAS";
+
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Terima_Rekap"
+                        +"&jenis="+jenis
+                        +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tPetugas="+petugas
+                        +"&kode="+cbKdBebanKantor.getSelectedValue()
+                        +"&iBebanKantor="+"1";
+
+                if (radioSemua.getValue())
+                    url+="&report=report/ReportMain/23/cr_22Nota_kode.rpt";
+                else
+                    url+="&report=report/ReportMain/23/cr_DaftarLunasKolektif.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }
