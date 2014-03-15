@@ -41,7 +41,7 @@ public class ComboTahunBulan implements IsWidget {
     @Override
     public Widget asWidget() {
         cbTahun = new IconComboBox();
-        cbTahun.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cbTahun.setStoreUrl("components/getComboTahun.json?");
         cbTahun.setComboWidth(79);
 
         cbTahun.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
@@ -53,7 +53,7 @@ public class ComboTahunBulan implements IsWidget {
         });
 
         cbBulan = new IconComboBox();
-        cbBulan.setStoreUrl("BasicProject/thuGetComboBulan.json");
+        cbBulan.setStoreUrl("components/getComboBulan.json?");
         cbBulan.setComboWidth(120);
 
         cbBulan.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

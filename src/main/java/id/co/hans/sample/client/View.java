@@ -3,9 +3,6 @@ package id.co.hans.sample.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import id.co.hans.sample.client.form.cetakulang.Form_CetakUlangBebanKantor;
-
-import id.co.hans.sample.client.form.creditnote.Form_BatalCN;
 import id.co.hans.sample.client.form.reportmain.*;
 
 public class View implements IsWidget {
@@ -96,14 +93,6 @@ public class View implements IsWidget {
             widgetMenu =new Form_ReportBK_212223_Rekap().asWidget(idUser,unitupUser,levelUser);
         } else if (id_menu.toUpperCase().equals("Form_ReportPenetapanBK_Rekap".toUpperCase())){
             widgetMenu =new Form_ReportPenetapanBK_Rekap().asWidget(idUser,unitupUser,levelUser);
-        } else if (id_menu.toUpperCase().equals("Form_BatalCN".toUpperCase())) {
-        	widgetMenu = new Form_BatalCN().asWidget(idUser, unitupUser, levelUser);
-        }
-
-
-        //KOKOM
-        else if (id_menu.toUpperCase().equals("Form_CetakUlangBebanKantor".toUpperCase())){
-            widgetMenu =new Form_CetakUlangBebanKantor().asWidget();
         }
 
         return widgetMenu;

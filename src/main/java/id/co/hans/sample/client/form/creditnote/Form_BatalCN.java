@@ -1,28 +1,45 @@
 package id.co.hans.sample.client.form.creditnote;
 
-import id.co.hans.sample.client.AbstractForm;
-import id.co.hans.sample.client.components.ComboKodePP;
-import id.co.hans.sample.client.components.IconDynamicGrid;
-
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.core.client.resources.ThemeStyles;
+import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.widget.core.client.FramedPanel;
+import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.CheckBox;
-import com.sencha.gxt.widget.core.client.form.DateField;
-import com.sencha.gxt.widget.core.client.form.FieldLabel;
-import com.sencha.gxt.widget.core.client.form.Radio;
-import com.sencha.gxt.widget.core.client.form.TextField;
+import com.sencha.gxt.widget.core.client.form.*;
+import id.co.hans.sample.client.components.ComboKodePP;
+import id.co.hans.sample.client.components.IconComboBox;
+import id.co.hans.sample.client.components.IconDynamicGrid;
 
-public class Form_BatalCN extends AbstractForm {
+public class Form_BatalCN {
 
-    private Radio radioTopTglLunas;
-	private HorizontalPanel hlcRentangRaktuCNTanggalPelunasan;
 
-    protected FramedPanel panelMain() {
+    private VerticalPanel vp;
+
+    public Widget asWidget() {
+        if (vp == null) {
+            vp = new VerticalPanel();
+            vp.setSpacing(5);
+            initKomponen();
+        }
+        return vp;
+    }
+
+    private void initKomponen(){
+        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
+        progressBox.setProgressText("wait...");
+
+        vp.add(panelMain());
+    }
+
+    private FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Laporan Pembatalan Credit Note");
@@ -62,9 +79,9 @@ public class Form_BatalCN extends AbstractForm {
         VerticalLayoutContainer vlcRentangWaktuCN = new VerticalLayoutContainer();
         panelParameterRentangWaktuCN.add(vlcRentangWaktuCN);
 
-        hlcRentangRaktuCNTanggalPelunasan = new HorizontalPanel();
+        HorizontalPanel hlcRentangRaktuCNTanggalPelunasan = new HorizontalPanel();
 
-        radioTopTglLunas = new Radio();
+        Radio radioTopTglLunas = new Radio();
         radioTopTglLunas.setBoxLabel("Tanggal Pelunasan");
         hlcRentangRaktuCNTanggalPelunasan.add(radioTopTglLunas);
 
@@ -166,9 +183,4 @@ public class Form_BatalCN extends AbstractForm {
 
         return panel;
     }
-
-	@Override
-	protected void initEvent() {
-		
-	}
 }

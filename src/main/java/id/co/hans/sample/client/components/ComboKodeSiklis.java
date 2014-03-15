@@ -38,7 +38,7 @@ public class ComboKodeSiklis implements IsWidget {
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cb.setStoreUrl("components/getComboKodeSiklis.json?unitUp=&addSemua=1");
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

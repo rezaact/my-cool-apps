@@ -61,4 +61,18 @@ public interface ReportDao {
     public void GetReport_23Terima_Rekap(Engine engine, String tThbl, String tParUp, String tPetugas);
     public void GetReport_23Terima_Daftar(Engine engine, String tThbl, String tParUp, String tPetugas);
     public void GetReport_23Nota_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis, String iBebanKantor);
+    public void GetReport_23dltrekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                     String tanggal, String kode, String tparUPI);
+    public void GetReport_23notarekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                      String tanggal, String kode);
+    public void GetReport_23Terpusat_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis);
+
+    //31
+    public void GetReport_31rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas);
+
+    //32
+    public void GetReport_32rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas);
+
+    //2122dobelbayar
+    public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar);
 }

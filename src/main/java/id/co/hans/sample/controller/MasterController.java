@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class MasterController {
     JSONObject getMasterUnit(@RequestParam(value = "inTipe", defaultValue = "")String inTipe,
                                      @RequestParam(value = "inValue", defaultValue = "")String inValue) {
 //        Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String, Object>> retValue = new ArrayList<Map<String, Object>>();
+        Map<String, Object> retValue = new HashMap<String, Object>();
 
         JSONObject obj = new JSONObject();
         StringWriter out = new StringWriter();

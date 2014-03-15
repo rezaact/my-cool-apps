@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,17 +23,36 @@ public class Form_Report32_Rekap {
 
     private VerticalPanel vp;
 
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboJenisLaporan cbJenisLaporan;
+
+    TextButton bBottomDaftarRekeningRagu2YangDihapus;
+    TextButton bBottomDaftarPerPelangganRekgRagu2Dihapus;
+    TextButton bBottomBeritaAcaraPenelitianPenghapusan;
+    TextButton bBottomRekapitulasiPerTanggal;
+    TextButton bBottomRekapitulasiPerGolongan;
+    TextButton bBottomLaporanRekapUntukBahan406;
+
+    TextButton bBottomDaftarPerPelangganRekgRagu2DihapusKurang2Juta;
+    TextButton bBottomDaftarPerPelangganRekgRagu2DihapusLebih2Juta;
+    TextButton bBottomBeritaAcaraPenelitianPenghapusanTagihanLebihUjl;
+    TextButton bBottomBeritaAcaraPenelitianPenghapusanTagihanKurangUjl;
+    TextButton bBottomRekapitulasiPerTarip;
+
+
     private String idUser, levelUser, unitUser;
 
     public Widget asWidget(String idUser, String unitupUser, String levelUser) {
         this.idUser=idUser;
-        this.unitUser=unitUser;
+        this.unitUser=unitupUser;
         this.levelUser=levelUser;
 
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,7 +83,7 @@ public class Form_Report32_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -75,10 +97,10 @@ public class Form_Report32_Rekap {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan = new ComboJenisLaporan();
         vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);
@@ -91,18 +113,18 @@ public class Form_Report32_Rekap {
         VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
         panelParameter.add(vlcPParameter);
 
-        TextButton bBottomDaftarRekeningRagu2YangDihapus = new TextButton("Daftar Rekening Ragu2 yang Dihapus");
-        TextButton bBottomDaftarPerPelangganRekgRagu2Dihapus = new TextButton("Daftar per Pelanggan Rekg Ragu2 Dihapus");
-        TextButton bBottomBeritaAcaraPenelitianPenghapusan = new TextButton("Berita Acara Penelitian Penghapusan");
-        TextButton bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
-        TextButton bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
-        TextButton bBottomLaporanRekapUntukBahan406 = new TextButton("Laporan Rekapitulasi u/ Bahan 406");
+        bBottomDaftarRekeningRagu2YangDihapus = new TextButton("Daftar Rekening Ragu2 yang Dihapus");
+        bBottomDaftarPerPelangganRekgRagu2Dihapus = new TextButton("Daftar per Pelanggan Rekg Ragu2 Dihapus");
+        bBottomBeritaAcaraPenelitianPenghapusan = new TextButton("Berita Acara Penelitian Penghapusan");
+        bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
+        bBottomRekapitulasiPerGolongan = new TextButton("Rekapitulasi Per Golongan");
+        bBottomLaporanRekapUntukBahan406 = new TextButton("Laporan Rekapitulasi u/ Bahan 406");
 
-        TextButton bBottomDaftarPerPelangganRekgRagu2DihapusKurang2Juta = new TextButton("Daftar per Pelanggan Rekg Ragu2 Dihapus < 2juta");
-        TextButton bBottomDaftarPerPelangganRekgRagu2DihapusLebih2Juta = new TextButton("Daftar per Pelanggan Rekg Ragu2 Dihapus > 2juta");
-        TextButton bBottomBeritaAcaraPenelitianPenghapusanTagihanLebihUjl = new TextButton("Berita Acara Penelitian Penghapusan Tagihan > UJL");
-        TextButton bBottomBeritaAcaraPenelitianPenghapusanTagihanKurangUjl = new TextButton("Berita Acara Penelitian Penghapusan Tagihan < UJL");
-        TextButton bBottomRekapitulasiPerTarip = new TextButton("Rekapitulasi Per Tarip");
+        bBottomDaftarPerPelangganRekgRagu2DihapusKurang2Juta = new TextButton("Daftar per Pelanggan Rekg Ragu2 Dihapus < 2juta");
+        bBottomDaftarPerPelangganRekgRagu2DihapusLebih2Juta = new TextButton("Daftar per Pelanggan Rekg Ragu2 Dihapus > 2juta");
+        bBottomBeritaAcaraPenelitianPenghapusanTagihanLebihUjl = new TextButton("Berita Acara Penelitian Penghapusan Tagihan > UJL");
+        bBottomBeritaAcaraPenelitianPenghapusanTagihanKurangUjl = new TextButton("Berita Acara Penelitian Penghapusan Tagihan < UJL");
+        bBottomRekapitulasiPerTarip = new TextButton("Rekapitulasi Per Tarip");
 
         bBottomDaftarRekeningRagu2YangDihapus.setWidth(220);
         bBottomDaftarPerPelangganRekgRagu2Dihapus.setWidth(220);
@@ -162,5 +184,206 @@ public class Form_Report32_Rekap {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomDaftarRekeningRagu2YangDihapus.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32daftarrekg"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarPerPelangganRekgRagu2Dihapus.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_plg_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomBeritaAcaraPenelitianPenghapusan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar_BA"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerTanggal.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekap502"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_tgl.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+            }
+        });
+
+        bBottomLaporanRekapUntukBahan406.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekap406"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                //url+="&report=report/ReportMain/32/cr_32_tgl.rpt";
+
+                //Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+
+        //=====
+        bBottomDaftarPerPelangganRekgRagu2DihapusKurang2Juta.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar_kurang2juta"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_plg_daftar_kurang2juta.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomDaftarPerPelangganRekgRagu2DihapusLebih2Juta.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar_lebih2juta"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_plg_daftar_lebih2juta.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomBeritaAcaraPenelitianPenghapusanTagihanLebihUjl.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar_BA"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomBeritaAcaraPenelitianPenghapusanTagihanKurangUjl.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar_BA"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomRekapitulasiPerTarip.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
+                        +"&vjenis="+"32rekapdaftar_BA"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                //url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
+
+                //Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

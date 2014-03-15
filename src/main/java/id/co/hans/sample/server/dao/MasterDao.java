@@ -4,5 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface MasterDao {
-	public List<Map<String,Object>> getMasterUnit(String inTipe, String inValue);
+	public Map<String, Object> getMasterUnit(String inTipe, String inValue);
+    public Map<String, Object> getKodeSiklis(String parUp);
 }
