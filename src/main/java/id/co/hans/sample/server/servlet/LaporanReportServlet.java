@@ -171,10 +171,45 @@ public class LaporanReportServlet extends ReportServlet{
                     , (String) prop.get("tparup"), (String) prop.get("tpetugas"));
         }
 
+        //41
+        else if(idjenislaporan.endsWith("GetReport_41rekap")){
+            GetReport_41rekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth")
+                    , (String) prop.get("tparap"), (String) prop.get("tparup"), (String) prop.get("tpetugas"));
+        }
+
         //2122dobelbayar
         else if(idjenislaporan.endsWith("GetReport_2122DoubleBayarNew")){
             GetReport_2122DoubleBayarNew(engine,
-                    (String) prop.get("sUnit"), (String) prop.get("sBlnBayar"));
+                    (String) prop.get("sunit"), (String) prop.get("sblnbayar"));
+        }
+
+        //pemda
+        else if(idjenislaporan.endsWith("GetReport_Pemda")){
+            GetReport_Pemda(engine,
+                    (String) prop.get("tparap"), (String) prop.get("tparup"), (String) prop.get("tblth")
+                    , (String) prop.get("vjenis"), (String) prop.get("tpetugas"), (String) prop.get("in_unitupi"));
+        }
+
+        //restitusi
+        else if(idjenislaporan.endsWith("GetReportRestitusi")){
+            GetReportRestitusi(engine,
+                    (String) prop.get("in_unitap"), (String) prop.get("in_unitup"), (String) prop.get("in_blth")
+                    , (String) prop.get("in_jenis"));
+        }
+
+        //212223
+        else if(idjenislaporan.endsWith("GetReport_BK_212223rekap")){
+            GetReport_BK_212223rekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup")
+                    , (String) prop.get("tpetugas"), (String) prop.get("kode"));
+        }
+
+        //reportpantau
+        else if(idjenislaporan.endsWith("getMonitoringLapSaldoTunggakan")){
+            getMonitoringLapSaldoTunggakan(engine,
+                    (String) prop.get("in_jenis"), (String) prop.get("in_unitupi"), (String) prop.get("in_unitap")
+                    , (String) prop.get("in_unitup"));
         }
     }
 
@@ -426,10 +461,55 @@ public class LaporanReportServlet extends ReportServlet{
         }
     }
 
+    //41
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        try{
+            baseService.getReportService().GetReport_41rekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
     //2122dobelbayar
     public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar) {
         try{
             baseService.getReportService().GetReport_2122DoubleBayarNew(engine, sUnit, sBlnBayar);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //pemda
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi) {
+        try{
+            baseService.getReportService().GetReport_Pemda( engine, tparAP, tparUp, tBLTH, vJenis, tPetugas, in_unitupi);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //restitusi
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        try{
+            baseService.getReportService().GetReportRestitusi(engine, in_unitap, in_unitup, in_blth, in_jenis);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //212223
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode) {
+        try{
+            baseService.getReportService().GetReport_BK_212223rekap(engine, vJenis, tBLTH, tparUp, tPetugas, kode);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //reportpantau
+    public void getMonitoringLapSaldoTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
+        try{
+            baseService.getReportService().getLaporanMonitoringTunggakan(engine, in_jenis, in_unitupi, in_unitap, in_unitup);
         }catch(Exception ex){
             CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
         }

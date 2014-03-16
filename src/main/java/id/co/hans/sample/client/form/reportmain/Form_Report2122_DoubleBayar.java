@@ -138,13 +138,11 @@ public class Form_Report2122_DoubleBayar {
 
                 petugas = idUser;
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
-                        +"&vjenis="+"32daftarrekg"
-                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_2122DoubleBayarNew"
+                        +"&sunit="+cbUnits.getUnitUpValue()
+                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue();
 
-                url+="&report=report/ReportMain/32/cr_32_daftar.rpt";
+                url+="&report=report/ReportMain/22/cr_DoubleBayar.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
@@ -157,13 +155,11 @@ public class Form_Report2122_DoubleBayar {
 
                 petugas = idUser;
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
-                        +"&vjenis="+"32daftarrekg"
-                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_2122DoubleBayarNew"
+                        +"&sunit="+cbUnits.getUnitUpValue()
+                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue();
 
-                url+="&report=report/ReportMain/32/cr_32_daftar.rpt";
+                url+="&report=report/ReportMain/22/cr_DoubleBayar.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

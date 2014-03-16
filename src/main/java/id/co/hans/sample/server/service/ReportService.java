@@ -171,8 +171,33 @@ public class ReportService {
         reportDao.GetReport_32rekap( engine, vJenis, tBLTH, tparUp, tPetugas);
     }
 
+    //41
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        reportDao.GetReport_41rekap( engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
+    }
+
     //2122dobelbayar
     public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar) {
         reportDao.GetReport_2122DoubleBayarNew( engine, sUnit, sBlnBayar);
+    }
+
+    //pemda
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi) {
+        reportDao.GetReport_Pemda( engine, tparAP, tparUp, tBLTH, vJenis, tPetugas, in_unitupi);
+    }
+
+    //restitusi
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        reportDao.GetReportRestitusi( engine, in_unitap, in_unitup, in_blth, in_jenis);
+    }
+
+    //212223
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode) {
+        reportDao.GetReport_BK_212223rekap( engine, vJenis, tBLTH, tparUp, tPetugas, kode);
+    }
+
+    //reportpantau
+    public void getLaporanMonitoringTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
+        getLaporanMonitoringTunggakan( engine, in_jenis, in_unitupi, in_unitap, in_unitup);
     }
 }

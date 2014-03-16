@@ -3712,4 +3712,311 @@ public class ReportDaoImpl implements ReportDao {
             CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
         }
     }
+
+    @Override
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("41REKAP502") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_41REKAP502";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("41REKAP404") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_41REKAP404";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("41REKAPDAFTAR") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_41REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("41DAFTARREKG") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                sql = sql + " FROM VIEW_REPORT_41DAFTARREKG";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " order by TANGGAL asc";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            sql = "{call PARAMETERVIEW.SetUnitUPI(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitupi", in_unitupi);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetUnitAP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitap", tparAP);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetUnitUP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitup", tparUp);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetBlTh(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("BlTh", tBLTH);
+            cst.execute();
+
+            if ( vJenis.toUpperCase().equals("SALDO") ) {
+                //'Update by Andrie untuk akomodir LJB
+                sql += " SELECT * FROM VIEW_REKAP_SALDO_PEMDA ";
+
+            } else if ( vJenis.toUpperCase().equals("SOREK") ) {
+                sql += " select 'SOREK' transaksi,'BERJALAN' jns,pemda,namapemda,tarip,sum(rpbpju) rpbpju ";
+                sql += " from view_pemda_sorek group by pemda,namapemda,tarip ";
+                sql += " order by pemda,namapemda,tarip ";
+
+            } else if ( vJenis.toUpperCase().equals("21OFFLINE") ) {
+                sql += " SELECT 'DPHOFFLINE' AS TRANSAKSI, 'BERJALAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHOFFLINE_02) */ DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU   ";
+                sql += " FROM DPHOFFLINE PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "' and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " AND A.BLTH = '" + tBLTH + "' and tglbataltrans is null ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " UNION ALL  ";
+                sql += " SELECT 'DPHOFFLINE' AS TRANSAKSI, 'TUNGGAKAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHOFFLINE_02) */  DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU ";
+                sql += " FROM DPHOFFLINE PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "'  and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " AND A.BLTH < '" + tBLTH + "' ";
+                //'sql += " and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " and tglbataltrans is null ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " ORDER BY 2, 3, 5 ";
+
+            } else if ( vJenis.toUpperCase().equals("22ONLINE") ) {
+                sql += " SELECT 'ONLINE-PPOB' AS TRANSAKSI, 'BERJALAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHBARU_UNITUP) */ DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU ";
+                sql += " FROM DPHBARU PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "' ";
+                sql += " AND A.BLTH = '" + tBLTH + "' ";
+                sql += " and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " and tglbataltrans is null ";
+                sql += " and kdgerakmasuk in ('11','12','13') ";
+                sql += " and kdgerakkeluar='22' ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " UNION ALL  ";
+                sql += " SELECT 'ONLINE-PPOB' AS TRANSAKSI, 'TUNGGAKAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHBARU_UNITUP) */ DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU ";
+                sql += " FROM DPHBARU PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "' ";
+                sql += " AND A.BLTH < '" + tBLTH + "' ";
+                sql += " and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " and kdgerakmasuk in ('11','12','13') ";
+                sql += " and kdgerakkeluar='22' ";
+                sql += " and tglbataltrans is null ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " ORDER BY 2, 3, 5 ";
+
+            } else if ( vJenis.toUpperCase().equals("23NOTA") ) {
+                //'Updated by Andrie untuk akomodir LJB
+                sql += " SELECT * FROM VIEW_PEMDA_NOTA ";
+
+            } else if ( vJenis.toUpperCase().equals("KOREKSI") ) {
+                sql += " select * from view_pemda_koreksi ";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( in_jenis.toUpperCase().equals("REKAP_RESTITUSI_N") ) {
+                sql = "SELECT * FROM VIEW_REPORT_12REKAP_RESTITUSI";
+                sql = sql + " WHERE ";
+                sql = sql + "  BLTH  = '" + in_blth + "'";
+                if ( !in_unitap.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + in_unitap + "'))";
+                    if ( !in_unitup.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + in_unitup + "'))";
+                    }
+                }
+            } else if ( in_jenis.toUpperCase().equals("DAFTAR_KOREKSI_BLM_RESTITUSI") ) {
+                sql = "SELECT * FROM VIEW_REPORT_12RESTITUSI";
+                sql = sql + " WHERE ";
+                sql = sql + "  BLTH  = '" + in_blth + "'";
+                if ( !in_unitap.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + in_unitap + "'))";
+                    if ( !in_unitup.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + in_unitup + "'))";
+                    }
+                }
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("212223BKREKAP_TARIP") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
+                sql = sql + "   UNITUP, '' BLTH, KDKELOMPOK, '' TGLJTTEMPO,  KOGOL, '' AS LEMBAR, '' AS KWHLWBP, '' KWHWBP, '' BLOK3, '' PEMKWH, '' KWHKVARH, '' KELBKVARH, '' RPLWBP, '' RPWBP, '' RPBLOK3, '' RPKVARH, '' RPBEBAN, '' RPTTLB, '' RPPTL, '' RPTB, '' RPPPN, '' RPBPJU, '' RPTRAFO, '' RPSEWATRAFO, '' RPSEWAKAP, SUM(LBR_BK1) AS RPANGSA, SUM(LBR_BK2) AS RPANGSB, SUM(LBR_BK3) AS RPANGSC, '' RPMAT, '' RPPLN, SUM(RP_BK) AS RPTAG, '' RPPRODUKSI, '' RPSUBSIDI, '' RPREDUKSI, '' RPINSENTIF, '' RPDISINSENTIF, SUM(RP_BK1) AS RPBK1, SUM(RP_BK2) AS RPBK2, SUM(RP_BK3) AS RPBK3,  '' RPTDLLAMA, '' RPTDLBARU, '' RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_BK_212223_TARIP";
+                sql = sql + " WHERE ";
+                sql = sql + "  TGLTRANSAKSI  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TGLTRANSAKSI  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                }
+                sql = sql + "  GROUP BY TGLCETAK,UNITUP,KDKELOMPOK,KOGOL";
+            } else if ( vJenis.toUpperCase().equals("212223BKREKAP_GOL") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
+                sql = sql + "   UNITUP, '' BLTH, KDKELOMPOK, '' TGLJTTEMPO,  KOGOL, '' AS LEMBAR, '' AS KWHLWBP, '' KWHWBP, '' BLOK3, '' PEMKWH, '' KWHKVARH, '' KELBKVARH, '' RPLWBP, '' RPWBP, '' RPBLOK3, '' RPKVARH, '' RPBEBAN, '' RPTTLB, '' RPPTL, '' RPTB, '' RPPPN, '' RPBPJU, '' RPTRAFO, '' RPSEWATRAFO, '' RPSEWAKAP, SUM(LBR_BK1) AS RPANGSA, SUM(LBR_BK2) AS RPANGSB, SUM(LBR_BK3) AS RPANGSC, '' RPMAT, '' RPPLN, SUM(RP_BK) AS RPTAG, '' RPPRODUKSI, '' RPSUBSIDI, '' RPREDUKSI, '' RPINSENTIF, '' RPDISINSENTIF, SUM(RP_BK1) AS RPBK1, SUM(RP_BK2) AS RPBK2, SUM(RP_BK3) AS RPBK3,  '' RPTDLLAMA, '' RPTDLBARU, '' RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_BK_212223_GOL";
+                sql = sql + " WHERE ";
+                sql = sql + "  TGLTRANSAKSI  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TGLTRANSAKSI  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                }
+                sql = sql + "  GROUP BY TGLCETAK,UNITUP,KDKELOMPOK,KOGOL";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void getLaporanMonitoringTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+            sql = "{ call PKG_VIEW_TAMPILFORM.GETLAPORANMONITORINGTUNGGAKAN(?,?,?,?,?) }";
+            cst = con.prepareCall(sql);
+            cst.setString("IN_JENIS", in_jenis);
+            cst.setString("IN_UNITUPI", in_unitupi);
+            cst.setString("IN_UNITAP", in_unitap);
+            cst.setString("IN_UNITUP", in_unitup);
+            cst.registerOutParameter("OUT_DATA", OracleTypes.CURSOR);
+
+            cst = con.prepareCall(sql);
+            cst.execute();
+
+            rs = (ResultSet) cst.getObject("OUT_DATA");
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
 }

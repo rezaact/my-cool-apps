@@ -3,6 +3,7 @@ package id.co.hans.sample.server.dao.impl;
 
 import id.co.hans.sample.server.dao.ws_ReportTransaksiDao;
 import id.co.hans.sample.server.utility.CommonModule;
+import oracle.jdbc.OracleTypes;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     @Override
     public Map<String, Object> ref_AmbilInduk() {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -39,22 +40,23 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ref_AmbilInduk", lMapPetugas);
+            retValue.put("ref_AmbilInduk", lMapData);
 
             con.close();
         } catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
     public Map<String, Object> ref_AmbilCabang(String induk) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -66,22 +68,23 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ref_AmbilCabang", lMapPetugas);
+            retValue.put("ref_AmbilCabang", lMapData);
 
             con.close();
         } catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
     public Map<String, Object> ref_AmbilRanting(String cabang) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -93,9 +96,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ref_AmbilRanting", lMapPetugas);
+            retValue.put("ref_AmbilRanting", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -112,7 +115,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparUp,
                                                  String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -124,9 +127,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_41rekap", lMapPetugas);
+            retValue.put("GetReport_41rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -141,7 +144,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparUp,
                                                  String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -153,9 +156,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_32rekap", lMapPetugas);
+            retValue.put("GetReport_32rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -174,7 +177,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                      String tanggal,
                                                      String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -186,9 +189,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23notarekap", lMapPetugas);
+            retValue.put("GetReport_23notarekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -208,7 +211,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                      String tanggal,
                                                      String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -220,9 +223,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_24notarekap", lMapPetugas);
+            retValue.put("GetReport_24notarekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -235,7 +238,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     @Override
     public Map<String, Object> Get_KODEPP(String unitup) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -247,9 +250,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("Get_KODEPP", lMapPetugas);
+            retValue.put("Get_KODEPP", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -262,7 +265,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     @Override
     public Map<String, Object> GetViewKODEKOLEKTIF23NOTA() {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -274,9 +277,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetViewKODEKOLEKTIF23NOTA", lMapPetugas);
+            retValue.put("GetViewKODEKOLEKTIF23NOTA", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -289,7 +292,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     public Map<String, Object> GetViewKODEsiklisUNIT(String tTHBL,
                                                      String tUNIT) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -301,9 +304,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetViewKODEsiklisUNIT", lMapPetugas);
+            retValue.put("GetViewKODEsiklisUNIT", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -317,7 +320,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     public Map<String, Object> GetViewKODEsiklisUNITWithSemua(String tTHBL,
                                                               String tUNIT) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -329,9 +332,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetViewKODEsiklisUNITWithSemua", lMapPetugas);
+            retValue.put("GetViewKODEsiklisUNITWithSemua", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -350,7 +353,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tanggalend,
                                                  String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -362,9 +365,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_21rekap", lMapPetugas);
+            retValue.put("GetReport_21rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -384,7 +387,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                String kode,
                                                String pengelola) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -396,9 +399,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_21_BA", lMapPetugas);
+            retValue.put("GetReport_21_BA", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -417,7 +420,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                 String tanggalend,
                                                 String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -429,9 +432,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_21kdpp", lMapPetugas);
+            retValue.put("GetReport_21kdpp", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -450,7 +453,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                   String tanggalend,
                                                   String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -462,9 +465,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_21upload", lMapPetugas);
+            retValue.put("GetReport_21upload", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -481,7 +484,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparUp,
                                                  String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -493,9 +496,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_31rekap", lMapPetugas);
+            retValue.put("GetReport_31rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -514,7 +517,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                 String tanggalend,
                                                 String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -526,9 +529,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22kdpp", lMapPetugas);
+            retValue.put("GetReport_22kdpp", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -546,7 +549,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                    String tparup,
                                                    String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -558,9 +561,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22kdpp_v2", lMapPetugas);
+            retValue.put("GetReport_22kdpp_v2", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -580,7 +583,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                    String tparupi,
                                                    String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -592,9 +595,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22kdpp_v3", lMapPetugas);
+            retValue.put("GetReport_22kdpp_v3", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -613,7 +616,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tanggalend,
                                                  String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -625,9 +628,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22rekap", lMapPetugas);
+            retValue.put("GetReport_22rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -646,7 +649,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                     String tanggalend,
                                                     String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -658,9 +661,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22rekap_V2", lMapPetugas);
+            retValue.put("GetReport_22rekap_V2", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -681,7 +684,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                     String tanggalend,
                                                     String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -693,9 +696,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22rekap_V3", lMapPetugas);
+            retValue.put("GetReport_22rekap_V3", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -714,7 +717,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                     String tanggalend,
                                                     String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -726,9 +729,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22rekap_ap", lMapPetugas);
+            retValue.put("GetReport_22rekap_ap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -745,7 +748,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparUp,
                                                  String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -757,9 +760,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_13rekap", lMapPetugas);
+            retValue.put("GetReport_13rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -775,7 +778,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparUp,
                                                  String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -787,9 +790,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_12rekap", lMapPetugas);
+            retValue.put("GetReport_12rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -807,7 +810,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                          String tParAP,
                                                          String in_unitupi) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -819,9 +822,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_12RekapGabungan", lMapPetugas);
+            retValue.put("GetReport_12RekapGabungan", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -838,7 +841,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                       String tPetugas,
                                                       String kdKoreksi) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -850,9 +853,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_12jnskoreksi", lMapPetugas);
+            retValue.put("GetReport_12jnskoreksi", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -869,7 +872,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparUp,
                                                  String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -881,9 +884,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_12Jenis", lMapPetugas);
+            retValue.put("GetReport_12Jenis", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -902,7 +905,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                  String tparAp,
                                                  String in_unitupi) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -914,9 +917,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_11rekap", lMapPetugas);
+            retValue.put("GetReport_11rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -934,7 +937,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                         String tPetugas,
                                                         String kode) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -946,9 +949,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_BK_212223rekap", lMapPetugas);
+            retValue.put("GetReport_BK_212223rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -969,7 +972,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                     String kode,
                                                     String tparUPI) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -981,9 +984,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23dltrekap", lMapPetugas);
+            retValue.put("GetReport_23dltrekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -996,7 +999,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     @Override
     public Map<String, Object> GetViewKODEKOLEKTIF23NOTATERPUSAT() {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1008,9 +1011,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetViewKODEKOLEKTIF23NOTATERPUSAT", lMapPetugas);
+            retValue.put("GetViewKODEKOLEKTIF23NOTATERPUSAT", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1026,7 +1029,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                       String kode,
                                                       String jenis) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1038,9 +1041,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_21Giral_Kode", lMapPetugas);
+            retValue.put("GetReport_21Giral_Kode", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1056,7 +1059,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                      String jenis,
                                                      Integer tBebanKantor) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1068,9 +1071,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23Nota_Kode", lMapPetugas);
+            retValue.put("GetReport_23Nota_Kode", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1086,7 +1089,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                          String kode,
                                                          String jenis) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1098,9 +1101,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23Terpusat_Kode", lMapPetugas);
+            retValue.put("GetReport_23Terpusat_Kode", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1117,7 +1120,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                        String tParUp,
                                                        String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1129,9 +1132,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_Cilrek_Jurnal", lMapPetugas);
+            retValue.put("GetReport_Cilrek_Jurnal", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1146,7 +1149,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                        String tParUp,
                                                        String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1158,9 +1161,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_Cilrek_Daftar", lMapPetugas);
+            retValue.put("GetReport_Cilrek_Daftar", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1172,7 +1175,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     @Override
     public Map<String, Object> GetReport_Cilrek_Idpel(String tIdpel) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1184,9 +1187,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_Cilrek_Idpel", lMapPetugas);
+            retValue.put("GetReport_Cilrek_Idpel", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1203,7 +1206,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                        String tParUp,
                                                        String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1215,9 +1218,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23Kirim_Rekap", lMapPetugas);
+            retValue.put("GetReport_23Kirim_Rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1231,7 +1234,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                         String tParUp,
                                                         String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1243,9 +1246,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23Kirim_Daftar", lMapPetugas);
+            retValue.put("GetReport_23Kirim_Daftar", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1261,7 +1264,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                         String tParUp,
                                                         String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1273,9 +1276,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23Terima_Rekap", lMapPetugas);
+            retValue.put("GetReport_23Terima_Rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1289,7 +1292,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                          String tParUp,
                                                          String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1301,9 +1304,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_23Terima_Daftar", lMapPetugas);
+            retValue.put("GetReport_23Terima_Daftar", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1319,7 +1322,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                              String tParAP,
                                              String blth) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1331,9 +1334,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("getLaporan309", lMapPetugas);
+            retValue.put("getLaporan309", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1347,7 +1350,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                     String tParUnit,
                                                     String blth) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1359,9 +1362,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("getLaporan309perUnit", lMapPetugas);
+            retValue.put("getLaporan309perUnit", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1378,7 +1381,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                              String blth,
                                              String transaksiby) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1390,9 +1393,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("setLaporan309", lMapPetugas);
+            retValue.put("setLaporan309", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1411,7 +1414,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                         String tanggal,
                                                         String tanggalend) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1423,9 +1426,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22rekap_Global", lMapPetugas);
+            retValue.put("GetReport_22rekap_Global", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1439,7 +1442,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                   String sBlnBayar,
                                                   String sKogol) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1451,9 +1454,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_2122DoubleBayar", lMapPetugas);
+            retValue.put("GetReport_2122DoubleBayar", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1467,7 +1470,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     public Map<String, Object> GetReport_2122DoubleBayarNew(String sUnit,
                                                      String sBlnBayar) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1479,9 +1482,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_2122DoubleBayarNew", lMapPetugas);
+            retValue.put("GetReport_2122DoubleBayarNew", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1494,7 +1497,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     @Override
     public Map<String, Object> ref_AmbilPetugas(String kodePP) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1506,9 +1509,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ref_AmbilPetugas", lMapPetugas);
+            retValue.put("ref_AmbilPetugas", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1528,7 +1531,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                    String kode,
                                                    String kdPembayar) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1540,9 +1543,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_21petugas", lMapPetugas);
+            retValue.put("GetReport_21petugas", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1563,7 +1566,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                    String kdPembayar,
                                                    String sATM) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1575,9 +1578,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22petugas", lMapPetugas);
+            retValue.put("GetReport_22petugas", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1600,7 +1603,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                        String vDayaAwal,
                                                        String vDayaAkhir) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1612,9 +1615,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_22petugasDaya", lMapPetugas);
+            retValue.put("GetReport_22petugasDaya", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1632,7 +1635,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                String tPetugas,
                                                String in_unitupi) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1644,9 +1647,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport_Pemda", lMapPetugas);
+            retValue.put("GetReport_Pemda", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1661,7 +1664,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                       String TglMulai,
                                                       String TglAkhir) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1673,9 +1676,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("cetak_rekap11TglUpload", lMapPetugas);
+            retValue.put("cetak_rekap11TglUpload", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1689,7 +1692,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     public Map<String, Object> getMonitoringSorekDJBB(String vUNITAP,
                                                String vTGLKIRIM) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1701,9 +1704,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("getMonitoringSorekDJBB", lMapPetugas);
+            retValue.put("getMonitoringSorekDJBB", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1719,28 +1722,39 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                        String in_Unitap,
                                                        String in_Unitup) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
-
-            String sql = "getMonitoringLapSaldoTunggakan ";
             CallableStatement cst;
+            ResultSet rs;
+            String sql = "";
+
+            sql = "{ call PKG_VIEW_TAMPILFORM.GETLAPORANMONITORINGTUNGGAKAN(?,?,?,?,?) }";
             cst = con.prepareCall(sql);
+            cst.setString("IN_JENIS", in_jenis);
+            cst.setString("IN_UNITUPI", in_Unitupi);
+            cst.setString("IN_UNITAP", in_Unitap);
+            cst.setString("IN_UNITUP", in_Unitup);
+            cst.registerOutParameter("OUT_DATA", OracleTypes.CURSOR);
 
-            ResultSet rs = cst.executeQuery();
+            cst = con.prepareCall(sql);
+            cst.execute();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            rs = (ResultSet) cst.getObject("OUT_DATA");
 
-            retValue.put("getMonitoringLapSaldoTunggakan", lMapPetugas);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
+
+            retValue.put("ws_return", lMapData);
 
             con.close();
         } catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
@@ -1750,7 +1764,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                           String in_blth,
                                           String in_jenis) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1762,9 +1776,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetTunggakanPemda", lMapPetugas);
+            retValue.put("GetTunggakanPemda", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1780,7 +1794,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                            String in_blth,
                                            String in_jenis) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1792,9 +1806,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReportRestitusi", lMapPetugas);
+            retValue.put("GetReportRestitusi", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1809,7 +1823,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                                String thbl,
                                                String CekSatker) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1821,9 +1835,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ambilLaporan508", lMapPetugas);
+            retValue.put("ambilLaporan508", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1837,7 +1851,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     public Map<String, Object> ambilLaporan509(String vIDKotama,
                                                String thbl) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1849,9 +1863,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ambilLaporan509", lMapPetugas);
+            retValue.put("ambilLaporan509", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1865,7 +1879,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
     public Map<String, Object> ambilLaporan509Rekap(String vIDKotama,
                                                     String thbl) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1877,9 +1891,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ambilLaporan509Rekap", lMapPetugas);
+            retValue.put("ambilLaporan509Rekap", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1896,7 +1910,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
                                              String in_blth,
                                              String in_jenis) {
         Map<String, Object> retValue = new HashMap<String, Object>();
-        List<Map<String,String>> lMapPetugas = new ArrayList<Map<String,String>>();
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try
         {
@@ -1908,9 +1922,9 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             ResultSet rs = cst.executeQuery();
 
-            lMapPetugas = CommonModule.convertResultsetToListStr(rs);
+            lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetReport21Restitusi", lMapPetugas);
+            retValue.put("GetReport21Restitusi", lMapData);
 
             con.close();
         } catch (Exception ex)

@@ -20,7 +20,19 @@ public class Form_MonitoringTunggakanPemda {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboJenisLaporan cbJenisLaporan;
+
+    TextButton btnCetak;
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -55,7 +67,7 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -69,10 +81,10 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan = new ComboJenisLaporan();
         cbJenisLaporan.setFormAsal("Form_MonitoringTunggakanPemda");
         vlcPReferensiTgl.add(cbJenisLaporan);
 
@@ -87,7 +99,7 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
         panelParameter.add(vlcPParameter);
 
-        TextButton btnCetak = new TextButton("Cetak");
+        btnCetak = new TextButton("Cetak");
 
         btnCetak.setWidth(220);
 
