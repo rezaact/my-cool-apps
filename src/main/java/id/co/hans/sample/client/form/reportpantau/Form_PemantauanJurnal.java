@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportpantau;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,11 +23,30 @@ public class Form_PemantauanJurnal {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboTanggal cbMiddlePilihTanggalAwal;
+    ComboTanggal cbMiddelPilihTanggalAkhir;
+
+    Radio radioBerdasarkanTanggalTransaksi;
+    Radio radioBerdasarkanTanggalPembukuan;
+
+    TextButton bBottomTampilkan;
+
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
+
         }
         return vp;
     }
@@ -55,7 +77,7 @@ public class Form_PemantauanJurnal {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -69,18 +91,18 @@ public class Form_PemantauanJurnal {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboTanggal cbMiddlePilihTanggalAwal = new ComboTanggal();
+        cbMiddlePilihTanggalAwal = new ComboTanggal();
         cbMiddlePilihTanggalAwal.hideLabel();
 
         Label lbl = new Label(" s/d ");
 
-        ComboTanggal cbMiddelPilihTanggalAkhir = new ComboTanggal();
+        cbMiddelPilihTanggalAkhir = new ComboTanggal();
         cbMiddelPilihTanggalAkhir.hideLabel();
 
         hp1.add(cbMiddlePilihTanggalAwal);
@@ -102,11 +124,11 @@ public class Form_PemantauanJurnal {
 
         hp1 = new HorizontalPanel();
 
-        Radio radioBerdasarkanTanggalTransaksi = new Radio();
+        radioBerdasarkanTanggalTransaksi = new Radio();
         radioBerdasarkanTanggalTransaksi.setBoxLabel("Transaksi");
         radioBerdasarkanTanggalTransaksi.setValue(true);
 
-        Radio radioBerdasarkanTanggalPembukuan = new Radio();
+        radioBerdasarkanTanggalPembukuan = new Radio();
         radioBerdasarkanTanggalPembukuan.setBoxLabel("Pembukuan");
 
         hp1.add(radioBerdasarkanTanggalTransaksi);
@@ -125,7 +147,7 @@ public class Form_PemantauanJurnal {
         VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
         panelButton.add(vlcPButton);
 
-        TextButton bBottomTampilkan = new TextButton("Tampilkan");
+        bBottomTampilkan = new TextButton("Tampilkan");
 
         bBottomTampilkan.setWidth(220);
 
@@ -143,5 +165,49 @@ public class Form_PemantauanJurnal {
 
 
         return panel;
+    }
+
+
+//    else if(idjenislaporan.endsWith("PemantauanJurnal")){
+//        PemantauanJurnal(engine,
+//                (String) prop.get("vPilihTgl"), (String) prop.get("tUnitUP"), (String) prop.get("tUnitAP")
+//                , (String) prop.get("tTglmulai"), (String) prop.get("tTglsampai"), (String) prop.get("tBlTh"));
+//    }
+    private void initEvent() {
+        bBottomTampilkan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                if (radioBerdasarkanTanggalTransaksi.getValue())
+                    url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanJurnal"
+                        +"&vPilihTgl="+"TRANSAKSI"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                        +"&tTglsampai="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        ;
+                else
+                    url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanJurnal"
+                            +"&vPilihTgl="+"PEMBUKUAN"
+                            +"&tUnitUP="+cbUnits.getUnitUpValue()
+                            +"&tUnitAP="+cbUnits.getUnitApValue()
+                            +"&tTglmulai="+cbMiddlePilihTanggalAwal.getSelectedValue()
+                            +"&tTglsampai="+cbMiddelPilihTanggalAkhir.getSelectedValue()
+                            +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                            ;
+
+                if (radioBerdasarkanTanggalTransaksi.getValue())
+                    url+="&report=report/ReportPantau/Saldo/cr_pantau_jurnal_tgl.rpt";
+                else
+                    url+="&report=report/ReportPantau/Saldo/cr_pantau_jurnal_buku.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

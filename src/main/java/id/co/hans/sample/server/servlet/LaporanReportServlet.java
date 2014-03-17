@@ -211,6 +211,30 @@ public class LaporanReportServlet extends ReportServlet{
                     (String) prop.get("in_jenis"), (String) prop.get("in_unitupi"), (String) prop.get("in_unitap")
                     , (String) prop.get("in_unitup"));
         }
+        else if(idjenislaporan.endsWith("GetTunggakanPemda")){
+            GetTunggakanPemda(engine,
+                    (String) prop.get("in_unitupi"), (String) prop.get("in_unitap"), (String) prop.get("in_unitup")
+                    , (String) prop.get("in_blth"), (String) prop.get("in_jenis"));
+        }
+        else if(idjenislaporan.endsWith("PemantauanJurnal")){
+            PemantauanJurnal(engine,
+                    (String) prop.get("vpilihtgl"), (String) prop.get("tunitup"), (String) prop.get("tunitap")
+                    , (String) prop.get("ttglmulai"), (String) prop.get("ttglsampai"), (String) prop.get("tblth"));
+        }
+        else if(idjenislaporan.endsWith("PemantauanSaldo")){
+            PemantauanSaldo(engine,
+                    (String) prop.get("vpilihsaldo"), (String) prop.get("vpilihrep"), (String) prop.get("tunitup")
+                    , (String) prop.get("tunitap"), (String) prop.get("ttglmulai"), (String) prop.get("tbltttglsampai")
+                    , (String) prop.get("tblth"), (String) prop.get("in_unitupi"));
+        }
+        else if(idjenislaporan.endsWith("PemantauanTransaksi")){
+            PemantauanTransaksi(engine,
+                    (String) prop.get("transaksi"), (String) prop.get("vjenis"), (String) prop.get("vpilihtgl")
+                    , (String) prop.get("tunitkj"), (String) prop.get("tunitup"), (String) prop.get("tunitap")
+                    , (String) prop.get("ttglmulai"), (String) prop.get("ttglsampai"), (String) prop.get("tkdpp")
+                    , (String) prop.get("tkdpembayar")
+                    , (String) prop.get("tkode"));
+        }
     }
 
     @Override
@@ -510,6 +534,39 @@ public class LaporanReportServlet extends ReportServlet{
     public void getMonitoringLapSaldoTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
         try{
             baseService.getReportService().getLaporanMonitoringTunggakan(engine, in_jenis, in_unitupi, in_unitap, in_unitup);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void GetTunggakanPemda(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        try{
+            baseService.getReportService().GetTunggakanPemda(engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void PemantauanJurnal(Engine engine, String vPilihTgl, String tUnitUP, String tUnitAP, String tTglmulai, String tTglsampai
+            , String tBlTh) {
+        try{
+            baseService.getReportService().PemantauanJurnal(engine, vPilihTgl, tUnitUP, tUnitAP, tTglmulai, tTglsampai, tBlTh);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void PemantauanSaldo(Engine engine, String vPilihSaldo, String vPilihRep, String tUnitUP, String tUnitAP, String tTglmulai
+            , String tTglsampai, String tBlTh, String in_unitupi) {
+        try{
+            baseService.getReportService().PemantauanSaldo( engine, vPilihSaldo, vPilihRep, tUnitUP, tUnitAP, tTglmulai
+                    , tTglsampai, tBlTh, in_unitupi);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void PemantauanTransaksi(Engine engine, String Transaksi, String vJenis, String vPilihTgl, String tUnitKJ, String tUnitUP
+            , String tUnitAP, String tTglmulai, String tTglsampai, String tKdpp, String tKdPembayar, String tKode) {
+        try{
+            baseService.getReportService().PemantauanTransaksi( engine, Transaksi, vJenis, vPilihTgl, tUnitKJ, tUnitUP
+                    , tUnitAP, tTglmulai, tTglsampai, tKdpp, tKdPembayar, tKode);;
         }catch(Exception ex){
             CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
         }

@@ -198,6 +198,23 @@ public class ReportService {
 
     //reportpantau
     public void getLaporanMonitoringTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
-        getLaporanMonitoringTunggakan( engine, in_jenis, in_unitupi, in_unitap, in_unitup);
+        reportDao.getLaporanMonitoringTunggakan( engine, in_jenis, in_unitupi, in_unitap, in_unitup);
+    }
+    public void GetTunggakanPemda(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        reportDao.GetTunggakanPemda( engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
+    }
+    public void PemantauanJurnal(Engine engine, String vPilihTgl, String tUnitUP, String tUnitAP, String tTglmulai, String tTglsampai
+            , String tBlTh) {
+        reportDao.PemantauanJurnal( engine, vPilihTgl, tUnitUP, tUnitAP, tTglmulai, tTglsampai, tBlTh);
+    }
+    public void PemantauanSaldo(Engine engine, String vPilihSaldo, String vPilihRep, String tUnitUP, String tUnitAP, String tTglmulai
+            , String tTglsampai, String tBlTh, String in_unitupi) {
+        reportDao.PemantauanSaldo( engine, vPilihSaldo, vPilihRep, tUnitUP, tUnitAP, tTglmulai
+                , tTglsampai, tBlTh, in_unitupi);
+    }
+    public void PemantauanTransaksi(Engine engine, String Transaksi, String vJenis, String vPilihTgl, String tUnitKJ, String tUnitUP
+            , String tUnitAP, String tTglmulai, String tTglsampai, String tKdpp, String tKdPembayar, String tKode) {
+        reportDao.PemantauanTransaksi( engine, Transaksi, vJenis, vPilihTgl, tUnitKJ, tUnitUP
+                , tUnitAP, tTglmulai, tTglsampai, tKdpp, tKdPembayar, tKode);
     }
 }

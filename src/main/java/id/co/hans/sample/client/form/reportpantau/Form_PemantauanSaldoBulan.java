@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportpantau;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,7 +23,29 @@ public class Form_PemantauanSaldoBulan {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+
+    TextButton bBottomRekapSaldoRekeningLancar;
+    TextButton bBottomRekapSaldoRekeningRagu2;
+    TextButton bBottomRekapSaldoRekeningPerGolTarip;
+
+    TextButton bBottomRekapSaldoRekeningLancarPerGol;
+    TextButton bBottomRekapSaldoRekgLancarPerBlthrek;
+    TextButton bBottomRekapSaldoPerBlthrekPerTarip;
+
+
+    TextButton bBottomRekapSaldoRekeningPerUnsur;
+    TextButton bBottomRekapSaldoRekeningPerUmurPiutang;
+    TextButton bBottomRekapSaldoRekeningPerBLTHdanGol;
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -55,7 +80,7 @@ public class Form_PemantauanSaldoBulan {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -69,7 +94,7 @@ public class Form_PemantauanSaldoBulan {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -83,13 +108,13 @@ public class Form_PemantauanSaldoBulan {
         VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
         panelButton.add(vlcPButton);
 
-        TextButton bBottomRekapSaldoRekeningLancar = new TextButton("Rekap Saldo Rekening Lancar");
-        TextButton bBottomRekapSaldoRekeningRagu2 = new TextButton("Rekap Saldo Rekening Ragu2");
-        TextButton bBottomRekapSaldoRekeningPerGolTarip = new TextButton("Rekap Saldo Rekening Per Gol Tarip");
+        bBottomRekapSaldoRekeningLancar = new TextButton("Rekap Saldo Rekening Lancar");
+        bBottomRekapSaldoRekeningRagu2 = new TextButton("Rekap Saldo Rekening Ragu2");
+        bBottomRekapSaldoRekeningPerGolTarip = new TextButton("Rekap Saldo Rekening Per Gol Tarip");
 
-        TextButton bBottomRekapSaldoRekeningLancarPerGol = new TextButton("Rekap Saldo Rekening Lancar Per Gol");
-        TextButton bBottomRekapSaldoRekgLancarPerBlthrek = new TextButton("Rekap Saldo Rekg Lancar per BLTHREK");
-        TextButton bBottomRekapSaldoPerBlthrekPerTarip = new TextButton("Rekap Saldo per BLTHREK per Tarip");
+        bBottomRekapSaldoRekeningLancarPerGol = new TextButton("Rekap Saldo Rekening Lancar Per Gol");
+        bBottomRekapSaldoRekgLancarPerBlthrek = new TextButton("Rekap Saldo Rekg Lancar per BLTHREK");
+        bBottomRekapSaldoPerBlthrekPerTarip = new TextButton("Rekap Saldo per BLTHREK per Tarip");
 
         bBottomRekapSaldoRekeningLancar.setWidth(220);
         bBottomRekapSaldoRekeningRagu2.setWidth(220);
@@ -130,10 +155,10 @@ public class Form_PemantauanSaldoBulan {
         VerticalLayoutContainer vlcPButton2 = new VerticalLayoutContainer();
         panelButton2.add(vlcPButton2);
 
-        TextButton bBottomRekapSaldoRekeningPerUnsur = new TextButton("Rekap Saldo Rekening per Unsur");
+        bBottomRekapSaldoRekeningPerUnsur = new TextButton("Rekap Saldo Rekening per Unsur");
 
-        TextButton bBottomRekapSaldoRekeningPerUmurPiutang = new TextButton("Rekap Saldo Rekening per Umur Piutang");
-        TextButton bBottomRekapSaldoRekeningPerBLTHdanGol = new TextButton("Rekap Saldo Rekening per BLTH dan Gol");
+        bBottomRekapSaldoRekeningPerUmurPiutang = new TextButton("Rekap Saldo Rekening per Umur Piutang");
+        bBottomRekapSaldoRekeningPerBLTHdanGol = new TextButton("Rekap Saldo Rekening per BLTH dan Gol");
 
         bBottomRekapSaldoRekeningPerUnsur.setWidth(220);
 
@@ -157,5 +182,256 @@ public class Form_PemantauanSaldoBulan {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomRekapSaldoRekeningLancar.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"LANCAR"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR"
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_LR.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapSaldoRekeningRagu2.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"RAGU"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"RAGU-RAGU"
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_LR.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapSaldoRekeningPerGolTarip.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"LANCAR_JLNTGK_TARIP"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO PIUTANG PELANGGAN BERDASARKAN TARIP"
+                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue();
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_jlntgk_tarip.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+
+        bBottomRekapSaldoRekeningLancarPerGol.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"LANCAR_GOL"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR per GOLONGAN";
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_gol.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapSaldoRekgLancarPerBlthrek.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"LANCAR_BLTH"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR per BLTH REKENING";
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_blth.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapSaldoPerBlthrekPerTarip.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"LANCAR_JLNTGK_TARIP_BLTH"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO PIUTANG PELANGGAN BERDASARKAN TARIP"
+                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue();
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_jlntgk_tarip_blth.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+
+        bBottomRekapSaldoRekeningPerUnsur.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"JLN_TGK_UNSUR"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO PIUTANG PELANGGAN BERDASARKAN UNSUR PIUTANG"
+                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue();
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_unsur.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapSaldoRekeningPerUmurPiutang.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"UMUR_PIUTANG"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR (PER LEMBAR)";
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_lembar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapSaldoRekeningPerBLTHdanGol.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vPilihSaldo="+"BULAN"
+                        +"&vPilihRep="+"PER_GOL_BLTH"
+                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+                        +"&tUnitAP="+cbUnits.getUnitApValue()
+                        +"&tTglmulai="+""
+                        +"&tTglsampai="+""
+                        +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR per GOLONGAN DAN PER BLTH REKENING";
+                        ;
+
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_gol_blth.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }
