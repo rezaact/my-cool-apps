@@ -26,8 +26,8 @@
         <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
         <property name="url"
                   value="jdbc:oracle:thin:@192.168.10.23:1521:CISQA"/>
-        <property name="username" value="BILL52"/>
-        <property name="password" value="BILL52"/>
+        <property name="username" value="SIP3SINGLEJABAR"/>
+        <property name="password" value="SIP3SINGLEJABAR"/>
     </bean>
 
     <bean id="transactionManager"
