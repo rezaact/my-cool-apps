@@ -1,10 +1,41 @@
 package id.co.hans.sample.client;
 
-import com.google.gwt.core.client.GWT;
+import id.co.hans.sample.client.form.cetakulang.Form_CetakUlangBebanKantor;
+import id.co.hans.sample.client.form.creditnote.Form_BatalCN;
+import id.co.hans.sample.client.form.creditnote.Form_DataDana;
+import id.co.hans.sample.client.form.reportmain.Form_Report11_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report12_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report13_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report2122_DoubleBayar;
+import id.co.hans.sample.client.form.reportmain.Form_Report21Giral_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_BA;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Kdpp;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Petugas;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Restitusi;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Unit;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Upload;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_AP;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_Kdpp;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_Petugas;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_Unit;
+import id.co.hans.sample.client.form.reportmain.Form_Report23BebanKantor_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report23Dlt_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report23NotaTerpusat_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report23Nota_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report23Nota_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report23_Kirim;
+import id.co.hans.sample.client.form.reportmain.Form_Report23_Terima;
+import id.co.hans.sample.client.form.reportmain.Form_Report24Nota_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report31_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report32_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report41_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_ReportBK_212223_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_ReportPenetapanBK_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report_Pemda;
+import id.co.hans.sample.client.form.reportmain.Form_Report_Restitusi;
+
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import id.co.hans.sample.client.form.reportmain.*;
-import id.co.hans.sample.client.form.reportpantau.*;
 
 public class View implements IsWidget {
     private static View instance;
@@ -94,6 +125,12 @@ public class View implements IsWidget {
             widgetMenu =new Form_ReportBK_212223_Rekap().asWidget(idUser,unitupUser,levelUser);
         } else if (id_menu.toUpperCase().equals("Form_ReportPenetapanBK_Rekap".toUpperCase())){
             widgetMenu =new Form_ReportPenetapanBK_Rekap().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_BatalCN".toUpperCase())) {
+        	widgetMenu = new Form_BatalCN().asWidget(idUser, unitupUser, levelUser);
+        } 
+        
+        else if (id_menu.toUpperCase().equals("Form_DataDana".toUpperCase())) {
+        	widgetMenu = new Form_DataDana().asWidget(idUser, unitupUser, levelUser);
         }
 
         //report pantau
