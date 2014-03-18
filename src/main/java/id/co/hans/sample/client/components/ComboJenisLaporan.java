@@ -33,8 +33,8 @@ public class ComboJenisLaporan implements IsWidget {
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
-        cb.setComboWidth(79);
+        cb.setStoreUrl("components/getJenisLaporan.json?formOriginalName=" + this.form);
+        cb.setComboWidth(200);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
             @Override

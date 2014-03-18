@@ -72,6 +72,7 @@ public class Form_Report24Nota_Rekap {
         panelReferensi.add(vlcPReferensi);
 
         cbKdNotaBuku = new ComboKodeNotaBuku();
+        cbKdNotaBuku.setUnitUp(unitUser);
         vlcPReferensi.add(cbKdNotaBuku);
 
         p.add(panelReferensi);
@@ -89,6 +90,7 @@ public class Form_Report24Nota_Rekap {
         vlcPReferensiTgl.add(cbTahunBulan);
 
         cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan.setFormAsal("Form_Report24Nota_Rekap");
         vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);

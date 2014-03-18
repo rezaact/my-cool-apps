@@ -74,6 +74,7 @@ public class Form_Report23NotaTerpusat_Kode {
         panelReferensi.add(vlcPReferensi);
 
         cbKdNotaBuku = new ComboKodeNotaBuku();
+        cbKdNotaBuku.setUnitUp(unitUser);
         vlcPReferensi.add(cbKdNotaBuku);
 
         p.add(panelReferensi);

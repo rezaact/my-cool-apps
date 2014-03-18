@@ -294,6 +294,9 @@ public class Form_Report11_Rekap {
         cbUnits.getComboUnitUp().addSelectionHandler(new SelectionHandler<Map<String, String>>() {
             @Override
             public void onSelection(SelectionEvent<Map<String, String>> event) {
+                Map<String, String> data = (Map<String, String>)event.getSelectedItem();
+                cbUnits.setUnitUpValue(data.get("fieldValue"));
+
                 cbKdSiklis.getComboBox().setStoreUrl("components/getComboKodeSiklis.json?unitUp=" + cbUnits.getUnitUpValue() + "&addSemua=1");
                 cbKdSiklis.getComboBox().loadStore();
             }

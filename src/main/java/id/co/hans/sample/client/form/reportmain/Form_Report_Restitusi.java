@@ -90,6 +90,7 @@ public class Form_Report_Restitusi {
         vlcPReferensiTgl.add(cbTahunBulan);
 
         cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan.setFormAsal("Form_Report_Restitusi");
         vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);

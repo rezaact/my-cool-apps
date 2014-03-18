@@ -16,6 +16,7 @@ public class ComboKodeGiralisasi implements IsWidget {
     private HorizontalPanel hp;
     private IconComboBox cb;
     private TextField tfDescription;
+    private String unitUp;
 
     private String cbSelectedValue;
 
@@ -27,10 +28,17 @@ public class ComboKodeGiralisasi implements IsWidget {
         return this.cbSelectedValue;
     }
 
+    public void setUnitUp(String unitUp) {
+        this.unitUp = unitUp;
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        if (this.unitUp.trim().equals(""))
+            cb.setStoreUrl("components/getComboDataKolektifGiralisasi.json?");
+        else
+            cb.setStoreUrl("components/getComboDataKolektifGiralisasi.json?unitUp=" + this.unitUp);
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

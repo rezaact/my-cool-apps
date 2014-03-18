@@ -100,9 +100,6 @@ public class Form_Report32_Rekap {
         cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
-        cbJenisLaporan = new ComboJenisLaporan();
-        vlcPReferensiTgl.add(cbJenisLaporan);
-
         p.add(panelReferensiTgl);
 
 

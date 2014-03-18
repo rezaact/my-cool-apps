@@ -17,6 +17,9 @@ public class ComboKodeBebanKantor implements IsWidget {
     private IconComboBox cb;
     private TextField tfDescription;
 
+    private String unitUp;
+    private String iBebanKantor;
+
     private String cbSelectedValue;
 
     public IconComboBox getComboBox() {
@@ -27,10 +30,18 @@ public class ComboKodeBebanKantor implements IsWidget {
         return this.cbSelectedValue;
     }
 
+    public void setUnitUp(String unitUp) {
+        this.unitUp = unitUp;
+    }
+
+    public void setIBebanKantor(String iBebanKantor) {
+        this.iBebanKantor = iBebanKantor;
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cb.setStoreUrl("components/getComboDataKolektifNotaBuku.json?unitUp=" + this.unitUp + "&iBebanKantor=" + this.iBebanKantor);
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

@@ -74,6 +74,8 @@ public class Form_Report23Nota_Kode {
         panelReferensi.add(vlcPReferensi);
 
         cbKdBebanKantor = new ComboKodeBebanKantor();
+        cbKdBebanKantor.setUnitUp(unitUser);
+        cbKdBebanKantor.setIBebanKantor("0");
         vlcPReferensi.add(cbKdBebanKantor);
 
         p.add(panelReferensi);

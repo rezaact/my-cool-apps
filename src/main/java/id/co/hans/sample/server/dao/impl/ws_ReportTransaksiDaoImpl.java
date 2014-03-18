@@ -244,7 +244,15 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "Get_KODEPP ";
+            String sql = "";
+
+            sql = "SELECT KODEPP, NAMAPP, UNITKJ, UNITUP FROM PAYMENTPOINT";
+            if ( unitup.trim().equals("") ) {
+            } else {
+                sql += " where kode_ranting_numerik = '" + unitup + "'";
+            }
+            sql += " ORDER BY KODEPP";
+
             CallableStatement cst;
             cst = con.prepareCall(sql);
 
@@ -252,7 +260,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("Get_KODEPP", lMapData);
+            retValue.put("wsReturn", lMapData);
 
             con.close();
         } catch (Exception ex)
@@ -1503,7 +1511,13 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "ref_AmbilPetugas ";
+            String sql = "";
+
+            sql = " SELECT ID_USER, NAMA_USER, UNITUP, KDPP ";
+            sql += " FROM PETUGAS_2122OFFON ";
+            sql += " where KDPP = '" + kodePP + "'";
+            sql += " ORDER BY ID_USER";
+
             CallableStatement cst;
             cst = con.prepareCall(sql);
 
@@ -1511,7 +1525,7 @@ public class ws_ReportTransaksiDaoImpl implements ws_ReportTransaksiDao{
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ref_AmbilPetugas", lMapData);
+            retValue.put("wsReturn", lMapData);
 
             con.close();
         } catch (Exception ex)

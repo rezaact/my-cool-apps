@@ -34,7 +34,7 @@ public class ComboTanggal implements IsWidget {
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTanggal.json");
+        cb.setStoreUrl("components/getComboTanggal.json?year=2014&month=01");
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

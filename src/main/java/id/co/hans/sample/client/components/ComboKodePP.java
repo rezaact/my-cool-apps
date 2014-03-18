@@ -27,10 +27,14 @@ public class ComboKodePP implements IsWidget {
         return this.cbSelectedValue;
     }
 
+    public void setSelectedValue(String value) {
+        this.cbSelectedValue = value;
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cb.setStoreUrl("components/getComboKodePaymentPoint.json");
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
@@ -39,7 +43,7 @@ public class ComboKodePP implements IsWidget {
                 Map<String, String> data = (Map<String, String>)event.getSelectedItem();
                 cbSelectedValue = data.get("fieldValue");
 
-                tfDescription.setText(data.get("fieldValue"));
+                tfDescription.setText(data.get("fieldValue") + " - " + data.get("displayValue"));
             }
         });
 

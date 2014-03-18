@@ -15,12 +15,31 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
+//todo: marked! event belum .. Form_PemantauanSaldoHari
+
 public class Form_PemantauanSaldoHari {
 
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboTanggal cbTopPilihTanggalAwal;
+    ComboTanggal cbTopPilihTanggalAkhir;
+
+    TextButton bBottomSaldoRekeningLancar;
+    TextButton bBottomSaldoRekeningRagu2;
+
+    TextButton bBottomSaldoRekeningLancarPerGol;
+
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -55,7 +74,7 @@ public class Form_PemantauanSaldoHari {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -69,17 +88,17 @@ public class Form_PemantauanSaldoHari {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         HorizontalPanel hp1 = new HorizontalPanel();
 
-        ComboTanggal cbTopPilihTanggalAwal = new ComboTanggal();
+        cbTopPilihTanggalAwal = new ComboTanggal();
         cbTopPilihTanggalAwal.hideLabel();
 
         Label lbl = new Label(" s/d ");
 
-        ComboTanggal cbTopPilihTanggalAkhir = new ComboTanggal();
+        cbTopPilihTanggalAkhir = new ComboTanggal();
         cbTopPilihTanggalAkhir.hideLabel();
 
         hp1.add(cbTopPilihTanggalAwal);
@@ -99,10 +118,10 @@ public class Form_PemantauanSaldoHari {
         VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
         panelButton.add(vlcPButton);
 
-        TextButton bBottomSaldoRekeningLancar = new TextButton("Saldo Rekening Lancar");
-        TextButton bBottomSaldoRekeningRagu2 = new TextButton("Saldo Rekening Ragu2");
+        bBottomSaldoRekeningLancar = new TextButton("Saldo Rekening Lancar");
+        bBottomSaldoRekeningRagu2 = new TextButton("Saldo Rekening Ragu2");
 
-        TextButton bBottomSaldoRekeningLancarPerGol = new TextButton("Saldo Rekening Lancar Per Gol");
+        bBottomSaldoRekeningLancarPerGol = new TextButton("Saldo Rekening Lancar Per Gol");
 
         bBottomSaldoRekeningLancar.setWidth(220);
         bBottomSaldoRekeningRagu2.setWidth(220);

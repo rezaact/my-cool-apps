@@ -54,6 +54,10 @@ public class ComboUnits implements IsWidget {
         return this.unitUp;
     }
 
+    public void setUnitUpValue(String unitUp) {
+        this.unitUp = unitUp;
+    }
+
     public IconComboBox getComboUnitUpi() {
         return this.cbUnitUpi;
     }

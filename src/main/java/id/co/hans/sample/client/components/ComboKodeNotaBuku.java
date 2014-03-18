@@ -19,6 +19,8 @@ public class ComboKodeNotaBuku implements IsWidget {
 
     private String cbSelectedValue;
 
+    private String unitUp;
+
     public IconComboBox getComboBox() {
         return this.cb;
     }
@@ -27,10 +29,14 @@ public class ComboKodeNotaBuku implements IsWidget {
         return this.cbSelectedValue;
     }
 
+    public void setUnitUp(String unitUp) {
+        this.unitUp = unitUp;
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cb.setStoreUrl("components/getComboDataKolektifNotaTerpusat.json?unitUp=" + this.unitUp);
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
