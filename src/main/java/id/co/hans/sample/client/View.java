@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import id.co.hans.sample.client.form.reportmain.*;
+import id.co.hans.sample.client.form.reportpantau.*;
 
 public class View implements IsWidget {
     private static View instance;
@@ -93,6 +94,25 @@ public class View implements IsWidget {
             widgetMenu =new Form_ReportBK_212223_Rekap().asWidget(idUser,unitupUser,levelUser);
         } else if (id_menu.toUpperCase().equals("Form_ReportPenetapanBK_Rekap".toUpperCase())){
             widgetMenu =new Form_ReportPenetapanBK_Rekap().asWidget(idUser,unitupUser,levelUser);
+        }
+
+        //report pantau
+        else if (id_menu.toUpperCase().equals("Form_MonitoringSaldoTunggakan".toUpperCase())){
+            widgetMenu =new Form_MonitoringSaldoTunggakan().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_MonitoringTunggakanPemda".toUpperCase())){
+            widgetMenu =new Form_MonitoringTunggakanPemda().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanBatalTransaksi".toUpperCase())){
+            widgetMenu =new Form_PemantauanBatalTransaksi().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanJurnal".toUpperCase())){
+            widgetMenu =new Form_PemantauanJurnal().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanSaldoBulan".toUpperCase())){
+            widgetMenu =new Form_PemantauanSaldoBulan().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanSaldoHari".toUpperCase())){
+            widgetMenu =new Form_PemantauanSaldoHari().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanSaldoIni".toUpperCase())){
+            widgetMenu =new Form_PemantauanSaldoIni().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanTransaksi".toUpperCase())){
+            widgetMenu =new Form_PemantauanTransaksi().asWidget(idUser,unitupUser,levelUser);
         }
 
         return widgetMenu;
