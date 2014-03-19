@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportpantau;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,10 +14,9 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
-
-//todo: marked! event belum .. Form_PemantauanSaldoHari
 
 public class Form_PemantauanSaldoHari {
 
@@ -44,6 +45,7 @@ public class Form_PemantauanSaldoHari {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -145,5 +147,84 @@ public class Form_PemantauanSaldoHari {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomSaldoRekeningLancar.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vpilihsaldo="+"HARI"
+                        +"&vpilihrep="+"LANCAR"
+                        +"&tunitup="+cbUnits.getUnitUpValue()
+                        +"&tunitap="+cbUnits.getUnitApValue()
+                        +"&ttglmulai="+cbTopPilihTanggalAwal.getSelectedValue()
+                        +"&tbltttglsampai="+cbTopPilihTanggalAkhir.getSelectedValue()
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR"
+                        ;
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldohari_LR.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomSaldoRekeningLancarPerGol.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vpilihsaldo="+"HARI"
+                        +"&vpilihrep="+"LANCAR_GOL"
+                        +"&tunitup="+cbUnits.getUnitUpValue()
+                        +"&tunitap="+cbUnits.getUnitApValue()
+                        +"&ttglmulai="+cbTopPilihTanggalAwal.getSelectedValue()
+                        +"&tbltttglsampai="+cbTopPilihTanggalAkhir.getSelectedValue()
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"LANCAR per GOLONGAN"
+                        ;
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldohari_L_gol.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomSaldoRekeningRagu2.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
+                        +"&vpilihsaldo="+"HARI"
+                        +"&vpilihrep="+"RAGU"
+                        +"&tunitup="+cbUnits.getUnitUpValue()
+                        +"&tunitap="+cbUnits.getUnitApValue()
+                        +"&ttglmulai="+cbTopPilihTanggalAwal.getSelectedValue()
+                        +"&tbltttglsampai="+cbTopPilihTanggalAkhir.getSelectedValue()
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&judulsatu="+"SALDO REKENING LISTRIK"
+                        +"&juduldua="+"RAGU-RAGU"
+                        ;
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldohari_LR.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

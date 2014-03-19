@@ -167,12 +167,6 @@ public class Form_PemantauanJurnal {
         return panel;
     }
 
-
-//    else if(idjenislaporan.endsWith("PemantauanJurnal")){
-//        PemantauanJurnal(engine,
-//                (String) prop.get("vPilihTgl"), (String) prop.get("tUnitUP"), (String) prop.get("tUnitAP")
-//                , (String) prop.get("tTglmulai"), (String) prop.get("tTglsampai"), (String) prop.get("tBlTh"));
-//    }
     private void initEvent() {
         bBottomTampilkan.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
