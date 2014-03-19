@@ -1,17 +1,16 @@
 package id.co.hans.sample.client.components;
 
+import java.util.Map;
+
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
-import java.util.Map;
-
-public class ComboKodePP implements IsWidget {
+public class ComboKodePP extends AbstractComboComponent {
 
     private HorizontalPanel hp;
     private IconComboBox cb;
@@ -44,6 +43,8 @@ public class ComboKodePP implements IsWidget {
                 cbSelectedValue = data.get("fieldValue");
 
                 tfDescription.setText(data.get("fieldValue") + " - " + data.get("displayValue"));
+                
+                onComboChange(data.get("fieldValue"));
             }
         });
 

@@ -12,7 +12,6 @@ import com.sencha.gxt.data.client.loader.HttpProxy;
 import com.sencha.gxt.data.shared.*;
 import com.sencha.gxt.data.shared.loader.*;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
-
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 
@@ -33,16 +32,6 @@ public class IconComboBox implements IsWidget{
         }
     }
 
-    private class DataRecordJsonReader extends JsonReader<ListLoadResult<Map<String, String>>, RecordResult> {
-        public DataRecordJsonReader(AutoBeanFactory factory, Class<RecordResult> rootBeanType) {
-            super(factory, rootBeanType);
-        }
-
-        @Override
-        protected ListLoadResult<Map<String, String>> createReturnData(Object loadConfig, RecordResult incomingData) {
-            return new ListLoadResultBean<Map<String,String>>(incomingData.getRecords());
-        }
-    }
     public interface RecordResult {
         List<Map<String, String>> getRecords();
     }
@@ -100,9 +89,6 @@ public class IconComboBox implements IsWidget{
 
     public void addSelectionHandler(SelectionHandler<Map<String, String>> handler) {
         this.selectionHandler = handler;
-        if (this != null) {
-            comboBox.addSelectionHandler(this.selectionHandler);
-        }
     }
 
     public void loadStore(){

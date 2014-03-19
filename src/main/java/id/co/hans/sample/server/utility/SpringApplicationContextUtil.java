@@ -1,10 +1,17 @@
-package id.co.iconpln.ap2t.fungsi4.server.utility;
+package id.co.hans.sample.server.utility;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
+/**
+ * 
+ * It should not create a new instance of ApplicationContext.
+ *
+ */
+@Deprecated
 public class SpringApplicationContextUtil implements ApplicationContextAware{
 
 	private static ApplicationContext CONTEXT; 

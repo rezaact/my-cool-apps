@@ -1,45 +1,41 @@
 package id.co.hans.sample.client.form.creditnote;
 
+import id.co.hans.sample.client.AbstractForm;
+import id.co.hans.sample.client.components.ComboKodePP;
+import id.co.hans.sample.client.components.IconDynamicGrid;
+
+import java.util.Date;
+
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.resources.ThemeStyles;
-import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.*;
-import id.co.hans.sample.client.components.ComboKodePP;
-import id.co.hans.sample.client.components.IconComboBox;
-import id.co.hans.sample.client.components.IconDynamicGrid;
+import com.sencha.gxt.widget.core.client.form.CheckBox;
+import com.sencha.gxt.widget.core.client.form.DateField;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.Radio;
+import com.sencha.gxt.widget.core.client.form.TextField;
 
-public class Form_BatalCN {
+public class Form_BatalCN extends AbstractForm {
 
+    private static final String EMPTY_STRING = "";
+	private static final Date TODAY = new Date();
+	private Radio radioTopTglLunas;
+	private HorizontalPanel hlcRentangRaktuCNTanggalPelunasan;
+	private TextField tfBottomNoBA;
+	private TextField tfBottomTglPelunasan;
+	private TextField tfBottomTglPenyetoran;
+	private TextField tfBottomRpTotal;
+	private DateField dfMiddleTglLunasAwal;
+	private DateField dfMiddleTglLunasAkhir;
+	private DateField dfMiddleTglSetorAwal;
+	private DateField dfMiddleTglSetorAkhir;
+	private ComboKodePP cbTopPilihKodePp;
 
-    private VerticalPanel vp;
-
-    public Widget asWidget() {
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
-    }
-
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+	@Override
+    protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Laporan Pembatalan Credit Note");
@@ -64,7 +60,7 @@ public class Form_BatalCN {
         vlcBerdasarkanKodePP.add(chkPP);
 
 
-        ComboKodePP cbTopPilihKodePp = new ComboKodePP();
+        cbTopPilihKodePp = new ComboKodePP();
         vlcBerdasarkanKodePP.add(cbTopPilihKodePp);
 
         p.add(panelBerdasarkanKodePP);
@@ -79,13 +75,13 @@ public class Form_BatalCN {
         VerticalLayoutContainer vlcRentangWaktuCN = new VerticalLayoutContainer();
         panelParameterRentangWaktuCN.add(vlcRentangWaktuCN);
 
-        HorizontalPanel hlcRentangRaktuCNTanggalPelunasan = new HorizontalPanel();
+        hlcRentangRaktuCNTanggalPelunasan = new HorizontalPanel();
 
-        Radio radioTopTglLunas = new Radio();
+        radioTopTglLunas = new Radio();
         radioTopTglLunas.setBoxLabel("Tanggal Pelunasan");
         hlcRentangRaktuCNTanggalPelunasan.add(radioTopTglLunas);
 
-        DateField dfMiddleTglLunasAwal = new DateField();
+        dfMiddleTglLunasAwal = new DateField();
         dfMiddleTglLunasAwal.getElement().getStyle().setMarginLeft(6, Style.Unit.PX);
         hlcRentangRaktuCNTanggalPelunasan.add(dfMiddleTglLunasAwal);
 
@@ -95,7 +91,7 @@ public class Form_BatalCN {
         lbl01.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
         hlcRentangRaktuCNTanggalPelunasan.add(lbl01);
 
-        DateField dfMiddleTglLunasAkhir = new DateField();
+        dfMiddleTglLunasAkhir = new DateField();
         hlcRentangRaktuCNTanggalPelunasan.add(dfMiddleTglLunasAkhir);
 
         vlcRentangWaktuCN.add(hlcRentangRaktuCNTanggalPelunasan, new VerticalLayoutContainer.VerticalLayoutData(-1,1));
@@ -107,7 +103,7 @@ public class Form_BatalCN {
         radioTopTglSetor.setBoxLabel("Tanggal Penyetoran");
         hlcRentangRaktuCNTanggalSetoran.add(radioTopTglSetor);
 
-        DateField dfMiddleTglSetorAwal = new DateField();
+        dfMiddleTglSetorAwal = new DateField();
         hlcRentangRaktuCNTanggalSetoran.add(dfMiddleTglSetorAwal);
 
         Label lbl02 = new Label("Sampai");
@@ -116,7 +112,7 @@ public class Form_BatalCN {
         lbl02.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
         hlcRentangRaktuCNTanggalSetoran.add(lbl02);
 
-        DateField dfMiddleTglSetorAkhir = new DateField();
+        dfMiddleTglSetorAkhir = new DateField();
         hlcRentangRaktuCNTanggalSetoran.add(dfMiddleTglSetorAkhir);
 
         vlcRentangWaktuCN.add(hlcRentangRaktuCNTanggalSetoran, new VerticalLayoutContainer.VerticalLayoutData(-1,1));
@@ -161,7 +157,7 @@ public class Form_BatalCN {
 
         HorizontalPanel hlcDataCNYangAkanDihapus = new HorizontalPanel();
 
-        TextField tfBottomNoBA = new TextField();
+        tfBottomNoBA = new TextField();
         hlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomNoBA, "No BA"));
 
         hlcDataCNYangAkanDihapus.add(new TextButton("Hapus Data"));
@@ -169,18 +165,31 @@ public class Form_BatalCN {
         vlcDataCNYangAkanDihapus.add(hlcDataCNYangAkanDihapus);
 
         HorizontalPanel hlcDataCNYangAkanDihapus2 = new HorizontalPanel();
-        TextField tfBottomTglPelunasan = new TextField();
+        tfBottomTglPelunasan = new TextField();
         hlcDataCNYangAkanDihapus2.add(new FieldLabel(tfBottomTglPelunasan, "Tanggal Pelunasan"));
         vlcDataCNYangAkanDihapus.add(hlcDataCNYangAkanDihapus2);
 
-        TextField tfBottomTglPenyetoran = new TextField();
+        tfBottomTglPenyetoran = new TextField();
         vlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomTglPenyetoran, "Tanggal Penyetoran"));
 
-        TextField tfBottomRpTotal = new TextField();
+        tfBottomRpTotal = new TextField();
         vlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomRpTotal, "Rp Total"));
 
         p.add(panelDataCNYangAkanDihapus);
 
         return panel;
     }
+
+	@Override
+	protected void initEvent() {
+		radioTopTglLunas.setValue(true);
+		tfBottomNoBA.setValue(EMPTY_STRING);
+		tfBottomTglPelunasan.setValue(EMPTY_STRING);
+		tfBottomTglPenyetoran.setValue(EMPTY_STRING);
+		tfBottomRpTotal.setValue(EMPTY_STRING);
+		dfMiddleTglLunasAwal.setValue(TODAY);
+		dfMiddleTglLunasAkhir.setValue(TODAY);
+		dfMiddleTglSetorAwal.setValue(TODAY);
+		dfMiddleTglSetorAkhir.setValue(TODAY);
+	}
 }

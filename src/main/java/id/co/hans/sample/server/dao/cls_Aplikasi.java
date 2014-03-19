@@ -62,7 +62,7 @@ public class cls_Aplikasi {
         {
             Map<String, Object> cekBk = cekBKSudahDibuat();
 
-            if (cekBk.get("wsReturn") == false) {
+            if ((Boolean)cekBk.get("wsReturn") == false) {
                 throw new Exception(cekBk.get("wsByRefError").toString());
             }
 
