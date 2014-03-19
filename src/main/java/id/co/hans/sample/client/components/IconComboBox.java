@@ -32,7 +32,6 @@ public class IconComboBox implements IsWidget{
         }
     }
 
-    
     public interface RecordResult {
         List<Map<String, String>> getRecords();
     }
@@ -90,9 +89,6 @@ public class IconComboBox implements IsWidget{
 
     public void addSelectionHandler(SelectionHandler<Map<String, String>> handler) {
         this.selectionHandler = handler;
-        //if (this != null) {
-        //    comboBox.addSelectionHandler(this.selectionHandler);
-        //}
     }
 
     public void loadStore(){
