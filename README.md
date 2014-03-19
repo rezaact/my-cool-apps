@@ -14,7 +14,7 @@ Untuk lebih jelasnya dapat dibaca pada keterangan di bawah ini :
 Kelas component yang meng-extend kelas **AbstractComboComponent** akan memiliki kemampuan untuk merubah value component yang lain apabila component combobox yang kita definisikan nilainya berubah oleh karena terjadinya event select.
 
 Cara untuk merubah valuenya dapat dilihat pada gambar berikut :
-![AbstractComboComponent-example.png](/home/brainmaster/Documents/workspace/my-cool-apps/resources/AbstractComboComponent-example.png "Cara registrasi component lain yang valuenya berubah karena combobox event select")
+![AbstractComboComponent-example.png](resources/AbstractComboComponent-example.png "Cara registrasi component lain yang valuenya berubah karena combobox event select")
 
 method yang bisa digunakan untuk meregistrasi component yang lain antara lain adalah : 
 
