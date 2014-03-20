@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.components;
 
+import id.co.hans.sample.constants.WsUmumUrlConstants;
+
 import java.util.Map;
 
 import com.google.gwt.event.logical.shared.SelectionEvent;
@@ -12,6 +14,9 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 
 public class ComboUnit extends AbstractComboComponent {
 
+	@SuppressWarnings("unused")
+	private static final String DUMMY_URL = "BasicProject/thuGetComboData.json";
+	
 	private HorizontalPanel hp;
 	private IconComboBox cbUnitUp;
 	private TextField tfDescription;
@@ -20,7 +25,7 @@ public class ComboUnit extends AbstractComboComponent {
 	@Override
 	public Widget asWidget() {
 		cbUnitUp = new IconComboBox();
-		cbUnitUp.setStoreUrl("BasicProject/thuGetComboData.json");
+		cbUnitUp.setStoreUrl(WsUmumUrlConstants.UNIT_UP_URL);
 		cbUnitUp.setComboWidth(200);
 		cbUnitUp.setLabelWidth(180);
 

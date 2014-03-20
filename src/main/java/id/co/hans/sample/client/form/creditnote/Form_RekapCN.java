@@ -1,41 +1,24 @@
 package id.co.hans.sample.client.form.creditnote;
 
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
+import id.co.hans.sample.client.AbstractForm;
+import id.co.hans.sample.client.components.ComboKodePP;
+import id.co.hans.sample.client.components.ComboUnit;
+import id.co.hans.sample.constants.WsUmumUrlConstants;
+
 import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.*;
-import id.co.hans.sample.client.components.ComboKodePP;
-import id.co.hans.sample.client.components.ComboUnit;
-import id.co.hans.sample.client.components.IconComboBox;
-import id.co.hans.sample.client.components.IconDynamicGrid;
+import com.sencha.gxt.widget.core.client.form.DateField;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
 
-public class Form_RekapCN {
+public class Form_RekapCN extends AbstractForm {
 
 
-    private VerticalPanel vp;
+    private ComboUnit cbTopPilihUnitUp;
+	private ComboKodePP cbTopPilihKodePp;
 
-    public Widget asWidget() {
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
-    }
-
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+	protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Laporan Credit Note");
@@ -48,10 +31,10 @@ public class Form_RekapCN {
         panel.add(vlc);
 
 
-        ComboUnit cbTopPilihUnitUp = new ComboUnit();
+        cbTopPilihUnitUp = new ComboUnit();
         vlc.add(cbTopPilihUnitUp);
 
-        ComboKodePP cbTopPilihKodePp = new ComboKodePP();
+        cbTopPilihKodePp = new ComboKodePP();
         vlc.add(cbTopPilihKodePp);
 
         //LayoutColumn 300px
@@ -107,4 +90,13 @@ public class Form_RekapCN {
 
         return panel;
     }
+
+	@Override
+	@SuppressWarnings("unchecked")
+	protected void initEvent() {
+		cbTopPilihUnitUp.getChangesComboBoxStore().put(
+				cbTopPilihKodePp.getComboBox().getComboBox(),
+				WsUmumUrlConstants.KODE_PP_DARI_UNIT_UP_URL);
+		
+	}
 }

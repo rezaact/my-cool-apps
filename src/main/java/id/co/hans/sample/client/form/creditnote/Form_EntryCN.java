@@ -1,40 +1,52 @@
 package id.co.hans.sample.client.form.creditnote;
 
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
+import id.co.hans.sample.client.AbstractForm;
+import id.co.hans.sample.client.components.IconComboBox;
+import id.co.hans.sample.constants.WsUmumUrlConstants;
+
+import java.util.Date;
+import java.util.Map;
+
+import com.google.gwt.core.client.JsonUtils;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.http.client.URL;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.json.client.JSONObject;
 import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.*;
-import id.co.hans.sample.client.components.IconComboBox;
-import id.co.hans.sample.client.components.IconDynamicGrid;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.form.DateField;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.TextField;
 
 
 //todo: skipped. work on later
-public class Form_EntryCN {
+public class Form_EntryCN extends AbstractForm {
 
+	private static final String DUMMY_URL = "BasicProject/thuGetComboData2.json?";
+	private static final String BUKTI_SETOR_PREFIX_CODE = "BACN-";
+	private static final String BUKTI_SETOR_SEPARATOR = "/";
+	
+    private IconComboBox cb_UnitUP;
+	private DateField dt_Pelunasan;
+	private DateField dt_Penyetoran;
+	private TextField txt_UnitUP;
+	private IconComboBox cb_KodePP;
+	private TextField txt_KodePp;
+	private TextField txt_BABuktiSetor;
+	private TextButton btn_Buat;
+	private TextButton btn_Simpan;
 
-    private VerticalPanel vp;
-
-    public Widget asWidget() {
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
-    }
-
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+	@Override
+    protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Entry Credit Note");
@@ -45,25 +57,25 @@ public class Form_EntryCN {
         VerticalLayoutContainer p = new VerticalLayoutContainer();
         panel.add(p);
 
-        IconComboBox cb_UnitUP = new IconComboBox();
-        cb_UnitUP.setStoreUrl("BasicProject/thuGetComboData2.json");
+        cb_UnitUP = new IconComboBox();
+        cb_UnitUP.setStoreUrl(DUMMY_URL);
         cb_UnitUP.setComboFieldName("Unit UP");
         cb_UnitUP.setComboWidth(250);
         cb_UnitUP.setLabelWidth(180);
         p.add(cb_UnitUP);
 
-        TextField txt_UnitUP = new TextField();
+        txt_UnitUP = new TextField();
         txt_UnitUP.setAllowBlank(false);
         p.add(new FieldLabel(txt_UnitUP, "Unit UP"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
-        IconComboBox cb_KodePP = new IconComboBox();
-        cb_KodePP.setStoreUrl("BasicProject/thuGetComboData2.json");
+        cb_KodePP = new IconComboBox();
+        cb_KodePP.setStoreUrl(DUMMY_URL);
         cb_KodePP.setComboFieldName("Kode PP");
         cb_KodePP.setComboWidth(250);
         cb_KodePP.setLabelWidth(180);
         p.add(cb_KodePP);
 
-        TextField txt_KodePp = new TextField();
+        txt_KodePp = new TextField();
         txt_KodePp.setAllowBlank(false);
         p.add(new FieldLabel(txt_KodePp, "Kode PP"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
@@ -80,25 +92,28 @@ public class Form_EntryCN {
         p.add(new FieldLabel(tfTopPilihKodePp, "Kode PP"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
 
-        DateField dt_Pelunasan = new DateField();
+        dt_Pelunasan = new DateField();
         dt_Pelunasan.setAllowBlank(false);
         p.add(new FieldLabel(dt_Pelunasan, "Tanggal Pelunasan"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
-        DateField dt_Penyetoran = new DateField();
+        dt_Penyetoran = new DateField();
         dt_Penyetoran.setAllowBlank(false);
         p.add(new FieldLabel(dt_Penyetoran, "Tanggal Penyetoran"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
-        TextField txt_BABuktiSetor = new TextField();
+        txt_BABuktiSetor = new TextField();
         txt_BABuktiSetor.setAllowBlank(false);
         p.add(new FieldLabel(txt_BABuktiSetor, "Nomor BA Bukti Setor"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
 
-        panel.addButton(new TextButton("Buat"));
+        btn_Buat = new TextButton("Buat");
+        panel.addButton(btn_Buat);
 
         return panel;
     }
 
-    private FramedPanel center() {
+//	TODO: ini mo ditaro mana? koq ga ada yg panggil.
+    @SuppressWarnings("unused")
+	private FramedPanel center() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Entry Credit Note");
@@ -290,8 +305,112 @@ public class Form_EntryCN {
 
         panel.addButton(new TextButton("Reset"));
         panel.addButton(new TextButton("Hapus"));
-        panel.addButton(new TextButton("Simpan"));
+        btn_Simpan = new TextButton("Simpan");
+        panel.addButton(btn_Simpan);
 
         return panel;
     }
+
+	@Override
+	protected void initEvent() {
+		cb_UnitUP.setStoreUrl(WsUmumUrlConstants.UNIT_UP_URL);
+		cb_UnitUP.loadStore();
+		
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlConstants.TANGGAL_DATABASE_URL));
+		try {
+			builder.sendRequest(null, new RequestCallback() {
+				
+				@Override
+				public void onResponseReceived(Request request, Response response) {
+					JSONObject json = new JSONObject(JsonUtils.safeEval(response.getText()));
+					GWT.log("json object : "+ json.get("result"));
+					Date tanggalDatabase = DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
+					dt_Pelunasan.setValue(tanggalDatabase);
+					dt_Penyetoran.setValue(tanggalDatabase);
+				}
+				
+				@Override
+				public void onError(Request request, Throwable exception) {
+				}
+			});
+		} catch (RequestException e) {
+			GWT.log("request exception catched", e);
+		}
+		
+		cb_UnitUP.addSelectionHandler(new SelectionHandler<Map<String,String>>() {
+			
+			@Override
+			public void onSelection(SelectionEvent<Map<String, String>> event) {
+				Map<String, String> data = (Map<String, String>) event
+						.getSelectedItem();
+				txt_UnitUP.setValue(data.get("fieldValue"));
+				
+			}
+		});
+		
+		cb_KodePP.addSelectionHandler(new SelectionHandler<Map<String,String>>() {
+
+			@Override
+			public void onSelection(SelectionEvent<Map<String, String>> event) {
+				Map<String, String> data = (Map<String, String>) event
+						.getSelectedItem();
+				txt_KodePp.setValue(data.get("fieldValue"));
+			}
+		});
+		
+		btn_Buat.addSelectHandler(new SelectEvent.SelectHandler() {
+			/*
+			 * "BACN-" & cb_UnitUP.SelectedItem.Text & "/" & 
+			 * cb_KodePP.SelectedItem.Text & "/" & 
+			 * Format(dt_Pelunasan.Value, "yyyyMMdd") & "/" & 
+			 * Format(dt_Penyetoran.Value, "yyyyMMdd") & ""
+			 */
+			@Override
+			public void onSelect(SelectEvent event) {
+				StringBuilder kodeBuktiSetor = new StringBuilder(BUKTI_SETOR_PREFIX_CODE);
+				kodeBuktiSetor
+						.append(cb_UnitUP.getComboBox().getSelectedText())
+						.append(BUKTI_SETOR_SEPARATOR)
+						.append(cb_KodePP.getComboBox().getSelectedText())
+						.append(BUKTI_SETOR_SEPARATOR)
+						.append(DateTimeFormat.getFormat("yyyyMMdd").format(dt_Pelunasan.getValue()))
+						.append(BUKTI_SETOR_SEPARATOR)
+						.append(DateTimeFormat.getFormat("yyyyMMdd").format(dt_Penyetoran.getValue()))
+						.append("");
+				txt_BABuktiSetor.setValue(kodeBuktiSetor.toString());
+			}
+		});
+		
+		btn_Simpan.addSelectHandler(new SelectEvent.SelectHandler() {
+			
+			@Override
+			public void onSelect(SelectEvent event) {
+				JSONObject dsJsonObject = new JSONObject();
+//				TODO : create dsValue
+				String dsValue = "{}";
+				dsJsonObject.put("ds", new JSONObject(JsonUtils.safeEval(dsValue)));
+				
+				RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlConstants.TANGGAL_DATABASE_URL));
+				try {
+					builder.sendRequest(null, new RequestCallback() {
+						
+						@Override
+						public void onResponseReceived(Request request, Response response) {
+							JSONObject json = new JSONObject(JsonUtils.safeEval(response.getText()));
+							GWT.log("json object : "+ json.get("result"));
+							Date tanggalDatabase = DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
+							dt_Pelunasan.setValue(tanggalDatabase);
+							dt_Penyetoran.setValue(tanggalDatabase);
+						}
+						
+						@Override
+						public void onError(Request request, Throwable exception) {
+						}
+					});
+				} catch (RequestException e) {
+					GWT.log("request exception catched", e);
+				}
+			}
+		});
+	}
 }
