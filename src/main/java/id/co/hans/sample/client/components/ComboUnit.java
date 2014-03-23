@@ -1,6 +1,6 @@
 package id.co.hans.sample.client.components;
 
-import id.co.hans.sample.constants.WsUmumUrlConstants;
+import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
 import java.util.Map;
 
@@ -25,7 +25,7 @@ public class ComboUnit extends AbstractComboComponent {
 	@Override
 	public Widget asWidget() {
 		cbUnitUp = new IconComboBox();
-		cbUnitUp.setStoreUrl(WsUmumUrlConstants.UNIT_UP_URL);
+		cbUnitUp.setStoreUrl(WsUmumUrlHelper.getUnitUpURL());
 		cbUnitUp.setComboWidth(200);
 		cbUnitUp.setLabelWidth(180);
 

@@ -2,7 +2,7 @@ package id.co.hans.sample.client.form.creditnote;
 
 import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.IconComboBox;
-import id.co.hans.sample.constants.WsUmumUrlConstants;
+import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
 import java.util.Date;
 import java.util.Map;
@@ -313,10 +313,10 @@ public class Form_EntryCN extends AbstractForm {
 
 	@Override
 	protected void initEvent() {
-		cb_UnitUP.setStoreUrl(WsUmumUrlConstants.UNIT_UP_URL);
+		cb_UnitUP.setStoreUrl(WsUmumUrlHelper.getNamaUpURL(getUnitupUser()));
 		cb_UnitUP.loadStore();
 		
-		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlConstants.TANGGAL_DATABASE_URL));
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlHelper.getTanggalDatabaseURL()));
 		try {
 			builder.sendRequest(null, new RequestCallback() {
 				
@@ -390,7 +390,7 @@ public class Form_EntryCN extends AbstractForm {
 				String dsValue = "{}";
 				dsJsonObject.put("ds", new JSONObject(JsonUtils.safeEval(dsValue)));
 				
-				RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlConstants.TANGGAL_DATABASE_URL));
+				RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlHelper.getTanggalDatabaseURL()));
 				try {
 					builder.sendRequest(null, new RequestCallback() {
 						

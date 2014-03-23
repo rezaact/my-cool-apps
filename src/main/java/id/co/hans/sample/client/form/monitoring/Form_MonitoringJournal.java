@@ -1,44 +1,24 @@
 package id.co.hans.sample.client.form.monitoring;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.util.ToggleGroup;
-import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
-import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.*;
+import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.ComboTahunBulan;
 import id.co.hans.sample.client.components.ComboUnits;
-import id.co.hans.sample.client.components.IconComboBox;
 import id.co.hans.sample.client.components.IconDynamicGrid;
 
-public class Form_MonitoringJournal {
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.sencha.gxt.core.client.util.ToggleGroup;
+import com.sencha.gxt.widget.core.client.FramedPanel;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.form.DateField;
+import com.sencha.gxt.widget.core.client.form.Radio;
+
+public class Form_MonitoringJournal extends AbstractForm {
 
 
-    private VerticalPanel vp;
-
-    public Widget asWidget() {
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
-    }
-
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+	@Override
+    protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Monitoring Transaksi (Jurnal)");
@@ -242,4 +222,9 @@ public class Form_MonitoringJournal {
 
         return panel;
     }
+
+	@Override
+	protected void initEvent() {
+		
+	}
 }

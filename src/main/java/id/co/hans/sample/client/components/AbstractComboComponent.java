@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.data.client.loader.HttpProxy;
 import com.sencha.gxt.data.shared.ListStore;
@@ -39,9 +40,8 @@ public abstract class AbstractComboComponent implements IsWidget {
 		
 		for (Entry<ComboBox<Map<String, String>>, String> entry : changesComboBoxStore.entrySet()) {
 			GridAutoBeanFactory factory = GWT.create(GridAutoBeanFactory.class);
-			String url = entry.getValue().replace("%s",value);
 			RequestBuilder requestBuilder = new RequestBuilder(
-					RequestBuilder.GET, url);
+					RequestBuilder.GET, URL.encode(entry.getValue()));
 			HttpProxy<ListLoadConfig> proxy = new HttpProxy<ListLoadConfig>(requestBuilder);
 
 	        DataRecordJsonReader reader = new DataRecordJsonReader(factory, RecordResult.class);
@@ -60,7 +60,7 @@ public abstract class AbstractComboComponent implements IsWidget {
 	        );
 	        
 	        entry.getKey().getLoader().load();
-	        GWT.log("url : " + url);
+	        GWT.log("url : " + entry.getValue());
 		}
 		/*
 		 * later please do support for grid update because combo box value has been changed

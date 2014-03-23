@@ -3,7 +3,7 @@ package id.co.hans.sample.client.form.creditnote;
 import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.ComboKodePP;
 import id.co.hans.sample.client.components.ComboUnit;
-import id.co.hans.sample.constants.WsUmumUrlConstants;
+import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
 import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -96,7 +96,7 @@ public class Form_RekapCN extends AbstractForm {
 	protected void initEvent() {
 		cbTopPilihUnitUp.getChangesComboBoxStore().put(
 				cbTopPilihKodePp.getComboBox().getComboBox(),
-				WsUmumUrlConstants.KODE_PP_DARI_UNIT_UP_URL);
+				WsUmumUrlHelper.getKodePpURL(getUnitupUser()));
 		
 	}
 }

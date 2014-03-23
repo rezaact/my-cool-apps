@@ -3,11 +3,9 @@ package id.co.hans.sample.client.form.creditnote;
 import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.ComboKodePP;
 import id.co.hans.sample.client.components.ComboUnit;
-import id.co.hans.sample.constants.WsUmumUrlConstants;
+import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.core.shared.GWT;
@@ -28,7 +26,6 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 
 public class Form_DataDana extends AbstractForm {
     
-	private String tanggalDatabaseResult;
 	private ComboUnit cbTopPilihUnitUp;
 	private DateField dfMiddleTanggalAwal;
 	private DateField dfMiddleTanggalAkhir;
@@ -72,7 +69,7 @@ public class Form_DataDana extends AbstractForm {
 	@Override
 	@SuppressWarnings("unchecked")
 	protected void initEvent() {
-		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlConstants.TANGGAL_DATABASE_URL));
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(WsUmumUrlHelper.getTanggalDatabaseURL()));
 		try {
 			builder.sendRequest(null, new RequestCallback() {
 				
@@ -83,10 +80,6 @@ public class Form_DataDana extends AbstractForm {
 					Date tanggalDatabase = DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
 					dfMiddleTanggalAwal.setValue(tanggalDatabase);
 					dfMiddleTanggalAkhir.setValue(tanggalDatabase);
-					
-					cbTopPilihUnitUp.getChangesComboBoxStore().put(
-							cbTopPilihKodePp.getComboBox().getComboBox(),
-							WsUmumUrlConstants.KODE_PP_DARI_UNIT_UP_URL);
 				}
 				
 				@Override
@@ -97,19 +90,10 @@ public class Form_DataDana extends AbstractForm {
 			GWT.log("request exception catched", e);
 		}
 		
+		cbTopPilihUnitUp.getChangesComboBoxStore().put(
+				cbTopPilihKodePp.getComboBox().getComboBox(),
+				WsUmumUrlHelper.getKodePpURL(getUnitupUser()));
+		
 	}
 	
-	
-	
-	public boolean getTanggalDatabaseResult() {
-		final List<Boolean> responseReceived = new ArrayList<Boolean>();
-		if(tanggalDatabaseResult == null) {
-			
-		}
-		return responseReceived.size() == 0? false : true;
-	}
-
-	public void setTanggalDatabaseResult(String tanggalDatabaseResult) {
-		this.tanggalDatabaseResult = tanggalDatabaseResult;
-	}
 }
