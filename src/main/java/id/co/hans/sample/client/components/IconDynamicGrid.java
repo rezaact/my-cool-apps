@@ -97,6 +97,10 @@ public class IconDynamicGrid implements IsWidget {
         this.storeUrl = storeUrl;
     }
 
+    public int getDataCount(){
+        return this.grid.getStore().size();
+    }
+
     public void setGridHeader(String gridHeader){
         this.gridHeader = gridHeader;
     }
