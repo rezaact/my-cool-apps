@@ -92,7 +92,7 @@ public class Form_DataDana extends AbstractForm {
 		
 		cbTopPilihUnitUp.getChangesComboBoxStore().put(
 				cbTopPilihKodePp.getComboBox().getComboBox(),
-				WsUmumUrlHelper.getKodePpURL(getUnitupUser()));
+				WsUmumUrlHelper.getKodePPURL(getUnitupUser()));
 		
 	}
 	

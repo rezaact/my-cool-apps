@@ -96,7 +96,7 @@ public class Form_RekapCN extends AbstractForm {
 	protected void initEvent() {
 		cbTopPilihUnitUp.getChangesComboBoxStore().put(
 				cbTopPilihKodePp.getComboBox().getComboBox(),
-				WsUmumUrlHelper.getKodePpURL(getUnitupUser()));
+				WsUmumUrlHelper.getKodePPURL(getUnitupUser()));
 		
 	}
 }
