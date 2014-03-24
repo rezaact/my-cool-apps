@@ -21,8 +21,8 @@ import com.sencha.gxt.widget.core.client.form.FormPanel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import id.co.hans.sample.client.components.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+//import java.text.SimpleDateFormat;
+//import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -203,8 +203,8 @@ public class Form_MasterJatuhTempo {
         bttnNew.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
-                Calendar c = Calendar.getInstance();
-                c.setTime(new Date());
+//                Calendar c = Calendar.getInstance();
+//                c.setTime(new Date());
 
                 MODE = frmMode.ADD;
                 cb_kodeunit.getCbUnitUpDesc().setText(cb_unitup.getCbUnitUpDesc().getText());
@@ -213,14 +213,14 @@ public class Form_MasterJatuhTempo {
                 cb_KlpSiklis.setEnabled(true);
                 txt_Periode.setText("");
 
-                dtJTTempo.setValue(c.getTime());
-                dtBK1.setValue(c.getTime());
+//                dtJTTempo.setValue(c.getTime());
+//                dtBK1.setValue(c.getTime());
 
-                c.add(Calendar.MONTH, 1);
-                dtBK2.setValue(c.getTime());
-
-                c.add(Calendar.MONTH, 1);
-                dtBK3.setValue(c.getTime());
+//                c.add(Calendar.MONTH, 1);
+//                dtBK2.setValue(c.getTime());
+//
+//                c.add(Calendar.MONTH, 1);
+//                dtBK3.setValue(c.getTime());
 
                 txt_Periode.setText("INPUT PERIODE");
             }
@@ -229,7 +229,7 @@ public class Form_MasterJatuhTempo {
         bttnDelete.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
                 String url;
 
                 url = "Ws_JatuhTempo/DeleteJatuhTempo.json?";
@@ -237,7 +237,7 @@ public class Form_MasterJatuhTempo {
                 StringBuilder sb = new StringBuilder();
                 sb.append("UNITUP=" + cb_unitup.getSelectedValue());
                 sb.append("&KODESIKLIS=" + cb_KlpSiklis.getSelectedValue());
-                sb.append("&JATUHTEMPO=" + formatter.format(dtJTTempo.getValue()));
+//                sb.append("&JATUHTEMPO=" + formatter.format(dtJTTempo.getValue()));
 
                 try {
                     rb = new RequestBuilder(RequestBuilder.POST, url);
@@ -286,16 +286,16 @@ public class Form_MasterJatuhTempo {
         dtJTTempo.addValueChangeHandler(new ValueChangeHandler<Date>() {
             @Override
             public void onValueChange(ValueChangeEvent<Date> dateValueChangeEvent) {
-                Calendar c = Calendar.getInstance();
-                c.setTime(dateValueChangeEvent.getValue());
-
-                dtBK1.setValue(c.getTime());
-
-                c.add(Calendar.MONTH, 1);
-                dtBK2.setValue(c.getTime());
-
-                c.add(Calendar.MONTH, 1);
-                dtBK3.setValue(c.getTime());
+//                Calendar c = Calendar.getInstance();
+//                c.setTime(dateValueChangeEvent.getValue());
+//
+//                dtBK1.setValue(c.getTime());
+//
+//                c.add(Calendar.MONTH, 1);
+//                dtBK2.setValue(c.getTime());
+//
+//                c.add(Calendar.MONTH, 1);
+//                dtBK3.setValue(c.getTime());
             }
         });
 
