@@ -1,11 +1,48 @@
 package id.co.hans.sample.client;
 
-import com.google.gwt.core.client.GWT;
+import id.co.hans.sample.client.form.creditnote.Form_BatalCN;
+import id.co.hans.sample.client.form.creditnote.Form_DataDana;
+import id.co.hans.sample.client.form.reportmain.Form_Report11_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report12_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report13_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report2122_DoubleBayar;
+import id.co.hans.sample.client.form.reportmain.Form_Report21Giral_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_BA;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Kdpp;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Petugas;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Restitusi;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Unit;
+import id.co.hans.sample.client.form.reportmain.Form_Report21_Upload;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_AP;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_Kdpp;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_Petugas;
+import id.co.hans.sample.client.form.reportmain.Form_Report22_Unit;
+import id.co.hans.sample.client.form.reportmain.Form_Report23BebanKantor_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report23Dlt_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report23NotaTerpusat_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report23Nota_Kode;
+import id.co.hans.sample.client.form.reportmain.Form_Report23Nota_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report23_Kirim;
+import id.co.hans.sample.client.form.reportmain.Form_Report23_Terima;
+import id.co.hans.sample.client.form.reportmain.Form_Report24Nota_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report31_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report32_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report41_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_ReportBK_212223_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_ReportPenetapanBK_Rekap;
+import id.co.hans.sample.client.form.reportmain.Form_Report_Pemda;
+import id.co.hans.sample.client.form.reportmain.Form_Report_Restitusi;
+import id.co.hans.sample.client.form.reportpantau.Form_MonitoringSaldoTunggakan;
+import id.co.hans.sample.client.form.reportpantau.Form_MonitoringTunggakanPemda;
+import id.co.hans.sample.client.form.reportpantau.Form_PemantauanBatalTransaksi;
+import id.co.hans.sample.client.form.reportpantau.Form_PemantauanJurnal;
+import id.co.hans.sample.client.form.reportpantau.Form_PemantauanSaldoBulan;
+import id.co.hans.sample.client.form.reportpantau.Form_PemantauanSaldoHari;
+import id.co.hans.sample.client.form.reportpantau.Form_PemantauanSaldoIni;
+import id.co.hans.sample.client.form.reportpantau.Form_PemantauanTransaksi;
+
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import id.co.hans.sample.client.form.cetakulang.Form_CetakUlangBebanKantor;
-
-import id.co.hans.sample.client.form.creditnote.Form_BatalCN;
 import id.co.hans.sample.client.form.proses.*;
 import id.co.hans.sample.client.form.reportmain.*;
 
@@ -99,12 +136,29 @@ public class View implements IsWidget {
             widgetMenu =new Form_ReportPenetapanBK_Rekap().asWidget(idUser,unitupUser,levelUser);
         } else if (id_menu.toUpperCase().equals("Form_BatalCN".toUpperCase())) {
         	widgetMenu = new Form_BatalCN().asWidget(idUser, unitupUser, levelUser);
+        } 
+        
+        else if (id_menu.toUpperCase().equals("Form_DataDana".toUpperCase())) {
+        	widgetMenu = new Form_DataDana().asWidget(idUser, unitupUser, levelUser);
         }
 
-
-        //KOKOM
-        else if (id_menu.toUpperCase().equals("Form_CetakUlangBebanKantor".toUpperCase())){
-            widgetMenu =new Form_CetakUlangBebanKantor().asWidget();
+        //report pantau
+        else if (id_menu.toUpperCase().equals("Form_MonitoringSaldoTunggakan".toUpperCase())){
+            widgetMenu =new Form_MonitoringSaldoTunggakan().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_MonitoringTunggakanPemda".toUpperCase())){
+            widgetMenu =new Form_MonitoringTunggakanPemda().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanBatalTransaksi".toUpperCase())){
+            widgetMenu =new Form_PemantauanBatalTransaksi().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanJurnal".toUpperCase())){
+            widgetMenu =new Form_PemantauanJurnal().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanSaldoBulan".toUpperCase())){
+            widgetMenu =new Form_PemantauanSaldoBulan().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanSaldoHari".toUpperCase())){
+            widgetMenu =new Form_PemantauanSaldoHari().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanSaldoIni".toUpperCase())){
+            widgetMenu =new Form_PemantauanSaldoIni().asWidget(idUser,unitupUser,levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_PemantauanTransaksi".toUpperCase())){
+            widgetMenu =new Form_PemantauanTransaksi().asWidget(idUser,unitupUser,levelUser);
         }
 
 
@@ -129,11 +183,11 @@ public class View implements IsWidget {
             widgetMenu =new Form_12Manual().asWidget(idUser, unitupUser, levelUser);
         }  else if (id_menu.toUpperCase().equals("Form_23PelunasanNotaTerpusat".toUpperCase())){
             widgetMenu =new Form_23PelunasanNotaTerpusat().asWidget(idUser, unitupUser, levelUser);
-            }   else if (id_menu.toUpperCase().equals("Form_23PelunasanBebanKantor".toUpperCase())){
+        }   else if (id_menu.toUpperCase().equals("Form_23PelunasanBebanKantor".toUpperCase())){
             widgetMenu =new Form_23PelunasanBebanKantor().asWidget(idUser, unitupUser, levelUser);
-            }    else if (id_menu.toUpperCase().equals("Form_21Entri".toUpperCase())){
+        }else if (id_menu.toUpperCase().equals("Form_21Entri".toUpperCase())){
             widgetMenu =new Form_21Entri().asWidget(idUser, unitupUser, levelUser);
-        }    else if (id_menu.toUpperCase().equals("Form_23EntriLunasRestitusi".toUpperCase())){
+        }else if (id_menu.toUpperCase().equals("Form_23EntriLunasRestitusi".toUpperCase())){
             widgetMenu =new Form_23EntriLunasRestitusi().asWidget(idUser, unitupUser, levelUser);
         }
 

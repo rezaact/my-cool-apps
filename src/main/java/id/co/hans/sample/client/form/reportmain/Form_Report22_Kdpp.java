@@ -1,6 +1,8 @@
 package id.co.hans.sample.client.form.reportmain;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -18,6 +20,8 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
+
+import java.util.Map;
 
 public class Form_Report22_Kdpp {
 
@@ -41,7 +45,7 @@ public class Form_Report22_Kdpp {
 
     public Widget asWidget(String idUser, String unitupUser, String levelUser) {
         this.idUser=idUser;
-        this.unitUser=unitUser;
+        this.unitUser=unitupUser;
         this.levelUser=levelUser;
 
         if (vp == null) {
@@ -79,7 +83,7 @@ public class Form_Report22_Kdpp {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         cbKdPP = new ComboKodePP();
@@ -238,6 +242,17 @@ public class Form_Report22_Kdpp {
                 url+="&report=report/ReportMain/22/cr_22unit_ppcbo_daftar.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        cbUnits.getComboUnitUp().addSelectionHandler(new SelectionHandler<Map<String, String>>() {
+            @Override
+            public void onSelection(SelectionEvent<Map<String, String>> event) {
+                Map<String, String> data = (Map<String, String>) event.getSelectedItem();
+                cbUnits.setUnitUpValue(data.get("fieldValue"));
+
+                cbKdPP.getComboBox().setStoreUrl("components/getComboKodePaymentPoint.json?unitUp=" + cbUnits.getUnitUpValue());
+                cbKdPP.getComboBox().loadStore();
             }
         });
     }

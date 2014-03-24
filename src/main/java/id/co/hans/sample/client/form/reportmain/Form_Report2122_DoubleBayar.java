@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,17 +23,25 @@ public class Form_Report2122_DoubleBayar {
 
     private VerticalPanel vp;
 
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+
+    TextButton bBottomExcel;
+    TextButton bBottomCetakLaporan;
+
+
     private String idUser, levelUser, unitUser;
 
     public Widget asWidget(String idUser, String unitupUser, String levelUser) {
         this.idUser=idUser;
-        this.unitUser=unitUser;
+        this.unitUser=unitupUser;
         this.levelUser=levelUser;
 
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,7 +72,7 @@ public class Form_Report2122_DoubleBayar {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         ComboKodeGolongan cbKdGolongan = new ComboKodeGolongan();
@@ -78,7 +89,7 @@ public class Form_Report2122_DoubleBayar {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
@@ -94,8 +105,8 @@ public class Form_Report2122_DoubleBayar {
         VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
         panelParameter.add(vlcPParameter);
 
-        TextButton bBottomExcel = new TextButton("Excel");
-        TextButton bBottomCetakLaporan = new TextButton("Cetak Laporan");
+        bBottomExcel = new TextButton("Excel");
+        bBottomCetakLaporan = new TextButton("Cetak Laporan");
 
         bBottomExcel.setWidth(220);
         bBottomCetakLaporan.setWidth(220);
@@ -116,5 +127,42 @@ public class Form_Report2122_DoubleBayar {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomExcel.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_2122DoubleBayarNew"
+                        +"&sunit="+cbUnits.getUnitUpValue()
+                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue();
+
+                url+="&report=report/ReportMain/22/cr_DoubleBayar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+
+        bBottomCetakLaporan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_2122DoubleBayarNew"
+                        +"&sunit="+cbUnits.getUnitUpValue()
+                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue();
+
+                url+="&report=report/ReportMain/22/cr_DoubleBayar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

@@ -1,65 +1,72 @@
 package id.co.hans.sample.client.components;
 
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.FieldLabel;
-import com.sencha.gxt.widget.core.client.form.TextField;
+import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
 import java.util.Map;
 
-public class ComboUnit implements IsWidget {
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.TextField;
 
-    private HorizontalPanel hp;
-    private IconComboBox cbUnitUp;
-    private TextField tfDescription;
-    private String selectedValue;
+public class ComboUnit extends AbstractComboComponent {
 
-    @Override
-    public Widget asWidget() {
-        cbUnitUp = new IconComboBox();
-        cbUnitUp.setStoreUrl("BasicProject/thuGetComboData.json");
-        cbUnitUp.setComboWidth(200);
-        cbUnitUp.setLabelWidth(180);
+	@SuppressWarnings("unused")
+	private static final String DUMMY_URL = "BasicProject/thuGetComboData.json";
+	
+	private HorizontalPanel hp;
+	private IconComboBox cbUnitUp;
+	private TextField tfDescription;
+	private String selectedValue;
 
-        cbUnitUp.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
-            @Override
-            public void onSelection(SelectionEvent<Map<String, String>> event) {
-                Map<String, String> data = (Map<String, String>)event.getSelectedItem();
+	@Override
+	public Widget asWidget() {
+		cbUnitUp = new IconComboBox();
+		cbUnitUp.setStoreUrl(WsUmumUrlHelper.getUnitUpURL());
+		cbUnitUp.setComboWidth(200);
+		cbUnitUp.setLabelWidth(180);
 
-                tfDescription.setText(data.get("fieldValue"));
-                selectedValue = data.get("fieldValue");
-            }
-        });
+		cbUnitUp.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
+			@Override
+			public void onSelection(SelectionEvent<Map<String, String>> event) {
+				Map<String, String> data = (Map<String, String>) event
+						.getSelectedItem();
 
-        tfDescription = new TextField();
+				tfDescription.setText(data.get("fieldValue"));
+				selectedValue = data.get("fieldValue");
+				
+				onComboChange(data.get("fieldValue"));
+			}
+		});
 
-        Label spacer1 = new Label("");
-        spacer1.setPixelSize(10,1);
+		tfDescription = new TextField();
 
-        hp = new HorizontalPanel();
-        hp.add(cbUnitUp);
-        hp.add(spacer1);
-        hp.add(tfDescription);
+		Label spacer1 = new Label("");
+		spacer1.setPixelSize(10, 1);
 
-        cbUnitUp.loadStore();
+		hp = new HorizontalPanel();
+		hp.add(cbUnitUp);
+		hp.add(spacer1);
+		hp.add(tfDescription);
 
-        return new FieldLabel(hp, "Unit");
-    }
+		cbUnitUp.loadStore();
 
-    public String getSelectedValue() {
-        return this.selectedValue;
-    }
+		return new FieldLabel(hp, "Unit");
+	}
 
-    public IconComboBox getCbUnitUp() {
-        return this.cbUnitUp;
-    }
+	public String getSelectedValue() {
+		return this.selectedValue;
+	}
 
-    public TextField getCbUnitUpDesc() {
-        return this.tfDescription;
-    }
+	public IconComboBox getCbUnitUp() {
+		return this.cbUnitUp;
+	}
+
+	public TextField getCbUnitUpDesc() {
+		return this.tfDescription;
+	}
+	
 }

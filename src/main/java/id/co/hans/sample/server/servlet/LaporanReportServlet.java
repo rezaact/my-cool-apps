@@ -21,105 +21,219 @@ public class LaporanReportServlet extends ReportServlet{
         String idjenislaporan=(String) prop.get("idjenislaporan");
         baseService = WebApplicationContextUtils.getWebApplicationContext(getServletContext()).getBean(BaseService.class);
 
+        //11
         if(idjenislaporan.endsWith("GetReport_11rekap")){
+
+            engine.setPrompt("wilayah",(String) prop.get("in_unitupi"));
+            engine.setPrompt("cabang",(String) prop.get("tparap"));
+            engine.setPrompt("ranting",(String) prop.get("tparup"));
+            engine.setPrompt("alamat","");
+            engine.setPrompt("bulantahun",(String) prop.get("tblth"));
+            engine.setPrompt("petugascetak",(String) prop.get("tpetugas"));
+
             GetReport_11rekap(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("kode"), (String) prop.get("tparAP"),
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("kode"), (String) prop.get("tparap"),
                     (String) prop.get("in_unitupi"));
         } else if(idjenislaporan.endsWith("cetak_rekap11TglUpload")){
             cetak_rekap11TglUpload(engine,
-                    (String) prop.get("tparUp"), (String) prop.get("tglAwal"), (String) prop.get("tglAkhir"));
-        } else if(idjenislaporan.endsWith("GetReport_12rekapGabungan")){
+                    (String) prop.get("tparup"), (String) prop.get("tglawal"), (String) prop.get("tglakhir"));
+        }
+
+        //12
+        else if(idjenislaporan.endsWith("GetReport_12rekapGabungan")){
             GetReport_12rekapGabungan(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("kode"), (String) prop.get("tparAP"),
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("kode"), (String) prop.get("tparap"),
                     (String) prop.get("in_unitupi"));
-        } else if(idjenislaporan.endsWith("GetReport_13rekap")){
+        }
+
+        //13
+        else if(idjenislaporan.endsWith("GetReport_13rekap")){
             GetReport_13rekap(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparAp"),
-                    (String) prop.get("tparUp"), (String) prop.get("tPetugas"));
-        } else if(idjenislaporan.endsWith("GetReport_21_BA")){
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparap"),
+                    (String) prop.get("tparup"), (String) prop.get("tpetugas"));
+        }
+
+        //21
+        else if(idjenislaporan.endsWith("GetReport_21_BA")){
             GetReport_21_BA(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"),
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"),
                     (String) prop.get("kode"), (String) prop.get("pengelola"));
         } else if(idjenislaporan.endsWith("GetReport_21kdpp")){
             GetReport_21kdpp(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"),
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"),
                     (String) prop.get("kode"));
         } else if(idjenislaporan.endsWith("GetReport_21Petugas")){
             GetReport_21Petugas(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"),
-                    (String) prop.get("kode"), (String) prop.get("kdPembayar"));
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"),
+                    (String) prop.get("kode"), (String) prop.get("kdpembayar"));
         } else if(idjenislaporan.endsWith("GetReport21Restitusi")){
             GetReport21Restitusi(engine,
                     (String) prop.get("in_unitupi"), (String) prop.get("in_unitap"), (String) prop.get("in_unitup"),
                     (String) prop.get("in_blth"), (String) prop.get("in_jenis"));
         } else if(idjenislaporan.endsWith("GetReport_21rekap")){
             GetReport_21rekap(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"), (String) prop.get("kode"));
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"), (String) prop.get("kode"));
         } else if(idjenislaporan.endsWith("GetReport_21upload")){
             GetReport_21upload(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"),
-                    (String) prop.get("tPetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"), (String) prop.get("kode"));
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"),
+                    (String) prop.get("tpetugas"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"), (String) prop.get("kode"));
         } else if(idjenislaporan.endsWith("GetReport_21Giral_Kode")){
             GetReport_21Giral_Kode(engine,
-                    (String) prop.get("tBLTH"), (String) prop.get("tPetugas"), (String) prop.get("kode"), (String) prop.get("jenis"));
+                    (String) prop.get("tblth"), (String) prop.get("tpetugas"), (String) prop.get("kode"), (String) prop.get("jenis"));
         }
 
         // 22
         else if(idjenislaporan.endsWith("GetReport_22rekap_Global")){
             GetReport_22rekap_Global(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("vFilterUnit"), (String) prop.get("tparUpi"), (String) prop.get("tparAp")
-                    , (String) prop.get("tparUp"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"));
+                    (String) prop.get("vjenis"), (String) prop.get("vfilterunit"), (String) prop.get("tparupi"), (String) prop.get("tparap")
+                    , (String) prop.get("tparup"), (String) prop.get("tanggal"), (String) prop.get("tanggalend"));
         }
         else if(idjenislaporan.endsWith("GetReport_22kdpp")){
             GetReport_22kdpp(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tanggal"), (String) prop.get("tanggalend")
-                    , (String) prop.get("tparUp"), (String) prop.get("kode"));
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tanggal"), (String) prop.get("tanggalend")
+                    , (String) prop.get("tparup"), (String) prop.get("kode"));
         }
         else if(idjenislaporan.endsWith("GetReport_22petugas")){
             GetReport_22petugas(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"), (String) prop.get("tPetugas")
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"), (String) prop.get("tpetugas")
                     , (String) prop.get("tanggal"), (String) prop.get("tanggalend"), (String) prop.get("kode"),
-                    (String) prop.get("kdPembayar"), (String) prop.get("sATM"));
+                    (String) prop.get("kdpembayar"), (String) prop.get("satm"));
         }
         else if(idjenislaporan.endsWith("GetReport_22petugasDaya")){
             GetReport_22petugasDaya(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"), (String) prop.get("tPetugas")
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"), (String) prop.get("tpetugas")
                     , (String) prop.get("tanggal"), (String) prop.get("tanggalend"), (String) prop.get("kode"),
-                    (String) prop.get("kdPembayar"), (String) prop.get("sATM"), (String) prop.get("vDayaAwal"), (String) prop.get("vDayaAkhir"));
+                    (String) prop.get("kdpembayar"), (String) prop.get("satm"), (String) prop.get("vdayaawal"), (String) prop.get("vdayaakhir"));
         }
         else if(idjenislaporan.endsWith("GetReport_22rekap_V3")){
             GetReport_22rekap_V2(engine,
-                    (String) prop.get("vJenis"), (String) prop.get("tBLTH"), (String) prop.get("tparUp"), (String) prop.get("tparAp")
-                    , (String) prop.get("tparUpi"), (String) prop.get("tPetugas"), (String) prop.get("kode"));
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup"), (String) prop.get("tparap")
+                    , (String) prop.get("tparupi"), (String) prop.get("tpetugas"), (String) prop.get("kode"));
         }
 
         //23
         else if(idjenislaporan.endsWith("GetReport_23Kirim_Rekap")){
             GetReport_23Kirim_Rekap(engine,
-                    (String) prop.get("tThbl"), (String) prop.get("tParUp"), (String) prop.get("tPetugas"));
+                    (String) prop.get("tthbl"), (String) prop.get("tparup"), (String) prop.get("tpetugas"));
         }
         else if(idjenislaporan.endsWith("GetReport_23Kirim_Daftar")){
             GetReport_23Kirim_Daftar(engine,
-                    (String) prop.get("tThbl"), (String) prop.get("tParUp"), (String) prop.get("tPetugas"));
+                    (String) prop.get("tthbl"), (String) prop.get("tparup"), (String) prop.get("tpetugas"));
         }
         else if(idjenislaporan.endsWith("GetReport_23Terima_Rekap")){
             GetReport_23Terima_Rekap(engine,
-                    (String) prop.get("tThbl"), (String) prop.get("tParUp"), (String) prop.get("tPetugas"));
+                    (String) prop.get("tthbl"), (String) prop.get("tparup"), (String) prop.get("tpetugas"));
         }
         else if(idjenislaporan.endsWith("GetReport_23Terima_Daftar")){
             GetReport_23Terima_Daftar(engine,
-                    (String) prop.get("tThbl"), (String) prop.get("tParUp"), (String) prop.get("tPetugas"));
+                    (String) prop.get("tthbl"), (String) prop.get("tparup"), (String) prop.get("tpetugas"));
         }
         else if(idjenislaporan.endsWith("GetReport_23Nota_Kode")){
             GetReport_23Nota_Kode(engine,
-                    (String) prop.get("tBLTH"), (String) prop.get("tPetugas"), (String) prop.get("kode")
-                    , (String) prop.get("jenis"), (String) prop.get("iBebanKantor"));
+                    (String) prop.get("tblth"), (String) prop.get("tpetugas"), (String) prop.get("kode")
+                    , (String) prop.get("jenis"), (String) prop.get("ibebankantor"));
+        }
+        else if(idjenislaporan.endsWith("GetReport_23dltrekap")){
+            GetReport_23dltrekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparap")
+                    , (String) prop.get("tparup"), (String) prop.get("tpetugas"), (String) prop.get("tanggal")
+                    , (String) prop.get("kode"), (String) prop.get("tparupi"));
+        }
+        else if(idjenislaporan.endsWith("GetReport_23notarekap")){
+            GetReport_23notarekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparap")
+                    , (String) prop.get("tparup"), (String) prop.get("tpetugas"), (String) prop.get("tanggal")
+                    , (String) prop.get("kode"));
+        }
+        else if(idjenislaporan.endsWith("GetReport_23Terpusat_Kode")){
+            GetReport_23Terpusat_Kode(engine,
+                    (String) prop.get("tblth"), (String) prop.get("tpetugas"), (String) prop.get("kode")
+                    , (String) prop.get("jenis"));
+        }
+
+        //31
+        else if(idjenislaporan.endsWith("GetReport_31rekap")){
+            GetReport_31rekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparap")
+                    , (String) prop.get("tparup"), (String) prop.get("tpetugas"));
+        }
+
+        //32
+        else if(idjenislaporan.endsWith("GetReport_32rekap")){
+            GetReport_32rekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth")
+                    , (String) prop.get("tparup"), (String) prop.get("tpetugas"));
+        }
+
+        //41
+        else if(idjenislaporan.endsWith("GetReport_41rekap")){
+            GetReport_41rekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth")
+                    , (String) prop.get("tparap"), (String) prop.get("tparup"), (String) prop.get("tpetugas"));
+        }
+
+        //2122dobelbayar
+        else if(idjenislaporan.endsWith("GetReport_2122DoubleBayarNew")){
+            GetReport_2122DoubleBayarNew(engine,
+                    (String) prop.get("sunit"), (String) prop.get("sblnbayar"));
+        }
+
+        //pemda
+        else if(idjenislaporan.endsWith("GetReport_Pemda")){
+            GetReport_Pemda(engine,
+                    (String) prop.get("tparap"), (String) prop.get("tparup"), (String) prop.get("tblth")
+                    , (String) prop.get("vjenis"), (String) prop.get("tpetugas"), (String) prop.get("in_unitupi"));
+        }
+
+        //restitusi
+        else if(idjenislaporan.endsWith("GetReportRestitusi")){
+            GetReportRestitusi(engine,
+                    (String) prop.get("in_unitap"), (String) prop.get("in_unitup"), (String) prop.get("in_blth")
+                    , (String) prop.get("in_jenis"));
+        }
+
+        //212223
+        else if(idjenislaporan.endsWith("GetReport_BK_212223rekap")){
+            GetReport_BK_212223rekap(engine,
+                    (String) prop.get("vjenis"), (String) prop.get("tblth"), (String) prop.get("tparup")
+                    , (String) prop.get("tpetugas"), (String) prop.get("kode"));
+        }
+
+        //reportpantau
+        else if(idjenislaporan.endsWith("getMonitoringLapSaldoTunggakan")){
+            getMonitoringLapSaldoTunggakan(engine,
+                    (String) prop.get("in_jenis"), (String) prop.get("in_unitupi"), (String) prop.get("in_unitap")
+                    , (String) prop.get("in_unitup"));
+        }
+        else if(idjenislaporan.endsWith("GetTunggakanPemda")){
+            GetTunggakanPemda(engine,
+                    (String) prop.get("in_unitupi"), (String) prop.get("in_unitap"), (String) prop.get("in_unitup")
+                    , (String) prop.get("in_blth"), (String) prop.get("in_jenis"));
+        }
+        else if(idjenislaporan.endsWith("PemantauanJurnal")){
+            PemantauanJurnal(engine,
+                    (String) prop.get("vpilihtgl"), (String) prop.get("tunitup"), (String) prop.get("tunitap")
+                    , (String) prop.get("ttglmulai"), (String) prop.get("ttglsampai"), (String) prop.get("tblth"));
+        }
+        else if(idjenislaporan.endsWith("PemantauanSaldo")){
+            PemantauanSaldo(engine,
+                    (String) prop.get("vpilihsaldo"), (String) prop.get("vpilihrep"), (String) prop.get("tunitup")
+                    , (String) prop.get("tunitap"), (String) prop.get("ttglmulai"), (String) prop.get("tbltttglsampai")
+                    , (String) prop.get("tblth"), (String) prop.get("in_unitupi"));
+        }
+        else if(idjenislaporan.endsWith("PemantauanTransaksi")){
+            PemantauanTransaksi(engine,
+                    (String) prop.get("transaksi"), (String) prop.get("vjenis"), (String) prop.get("vpilihtgl")
+                    , (String) prop.get("tunitkj"), (String) prop.get("tunitup"), (String) prop.get("tunitap")
+                    , (String) prop.get("ttglmulai"), (String) prop.get("ttglsampai"), (String) prop.get("tkdpp")
+                    , (String) prop.get("tkdpembayar")
+                    , (String) prop.get("tkode"));
         }
     }
 
@@ -323,6 +437,136 @@ public class LaporanReportServlet extends ReportServlet{
     public void GetReport_23Nota_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis, String iBebanKantor){
         try{
             baseService.getReportService().GetReport_23Nota_Kode(engine, tBLTH, tPetugas, kode, jenis, iBebanKantor);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void GetReport_23dltrekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                     String tanggal, String kode, String tparUPI){
+        try{
+            baseService.getReportService().GetReport_23dltrekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas,
+                     tanggal, kode, tparUPI);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void GetReport_23notarekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                      String tanggal, String kode){
+        try{
+            baseService.getReportService().GetReport_23notarekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas,
+                     tanggal, kode);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void GetReport_23Terpusat_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis) {
+        try{
+            baseService.getReportService().GetReport_23Terpusat_Kode(engine, tBLTH, tPetugas, kode, jenis);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //31
+    public void GetReport_31rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        try{
+            baseService.getReportService().GetReport_31rekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //32
+    public void GetReport_32rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas) {
+        try{
+            baseService.getReportService().GetReport_32rekap(engine, vJenis, tBLTH, tparUp, tPetugas);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //41
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        try{
+            baseService.getReportService().GetReport_41rekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //2122dobelbayar
+    public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar) {
+        try{
+            baseService.getReportService().GetReport_2122DoubleBayarNew(engine, sUnit, sBlnBayar);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //pemda
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi) {
+        try{
+            baseService.getReportService().GetReport_Pemda( engine, tparAP, tparUp, tBLTH, vJenis, tPetugas, in_unitupi);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //restitusi
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        try{
+            baseService.getReportService().GetReportRestitusi(engine, in_unitap, in_unitup, in_blth, in_jenis);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //212223
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode) {
+        try{
+            baseService.getReportService().GetReport_BK_212223rekap(engine, vJenis, tBLTH, tparUp, tPetugas, kode);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+
+    //reportpantau
+    public void getMonitoringLapSaldoTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
+        try{
+            baseService.getReportService().getLaporanMonitoringTunggakan(engine, in_jenis, in_unitupi, in_unitap, in_unitup);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void GetTunggakanPemda(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        try{
+            baseService.getReportService().GetTunggakanPemda(engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void PemantauanJurnal(Engine engine, String vPilihTgl, String tUnitUP, String tUnitAP, String tTglmulai, String tTglsampai
+            , String tBlTh) {
+        try{
+            baseService.getReportService().PemantauanJurnal(engine, vPilihTgl, tUnitUP, tUnitAP, tTglmulai, tTglsampai, tBlTh);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void PemantauanSaldo(Engine engine, String vPilihSaldo, String vPilihRep, String tUnitUP, String tUnitAP, String tTglmulai
+            , String tTglsampai, String tBlTh, String in_unitupi) {
+        try{
+            baseService.getReportService().PemantauanSaldo( engine, vPilihSaldo, vPilihRep, tUnitUP, tUnitAP, tTglmulai
+                    , tTglsampai, tBlTh, in_unitupi);
+        }catch(Exception ex){
+            CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
+        }
+    }
+    public void PemantauanTransaksi(Engine engine, String Transaksi, String vJenis, String vPilihTgl, String tUnitKJ, String tUnitUP
+            , String tUnitAP, String tTglmulai, String tTglsampai, String tKdpp, String tKdPembayar, String tKode) {
+        try{
+            baseService.getReportService().PemantauanTransaksi( engine, Transaksi, vJenis, vPilihTgl, tUnitKJ, tUnitUP
+                    , tUnitAP, tTglmulai, tTglsampai, tKdpp, tKdPembayar, tKode);;
         }catch(Exception ex){
             CommonModule.getLogger(this).info("Servlet Error : "+ ex.getMessage());
         }

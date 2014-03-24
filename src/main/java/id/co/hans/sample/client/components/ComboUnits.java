@@ -54,6 +54,22 @@ public class ComboUnits implements IsWidget {
         return this.unitUp;
     }
 
+    public void setUnitUpValue(String unitUp) {
+        this.unitUp = unitUp;
+    }
+
+    public IconComboBox getComboUnitUpi() {
+        return this.cbUnitUpi;
+    }
+
+    public IconComboBox getComboUnitAp() {
+        return this.cbUnitAp;
+    }
+
+    public IconComboBox getComboUnitUp() {
+        return this.cbUnitUp;
+    }
+
     @Override
     public Widget asWidget() {
         HorizontalPanel hlUnitUpi = new HorizontalPanel();
@@ -79,7 +95,7 @@ public class ComboUnits implements IsWidget {
         });
 
         cbUnitAp = new IconComboBox();
-        cbUnitAp.setStoreUrl("components/getComboAreaPelayanan.json?levelUnits=" + levelUnits + "&userUnit=" + userUnit + "&addApSemua=" + addApSemua);
+        cbUnitAp.setStoreUrl("components/getComboAreaPelayanan.json?levelUnits=" + levelUnits + "&userUnit=" + userUnit + "&addApSemua=" + addApSemua + "&selectedUnitUpi=");
         cbUnitAp.setComboWidth(250);
         cbUnitAp.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
             @Override
@@ -89,21 +105,19 @@ public class ComboUnits implements IsWidget {
 
                 cbUnitUp.getComboBox().clear();
 
-                cbUnitUp.setStoreUrl("components/getComboUnitPelayanan.json?levelUnits=" + levelUnits + "&userUnit=" + userUnit + "&addUpSemua=" + addApSemua + "&selectedUnitUpi=" + unitUpi);
+                cbUnitUp.setStoreUrl("components/getComboUnitPelayanan.json?levelUnits=" + levelUnits + "&userUnit=" + userUnit + "&addUpSemua=" + addUpSemua + "&selectedUnitAp=" + unitAp);
                 cbUnitUp.loadStore();
             }
         });
 
         cbUnitUp = new IconComboBox();
-        cbUnitUp.setStoreUrl("components/getComboUnitPelayanan.json?levelUnits=" + levelUnits + "&userUnit=" + userUnit + "&addUpSemua=" + addUpSemua);
+        cbUnitUp.setStoreUrl("components/getComboUnitPelayanan.json?levelUnits=" + levelUnits + "&userUnit=" + userUnit + "&addUpSemua=" + addUpSemua + "&selectedUnitAp=");
         cbUnitUp.setComboWidth(250);
         cbUnitUp.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
             @Override
             public void onSelection(SelectionEvent<Map<String, String>> event) {
                 Map<String, String> data = (Map<String, String>)event.getSelectedItem();
                 unitUp = data.get("fieldValue");
-                //System.out.println(data.get("fieldValue"));
-                //System.out.println(data.get("displayValue"));
             }
         });
 
@@ -116,7 +130,7 @@ public class ComboUnits implements IsWidget {
         vlc.add(new FieldLabel(hlUnitAp, "Unit AP"));
         vlc.add(new FieldLabel(hlUnitUp, "Unit UP"));
 
-        //cbUnitUpi.loadStore();
+        cbUnitUpi.loadStore();
 
         return vlc;
     }

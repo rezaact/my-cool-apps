@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportpantau;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,11 +23,24 @@ public class Form_MonitoringTunggakanPemda {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboJenisLaporan cbJenisLaporan;
+
+    TextButton btnCetak;
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -55,7 +71,7 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -69,10 +85,10 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan = new ComboJenisLaporan();
         cbJenisLaporan.setFormAsal("Form_MonitoringTunggakanPemda");
         vlcPReferensiTgl.add(cbJenisLaporan);
 
@@ -87,7 +103,7 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
         panelParameter.add(vlcPParameter);
 
-        TextButton btnCetak = new TextButton("Cetak");
+        btnCetak = new TextButton("Cetak");
 
         btnCetak.setWidth(220);
 
@@ -101,5 +117,31 @@ public class Form_MonitoringTunggakanPemda {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        btnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetTunggakanPemda"
+                        +"&in_jenis="+cbJenisLaporan.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&in_unitap="+cbUnits.getUnitApValue()
+                        +"&in_unitup="+cbUnits.getUnitUpValue()
+                        ;
+
+                if (cbJenisLaporan.getSelectedValue().equals("DAFTAR"))
+                    url+="&report=report/ReportPantau/Saldo/cr_TunggakanPemdaDetail.rpt";
+                else
+                    url+="&report=report/ReportPantau/Saldo/cr_TunggakanPemda.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

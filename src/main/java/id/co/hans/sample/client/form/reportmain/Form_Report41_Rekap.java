@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,17 +23,28 @@ public class Form_Report41_Rekap {
 
     private VerticalPanel vp;
 
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+    ComboJenisLaporan cbJenisLaporan;
+
+    TextButton bBottomDaftarRekeningLancarKeRagu2;
+    TextButton bBottomDaftarPerPelangganRekgLancarKeRagu2;
+    TextButton bBottomRekapitulasiPerTanggal;
+    TextButton bBottomRekapitulasiBahan404;
+
+
     private String idUser, levelUser, unitUser;
 
     public Widget asWidget(String idUser, String unitupUser, String levelUser) {
         this.idUser=idUser;
-        this.unitUser=unitUser;
+        this.unitUser=unitupUser;
         this.levelUser=levelUser;
 
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,7 +75,7 @@ public class Form_Report41_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -75,11 +89,8 @@ public class Form_Report41_Rekap {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
-
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
-        vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);
 
@@ -91,10 +102,10 @@ public class Form_Report41_Rekap {
         VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
         panelParameter.add(vlcPParameter);
 
-        TextButton bBottomDaftarRekeningLancarKeRagu2 = new TextButton("Daftar Rekening Lancar ke Ragu2");
-        TextButton bBottomDaftarPerPelangganRekgLancarKeRagu2 = new TextButton("Daftar per Pelanggan Rekg Lancar ke Ragu2");
-        TextButton bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi per Tanggal");
-        TextButton bBottomRekapitulasiBahan404 = new TextButton("Rekapitulasi u/ Bahan 404");
+        bBottomDaftarRekeningLancarKeRagu2 = new TextButton("Daftar Rekening Lancar ke Ragu2");
+        bBottomDaftarPerPelangganRekgLancarKeRagu2 = new TextButton("Daftar per Pelanggan Rekg Lancar ke Ragu2");
+        bBottomRekapitulasiPerTanggal = new TextButton("Rekapitulasi per Tanggal");
+        bBottomRekapitulasiBahan404 = new TextButton("Rekapitulasi u/ Bahan 404");
 
         bBottomDaftarRekeningLancarKeRagu2.setWidth(220);
         bBottomDaftarPerPelangganRekgLancarKeRagu2.setWidth(220);
@@ -135,5 +146,81 @@ public class Form_Report41_Rekap {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomDaftarRekeningLancarKeRagu2.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
+                        +"&vjenis="+"41daftarrekg"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/41/cr_41_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomDaftarPerPelangganRekgLancarKeRagu2.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
+                        +"&vjenis="+"41rekapdaftar"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/41/cr_41_plg_daftar.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapitulasiPerTanggal.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
+                        +"&vjenis="+"41rekap502"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/41/41rekap502.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapitulasiBahan404.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
+                        +"&vjenis="+"41rekap404"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas;
+
+                url+="&report=report/ReportMain/41/cr_41_404.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

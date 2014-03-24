@@ -29,7 +29,6 @@ import org.apache.commons.logging.LogFactory;
 //import org.json.JSONException;
 //import org.json.JSONObject;
 
-//import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Form_CetakUlangBebanKantor {
@@ -78,7 +77,7 @@ public class Form_CetakUlangBebanKantor {
     private FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Cetak Ulang Beban Kantor Macaa ciih");
+        panel.setHeadingText("Cetak Ulang Beban Kantor");
         panel.setBodyStyle("background: none; padding: 5px");
         panel.setWidth(650);
 

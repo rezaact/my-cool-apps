@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportmain;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,17 +23,25 @@ public class Form_ReportPenetapanBK_Rekap {
 
     private VerticalPanel vp;
 
+    ComboUnits cbUnits;
+    ComboTahunBulan cbTahunBulan;
+
+    TextButton bBottomRekapitulasiBkPerGolongan;
+    TextButton bBottomRekapitulasiBkPerTarip;
+
+
     private String idUser, levelUser, unitUser;
 
     public Widget asWidget(String idUser, String unitupUser, String levelUser) {
         this.idUser=idUser;
-        this.unitUser=unitUser;
+        this.unitUser=unitupUser;
         this.levelUser=levelUser;
 
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -61,7 +72,7 @@ public class Form_ReportPenetapanBK_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -75,7 +86,7 @@ public class Form_ReportPenetapanBK_Rekap {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -88,8 +99,8 @@ public class Form_ReportPenetapanBK_Rekap {
         VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
         panelParameter.add(vlcPParameter);
 
-        TextButton bBottomRekapitulasiBkPerGolongan = new TextButton("Rekapitulasi BK Per Golongan");
-        TextButton bBottomRekapitulasiBkPerTarip = new TextButton("Rekapitulasi BK Per Tarip");
+        bBottomRekapitulasiBkPerGolongan = new TextButton("Rekapitulasi BK Per Golongan");
+        bBottomRekapitulasiBkPerTarip = new TextButton("Rekapitulasi BK Per Tarip");
 
         bBottomRekapitulasiBkPerGolongan.setWidth(220);
         bBottomRekapitulasiBkPerTarip.setWidth(220);
@@ -110,5 +121,51 @@ public class Form_ReportPenetapanBK_Rekap {
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomRekapitulasiBkPerGolongan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
+                        +"&vjenis="+"11bkrekap_gol"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas
+                        +"&tparap="+petugas
+                        +"&in_unitupi="+petugas
+                        +"&kode="+"";
+
+                url+="&report=report/ReportMain/11/cr_11bk_gol.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        bBottomRekapitulasiBkPerTarip.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
+                        +"&vjenis="+"11bkrekap_tarip"
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+cbUnits.getUnitUpValue()
+                        +"&tpetugas="+petugas
+                        +"&tparap="+petugas
+                        +"&in_unitupi="+petugas
+                        +"&kode="+"";
+
+                url+="&report=report/ReportMain/11/cr_11bk_tarip.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

@@ -65,9 +65,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql = "";
 
             if(vJenis == "IdPel") {
-                sql = "select IDPEL from sip3single.dil where IDPEL = '" + tpel + "'";
+                sql = "select IDPEL from dil where IDPEL = '" + tpel + "'";
             } else if(vJenis == "NoPel") {
-                sql = "select IDPEL from sip3single.dil where NOPEL = '" + tpel + "'";
+                sql = "select IDPEL from dil where NOPEL = '" + tpel + "'";
             }
 
             cst = con.prepareCall(sql);
@@ -94,9 +94,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql = "";
 
             if(vJenis == "IdPel") {
-                sql = "select UNITUP as tUnitupidpel from sip3single.dil where IDPEL = '" + tpel + "'";
+                sql = "select UNITUP as tUnitupidpel from dil where IDPEL = '" + tpel + "'";
             } else if(vJenis == "NoPel") {
-                sql = "select UNITUP as tUnitupidpel from sip3single.dil where NOPEL = '" + tpel + "'";
+                sql = "select UNITUP as tUnitupidpel from dil where NOPEL = '" + tpel + "'";
             }
 
             cst = con.prepareCall(sql);
@@ -134,23 +134,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString("idpel", tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString("BlTh", tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString("Petugas", tPetugas);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_21entri_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc";
+                    " FROM VIEW_21entri_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc";
 
             cst = con.prepareCall(sql);
 
@@ -191,7 +191,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql;
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VW_21DOWNLOAD " +
+                    " FROM VW_21DOWNLOAD " +
                     " WHERE " +
                     " TGLBAYAR BETWEEN '" + tglAwal + "' AND '" + tglAkhir + "'  " +
                     " AND UNITUP = '" + unitup + "' ";
@@ -235,28 +235,28 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetTglKoreksi(?) }";
+            sql = "{ call PARAMETERVIEW.SetTglKoreksi(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tKoreksi);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_21Suplisi_TAMPILFORM";
+                    " FROM VIEW_21Suplisi_TAMPILFORM";
 
             cst = con.prepareCall(sql);
 
@@ -302,33 +302,33 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetTglBayar(?) }";
+            sql = "{ call PARAMETERVIEW.SetTglBayar(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tTglBayar);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetKodePp(?) }";
+            sql = "{ call PARAMETERVIEW.SetKodePp(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tKodePp);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME " +
-                    " FROM sip3single.VIEW_21HapusGagal_TAMPILFORM order by IDPEL,blth desc ";
+                    " FROM VIEW_21HapusGagal_TAMPILFORM order by IDPEL,blth desc ";
 
             cst = con.prepareCall(sql);
 
@@ -372,23 +372,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_BATALDENDA_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_BATALDENDA_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -432,7 +432,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PKG_VIEW_TAMPILFORM.NEW_31_TAMPILFORM(?,?,?,?) }";
+            sql = "{ call PKG_VIEW_TAMPILFORM.NEW_31_TAMPILFORM(?,?,?,?) }";
             cst = con.prepareCall(sql);
             cst.registerOutParameter("OUT_DATA", OracleTypes.CURSOR);
             cst.setString("vIDPEL", tpel);
@@ -480,23 +480,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_41DUPR_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_41DUPR_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -540,23 +540,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_32DUPP_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_32DUPP_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -600,23 +600,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_41_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_41_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -660,23 +660,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_32_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_32_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -720,13 +720,13 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql;
 
             /*
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlTh(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlTh(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
             */
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
@@ -774,18 +774,18 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIDPEL(?) }";
+            sql = "{ call PARAMETERVIEW.SetIDPEL(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tkodekolektif);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_41PRRfromDUPR_TAMPILFORM WHERE IDPEL = '" + tkodekolektif + "'  order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
+                    " FROM VIEW_41PRRfromDUPR_TAMPILFORM WHERE IDPEL = '" + tkodekolektif + "'  order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
 
             cst = con.prepareCall(sql);
 
@@ -827,23 +827,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetKodeKolektif(?) }";
+            sql = "{ call PARAMETERVIEW.SetKodeKolektif(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tkodekolektif);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlth(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlth(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_21GIRALISASI_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
+                    " FROM VIEW_21GIRALISASI_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
 
             cst = con.prepareCall(sql);
 
@@ -885,23 +885,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetKodeKolektif(?) }";
+            sql = "{ call PARAMETERVIEW.SetKodeKolektif(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tkodekolektif);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlth(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlth(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_23NOTApusat_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
+                    " FROM VIEW_23NOTApusat_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
 
             cst = con.prepareCall(sql);
 
@@ -943,23 +943,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetKodeKolektif(?) }";
+            sql = "{ call PARAMETERVIEW.SetKodeKolektif(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tkodekolektif);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlth(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlth(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_23NOTA_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
+                    " FROM VIEW_23NOTA_TAMPILFORM order by IDPEL,SUBSTR(TGLJTTEMPO,1,6) DESC, NOURUT desc ";
 
             cst = con.prepareCall(sql);
 
@@ -1005,7 +1005,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PKG_VIEW_TAMPILFORM.NEW_12ABC_TAMPILFORM(?,?,?,?) }";
+            sql = "{ call PKG_VIEW_TAMPILFORM.NEW_12ABC_TAMPILFORM(?,?,?,?) }";
             cst = con.prepareCall(sql);
             cst.setString("vIDPEL", tpel);
             cst.setString("vBLTH", tBLTH);
@@ -1060,17 +1060,17 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIDPEL(?) }";
+            sql = "{ call PARAMETERVIEW.SetIDPEL(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBLTH(?) }";
+            sql = "{ call PARAMETERVIEW.SetBLTH(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPETUGAS(?) }";
+            sql = "{ call PARAMETERVIEW.SetPETUGAS(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
@@ -1154,7 +1154,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PKG_VIEW_TAMPILFORM.NEW_12DE_TAMPILFORM(?,?,?,?) }";
+            sql = "{ call PKG_VIEW_TAMPILFORM.NEW_12DE_TAMPILFORM(?,?,?,?) }";
             cst = con.prepareCall(sql);
             cst.setString("vIDPEL", tpel);
             cst.setString("vBLTH", tBLTH);
@@ -1202,23 +1202,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql;
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlth(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlth(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT *  " +
-                    " FROM sip3single.VIEW_12D_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_12D_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -1266,7 +1266,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
 
             sql = " SELECT *  " +
-                    " FROM sip3single.DIL WHERE IDPEL = '" + tpel + "'";
+                    " FROM DIL WHERE IDPEL = '" + tpel + "'";
 
             cst = con.prepareCall(sql);
 
@@ -1279,7 +1279,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             }
 
             sql = " SELECT *  " +
-                    " FROM sip3single.PETUGAS_2122OFFON WHERE ID_USER = '" + tPetugas + "'";
+                    " FROM PETUGAS_2122OFFON WHERE ID_USER = '" + tPetugas + "'";
 
             cst = con.prepareCall(sql);
 
@@ -1298,23 +1298,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
 
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlth(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlth(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_13_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_13_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -1362,7 +1362,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
 
             sql = " SELECT *  " +
-                    " FROM sip3single.DIL WHERE IDPEL = '" + tpel + "'";
+                    " FROM DIL WHERE IDPEL = '" + tpel + "'";
 
             cst = con.prepareCall(sql);
 
@@ -1375,23 +1375,23 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             }
 
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetIdPel(?) }";
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tpel);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBlth(?) }";
+            sql = "{ call PARAMETERVIEW.SetBlth(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tBLTH);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetPetugas(?) }";
+            sql = "{ call PARAMETERVIEW.SetPetugas(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, tPetugas);
             cst.execute();
 
             sql = " SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME  " +
-                    " FROM sip3single.VIEW_13_TAMPILFORM order by IDPEL,blth asc ";
+                    " FROM VIEW_13_TAMPILFORM order by IDPEL,blth asc ";
 
             cst = con.prepareCall(sql);
 
@@ -1408,7 +1408,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
 
             sql = " SELECT *  " +
-                    " FROM sip3single.PETUGAS_2122OFFON WHERE ID_USER = '" + tPetugas + "'";
+                    " FROM PETUGAS_2122OFFON WHERE ID_USER = '" + tPetugas + "'";
 
             cst = con.prepareCall(sql);
 
@@ -1451,22 +1451,22 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql;
 
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetUNITAP(?) }";
+            sql = "{ call PARAMETERVIEW.SetUNITAP(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, unitap);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetUNITUP(?) }";
+            sql = "{ call PARAMETERVIEW.SetUNITUP(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, unitup);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBLTH(?) }";
+            sql = "{ call PARAMETERVIEW.SetBLTH(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, thbl);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetKDSIKLIS(?) }";
+            sql = "{ call PARAMETERVIEW.SetKDSIKLIS(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, KDKELOMPOK);
             cst.execute();
@@ -1522,22 +1522,22 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
             //todo: _package <--- parameter ini
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetUNITAP(?) }";
+            sql = "{ call PARAMETERVIEW.SetUNITAP(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, unitap);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetUNITUP(?) }";
+            sql = "{ call PARAMETERVIEW.SetUNITUP(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, unitup);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetBLTH(?) }";
+            sql = "{ call PARAMETERVIEW.SetBLTH(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, thbl);
             cst.execute();
 
-            sql = "{ call sip3single.PARAMETERVIEW.SetKDSIKLIS(?) }";
+            sql = "{ call PARAMETERVIEW.SetKDSIKLIS(?) }";
             cst = con.prepareCall(sql);
             cst.setString(1, KDKELOMPOK);
             cst.execute();
@@ -1636,9 +1636,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql = "";
 
             if(vJenis == "IdPel") {
-                sql = "select IDPEL from sip3single.dil where IDPEL = '" + tPEL + "'";
+                sql = "select IDPEL from dil where IDPEL = '" + tPEL + "'";
             } else if(vJenis == "NoPel") {
-                sql = "select IDPEL from sip3single.dil where NOPEL = '" + tPEL + "'";
+                sql = "select IDPEL from dil where NOPEL = '" + tPEL + "'";
             }
 
             cst = con.prepareCall(sql);
@@ -2702,7 +2702,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "select kodekolektif, NAMAKOLEKTIF from sip3single.kodekolektif23nota WHERE TGLTHRU IS NULL AND UNITUP='" + sUnitUp + "' AND BEBANKANTOR=" + iBebanKantor + " order by kodekolektif ";
+            String sql = "select kodekolektif, NAMAKOLEKTIF from kodekolektif23nota WHERE TGLTHRU IS NULL AND UNITUP='" + sUnitUp + "' AND BEBANKANTOR=" + iBebanKantor + " order by kodekolektif ";
 
             CallableStatement cst;
             cst = con.prepareCall(sql);

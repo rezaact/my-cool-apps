@@ -1564,11 +1564,8 @@ public class Ws_ReportTransaksiController {
 
         String retVal = "Init";
         try {
-            retValue=  ws_reportTransaksiDao.getMonitoringLapSaldoTunggakan(in_jenis,in_Unitupi,in_Unitap,in_Unitup);
+            retValue =  ws_reportTransaksiDao.getMonitoringLapSaldoTunggakan(in_jenis,in_Unitupi,in_Unitap,in_Unitup);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();

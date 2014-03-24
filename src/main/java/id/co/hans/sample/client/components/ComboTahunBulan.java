@@ -1,16 +1,15 @@
 package id.co.hans.sample.client.components;
 
+import java.util.Map;
+
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 
-import java.util.Map;
-
-public class ComboTahunBulan implements IsWidget {
+public class ComboTahunBulan extends AbstractComboComponent {
 
     private HorizontalPanel hp;
     private IconComboBox cbTahun, cbBulan;
@@ -41,7 +40,7 @@ public class ComboTahunBulan implements IsWidget {
     @Override
     public Widget asWidget() {
         cbTahun = new IconComboBox();
-        cbTahun.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cbTahun.setStoreUrl("components/getComboTahun.json?");
         cbTahun.setComboWidth(79);
 
         cbTahun.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
@@ -49,11 +48,13 @@ public class ComboTahunBulan implements IsWidget {
             public void onSelection(SelectionEvent<Map<String, String>> event) {
                 Map<String, String> data = (Map<String, String>)event.getSelectedItem();
                 cbTahunSelectedValue = data.get("fieldValue");
+                
+                onComboChange(data.get("fieldValue"));
             }
         });
 
         cbBulan = new IconComboBox();
-        cbBulan.setStoreUrl("BasicProject/thuGetComboBulan.json");
+        cbBulan.setStoreUrl("components/getComboBulan.json?");
         cbBulan.setComboWidth(120);
 
         cbBulan.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

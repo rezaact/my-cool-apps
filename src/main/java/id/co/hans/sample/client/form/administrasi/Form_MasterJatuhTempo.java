@@ -5,6 +5,7 @@ import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.http.client.*;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.json.client.*;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -21,8 +22,6 @@ import com.sencha.gxt.widget.core.client.form.FormPanel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import id.co.hans.sample.client.components.*;
 
-//import java.text.SimpleDateFormat;
-//import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -229,7 +228,9 @@ public class Form_MasterJatuhTempo {
         bttnDelete.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
+
 //                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                DateTimeFormat formatter = DateTimeFormat.getFormat("yyyy/MM/dd");
                 String url;
 
                 url = "Ws_JatuhTempo/DeleteJatuhTempo.json?";

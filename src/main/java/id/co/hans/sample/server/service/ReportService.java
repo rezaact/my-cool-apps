@@ -147,4 +147,74 @@ public class ReportService {
     public void GetReport_23Nota_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis, String iBebanKantor){
         reportDao.GetReport_23Nota_Kode( engine, tBLTH, tPetugas, kode, jenis, iBebanKantor);
     }
+    public void GetReport_23dltrekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                     String tanggal, String kode, String tparUPI){
+        reportDao.GetReport_23dltrekap( engine, vJenis, tBLTH, tparAp, tparUp, tPetugas,
+                tanggal, kode, tparUPI);
+    }
+    public void GetReport_23notarekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                      String tanggal, String kode) {
+        reportDao.GetReport_23notarekap( engine, vJenis, tBLTH, tparAp, tparUp, tPetugas,
+                tanggal, kode);
+    }
+    public void GetReport_23Terpusat_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis) {
+        reportDao.GetReport_23Terpusat_Kode( engine, tBLTH, tPetugas, kode, jenis);
+    }
+
+    //31
+    public void GetReport_31rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        reportDao.GetReport_31rekap( engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
+    }
+
+    //32
+    public void GetReport_32rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas) {
+        reportDao.GetReport_32rekap( engine, vJenis, tBLTH, tparUp, tPetugas);
+    }
+
+    //41
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        reportDao.GetReport_41rekap( engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
+    }
+
+    //2122dobelbayar
+    public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar) {
+        reportDao.GetReport_2122DoubleBayarNew( engine, sUnit, sBlnBayar);
+    }
+
+    //pemda
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi) {
+        reportDao.GetReport_Pemda( engine, tparAP, tparUp, tBLTH, vJenis, tPetugas, in_unitupi);
+    }
+
+    //restitusi
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        reportDao.GetReportRestitusi( engine, in_unitap, in_unitup, in_blth, in_jenis);
+    }
+
+    //212223
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode) {
+        reportDao.GetReport_BK_212223rekap( engine, vJenis, tBLTH, tparUp, tPetugas, kode);
+    }
+
+    //reportpantau
+    public void getLaporanMonitoringTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
+        reportDao.getLaporanMonitoringTunggakan( engine, in_jenis, in_unitupi, in_unitap, in_unitup);
+    }
+    public void GetTunggakanPemda(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+        reportDao.GetTunggakanPemda( engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
+    }
+    public void PemantauanJurnal(Engine engine, String vPilihTgl, String tUnitUP, String tUnitAP, String tTglmulai, String tTglsampai
+            , String tBlTh) {
+        reportDao.PemantauanJurnal( engine, vPilihTgl, tUnitUP, tUnitAP, tTglmulai, tTglsampai, tBlTh);
+    }
+    public void PemantauanSaldo(Engine engine, String vPilihSaldo, String vPilihRep, String tUnitUP, String tUnitAP, String tTglmulai
+            , String tTglsampai, String tBlTh, String in_unitupi) {
+        reportDao.PemantauanSaldo( engine, vPilihSaldo, vPilihRep, tUnitUP, tUnitAP, tTglmulai
+                , tTglsampai, tBlTh, in_unitupi);
+    }
+    public void PemantauanTransaksi(Engine engine, String Transaksi, String vJenis, String vPilihTgl, String tUnitKJ, String tUnitUP
+            , String tUnitAP, String tTglmulai, String tTglsampai, String tKdpp, String tKdPembayar, String tKode) {
+        reportDao.PemantauanTransaksi( engine, Transaksi, vJenis, vPilihTgl, tUnitKJ, tUnitUP
+                , tUnitAP, tTglmulai, tTglsampai, tKdpp, tKdPembayar, tKode);
+    }
 }

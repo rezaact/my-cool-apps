@@ -61,4 +61,40 @@ public interface ReportDao {
     public void GetReport_23Terima_Rekap(Engine engine, String tThbl, String tParUp, String tPetugas);
     public void GetReport_23Terima_Daftar(Engine engine, String tThbl, String tParUp, String tPetugas);
     public void GetReport_23Nota_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis, String iBebanKantor);
+    public void GetReport_23dltrekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                     String tanggal, String kode, String tparUPI);
+    public void GetReport_23notarekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                      String tanggal, String kode);
+    public void GetReport_23Terpusat_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis);
+
+    //31
+    public void GetReport_31rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas);
+
+    //32
+    public void GetReport_32rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas);
+
+    //41
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas);
+
+    //2122dobelbayar
+    public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar);
+
+    //pemda
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi);
+
+    //restitusi
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis);
+
+    //212223
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode);
+
+    //reportpantau_monitoringsaldotunggakan
+    public void getLaporanMonitoringTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup);
+    public void GetTunggakanPemda(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth, String in_jenis);
+    public void PemantauanJurnal(Engine engine, String vPilihTgl, String tUnitUP, String tUnitAP, String tTglmulai, String tTglsampai
+            , String tBlTh);
+    public void PemantauanSaldo(Engine engine, String vPilihSaldo, String vPilihRep, String tUnitUP, String tUnitAP, String tTglmulai
+            , String tTglsampai, String tBlTh, String in_unitupi);
+    public void PemantauanTransaksi(Engine engine, String Transaksi, String vJenis, String vPilihTgl, String tUnitKJ, String tUnitUP
+            , String tUnitAP, String tTglmulai, String tTglsampai, String tKdpp, String tKdPembayar, String tKode);
 }

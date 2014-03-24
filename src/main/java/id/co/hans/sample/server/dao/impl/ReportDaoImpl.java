@@ -145,18 +145,18 @@ public class ReportDaoImpl implements ReportDao {
             cst.setString("unitup", tparUp);
             cst.execute();
 
-            if (vJenis.toUpperCase() == "11REKAP_TARIPDAYA" ) {
-                if ( tparAP.toString().toUpperCase() != "SEMUA" ) {
+            if (vJenis.toUpperCase().equals("11REKAP_TARIPDAYA")) {
+                if ( !tparAP.toString().toUpperCase().equals("SEMUA") ) {
                     sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
                     sql = sql + "   UNITUP, BLTH, KDKELOMPOK, TGLJTTEMPO, TARIP,DAYA, LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
                     sql = sql + " FROM VIEW_REPORT_11_TARIPDAYA";
                     sql = sql + " WHERE ";
                     sql = sql + "  BLTH  = '" + tBLTH + "'";
-                    if ( kode.toUpperCase() != "SEMUA" ) {
+                    if ( !kode.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
                     }
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toString().toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toString().toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                     sql = sql + " order by TARIP ASC,DAYA asc";
@@ -166,24 +166,24 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " FROM VIEW_REPORT_11_TARIPDAYA_PERAP";
                     sql = sql + " WHERE ";
                     sql = sql + "  BLTH  = '" + tBLTH + "'";
-                    if ( kode.toUpperCase() != "SEMUA" ) {
+                    if ( !kode.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
                     }
                     sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                     sql = sql + " order by TARIP ASC,DAYA asc";
                 }
-            } else if ( vJenis.toUpperCase() == "11REKAP_GOL" ) {
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+            } else if ( vJenis.toUpperCase().equals("11REKAP_GOL") ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
                     sql = sql + "   UNITUP, BLTH, KDKELOMPOK, TGLJTTEMPO, KOGOL, LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
                     sql = sql + " FROM VIEW_REPORT_11_GOL";
                     sql = sql + " WHERE ";
                     sql = sql + "  BLTH  = '" + tBLTH + "'";
-                    if ( kode.toUpperCase() != "SEMUA" ) {
+                    if ( !kode.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
                     }
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                     sql = sql + " order by KOGOL asc";
@@ -193,14 +193,14 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " FROM VIEW_REPORT_11_GOL_PERAP";
                     sql = sql + " WHERE ";
                     sql = sql + "  BLTH  = '" + tBLTH + "'";
-                    if ( kode.toUpperCase() != "SEMUA" ) {
+                    if ( !kode.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
                     }
                     sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                     sql = sql + " order by KOGOL asc";
                 }
-            } else if ( vJenis.toUpperCase() == "11REKAP_INKASO" ) {
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+            } else if ( vJenis.toUpperCase().equals("11REKAP_INKASO") ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
                     sql = sql + "   UNITUP, BLTH, KDKELOMPOK, TGLJTTEMPO, ";
                     sql = sql + "   KDINKASO,KOGOL, LEMBAR, KWHLWBP, KWHWBP, BLOK3, ";
@@ -211,11 +211,11 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " FROM VIEW_REPORT_11_INKASO";
                     sql = sql + " WHERE ";
                     sql = sql + "  BLTH  = '" + tBLTH + "'";
-                    if ( kode.toUpperCase() != "SEMUA" ) {
+                    if ( !kode.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
                     }
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                     sql = sql + " order by KDINKASO ASC, KOGOL asc";
@@ -230,14 +230,14 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " FROM VIEW_REPORT_11_INKASO_PERAP";
                     sql = sql + " WHERE ";
                     sql = sql + "  BLTH  = '" + tBLTH + "'";
-                    if ( kode.toUpperCase() != "SEMUA" ) {
+                    if ( !kode.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
                     }
                     sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                     sql = sql + " order by KDINKASO ASC, KOGOL asc";
                 }
             //---tambahan BK
-            } else if ( vJenis.toUpperCase() == "11BKREKAP_TARIP" ) {
+            } else if ( vJenis.toUpperCase().equals("11BKREKAP_TARIP")) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
                 sql = sql + "   UNITUP, KODETRANSAKSI, BLTH, KDKELOMPOK, TGLTRANSAKSI TGLJTTEMPO,  KOGOL, LBR_BK AS LEMBAR, '' AS KWHLWBP, '' KWHWBP, '' BLOK3, '' PEMKWH, '' KWHKVARH, '' KELBKVARH, '' RPLWBP, '' RPWBP, '' RPBLOK3, '' RPKVARH, '' RPBEBAN, '' RPTTLB, '' RPPTL, '' RPTB, '' RPPPN, '' RPBPJU, '' RPTRAFO, '' RPSEWATRAFO, '' RPSEWAKAP, LBR_BK1 AS RPANGSA, LBR_BK2 AS RPANGSB, LBR_BK3 AS RPANGSC, '' RPMAT, '' RPPLN, RP_BK AS RPTAG, '' RPPRODUKSI, '' RPSUBSIDI, '' RPREDUKSI, '' RPINSENTIF, '' RPDISINSENTIF, RP_BK1 AS RPBK1, RP_BK2 AS RPBK2, RP_BK3 AS RPBK3,  '' RPTDLLAMA, '' RPTDLBARU, '' RPSELISIH";
                 sql = sql + " FROM VIEW_REPORT_11BK_TARIP";
@@ -245,13 +245,13 @@ public class ReportDaoImpl implements ReportDao {
                 //sql = sql + " BLTH  = '" + tBLTH + "'";
                 sql = sql + "  TGLTRANSAKSI  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TGLTRANSAKSI  <= '" + tBLTH + "31" + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                 }
-                //if ( kode.toUpperCase() != "SEMUA" ) {
+                //if ( kode.toUpperCase().equals("SEMUA" ) {
                 //    sql = sql + " AND KDKELOMPOK  = '" + kode + "'"
                 //}
-            } else if ( vJenis.toUpperCase() == "11BKREKAP_GOL" ) {
+            } else if ( vJenis.toUpperCase().equals("11BKREKAP_GOL")) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
                 sql = sql + "   UNITUP, KODETRANSAKSI, BLTH, KDKELOMPOK, TGLTRANSAKSI TGLJTTEMPO,  KOGOL, LBR_BK AS LEMBAR, '' AS KWHLWBP, '' KWHWBP, '' BLOK3, '' PEMKWH, '' KWHKVARH, '' KELBKVARH, '' RPLWBP, '' RPWBP, '' RPBLOK3, '' RPKVARH, '' RPBEBAN, '' RPTTLB, '' RPPTL, '' RPTB, '' RPPPN, '' RPBPJU, '' RPTRAFO, '' RPSEWATRAFO, '' RPSEWAKAP, LBR_BK1 AS RPANGSA, LBR_BK2 AS RPANGSB, LBR_BK3 AS RPANGSC, '' RPMAT, '' RPPLN, RP_BK AS RPTAG, '' RPPRODUKSI, '' RPSUBSIDI, '' RPREDUKSI, '' RPINSENTIF, '' RPDISINSENTIF, RP_BK1 AS RPBK1, RP_BK2 AS RPBK2, RP_BK3 AS RPBK3,  '' RPTDLLAMA, '' RPTDLBARU, '' RPSELISIH";
                 sql = sql + " FROM VIEW_REPORT_11BK_GOL";
@@ -259,10 +259,10 @@ public class ReportDaoImpl implements ReportDao {
                 //sql = sql + " BLTH  = '" + tBLTH + "'"
                 sql = sql + "  TGLTRANSAKSI  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TGLTRANSAKSI  <= '" + tBLTH + "31" + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                 }
-                //if ( kode.toUpperCase() != "SEMUA" ) {
+                //if ( kode.toUpperCase().equals("SEMUA" ) {
                 //    sql = sql + " AND KDKELOMPOK  = '" + kode + "'"
                 //}
             }
@@ -340,7 +340,7 @@ public class ReportDaoImpl implements ReportDao {
             CallableStatement cst;
             String sql = "";
 
-            if ( vJenis.toUpperCase() == "12REKAP502SEBELUM" ) {
+            if ( vJenis.toUpperCase().equals("12REKAP502SEBELUM") ) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
                 sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
                 sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
@@ -348,16 +348,16 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + " WHERE ";
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                 sql = sql + " order by TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "12REKAP502SESUDAH" ) {
+            } else if ( vJenis.toUpperCase().equals("12REKAP502SESUDAH") ) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
                 sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
                 sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
@@ -365,16 +365,16 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + " WHERE ";
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                 sql = sql + " order by TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "12REKAP404SEBELUM" ) {
+            } else if ( vJenis.toUpperCase().equals("12REKAP404SEBELUM") ) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
                 sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
                 sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
@@ -382,16 +382,16 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + " WHERE ";
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                 sql = sql + " order by TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "12REKAP404SESUDAH" ) {
+            } else if ( vJenis.toUpperCase().equals("12REKAP404SESUDAH") ) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
                 sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
                 sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
@@ -399,16 +399,16 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + " WHERE ";
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                 sql = sql + " order by TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "12DAFTARREKG306" ) {
+            } else if ( vJenis.toUpperCase().equals("12DAFTARREKG306" )) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, ";
                 sql = sql + "  BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLBATALTRANS, TRANSAKSIIDBATAL, TGLTRANSAKSI, TRANSAKSIID, TRANSAKSIBY, TRANSAKSIBATALBY, KOREKSIBY,";
                 sql = sql + "  BLTH_L, IDPEL_L, NOPEL_L, KDGERAKMASUK_L, UPLOADTIME_L, UPLOADBY_L, KDGERAKKELUAR_L, TGLBAYAR_L, WKTBAYAR_L, KDPP_L, KDPEMBAYAR_L, KDKOREKSI_L, TGKOREKSI_L, STATUS_L, KDPEMBPP_L, KDPEMBAYARSIP3_L, UNITUP_L, PEMDA_L, NAMA_L, PNJ_L, NAMAPNJ_L, NOBANG_L, KETNOBANG_L, RT_L, RW_L, NODLMRT_L, KETNODLMRT_L, LINGKUNGAN_L, KODEPOS_L, IDTARIP_L, TARIP_L, KDPEMBTRF_L, ABONMETER_L, DAYA_L, KDAYA_L, KOGOL_L, SUBKOGOL_L, FRT_L, FJN_L, KDPPJ_L, UNITKJ_L, KDINKASO_L, KDKELOMPOK_L, TGLJTTEMPO_L, KDDK_L, TGLBACA_L, SLALWBP_L, SAHLWBP_L, SLAWBP_L, SAHWBP_L, SLAKVARH_L, SAHKVARH_L, SKVAMAX_L, FAKM_L, FAKMKVARH_L, FAKMKVAMAX_L, KWHLWBP_L, KWHWBP_L, BLOK3_L, PEMKWH_L, KWHKVARH_L, KELBKVARH_L, RPLWBP_L, RPWBP_L, RPBLOK3_L, RPKVARH_L, RPBEBAN_L, CTTLB_L, RPTTLB_L, RPPTL_L, RPTB_L, RPPPN_L, RPBPJU_L, RPTRAFO_L, RPSEWATRAFO_L, RPSEWAKAP_L, KDANGSA_L, RPANGSA_L, KDANGSB_L, RPANGSB_L, KDANGSC_L, RPANGSC_L, RPMAT_L, RPPLN_L, RPTAG_L, RPPRODUKSI_L, RPSUBSIDI_L, RPREDUKSI_L, RPINSENTIF_L, RPDISINSENTIF_L, RPBK1_L, RPBK2_L, RPBK3_L, RPTDLLAMA_L, RPTDLBARU_L, RPSELISIH_L, NOREK_L, NOAGENDA_L, FLAGSOPP_L, FLAGANJA_L, KDKIRIM_L, KDTERIMA_L, TGLBATALTRANS_L, TRANSAKSIIDBATAL_L, TGLTRANSAKSI_L, TRANSAKSIID_L";
@@ -416,80 +416,80 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + " WHERE ";
                 sql = sql + "  TGKOREKSI  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TGKOREKSI  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " order by TGKOREKSI asc,KDKOREKSI ASC ";
-            } else if ( vJenis.toUpperCase() == "12KOREKSIPERTARIPSEBELUM" ) {
+            } else if ( vJenis.toUpperCase().equals("12KOREKSIPERTARIPSEBELUM") ) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, ";
                 sql = sql + " TGKOREKSI, STATUS, KDPEMBPP, UNITUP, TARIP, DAYA,  ";
                 sql = sql + " LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH ";
                 sql = sql + " FROM VIEW_REPORT_12DLAMATARIP";
                 sql = sql + " WHERE ";
                 sql = sql + "  TGKOREKSI  = '" + tBLTH + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " order by TARIP asc,DAYA ASC ";
-            } else if ( vJenis.toUpperCase() == "12KOREKSIPERTARIPSESUDAH" ) {
+            } else if ( vJenis.toUpperCase().equals("12KOREKSIPERTARIPSESUDAH" )) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, ";
                 sql = sql + " TGKOREKSI, STATUS, KDPEMBPP, UNITUP, TARIP, DAYA,  ";
                 sql = sql + " LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH ";
                 sql = sql + " FROM VIEW_REPORT_12DBARUTARIP";
                 sql = sql + " WHERE ";
                 sql = sql + "  TGKOREKSI  = '" + tBLTH + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " order by TARIP asc,DAYA ASC ";
-            } else if ( vJenis.toUpperCase() == "12REKAPKOREKSIREKENING" ) {
+            } else if ( vJenis.toUpperCase().equals("12REKAPKOREKSIREKENING" )) {
                 sql = "SELECT * FROM VIEW_REPORT_12REKAPKOREKSINEW";
                 sql = sql + "  WHERE TO_CHAR(TGKOREKSI,'YYYYMMDD')  BETWEEN '" + tBLTH + "01" + "'";
                 sql = sql + " AND  '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " ORDER BY IDPEL,BLTH ";
                 //add by Andrie by CRF
-            } else if ( vJenis.toUpperCase() == "12REKAPKOREKSIREKENINGNEW" ) {
+            } else if ( vJenis.toUpperCase().equals("12REKAPKOREKSIREKENINGNEW" )) {
                 sql = "SELECT * FROM VIEW_REPORT_12REKAPNEW_KOREKSI";
                 sql = sql + " WHERE ";
                 sql = sql + "  TGKOREKSI  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TGKOREKSI  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " AND SUBSTR(UNITAP, 1, 2) = RTRIM(LTRIM('" + in_unitupi + "'))";
                 sql = sql + " ORDER BY BLTHREK, KDKOREKSI, KOGOL";
 
-            } else if ( vJenis.toUpperCase() == "12KOREKSIPERKODEKOREKSI" ) {
+            } else if ( vJenis.toUpperCase().equals("12KOREKSIPERKODEKOREKSI" )) {
                 sql = "SELECT LEMBAR, BLTHREK, KDKOREKSI, UNITUP, TOTAL_PEMKWH, TOTAL_RPTAG, TOTAL_PEMKWH_L, TOTAL_RPTAG_L, UNITAP ";
                 sql = sql + " FROM  VIEW_REPORT_12REKAPNEW_KOREKSI";
                 sql = sql + " WHERE ";
                 sql = sql + "  TGKOREKSI  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TGKOREKSI  <= '" + tBLTH + "31" + "'";
-                if ( tparAP.toUpperCase() != "SEMUA" ) {
+                if ( !tparAP.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAP + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
@@ -518,7 +518,7 @@ public class ReportDaoImpl implements ReportDao {
             CallableStatement cst;
             String sql = "";
 
-            if ( vJenis.toUpperCase() == "13REKAP502" ) {
+            if ( vJenis.toUpperCase().equals("13REKAP502" )) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
                 sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
                 sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
@@ -527,15 +527,15 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
                 //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
-                if ( tparAp.toUpperCase() != "SEMUA" ) {
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                 sql = sql + " order by TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "13REKAP404" ) {
+            } else if ( vJenis.toUpperCase().equals("13REKAP404" )) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
                 sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
                 sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
@@ -544,15 +544,15 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
                 //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
-                if ( tparAp.toUpperCase() != "SEMUA" ) {
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
                 sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                 sql = sql + " order by TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "13DAFTARREKG" ) {
+            } else if ( vJenis.toUpperCase().equals("13DAFTARREKG" )) {
                 sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, BLTH, IDPEL, NOPEL, ";
                 sql = sql + "   KDGERAKMASUK, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, JNSMUT, BLTHMUT, KDMUT, TGLNYALA, NOGARDU, NOTIANG, NOMETER, DAYABULK, RPBP, RPUJL, TGLBATALTRANS, TRANSAKSIIDBATAL, TGLTRANSAKSI, TRANSAKSIID, UPLOADBY, UPLOADTIME, TRANSAKSIBY, TRANSAKSIBATALBY";
                 sql = sql + " FROM VIEW_REPORT_13DAFTARREKG";
@@ -560,9 +560,9 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
                 sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
                 //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
-                if ( tparAp.toUpperCase() != "SEMUA" ) {
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
                     sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     }
                 }
@@ -590,7 +590,7 @@ public class ReportDaoImpl implements ReportDao {
             ResultSet rs = null;
             String sql = "";
 
-            if ( tparUp.substring(0, 2) == "52" ) {
+            if ( tparUp.substring(0, 2).equals("52" )) {
                 sql = "{call PARAMETERVIEW.SetTGLBAYAR(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("TGLBAYAR", tBLTH + tanggal);
@@ -611,9 +611,9 @@ public class ReportDaoImpl implements ReportDao {
                 cst.setString("unitup", tBLTH + tanggalend);
                 cst.execute();
 
-                if ( vJenis.toUpperCase() == "21BA" ) {
+                if ( vJenis.toUpperCase().equals("21BA" )) {
                     String partisi = "lunas_" + tBLTH.substring(0, 4) + "_" + tBLTH.substring(4, 2);
-                    if ( pengelola.toUpperCase() != "SEMUA" && pengelola.trim() != "" ) {
+                    if ( !pengelola.toUpperCase().equals("SEMUA") && pengelola.trim().equals("") ) {
                         sql = " SELECT * ";
                         sql = sql + " FROM VIEW_REPORT_21_BA_OFFLINE ";
                         sql = sql + "   WHERE  ";
@@ -634,9 +634,9 @@ public class ReportDaoImpl implements ReportDao {
 
                     cst = con.prepareCall(sql);
                     rs = cst.executeQuery();
-                } else if ( vJenis.toUpperCase() == "21REKAPLUNASOFFLINE" ) {
+                } else if ( vJenis.toUpperCase().equals("21REKAPLUNASOFFLINE") ) {
                     String partisi = "lunas_" + tBLTH.substring(0, 4) + "_" + tBLTH.substring(4, 2);
-                    if ( pengelola.toUpperCase() != "SEMUA" && pengelola.trim() != "" ) {
+                    if ( !pengelola.toUpperCase().equals("SEMUA") && pengelola.trim().equals("") ) {
                         sql = " SELECT * ";
                         sql += " FROM VIEW_REPORT21_REKAPTOTLNS ";
                         sql += "   WHERE PENGELOLA  = RTRIM(LTRIM('" + pengelola + " ')) ";
@@ -661,7 +661,7 @@ public class ReportDaoImpl implements ReportDao {
                     rs = cst.executeQuery();
                 }
             } else {
-                if ( vJenis.toUpperCase() == "21BA" ) {
+                if ( vJenis.toUpperCase().equals("21BA") ) {
                     sql = "{ call SELECT_BA_21OFFLINE.GetReport_21BA(?,?,?,?) }";
                     cst = con.prepareCall(sql);
                     cst.setString("v_Tglbayar", tBLTH + tanggal);
@@ -671,7 +671,7 @@ public class ReportDaoImpl implements ReportDao {
                     cst.execute();
 
                     rs = (ResultSet) cst.getObject("cur_Result");
-                } else if ( vJenis.toUpperCase() == "21REKAPLUNASOFFLINE" ) {
+                } else if ( vJenis.toUpperCase().equals("21REKAPLUNASOFFLINE") ) {
                     sql = "{ call SELECT_BA_21OFFLINE.GetReport_21BA_Rekap(?,?,?,?,?) }";
                     cst = con.prepareCall(sql);
                     cst.setString("v_TglStart", tBLTH + tanggal);
@@ -717,10 +717,10 @@ public class ReportDaoImpl implements ReportDao {
             cst.execute();
 
 
-            if ( tparUp.substring(0, 2) == "51" || tparUp.substring(0, 2) == "23" ) {
+            if ( tparUp.substring(0, 2).equals("51") || tparUp.substring(0, 2).equals("23") ) {
                 sql = "select * from B$_RPT_21KDPP_PPTGLREKAP";
             } else {
-                if ( vJenis.toUpperCase() == "21KDPP_PPTGLREKAP" ) {
+                if ( vJenis.toUpperCase().equals("21KDPP_PPTGLREKAP") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -733,12 +733,12 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, KDPP ";
                     sql = sql + " order by KDPP asc,TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21KDPP_PPTGLREKAPGOL" ) {
+                } else if ( vJenis.toUpperCase().equals("21KDPP_PPTGLREKAPGOL" )) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -751,12 +751,12 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, KDPP ";
                     sql = sql + " order by KDPP asc,KOGOL,TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21KDPP_PPTGLDAFTAR" ) {
+                } else if ( vJenis.toUpperCase().equals("21KDPP_PPTGLDAFTAR") ) {
                     sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -773,7 +773,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " order by TANGGAL asc,WKTBAYAR asc";
                     //-----------============================================================
-                } else if ( vJenis.toUpperCase() == "21KDPP_UNITTGLREKAP" ) {
+                } else if ( vJenis.toUpperCase().equals("21KDPP_UNITTGLREKAP") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -786,12 +786,12 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP ";
                     sql = sql + " order by KDPP asc,TANGGAL asc, UNITUP asc";
-                } else if ( vJenis.toUpperCase() == "21KDPP_UNITTGLREKAPGOL" ) {
+                } else if ( vJenis.toUpperCase().equals("21KDPP_UNITTGLREKAPGOL") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -804,12 +804,12 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP ";
                     sql = sql + " order by KDPP asc,TANGGAL asc, UNITUP asc";
-                } else if ( vJenis.toUpperCase() == "21KDPP_UNITTGLDAFTAR" ) {
+                } else if ( vJenis.toUpperCase().equals("21KDPP_UNITTGLDAFTAR") ) {
                     sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -823,7 +823,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " order by TANGGAL asc,WKTBAYAR asc";
@@ -865,7 +865,7 @@ public class ReportDaoImpl implements ReportDao {
 //            cst.execute();
 
 
-            if ( vJenis.toUpperCase() == "21PETUGAS_PPTGLREKAP" ) {
+            if ( vJenis.toUpperCase().equals("21PETUGAS_PPTGLREKAP") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -878,15 +878,15 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " WHERE ";
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPP  = '" + kode + "'";
                 }
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, KDPP, KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "21PETUGAS_PPTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("21PETUGAS_PPTGLREKAPGOL" )) {
                 sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -899,15 +899,15 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " WHERE ";
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPP  = '" + kode + "'";
                 }
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS,KDPP,KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,KOGOL,TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "21PETUGAS_PPTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("21PETUGAS_PPTGLDAFTAR" )) {
                 sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                 sql += " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                 sql += " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -921,14 +921,14 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " WHERE ";
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPP  = '" + kode + "'";
                 }
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " order by UNITUP, TANGGAL asc, IDPEL asc,BLTH ";
-            } else if ( vJenis.toUpperCase() == "21PETUGAS_UNITTGLREKAP" ) {
+            } else if ( vJenis.toUpperCase().equals("21PETUGAS_UNITTGLREKAP" )) {
                 sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -941,15 +941,15 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " WHERE ";
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPP  = '" + kode + "'";
                 }
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP, kdpembayar ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc, UNITUP asc";
-            } else if ( vJenis.toUpperCase() == "21PETUGAS_UNITTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("21PETUGAS_UNITTGLREKAPGOL" )) {
                 sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -962,15 +962,15 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " WHERE ";
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPP  = '" + kode + "'";
                 }
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP,KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc, UNITUP asc";
-            } else if ( vJenis.toUpperCase() == "21PETUGAS_UNITTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("21PETUGAS_UNITTGLDAFTAR" )) {
                 sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                 sql += " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                 sql += " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -984,10 +984,10 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " WHERE ";
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPP  = '" + kode + "'";
                 }
-                if ( tparUp.toUpperCase() != "SEMUA" ) {
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " order by UNITUP ASC,TANGGAL asc,WKTBAYAR asc";
@@ -1032,9 +1032,9 @@ public class ReportDaoImpl implements ReportDao {
             cst.setString("KDPP", in_blth);
             cst.execute();
 
-            if (in_jenis.toUpperCase() == "REKAP") {
+            if (in_jenis.toUpperCase().equals("REKAP")) {
                 sql = "SELECT * FROM VIEW_REKAP21_RESUP";
-            } else if(in_jenis.toUpperCase() == "DAFTAR") {
+            } else if(in_jenis.toUpperCase().equals("DAFTAR")) {
                 sql = "SELECT * FROM VIEW_DAFTAR21_RESUP";
             }
 
@@ -1058,11 +1058,11 @@ public class ReportDaoImpl implements ReportDao {
             String sql = "";
 
 
-            if ( tparUp.substring(0, 2) == "52" || tparUp.substring(0, 2) == "23" || tparUp.substring(0, 2) == "51" ) {
+            if ( tparUp.substring(0, 2).equals("52") || tparUp.substring(0, 2).equals("23") || tparUp.substring(0, 2).equals("51") ) {
                 //Dim dServer As Date = GetSysdate(Err)
                 //Dim clsSQL As New cls_view_report_dphoffline(dServer)
 
-                if ( vJenis.toUpperCase() == "21BA" ) {
+                if ( vJenis.toUpperCase().equals("21BA" )) {
                     //sql = clsSQL.GetReport_21_BA(Err, vJenis, tBLTH, tparUp, tPetugas, tanggal, tanggalend, kode, " ")
 
                     sql = "{call PARAMETERVIEW.SetTGLBAYAR(?)}";
@@ -1086,7 +1086,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " RP_ROAMING AS RP_ROAMING,  ";
                     sql = sql + " RP_DIROAMING AS RP_DIROAMING ";
                     sql = sql + " FROM VIEW_REPORT_21_BA_OFFLINE ";
-                } else if ( vJenis.toUpperCase() == "21REKAPLUNASOFFLINE" ) {
+                } else if ( vJenis.toUpperCase().equals("21REKAPLUNASOFFLINE" )) {
                     sql = "{call PARAMETERVIEW.SetTGLSTART(?)}";
                     cst = con.prepareCall(sql);
                     cst.setString("TGLBAYAR", tBLTH + tanggal);
@@ -1110,7 +1110,7 @@ public class ReportDaoImpl implements ReportDao {
                 }
 
             } else {
-                if ( vJenis.toUpperCase() == "21UNIT_PP" ) {
+                if ( vJenis.toUpperCase().equals("21UNIT_PP" )) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1126,7 +1126,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by KDPP asc,TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21UNIT_502" ) {
+                } else if ( vJenis.toUpperCase().equals("21UNIT_502" )) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1142,7 +1142,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21UNIT_404" ) {
+                } else if ( vJenis.toUpperCase().equals("21UNIT_404" )) {
                     sql = "SELECT  A.TGLCETAK, A.KDGERAK, ";
                     sql = sql + "  A.UNITUP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS, ";
                     sql = sql + " SUM(A.LEMBAR) AS LEMBAR, ";
@@ -1160,7 +1160,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by A.TGLCETAK, A.KDGERAK,A.UNITUP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_pptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_pptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1177,7 +1177,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_pptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_pptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -1195,7 +1195,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " order by TANGGAL asc";
                     //-----------======================================================
-                } else if ( vJenis.toLowerCase() == "21unit_mypp" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_mypp") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1212,7 +1212,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by KDPP asc,TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_my502" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_my502") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1229,7 +1229,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_my404" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_my404") ) {
                     sql = "SELECT  A.TGLCETAK, A.KDGERAK, ";
                     sql = sql + "  A.UNITUP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS, ";
                     sql = sql + " SUM(A.LEMBAR) AS LEMBAR, ";
@@ -1248,7 +1248,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by A.TGLCETAK, A.KDGERAK,A.UNITUP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_mypptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_mypptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1266,7 +1266,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_mypptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_mypptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -1285,7 +1285,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------============================================================
-                } else if ( vJenis.toLowerCase() == "21unit_kirimunit" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_kirimunit") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1302,7 +1302,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP";
                     sql = sql + " order by UNITUPKDPP asc,TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_kirim502" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_kirim502") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1319,7 +1319,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_kirim404" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_kirim404") ) {
                     sql = "SELECT  A.TGLCETAK, A.KDGERAK, ";
                     sql = sql + "  A.UNITUP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS, ";
                     sql = sql + " SUM(A.LEMBAR) AS LEMBAR, ";
@@ -1338,7 +1338,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by A.TGLCETAK, A.KDGERAK,A.UNITUP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_kirimunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_kirimunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1356,7 +1356,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_kirimunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_kirimunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -1375,7 +1375,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------=====================================================
-                } else if ( vJenis.toLowerCase() == "21unit_terimaunit" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_terimaunit") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1392,7 +1392,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP";
                     sql = sql + " order by unitup asc,TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_terima502" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_terima502") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1409,7 +1409,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_terima404" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_terima404") ) {
                     sql = "SELECT  A.TGLCETAK, A.KDGERAK, ";
                     sql = sql + "  A.UNITUPKDPP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS, ";
                     sql = sql + " SUM(A.LEMBAR) AS LEMBAR, ";
@@ -1428,7 +1428,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by A.TGLCETAK, A.KDGERAK,A.UNITUPKDPP,A.KOGOL,A.TANGGAL,A.JALANTUNGGAK,A.KDPEMBPP,A.STATUS";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_terimaunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_terimaunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -1446,7 +1446,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "21unit_terimaunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("21unit_terimaunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -1464,7 +1464,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + kode + "'))";
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21BA" ) {
+                } else if ( vJenis.toUpperCase().equals("21BA") ) {
                     sql = "{call PARAMETERVIEW.SetTGLBAYAR(?)}";
                     cst = con.prepareCall(sql);
                     cst.setString("TGLBAYAR", tBLTH + tanggal);
@@ -1487,7 +1487,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " RP_ROAMING AS RP_ROAMING,  ";
                     sql = sql + " RP_DIROAMING AS RP_DIROAMING ";
                     sql = sql + " FROM VIEW_REPORT_21_BA_OFFLINE ";
-                } else if ( vJenis.toUpperCase() == "21REKAPLUNASOFFLINE" ) {
+                } else if ( vJenis.toUpperCase().equals("21REKAPLUNASOFFLINE") ) {
                     sql = "{call PARAMETERVIEW.SetTGLSTART(?)}";
                     cst = con.prepareCall(sql);
                     cst.setString("TGLBAYAR", tBLTH + tanggal);
@@ -1529,7 +1529,7 @@ public class ReportDaoImpl implements ReportDao {
             String sql = "";
 
 
-            if ( tparUp.substring(0, 2) == "52" ) {
+            if ( tparUp.substring(0, 2).equals("52") ) {
                 //Dim dServer As Date = GetSysdate(Err)
                 //Dim clsSQL As New cls_view_report_dphoffline(dServer)
 
@@ -1540,7 +1540,7 @@ public class ReportDaoImpl implements ReportDao {
                 //}
 
             } else {
-                if ( vJenis.toUpperCase() == "21UPLOAD_REKAP" ) {
+                if ( vJenis.toUpperCase().equals("21UPLOAD_REKAP") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KDPP, LEMBAR, RPTAGIHAN, ";
                     sql = sql + " RPBK, LEMBAR_LUNAS, RPTAGIHAN_LUNAS, RPBK_LUNAS, LEMBAR_GAGALLUNAS, ";
                     sql = sql + " RPTAGIHAN_GAGALLUNAS, RPBK_GAGALLUNAS";
@@ -1548,11 +1548,11 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " order by KDPP asc,TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21UPLOAD_DAFTARBERHASIL" ) {
+                } else if ( vJenis.toUpperCase().equals("21UPLOAD_DAFTARBERHASIL") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, WKTBAYAR, KDPP, IDPEL, ";
                     sql = sql + " BLTH, NOREK, TGLTRANSAKSI, RPTAG, RPBK, ";
                     sql = sql + " RPBK_DPP, KODEGAGAL";
@@ -1560,11 +1560,11 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " order by TANGGAL asc,WKTBAYAR asc";
-                } else if ( vJenis.toUpperCase() == "21UPLOAD_DAFTARGAGAL" ) {
+                } else if ( vJenis.toUpperCase().equals("21UPLOAD_DAFTARGAGAL") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, WKTBAYAR, KDPP, IDPEL, ";
                     sql = sql + " BLTH, NOREK, TGLTRANSAKSI, RPTAG, RPBK, ";
                     sql = sql + " RPBK_DPP, KODEGAGAL, KDGERAKKELUAR_DPP, TGLBAYAR_DPP, KDPP_DPP";
@@ -1572,23 +1572,23 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " order by TANGGAL asc,WKTBAYAR asc";
                     //-----------============================================================
-                } else if ( vJenis.toUpperCase() == "21UPLOAD_DOUBLEREKAP" ) {
+                } else if ( vJenis.toUpperCase().equals("21UPLOAD_DOUBLEREKAP") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KDPP, LEMBAR, RPTAGIHAN, ";
                     sql = sql + " RPBK";
                     sql = sql + " FROM VIEW_REPORT_21UPLOAD_DOUBLEUP";
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " order by KDPP asc,TANGGAL asc";
-                } else if ( vJenis.toUpperCase() == "21UPLOAD_DOUBLEDAFTAR" ) {
+                } else if ( vJenis.toUpperCase().equals("21UPLOAD_DOUBLEDAFTAR") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, WKTBAYAR, KDPP, IDPEL, ";
                     sql = sql + " BLTH, NOREK, TGLCATAT, CATATBY, RPTAG, ";
                     sql = sql + " RPBK";
@@ -1596,7 +1596,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " WHERE ";
                     sql = sql + "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                     sql = sql + " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
-                    if ( tparUp.toUpperCase() != "SEMUA" ) {
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
                         sql = sql + " AND KDPP  = '" + kode + "'";
                     }
                     sql = sql + " order by TANGGAL asc,WKTBAYAR asc";
@@ -1625,7 +1625,7 @@ public class ReportDaoImpl implements ReportDao {
             String sql = "";
 
 
-            if ( jenis.toUpperCase() == "21GIRALISASIKODE" ) {
+            if ( jenis.toUpperCase().equals("21GIRALISASIKODE") ) {
                 sql = "{call PARAMETERVIEW.SetBlTh(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("BlTh", tBLTH);
@@ -1640,7 +1640,7 @@ public class ReportDaoImpl implements ReportDao {
                 sql += " TGLCETAK, BLTH, IDPEL, NAMA, KDGERAKMASUK, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, TARIP, DAYA, KOGOL, SUBKOGOL, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM ";
                 sql += " from ";
                 sql += " VIEW_REPORT_21GIRAL_KODE ";
-            } else if ( jenis.toUpperCase() == "21GIRALKODELUNAS" ) {
+            } else if ( jenis.toUpperCase().equals("21GIRALKODELUNAS") ) {
                 sql = "{call PARAMETERVIEW.SetBlTh(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("BlTh", tBLTH);
@@ -1656,7 +1656,7 @@ public class ReportDaoImpl implements ReportDao {
                 sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
                 sql = sql + "  RPTAG AS RPTAG";
                 sql = sql + "  FROM VIEW_REPORT_21GIRAL_KODE_LUNAS ";
-            } else if ( jenis.toUpperCase() == "21GIRALKODEBLMLUNAS" ) {
+            } else if ( jenis.toUpperCase().equals("21GIRALKODEBLMLUNAS") ) {
                 sql = "{call PARAMETERVIEW.SetBlTh(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("BlTh", tBLTH);
@@ -1695,10 +1695,10 @@ public class ReportDaoImpl implements ReportDao {
             String sql = "";
 
 
-            if ( vJenis == "kogol" ) {
-                if ( tparUp == "" ) {
-                    if ( tparAp == "" ) {
-                        if ( vFilterUnit == "unit" ) {
+            if ( vJenis.equals("kogol") ) {
+                if ( tparUp.equals("") ) {
+                    if ( tparAp.equals("") ) {
+                        if ( vFilterUnit.equals("unit") ) {
                             sql = " SELECT  UNITUPI as UNITUP, ";
                             sql = sql + "       KOGOL, ";
                             sql = sql + "       JENISREKENING, ";
@@ -1740,7 +1740,7 @@ public class ReportDaoImpl implements ReportDao {
                             sql = sql + "GROUP BY UNITAP,KOGOL,JENISREKENING ";
                         }
                     } else {
-                        if ( vFilterUnit == "unit" ) {
+                        if ( vFilterUnit.equals("unit") ) {
                             sql = " SELECT  UNITAP as UNITUP, ";
                             sql = sql + "       KOGOL, ";
                             sql = sql + "       JENISREKENING, ";
@@ -1803,10 +1803,10 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + "     AND TGLBAYAR BETWEEN '" + tanggal + "' AND '" + tanggalend + "' ";
                     sql = sql + "GROUP BY UNITUP,KOGOL,JENISREKENING ";
                 }
-            } else if ( vJenis == "tgllunas" ) {
-                if ( tparUp == "" ) {
-                    if ( tparAp == "" ) {
-                        if ( vFilterUnit == "unit" ) {
+            } else if ( vJenis.equals("tgllunas") ) {
+                if ( tparUp.equals("") ) {
+                    if ( tparAp.equals("") ) {
+                        if ( vFilterUnit.equals("unit") ) {
                             sql = " SELECT  UNITUPI as UNITUP, ";
                             sql = sql + "       TGLBAYAR, ";
                             sql = sql + "       SUM(RPTAG) AS RPTAG, ";
@@ -1846,7 +1846,7 @@ public class ReportDaoImpl implements ReportDao {
                             sql = sql + "GROUP BY UNITAP,TGLBAYAR ";
                         }
                     } else {
-                        if ( vFilterUnit == "unit" ) {
+                        if ( vFilterUnit.equals("unit") ) {
                             sql = " SELECT  UNITAP as UNITUP, ";
                             sql = sql + "       TGLBAYAR, ";
                             sql = sql + "       SUM(RPTAG) AS RPTAG, ";
@@ -1906,10 +1906,10 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + "     AND TGLBAYAR BETWEEN '" + tanggal + "' AND '" + tanggalend + "' ";
                     sql = sql + "GROUP BY UNITUP,TGLBAYAR ";
                 }
-            } else if ( vJenis == "kdpp" ) {
-                if ( tparUp == "" ) {
-                    if ( tparAp == "" ) {
-                        if ( vFilterUnit == "unit" ) {
+            } else if ( vJenis.equals("kdpp") ) {
+                if ( tparUp.equals("") ) {
+                    if ( tparAp.equals("") ) {
+                        if ( vFilterUnit.equals("unit") ) {
                             sql = " SELECT  UNITUPI as UNITUP, ";
                             sql = sql + "       KDPP, ";
                             sql = sql + "       SUM(RPTAG) AS RPTAG, ";
@@ -1949,7 +1949,7 @@ public class ReportDaoImpl implements ReportDao {
                             sql = sql + "GROUP BY UNITAP,KDPP ";
                         }
                     } else {
-                        if ( vFilterUnit == "unit" ) {
+                        if ( vFilterUnit.equals("unit") ) {
                             sql = " SELECT  UNITAP as UNITUP, ";
                             sql = sql + "       KDPP, ";
                             sql = sql + "       SUM(RPTAG) AS RPTAG, ";
@@ -2050,19 +2050,19 @@ public class ReportDaoImpl implements ReportDao {
             cst.setString("unitup", tparUp);
             cst.execute();
 
-            if ( vJenis.toUpperCase() == "22KDPP_PPTGLREKAP" ) {
+            if ( vJenis.toUpperCase().equals("22KDPP_PPTGLREKAP") ) {
                 sql = " SELECT * FROM B$_RPT_22KDPP_PPTGLREKAP ";
-            } else if ( vJenis.toUpperCase() == "22KDPP_PPTGLREKAP_JLNTGK" ) {
+            } else if ( vJenis.toUpperCase().equals("22KDPP_PPTGLREKAP_JLNTGK") ) {
                 sql = " SELECT  * FROM B$_RPT_22KDPP_404_JNLTGK ";
-            } else if ( vJenis.toUpperCase() == "22KDPP_PPTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("22KDPP_PPTGLREKAPGOL") ) {
                 sql = "SELECT * FROM b$_rpt_22kdpp_pptglrekapkogol ";
-            } else if ( vJenis.toUpperCase() == "22KDPP_PPTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("22KDPP_PPTGLDAFTAR") ) {
                 sql = "SELECT * FROM  b$_rpt_22kdpp_pptgldaftar ";
-            } else if ( vJenis.toUpperCase() == "22KDPP_UNITTGLREKAP" ) {
+            } else if ( vJenis.toUpperCase().equals("22KDPP_UNITTGLREKAP") ) {
                 sql = " SELECT * FROM B$_RPT_22KDPP_UNITTGLREKAP";
-            } else if ( vJenis.toUpperCase() == "22KDPP_UNITTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("22KDPP_UNITTGLREKAPGOL") ) {
                 sql = "SELECT * FROM B$_RPT_22KDPP_UNITTGLREKAPGOL";
-            } else if ( vJenis.toUpperCase() == "22KDPP_UNITTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("22KDPP_UNITTGLDAFTAR") ) {
                 sql = "SELECT * FROM B$_RPT_22KDPP_UNITTGLDAFTAR";
             }
 
@@ -2107,7 +2107,7 @@ public class ReportDaoImpl implements ReportDao {
 //            cst.execute();
 
 
-            if ( vJenis.toUpperCase() == "22PETUGAS_PPTGLREKAP" ) {
+            if ( vJenis.toUpperCase().equals("22PETUGAS_PPTGLREKAP") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2121,12 +2121,12 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, KDPP, KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_PPTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_PPTGLREKAPGOL") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2140,12 +2140,12 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS,KDPP,KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,KOGOL,TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_PPTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_PPTGLDAFTAR") ) {
                 sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                 sql += " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                 sql += " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2160,11 +2160,11 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " order by TANGGAL asc, WKTBAYAR asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_UNITTGLREKAP" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_UNITTGLREKAP") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2178,12 +2178,12 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP,kdpembayar ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc, UNITUP asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_UNITTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_UNITTGLREKAPGOL") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2197,12 +2197,12 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP,KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc, UNITUP asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_UNITTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_UNITTGLDAFTAR") ) {
                 sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                 sql += " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                 sql += " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2217,7 +2217,7 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " order by TANGGAL asc,WKTBAYAR asc";
@@ -2265,7 +2265,7 @@ public class ReportDaoImpl implements ReportDao {
 //            cst.execute();
 
 
-            if ( vJenis.toUpperCase() == "22PETUGAS_PPTGLREKAP" ) {
+            if ( vJenis.toUpperCase().equals("22PETUGAS_PPTGLREKAP") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2279,13 +2279,13 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " and daya between '" + vDayaAwal + "' and '" + vDayaAkhir + "'";
                 sql += " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, KDPP, KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_PPTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_PPTGLREKAPGOL") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2299,13 +2299,13 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " and daya between '" + vDayaAwal + "' and '" + vDayaAkhir + "'";
                 sql += " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS,KDPP,KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,KOGOL,TANGGAL asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_PPTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_PPTGLDAFTAR") ) {
                 sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                 sql += " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                 sql += " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2320,12 +2320,12 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " and daya between '" + vDayaAwal + "' and '" + vDayaAkhir + "'";
                 sql += " order by TANGGAL asc, WKTBAYAR asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_UNITTGLREKAP" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_UNITTGLREKAP") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2339,13 +2339,13 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " and daya between '" + vDayaAwal + "' and '" + vDayaAkhir + "'";
                 sql += " Group by TGLCETAK, TANGGAL, KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP,kdpembayar ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc, UNITUP asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_UNITTGLREKAPGOL" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_UNITTGLREKAPGOL") ) {
                 sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                 sql += " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                 sql += " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2359,13 +2359,13 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " and daya between '" + vDayaAwal + "' and '" + vDayaAkhir + "'";
                 sql += " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,  KDPP,KDPEMBAYAR ";
                 sql += " order by KDPEMBAYAR asc, KDPP asc,TANGGAL asc, UNITUP asc";
-            } else if ( vJenis.toUpperCase() == "22PETUGAS_UNITTGLDAFTAR" ) {
+            } else if ( vJenis.toUpperCase().equals("22PETUGAS_UNITTGLDAFTAR") ) {
                 sql = "SELECT TGLCETAK, TANGGAL,WKTBAYAR, IDPEL, KOGOL, BLTH, ";
                 sql += " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                 sql += " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2380,7 +2380,7 @@ public class ReportDaoImpl implements ReportDao {
                 sql += "  TANGGAL  >= '" + tBLTH + tanggal + "'";
                 sql += " AND TANGGAL  <= '" + tBLTH + tanggalend + "'";
                 sql += " AND KDPP  = '" + kode + "'";
-                if ( sATM != "XX" ) {
+                if ( !sATM.equals("XX") ) {
                     sql += " AND KDPEMBAYAR = '" + kdPembayar + "' ";
                 }
                 sql += " and daya between '" + vDayaAwal + "' and '" + vDayaAkhir + "'";
@@ -2431,20 +2431,20 @@ public class ReportDaoImpl implements ReportDao {
 //            cst.execute();
 
 
-            if ( tparAp == "SEMUA" ) {
-                if ( vJenis.toLowerCase() == "22unit_pp" ) {
+            if ( tparAp.equals("SEMUA") ) {
+                if ( vJenis.toLowerCase().equals("22unit_pp") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_PP_UPI ";
                     sql = sql + " WHERE SUBSTR(UNITUP, 1, 2) = '" + tparUpi + "'";
-                } else if ( vJenis.toLowerCase() == "22unit_502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_502_UPI ";
                     sql = sql + " WHERE SUBSTR(UNITUP, 1, 2) = '" + tparUpi + "'";
-                } else if ( vJenis.toLowerCase() == "22unit_502b" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_502b") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_502b_UPI ";
                     sql = sql + " WHERE SUBSTR(UNITUP, 1, 2) = '" + tparUpi + "'";
-                } else if ( vJenis.toLowerCase() == "22unit_404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_404_UPI ";
                     sql = sql + " WHERE SUBSTR(UNITUP, 1, 2) = '" + tparUpi + "'";
-                } else if ( vJenis.toLowerCase() == "22unit_pptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_pptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2461,7 +2461,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_pptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_pptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2479,13 +2479,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " order by TANGGAL asc";
                     //-----------======================================================
-                } else if ( vJenis.toLowerCase() == "22unit_mypp" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypp") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_MYPP_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_my502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_my502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_MY502_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_my404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_my404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_MY404_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_mypptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2503,7 +2503,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_mypptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2522,13 +2522,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------============================================================
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunit" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunit") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_KIRIMUNIT_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirim502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirim502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_KIRIM502_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirim404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirim404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_KIRIM404_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2546,7 +2546,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2565,13 +2565,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------=====================================================
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunit" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunit") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_TERIMAUNIT_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_terima502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terima502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_TERIMA502_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_terima404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terima404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_TERIMA404_UPI ";
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2589,7 +2589,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2608,16 +2608,16 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                 }
-            } else if ( tparUp == "SEMUA" ) {
-                if ( vJenis.toLowerCase() == "22unit_pp" ) {
+            } else if ( tparUp.equals("SEMUA") ) {
+                if ( vJenis.toLowerCase().equals("22unit_pp") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_PP_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_502_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_502b" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_502b") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_502b_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_404_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_pptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_pptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2634,7 +2634,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_pptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_pptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2652,13 +2652,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " order by TANGGAL asc";
                     //-----------======================================================
-                } else if ( vJenis.toLowerCase() == "22unit_mypp" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypp") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_MYPP_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_my502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_my502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_MY502_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_my404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_my404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_MY404_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_mypptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2676,7 +2676,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_mypptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2695,13 +2695,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------============================================================
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunit" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunit") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_KIRIMUNIT_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirim502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirim502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_KIRIM502_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirim404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirim404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_KIRIM404_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2719,7 +2719,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2738,13 +2738,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------=====================================================
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunit" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunit") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_TERIMAUNIT_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_terima502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terima502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_TERIMA502_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_terima404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terima404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_TERIMA404_AP ";
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2762,7 +2762,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2782,15 +2782,15 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " order by TANGGAL asc";
                 }
             } else {
-                if ( vJenis.toLowerCase() == "22unit_pp" ) {
+                if ( vJenis.toLowerCase().equals("22unit_pp") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_PP ";
-                } else if ( vJenis.toLowerCase() == "22unit_502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_502 ";
-                } else if ( vJenis.toLowerCase() == "22unit_502b" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_502b") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_502b ";
-                } else if ( vJenis.toLowerCase() == "22unit_404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_404 ";
-                } else if ( vJenis.toLowerCase() == "22unit_pptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_pptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2807,7 +2807,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_pptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_pptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2825,13 +2825,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND KDPP  = '" + kode + "'";
                     sql = sql + " order by TANGGAL asc";
                     //-----------======================================================
-                } else if ( vJenis.toLowerCase() == "22unit_mypp" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypp") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_MYPP ";
-                } else if ( vJenis.toLowerCase() == "22unit_my502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_my502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_MY502 ";
-                } else if ( vJenis.toLowerCase() == "22unit_my404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_my404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_MY404 ";
-                } else if ( vJenis.toLowerCase() == "22unit_mypptglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypptglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2849,7 +2849,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP, UNITUPKDPP, KDPP ";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_mypptgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_mypptgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2868,13 +2868,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------============================================================
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunit" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunit") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_KIRIMUNIT ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirim502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirim502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_KIRIM502 ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirim404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirim404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_KIRIM404 ";
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2892,7 +2892,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_kirimunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_kirimunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -2911,13 +2911,13 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  <> RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " order by TANGGAL asc";
                     //-----------=====================================================
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunit" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunit") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_TERIMAUNIT ";
-                } else if ( vJenis.toLowerCase() == "22unit_terima502" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terima502") ) {
                     sql = "SELECT * FROM B$_RPT_22UNIT_TERIMA502 ";
-                } else if ( vJenis.toLowerCase() == "22unit_terima404" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terima404") ) {
                     sql = "SELECT  * FROM B$_RPT_22UNIT_TERIMA404 ";
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunittglrekap" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunittglrekap") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, KOGOL, SUM(LEMBAR) AS LEMBAR, ";
                     sql = sql + " SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, ";
                     sql = sql + " SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, ";
@@ -2935,7 +2935,7 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + " AND UNITUPKDPP  = RTRIM(LTRIM('" + tparUp + "'))";
                     sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP,UNITUPKDPP";
                     sql = sql + " order by TANGGAL asc";
-                } else if ( vJenis.toLowerCase() == "22unit_terimaunittgldaftar" ) {
+                } else if ( vJenis.toLowerCase().equals("22unit_terimaunittgldaftar") ) {
                     sql = "SELECT TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, ";
                     sql = sql + " KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ, ";
                     sql = sql + " RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, ";
@@ -3122,7 +3122,7 @@ public class ReportDaoImpl implements ReportDao {
             String sql = "";
 
 
-            if ( jenis.toUpperCase() == "23NOTAKODESEMUA" ) {
+            if ( jenis.toUpperCase().equals("23NOTAKODESEMUA") ) {
                 sql = "{call PARAMETERVIEW.SetBlTh(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("Blth", tBLTH);
@@ -3138,18 +3138,18 @@ public class ReportDaoImpl implements ReportDao {
                 cst.setString("STATUS", iBebanKantor);
                 cst.execute();
 
-                if ( iBebanKantor == "1" ) {
+                if ( iBebanKantor.equals("1") ) {
                     sql = " select ";
                     sql += " TGLCETAK, BLTH, IDPEL, NAMA, ALAMAT, KDGERAKMASUK, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, TARIP, DAYA, KOGOL, SUBKOGOL, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, PEMKWH, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM ";
                     sql += " from ";
                     sql += " VIEW_REPORT_24NOTA_KODE ";
-                } else if ( iBebanKantor == "0" ) {
+                } else if ( iBebanKantor.equals("0") ) {
                     sql = " select ";
                     sql += " TGLCETAK, BLTH, IDPEL, NAMA, ALAMAT, KDGERAKMASUK, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, TARIP, DAYA, KOGOL, SUBKOGOL, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, PEMKWH, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM ";
                     sql += " from ";
                     sql += " VIEW_REPORT_23NOTA_KODE ";
                 }
-            } else if ( jenis.toUpperCase() == "23NOTAKODELUNAS" ) {
+            } else if ( jenis.toUpperCase().equals("23NOTAKODELUNAS") ) {
                 sql = "{call PARAMETERVIEW.SetBlTh(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("Blth", tBLTH);
@@ -3165,20 +3165,20 @@ public class ReportDaoImpl implements ReportDao {
                 cst.setString("STATUS", iBebanKantor);
                 cst.execute();
 
-                if ( iBebanKantor == "1" ) {
+                if ( iBebanKantor.equals("1") ) {
                     sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TGLBAYAR, IDPEL, BLTH, NAMA, ALAMAT, TARIP, DAYA,";
                     sql = sql + "  PEMKWH AS KWH, RPPLN, RPBK1+RPBK2+RPBK3 RPBK, RPPTL, RPBPJU AS RPPPJ,RPPPN, RPREDUKSI AS RPPOT,RPMAT,";
                     sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
                     sql = sql + "  RPTAG AS RPTAG";
                     sql = sql + "  FROM VIEW_REPORT_24NOTA_KODE_LUNAS ";
-                } else if ( iBebanKantor == "0" ) {
+                } else if ( iBebanKantor.equals("0") ) {
                     sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TGLBAYAR, IDPEL, BLTH, NAMA, ALAMAT, TARIP, DAYA,";
                     sql = sql + "  PEMKWH AS KWH, RPPLN, RPBK1+RPBK2+RPBK3 RPBK, RPPTL, RPBPJU AS RPPPJ,RPPPN, RPREDUKSI AS RPPOT,RPMAT,";
                     sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
                     sql = sql + "  RPTAG AS RPTAG";
                     sql = sql + "  FROM VIEW_REPORT_23NOTA_KODE_LUNAS ";
                 }
-            } else if ( jenis.toUpperCase() == "23NOTAKODEBLMLUNAS" ) {
+            } else if ( jenis.toUpperCase().equals("23NOTAKODEBLMLUNAS") ) {
                 sql = "{call PARAMETERVIEW.SetBlTh(?)}";
                 cst = con.prepareCall(sql);
                 cst.setString("Blth", tBLTH);
@@ -3189,13 +3189,13 @@ public class ReportDaoImpl implements ReportDao {
                 cst.setString("kodekolektif", kode);
                 cst.execute();
 
-                if ( iBebanKantor == "1" ) {
+                if ( iBebanKantor.equals("1") ) {
                     sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TGLBAYAR, IDPEL, BLTH, NAMA, ALAMAT, TARIP, DAYA,";
                     sql = sql + "  PEMKWH AS KWH, RPPLN, RPBK1+RPBK2+RPBK3 RPBK, RPPTL,RPBPJU AS RPPPJ,RPPPN,RPREDUKSI AS RPPOT,RPMAT,";
                     sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
                     sql = sql + "  RPTAG AS RPTAG";
                     sql = sql + "  FROM VIEW_REPORT_24NOTA_KODE_BLMLNS ";
-                } else if ( iBebanKantor == "0" ) {
+                } else if ( iBebanKantor.equals("0") ) {
                     sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TGLBAYAR, IDPEL, BLTH, NAMA, ALAMAT, TARIP, DAYA,";
                     sql = sql + "  PEMKWH AS KWH, RPPLN, RPBK1+RPBK2+RPBK3 RPBK, RPPTL,RPBPJU AS RPPPJ,RPPPN,RPREDUKSI AS RPPOT,RPMAT,";
                     sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
@@ -3203,6 +3203,2245 @@ public class ReportDaoImpl implements ReportDao {
                     sql = sql + "  FROM VIEW_REPORT_23NOTA_KODE_BLMLNS ";
                 }
             }
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_23dltrekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                     String tanggal, String kode, String tparUPI) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("23DLTREKAP502") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_23DLTREKAP502";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                } else {
+                    sql = sql + " AND UNITUPI  = RTRIM(LTRIM('" + tparUPI + "'))";
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23DLTREKAP404") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_23DLTREKAP404";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                } else {
+                    sql = sql + " AND UNITUPI  = RTRIM(LTRIM('" + tparUPI + "'))";
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23DLTREKAPKODE") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   LEMBAR, RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + " KDGERAK, KDPEMBPP, STATUS, UNITUP, KDKIRIM ";
+                sql = sql + " FROM VIEW_REPORT_23DLTREKAPKODE";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                } else {
+                    sql = sql + " AND UNITUPI  = RTRIM(LTRIM('" + tparUPI + "'))";
+                }
+                sql = sql + " order by KDKIRIM ASC , TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23DLTDAFTARREKG") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + "   KDGERAK, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA, KDKIRIM";
+                sql = sql + " FROM VIEW_REPORT_23DLTDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + " TANGGAL  = '" + tBLTH + tanggal + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                } else {
+                    sql = sql + " AND UNITUPI  = RTRIM(LTRIM('" + tparUPI + "'))";
+                }
+                sql = sql + " AND KDKIRIM  = '" + kode + "'";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toLowerCase().equals("23dltdaftarkolektif") ) {
+                sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TANGGAL AS TGLBAYAR, IDPEL, BLTH,";
+                sql = sql + "  RPPTL,RPBPJU AS RPPPJ,RPPPN,RPREDUKSI AS RPPOT,RPMAT,";
+                sql = sql + "  RPANGSA + RPANGSB + RPANGSC aS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
+                sql = sql + "  RPTAG AS RPTAG";
+                sql = sql + " FROM VIEW_REPORT_23DLTDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + " TANGGAL  = '" + tBLTH + tanggal + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                } else {
+                    sql = sql + " AND UNITUPI  = RTRIM(LTRIM('" + tparUPI + "'))";
+                }
+                sql = sql + " AND KDKIRIM  = '" + kode + "'";
+                sql = sql + " order by TANGGAL asc";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_23notarekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas,
+                                     String tanggal, String kode) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("23NOTAREKAP502") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_23NOTAREKAP502";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23NOTAREKAP404") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_23NOTAREKAP404";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23NOTAREKAPKODE") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   LEMBAR, RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + " KDGERAK, KDPEMBPP, STATUS, UNITUP, KDKIRIM ";
+                sql = sql + " FROM VIEW_REPORT_23NOTAREKAPKODE";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " order by KDKIRIM ASC , TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23NOTADAFTARREKG") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + "   KDGERAK, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA, KDKIRIM";
+                sql = sql + " FROM VIEW_REPORT_23DAFTARREKG";
+                sql = sql + " WHERE ";
+                sql = sql + " TANGGAL  = '" + tBLTH + tanggal + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " AND ( SUBSTR(KDKIRIM,13)  = '" + kode + "' OR KDKIRIM='" + kode + "')";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("23NOTADAFTARKOLEKTIF") ) {
+                sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TANGGAL AS TGLBAYAR, IDPEL, BLTH,";
+                sql = sql + "  RPPTL,RPBPJU AS RPPPJ,RPPPN,RPREDUKSI AS RPPOT,RPMAT,";
+                sql = sql + "  RPANGSA + RPANGSB + RPANGSC aS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
+                sql = sql + "  RPTAG AS RPTAG";
+                sql = sql + " FROM VIEW_REPORT_23DAFTARREKG";
+                sql = sql + " WHERE ";
+                sql = sql + " TANGGAL  = '" + tBLTH + tanggal + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " AND ( SUBSTR(KDKIRIM,13)  = '" + kode + "' OR KDKIRIM='" + kode + "' )";
+                sql = sql + " order by TANGGAL asc";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_23Terpusat_Kode(Engine engine, String tBLTH, String tPetugas, String kode, String jenis) {
+        String tanggal = "";
+        String tanggalend = "";
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( jenis.toUpperCase().equals("23TERPUSATKODE") ) {
+                //Dim dbase As New cls_database
+                //Dim sql As String
+                //dbase.parameterviewOracle(Err, "BLTH", tBLTH)
+                //dbase.parameterviewOracle(Err, "KODEKOLEKTIF", kode)
+                sql = " select ";
+                sql += " TGLCETAK, BLTH, IDPEL, NAMA, ALAMAT, KDGERAKMASUK, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, TARIP, DAYA, KOGOL, SUBKOGOL, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, PEMKWH, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM ";
+                sql += " from ";
+                sql += " VIEW_REPORT_23TERPUSAT_KODE ";
+                //Return dbase.getDataReturn(Err, sql)
+            } else if ( jenis.toUpperCase().equals("23TERPUSATKODELUNAS") ) {
+                //Dim dbase As New cls_database
+                //Dim sql As String
+                //dbase.parameterviewOracle(Err, "BLTH", tBLTH)
+                //dbase.parameterviewOracle(Err, "KODEKOLEKTIF", kode)
+                sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TGLBAYAR, IDPEL, BLTH, NAMA, ALAMAT, TARIP, DAYA,";
+                sql = sql + "  PEMKWH AS KWH, RPPLN, RPBK1+RPBK2+RPBK3 RPBK, RPPTL,RPBPJU AS RPPPJ,RPPPN,RPREDUKSI AS RPPOT,RPMAT,";
+                sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
+                sql = sql + "  RPTAG AS RPTAG";
+                sql += " from ";
+                sql += " VIEW_REPORT_23TPST_KODE_LNS ";
+                //Return dbase.getDataReturn(Err, sql)
+            } else if ( jenis.toUpperCase().equals("23TERPUSATKODEBLMLUNAS") ) {
+                //Dim dbase As New cls_database
+                //Dim sql As String
+                //dbase.parameterviewOracle(Err, "BLTH", tBLTH)
+                //dbase.parameterviewOracle(Err, "KODEKOLEKTIF", kode)
+                sql = "SELECT KDKIRIM AS KODEKOLEKTIF,TGLBAYAR, IDPEL, BLTH, NAMA, ALAMAT, TARIP, DAYA,";
+                sql = sql + "  PEMKWH AS KWH, RPPLN, RPBK1+RPBK2+RPBK3 RPBK, RPPTL,RPBPJU AS RPPPJ,RPPPN,RPREDUKSI AS RPPOT,RPMAT,";
+                sql = sql + "  RPANGSA + RPANGSB + RPANGSC AS RPANG,RPSEWAKAP + RPSEWATRAFO AS RPKAP,";
+                sql = sql + "  RPTAG AS RPTAG";
+                sql += " from ";
+                sql += " VIEW_REPORT_23TPST_KODE_BLM ";
+                //Return dbase.getDataReturn(Err, sql)
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_31rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+        String tanggal = "";
+        String tanggalend = "";
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("31REKAP502") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_31REKAP502";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("31REKAP404") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_31REKAP404";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("31DAFTARREKG") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + "   KDGERAK, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                sql = sql + " FROM VIEW_REPORT_31DAFTARREKG";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " order by TANGGAL asc";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_32rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("32REKAP502") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_32REKAP502";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("32REKAP502_GOL") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, '' TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_32REKAP502GOL";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " Group by TGLCETAK, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+            } else if ( vJenis.toUpperCase().equals("32REKAP502_TARIP") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, '' TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_32REKAP502TARIP";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " Group by TGLCETAK, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+            } else if ( vJenis.toUpperCase().equals("32REKAP406") ) {
+            } else if ( vJenis.toUpperCase().equals("32REKAPDAFTAR") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_32REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " order by TANGGAL asc";
+                //---tambahan sumbar
+            } else if ( vJenis.toUpperCase().equals("32REKAPDAFTAR_LEBIH2JUTA") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_32REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " AND RPTAG>=2000000";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("32REKAPDAFTAR_KURANG2JUTA") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_32REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " AND RPTAG<2000000";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("32REKAPDAFTAR_BA") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_32REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("32REKAPDAFTAR_BA_UJLBESAR") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_32REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("32REKAPDAFTAR_BA_UJLKECIL") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_32REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " order by TANGGAL asc";
+                //---end tambahan sumbar
+            } else if ( vJenis.toUpperCase().equals("32DAFTARREKG") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + "   KDGERAK, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                sql = sql + " FROM VIEW_REPORT_32DAFTARREKG";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                sql = sql + " order by TANGGAL asc";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_2122DoubleBayarNew(Engine engine, String sUnit, String sBlnBayar) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+            sql = " select * from VIEW_DPH_DOUBLE_BAYAR";
+            sql += " where ";
+            sql += " BLTH = '" + sBlnBayar + "' ";
+            sql += " AND UNITUP = '" + sUnit + "' ";
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_41rekap(Engine engine, String vJenis, String tBLTH, String tparAp, String tparUp, String tPetugas) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("41REKAP502") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_41REKAP502";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("41REKAP404") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL,JALANTUNGGAK, KOGOL,";
+                sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3,";
+                sql = sql + "   KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " FROM VIEW_REPORT_41REKAP404";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " Group by TGLCETAK, TANGGAL, JALANTUNGGAK,KOGOL,KDGERAK,KDPEMBPP,STATUS, UNITUP";
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("41REKAPDAFTAR") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, KDGERAK, TANGGAL, UNITUP, KOGOL, IDPEL, NAMA, NAMAPNJ, TARIP, DAYA, MINBLTH, MAXBLTH,";
+                sql = sql + "   LEMBAR, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_41REKAPDAFTAR";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " order by TANGGAL asc";
+            } else if ( vJenis.toUpperCase().equals("41DAFTARREKG") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                sql = sql + " FROM VIEW_REPORT_41DAFTARREKG";
+                sql = sql + " WHERE ";
+                sql = sql + "  TANGGAL  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TANGGAL  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                if ( !tparAp.equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + tparAp + "'))";
+                    if ( !tparUp.equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                    }
+                }
+                sql = sql + " order by TANGGAL asc";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_Pemda(Engine engine, String tparAP, String tparUp, String tBLTH, String vJenis, String tPetugas, String in_unitupi) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            sql = "{call PARAMETERVIEW.SetUnitUPI(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitupi", in_unitupi);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetUnitAP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitap", tparAP);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetUnitUP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitup", tparUp);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetBlTh(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("BlTh", tBLTH);
+            cst.execute();
+
+            if ( vJenis.toUpperCase().equals("SALDO") ) {
+                //'Update by Andrie untuk akomodir LJB
+                sql += " SELECT * FROM VIEW_REKAP_SALDO_PEMDA ";
+
+            } else if ( vJenis.toUpperCase().equals("SOREK") ) {
+                sql += " select 'SOREK' transaksi,'BERJALAN' jns,pemda,namapemda,tarip,sum(rpbpju) rpbpju ";
+                sql += " from view_pemda_sorek group by pemda,namapemda,tarip ";
+                sql += " order by pemda,namapemda,tarip ";
+
+            } else if ( vJenis.toUpperCase().equals("21OFFLINE") ) {
+                sql += " SELECT 'DPHOFFLINE' AS TRANSAKSI, 'BERJALAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHOFFLINE_02) */ DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU   ";
+                sql += " FROM DPHOFFLINE PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "' and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " AND A.BLTH = '" + tBLTH + "' and tglbataltrans is null ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " UNION ALL  ";
+                sql += " SELECT 'DPHOFFLINE' AS TRANSAKSI, 'TUNGGAKAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHOFFLINE_02) */  DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU ";
+                sql += " FROM DPHOFFLINE PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "'  and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " AND A.BLTH < '" + tBLTH + "' ";
+                //'sql += " and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " and tglbataltrans is null ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " ORDER BY 2, 3, 5 ";
+
+            } else if ( vJenis.toUpperCase().equals("22ONLINE") ) {
+                sql += " SELECT 'ONLINE-PPOB' AS TRANSAKSI, 'BERJALAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHBARU_UNITUP) */ DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU ";
+                sql += " FROM DPHBARU PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "' ";
+                sql += " AND A.BLTH = '" + tBLTH + "' ";
+                sql += " and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " and tglbataltrans is null ";
+                sql += " and kdgerakmasuk in ('11','12','13') ";
+                sql += " and kdgerakkeluar='22' ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " UNION ALL  ";
+                sql += " SELECT 'ONLINE-PPOB' AS TRANSAKSI, 'TUNGGAKAN' AS JNS, PEMDA, NAMAPEMDA, TARIP, SUM (RPBPJU) RPBPJU FROM ( ";
+                sql += " SELECT /*+ INDEX (A IDX_DPHBARU_UNITUP) */ DISTINCT IDPEL, BLTH, TARIP, UNITUP, A.PEMDA, B.NAMAPEMDA,  A.RPBPJU ";
+                sql += " FROM DPHBARU PARTITION (LUNAS_" + tBLTH.substring(1,4) + "_" + tBLTH.substring(4,2) + ") A, BILL52.REF_PEMDA B ";
+                sql += " WHERE A.UNITUP = '" + tparUp + "' ";
+                sql += " AND A.BLTH < '" + tBLTH + "' ";
+                sql += " and tglbayar between '" + tBLTH + "01' and '" + tBLTH + "31' ";
+                sql += " and kdgerakmasuk in ('11','12','13') ";
+                sql += " and kdgerakkeluar='22' ";
+                sql += " and tglbataltrans is null ";
+                sql += " AND A.PEMDA = B.PEMDA AND SUBSTR(A.UNITUP, 1, 2) = B.UNITUPI) ";
+                sql += " GROUP BY PEMDA, NAMAPEMDA, TARIP ";
+                sql += " ORDER BY 2, 3, 5 ";
+
+            } else if ( vJenis.toUpperCase().equals("23NOTA") ) {
+                //'Updated by Andrie untuk akomodir LJB
+                sql += " SELECT * FROM VIEW_PEMDA_NOTA ";
+
+            } else if ( vJenis.toUpperCase().equals("KOREKSI") ) {
+                sql += " select * from view_pemda_koreksi ";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReportRestitusi(Engine engine, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( in_jenis.toUpperCase().equals("REKAP_RESTITUSI_N") ) {
+                sql = "SELECT * FROM VIEW_REPORT_12REKAP_RESTITUSI";
+                sql = sql + " WHERE ";
+                sql = sql + "  BLTH  = '" + in_blth + "'";
+                if ( !in_unitap.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + in_unitap + "'))";
+                    if ( !in_unitup.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + in_unitup + "'))";
+                    }
+                }
+            } else if ( in_jenis.toUpperCase().equals("DAFTAR_KOREKSI_BLM_RESTITUSI") ) {
+                sql = "SELECT * FROM VIEW_REPORT_12RESTITUSI";
+                sql = sql + " WHERE ";
+                sql = sql + "  BLTH  = '" + in_blth + "'";
+                if ( !in_unitap.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITAP  = RTRIM(LTRIM('" + in_unitap + "'))";
+                    if ( !in_unitup.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + in_unitup + "'))";
+                    }
+                }
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetReport_BK_212223rekap(Engine engine, String vJenis, String tBLTH, String tparUp, String tPetugas, String kode) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vJenis.toUpperCase().equals("212223BKREKAP_TARIP") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
+                sql = sql + "   UNITUP, '' BLTH, KDKELOMPOK, '' TGLJTTEMPO,  KOGOL, '' AS LEMBAR, '' AS KWHLWBP, '' KWHWBP, '' BLOK3, '' PEMKWH, '' KWHKVARH, '' KELBKVARH, '' RPLWBP, '' RPWBP, '' RPBLOK3, '' RPKVARH, '' RPBEBAN, '' RPTTLB, '' RPPTL, '' RPTB, '' RPPPN, '' RPBPJU, '' RPTRAFO, '' RPSEWATRAFO, '' RPSEWAKAP, SUM(LBR_BK1) AS RPANGSA, SUM(LBR_BK2) AS RPANGSB, SUM(LBR_BK3) AS RPANGSC, '' RPMAT, '' RPPLN, SUM(RP_BK) AS RPTAG, '' RPPRODUKSI, '' RPSUBSIDI, '' RPREDUKSI, '' RPINSENTIF, '' RPDISINSENTIF, SUM(RP_BK1) AS RPBK1, SUM(RP_BK2) AS RPBK2, SUM(RP_BK3) AS RPBK3,  '' RPTDLLAMA, '' RPTDLBARU, '' RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_BK_212223_TARIP";
+                sql = sql + " WHERE ";
+                sql = sql + "  TGLTRANSAKSI  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TGLTRANSAKSI  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                }
+                sql = sql + "  GROUP BY TGLCETAK,UNITUP,KDKELOMPOK,KOGOL";
+            } else if ( vJenis.toUpperCase().equals("212223BKREKAP_GOL") ) {
+                sql = "SELECT ' ' AS NOMOR, TGLCETAK,";
+                sql = sql + "   UNITUP, '' BLTH, KDKELOMPOK, '' TGLJTTEMPO,  KOGOL, '' AS LEMBAR, '' AS KWHLWBP, '' KWHWBP, '' BLOK3, '' PEMKWH, '' KWHKVARH, '' KELBKVARH, '' RPLWBP, '' RPWBP, '' RPBLOK3, '' RPKVARH, '' RPBEBAN, '' RPTTLB, '' RPPTL, '' RPTB, '' RPPPN, '' RPBPJU, '' RPTRAFO, '' RPSEWATRAFO, '' RPSEWAKAP, SUM(LBR_BK1) AS RPANGSA, SUM(LBR_BK2) AS RPANGSB, SUM(LBR_BK3) AS RPANGSC, '' RPMAT, '' RPPLN, SUM(RP_BK) AS RPTAG, '' RPPRODUKSI, '' RPSUBSIDI, '' RPREDUKSI, '' RPINSENTIF, '' RPDISINSENTIF, SUM(RP_BK1) AS RPBK1, SUM(RP_BK2) AS RPBK2, SUM(RP_BK3) AS RPBK3,  '' RPTDLLAMA, '' RPTDLBARU, '' RPSELISIH";
+                sql = sql + " FROM VIEW_REPORT_BK_212223_GOL";
+                sql = sql + " WHERE ";
+                sql = sql + "  TGLTRANSAKSI  >= '" + tBLTH + "01" + "'";
+                sql = sql + " AND TGLTRANSAKSI  <= '" + tBLTH + "31" + "'";
+                //'sql = sql + " AND KDKELOMPOK  = '" + kode + "'";
+                if ( !tparUp.toUpperCase().equals("SEMUA") ) {
+                    sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tparUp + "'))";
+                }
+                sql = sql + "  GROUP BY TGLCETAK,UNITUP,KDKELOMPOK,KOGOL";
+            }
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void getLaporanMonitoringTunggakan(Engine engine, String in_jenis, String in_unitupi, String in_unitap, String in_unitup) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+            sql = "{ call PKG_VIEW_TAMPILFORM.GETLAPORANMONITORINGTUNGGAKAN(?,?,?,?,?) }";
+            cst = con.prepareCall(sql);
+            cst.setString("IN_JENIS", in_jenis);
+            cst.setString("IN_UNITUPI", in_unitupi);
+            cst.setString("IN_UNITAP", in_unitap);
+            cst.setString("IN_UNITUP", in_unitup);
+            cst.registerOutParameter("OUT_DATA", OracleTypes.CURSOR);
+
+            cst = con.prepareCall(sql);
+            cst.execute();
+
+            rs = (ResultSet) cst.getObject("OUT_DATA");
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void GetTunggakanPemda(Engine engine, String in_unitupi, String in_unitap, String in_unitup, String in_blth, String in_jenis) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+            sql = "{call PARAMETERVIEW.SetUnitUPI(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitupi", in_unitupi);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetUnitAP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitap", in_unitap);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetUnitUP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitup", in_unitup);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetBlTh(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("BlTh", in_blth);
+            cst.execute();
+
+            if ( in_jenis.toUpperCase().equals("PEMDAN1") ) {
+                sql = "SELECT * FROM VIEW_PEMDA_TUNGGAKAN_NMIN1 ";
+
+            } else if ( in_jenis.toUpperCase().equals("PEMDAN") ) {
+                sql = "SELECT * FROM VIEW_PEMDA_TUNGGAKAN_N ";
+
+            } else if ( in_jenis.toUpperCase().equals("SELURUH") ) {
+                sql = "SELECT * FROM VIEW_PEMDA_TUNGGAKAN ";
+
+            } else if ( in_jenis.toUpperCase().equals("DAFTAR") ) {
+                sql = "SELECT * FROM VIEW_PEMDA_TUNGGAKAN_DETAIL ";
+
+                //'} else if ( in_jenis.toUpperCase().equals("REKAPKD" ) {
+                //'    parameterviewOracle(err, "BLTH", in_blth)
+                //'    parameterviewOracle(err, "UNITAP", in_unitap)
+                //'    parameterviewOracle(err, "UNITUP", in_unitup)
+
+                //'} else if ( in_jenis.toUpperCase().equals("PROVINSI" ) {
+                //'    parameterviewOracle(err, "BLTH", in_blth)
+                //'    parameterviewOracle(err, "UNITAP", in_unitap)
+                //'    parameterviewOracle(err, "UNITUP", in_unitup)
+            }
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void PemantauanJurnal(Engine engine, String vPilihTgl, String tUnitUP, String tUnitAP, String tTglmulai, String tTglsampai
+            , String tBlTh) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDGERAK, KODE, MAX(UNITUP) AS UNITUP, JLNTGK, STATUS, KOGOL,";
+                    sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                    sql = sql + " FROM VIEW_PANTAU_JURNAL_TANGGAL";
+                    sql = sql + " WHERE ";
+                    sql = sql + "  TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                    sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                    sql = sql + " and UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    sql = sql + " group by TANGGAL, TGLBUKU, KDGERAK, KODE, JLNTGK, STATUS, KOGOL";
+                    sql = sql + " order by TANGGAL, TGLBUKU, KDGERAK, KODE, JLNTGK, STATUS, KOGOL";
+                } else {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDGERAK, KODE, UNITUP, JLNTGK, STATUS, KOGOL,";
+                    sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, ";
+                    sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+                    sql = sql + " FROM VIEW_PANTAU_JURNAL_TANGGAL";
+                    sql = sql + " WHERE ";
+                    sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                    sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                    sql = sql + " and UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                }
+
+            } else if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + "  TGLBUKU, TANGGAL, KDGERAK, KODE, MAX(UNITUP) AS UNITUP,JLNTGK, STATUS, KOGOL,";
+                    sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                    sql = sql + " FROM VIEW_PANTAU_JURNAL_BUKU";
+                    sql = sql + " WHERE ";
+                    sql = sql + "  TGLBUKU  >= '" + tBlTh + tTglmulai + "'";
+                    sql = sql + " AND TGLBUKU  <= '" + tBlTh + tTglsampai + "'";
+                    sql = sql + " and UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    sql = sql + " group by TGLBUKU, TANGGAL, KDGERAK, KODE, JLNTGK, STATUS, KOGOL";
+                    sql = sql + " order by TGLBUKU, TANGGAL, KDGERAK, KODE, JLNTGK, STATUS, KOGOL";
+                } else {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TGLBUKU, TANGGAL, KDGERAK, KODE, UNITUP, JLNTGK, STATUS, KOGOL,";
+                    sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, ";
+                    sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+                    sql = sql + " FROM VIEW_PANTAU_JURNAL_BUKU";
+                    sql = sql + " WHERE ";
+                    sql = sql + " TGLBUKU  >= '" + tBlTh + tTglmulai + "'";
+                    sql = sql + " AND TGLBUKU  <= '" + tBlTh + tTglsampai + "'";
+                    sql = sql + " and UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                }
+
+            }
+
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void PemantauanSaldo(Engine engine, String vPilihSaldo, String vPilihRep, String tUnitUP, String tUnitAP, String tTglmulai
+            , String tTglsampai, String tBlTh, String in_unitupi) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+
+            sql = "{call PARAMETERVIEW.SetUnitUP(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("unitup", tUnitUP);
+            cst.execute();
+
+            sql = "{call PARAMETERVIEW.SetBlTh(?)}";
+            cst = con.prepareCall(sql);
+            cst.setString("BlTh", tBlTh);
+            cst.execute();
+
+            if (vPilihSaldo.toUpperCase().equals("SAAT_INI")) {
+                if ( vPilihRep.toUpperCase().equals("LANCAR") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L ";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR200") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L200";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                                sql = sql + " WHERE ";
+                        sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                    }
+                    sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                    sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                    sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                } else {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                    sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                    sql = sql + " FROM C$_SALDOSAATINI_L200 ";
+                }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_JLNTGK") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L_JLNTGK";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL, JLNTGK";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL, JLNTGK";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL, JLNTGK,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_JLNTGK";
+                    }
+                    //'---tambahan sumbar
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_JLNTGK_TARIP") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, TARIP, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_TARIP";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, KOGOL AS STATUS, TARIP, JLNTGK,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_TARIP";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_JLNTGK_GOLTARIP") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, KOGOL, TARIP, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_TARIP";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL, TARIP";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL, TARIP";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL, TARIP, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) as RPPTL, sum(RPTB) as RPTB, sum(RPPPN) as RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_TARIP";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, UNITUP, KOGOL, TARIP";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, UNITUP, KOGOL, TARIP";
+                    }
+
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_LEMBAR") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, LEMBAR AS KOGOL, PLG AS BLTH,";
+                        sql = sql + " JMLLBR AS LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L_LEMBAR";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, PLG, JMLLBR ,LEMBAR";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, LEMBAR, PLG, JMLLBR";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, LEMBAR AS KOGOL,PLG AS BLTH,";
+                        sql = sql + " JMLLBR AS LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_LEMBAR ";
+                    }
+                    //'--daftar
+                } else if ( vPilihRep.toUpperCase().equals("DAFTAR_LANCAR") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L_DAFTAR";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " order by idpel,blth asc";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_DAFTAR";
+                        sql = sql + " order by idpel,blth asc";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("DAFTAR_RAGU2") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_R_DAFTAR";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " order by idpel,blth asc";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM C$_SALDOSAATINI_R_DAFTAR";
+                        sql = sql + " order by idpel,blth asc";
+                    }
+                    //'--end daftar
+                    //'---end tambahan sumbar
+                } else if ( vPilihRep.toUpperCase().equals("DAFTAR_LANCAR_DIATAS2JUTA") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L_DAFTAR";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE RPTAG > 2000000";
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        } else {
+                            sql = sql + " WHERE RPTAG > 2000000";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " order by idpel,blth asc";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_DAFTAR";
+                        sql = sql + " WHERE RPTAG > 2000000";
+                        sql = sql + " order by idpel,blth asc";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("DAFTAR_RAGU2_DIATAS2JUTA") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_R_DAFTAR";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE RPTAG > 2000000";
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        } else {
+                            sql = sql + " WHERE RPTAG > 2000000";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " order by idpel,blth asc";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, TGLCETAK, TANGGAL, IDPEL, KOGOL, BLTH, KDPEMBPP, STATUS, NOREK, NAMA, NAMAPNJ,";
+                        sql = sql + "   RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,";
+                        sql = sql + "   KDGERAK, KDKOREKSI, KOREKSIBY, UNITUP, UNITKJ, KDINKASO, KDKELOMPOK, PEMDA, KDPPJ, TARIP, DAYA";
+                        sql = sql + " FROM C$_SALDOSAATINI_R_DAFTAR";
+                        sql = sql + " WHERE RPTAG > 2000000";
+                        sql = sql + " order by idpel,blth asc";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_BLTH") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,BLTH,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_L_BLTH";
+                        sql = sql + " WHERE ";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL,BLTH";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL,BLTH";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,BLTH,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_L_BLTH ";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("RAGU") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM VIEW_SALDOSAATINI_R";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " WHERE ";
+                            sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOSAATINI_R";
+                    }
+                }
+            } else if (vPilihSaldo.toUpperCase().equals("HARI")) {
+                if ( vPilihRep.toUpperCase().equals("LANCAR") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOHARI_L";
+                        sql = sql + " WHERE ";
+                        sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+
+                        sql = sql + " FROM VIEW_SALDOHARI_L";
+                        sql = sql + " WHERE ";
+                        sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_GOL") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOHARI_L_GOL";
+                        sql = sql + " WHERE ";
+                        sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+
+                        sql = sql + " FROM VIEW_SALDOHARI_L_GOL";
+                        sql = sql + " WHERE ";
+                        sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("RAGU") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOHARI_R";
+                        sql = sql + " WHERE ";
+                        sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+
+                        sql = sql + " FROM VIEW_SALDOHARI_R";
+                        sql = sql + " WHERE ";
+                        sql = sql + " TANGGAL  >= '" + tBlTh + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tBlTh + tTglsampai + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                }
+            } else if (vPilihSaldo.toUpperCase().equals("BULAN")) {
+
+                if ( vPilihRep.toUpperCase().equals("LANCAR") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))"
+                        //'}
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP"
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_GOL") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L_GOL";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        //'}
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L_GOL";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP"
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L_GOL";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("RAGU") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_R";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))"
+                        //'}
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_R";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, ";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_R";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh.substring(1, 4) + "01" + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_BLTH") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,BLTH,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L_BLTH";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        //'}
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL,BLTH";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL,BLTH";
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,BLTH,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L_BLTH";
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL,BLTH";
+                        sql = sql + " order by THBLREP,TANGGAL, KODE, KDPEMBPP, STATUS, KOGOL,BLTH";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " THBLREP,TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, KOGOL,BLTH,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        //'sql = sql + " TGLCATAT, CATATBY, KDPEMBPP";
+
+                        sql = sql + " FROM VIEW_SALDOBULAN_L_BLTH";
+                        sql = sql + " WHERE ";
+                        sql = sql + "  THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    //'-- Tambahan Laporan KD
+                } else if ( vPilihRep.toUpperCase().equals("JLN_TGK_UNSUR") ) {
+                    sql = "SELECT * FROM C$_SALDOBULAN_UNSUR";
+                    sql = sql + " WHERE ";
+                    sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                    sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                    if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        if ( !tUnitUP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        }
+                    }
+                    sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                    //'if ( tUnitUP.toUpperCase().equals("SEMUA" ) {
+                    //'    sql = "SELECT * FROM C$_SALDOBULAN_UNSUR"
+                    //'    sql = sql + " WHERE "
+                    //'    sql = sql + " THBLREP  >= '" + tBlTh + "'"
+                    //'    sql = sql + " AND THBLREP  <= '" + tBlTh + "'"
+                    //'    if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                    //'        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))"
+                    //'    }
+                    //'} else {
+                    //'    sql = "SELECT * FROM C$_SALDOBULAN_UNSUR"
+                    //'    sql = sql + " WHERE "
+                    //'    sql = sql + " THBLREP  >= '" + tBlTh + "'"
+                    //'    sql = sql + " AND THBLREP  <= '" + tBlTh + "'"
+                    //'    sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))"
+                    //'}
+                } else if ( vPilihRep.toUpperCase().equals("JLN_TGK_UMUR") ) {
+                    if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT * FROM C$_SALDOBULAN_UMUR";
+                        //'sql = sql + " WHERE ";
+                        //'sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        //'sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            //'sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        }
+                    } else {
+                        sql = "SELECT * FROM C$_SALDOBULAN_UMUR";
+                    }
+                    //'----tarip
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_JLNTGK_TARIP") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, TARIP, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_TARIP";
+
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        //'}
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, TARIP, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_TARIP";
+
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, KOGOL AS STATUS, TARIP, JLNTGK,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_TARIP";
+                        sql = sql + " WHERE ";
+                        sql = sql + "  THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK ";
+                    }
+                    //'----tarip blth
+                } else if ( vPilihRep.toUpperCase().equals("LANCAR_JLNTGK_TARIP_BLTH") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, TARIP, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_TARIP_BLTH";
+
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " WHERE ";
+                        //'    sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        //'}
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, TARIP, JLNTGK,";
+                        sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_TARIP_BLTH";
+
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, KOGOL AS STATUS, TARIP, JLNTGK,";
+                        sql = sql + " LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_TARIP_BLTH";
+                        sql = sql + " WHERE ";
+                        sql = sql + "  THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, TARIP, JLNTGK ";
+                    }
+                    //'---lembar
+                } else if ( vPilihRep.toUpperCase().equals("UMUR_PIUTANG") ) {
+                    if ( tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, LEMBAR AS KOGOL, PLG AS BLTH,";
+                        sql = sql + " JMLLBR AS LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_LEMBAR";
+
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                        //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                        //'    sql = sql + " WHERE ";
+                        //'    sql = sql + " UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        //'}
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, PLG, JMLLBR ,LEMBAR";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, LEMBAR, PLG, JMLLBR";
+                    } else if ( tUnitUP.toUpperCase().equals("SEMUA") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, LEMBAR AS KOGOL, PLG AS BLTH,";
+                        sql = sql + " JMLLBR AS LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_LEMBAR";
+
+                        sql = sql + " WHERE ";
+                        sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                        sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                        if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = rtrim(ltrim('" + tUnitAP + "')))";
+                        }
+                        sql = sql + " group by TANGGAL, KODE, KDPEMBPP, STATUS, PLG, JMLLBR ,LEMBAR";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS, LEMBAR, PLG, JMLLBR";
+                    } else {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, KODE, UNITUP, KDPEMBPP, STATUS, LEMBAR AS KOGOL,PLG AS BLTH,";
+                        sql = sql + " JMLLBR AS LEMBAR, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPTAG, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3 ";
+                        sql = sql + " FROM C$_SALDOBULAN_L_LEMBAR ";
+                        sql = sql + " WHERE ";
+                        sql = sql + "  THBLREP  <= '" + tBlTh + "'";
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        sql = sql + " order by TANGGAL, KODE, KDPEMBPP, STATUS ";
+                    }
+                } else if ( vPilihRep.toUpperCase().equals("PER_GOL_BLTH") ) {
+                    sql = "SELECT ' ' AS NOMOR, trunc(sysdate) as TGLCETAK,";
+                    sql = sql + " THBLREP,TANGGAL, 'Saldo Bulanan' AS kode, MAX(UNITUP) AS UNITUP, KDPEMBPP, STATUS, KOGOL,BLTH,";
+                    sql = sql + " SUM(LEMBAR) as LEMBAR, SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN,SUM(RPTAG) AS RPTAG, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
+
+                    sql = sql + " FROM REKAPDPPSALDOBULAN ";
+                    sql = sql + " WHERE ";
+                    sql = sql + " THBLREP  >= '" + tBlTh + "'";
+                    sql = sql + " AND THBLREP  <= '" + tBlTh + "'";
+                    if ( !tUnitAP.toUpperCase().equals("SEMUA") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        if ( !tUnitUP.toUpperCase().equals("SEMUA") ) {
+                            sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        }
+                    }
+                    sql = sql + " AND SUBSTR(UNITUP,1 ,2)  = RTRIM(LTRIM('" + in_unitupi + "'))";
+                    //'if ( tUnitAP.ToUpper <> "SEMUA" ) {
+                    //'    sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))"
+                    //'}
+                    sql = sql + " group by BLTH,THBLREP,TANGGAL, KDPEMBPP, STATUS, KOGOL,BLTH";
+                    sql = sql + " order by BLTH,THBLREP,TANGGAL, KDPEMBPP, STATUS, KOGOL,BLTH";
+                }
+            }
+
+
+            cst = con.prepareCall(sql);
+            rs = cst.executeQuery();
+
+            engine.setData(rs);
+            con.close();
+        }catch (Exception ex){
+            CommonModule.getLogger(this).info("Dao Error : "+ ex.getMessage());
+        }
+    }
+
+    @Override
+    public void PemantauanTransaksi(Engine engine, String Transaksi, String vJenis, String vPilihTgl, String tUnitKJ, String tUnitUP
+            , String tUnitAP, String tTglmulai, String tTglsampai, String tKdpp, String tKdPembayar, String tKode) {
+
+        try{
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+            CallableStatement cst;
+            ResultSet rs = null;
+            String sql = "";
+
+            if (Transaksi.equals("11 Rekening Baru")) {
+
+                if ( vJenis.toUpperCase().equals("DAFTAR") ) {
+                    return;
+//                    //Err = "TIDAK DAPAT DITAMPILKAN MELALUI MENU (HUB. ADMINISTRATOR)";
+//                    //Return Nothing;
+//                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+//                    sql = sql + " TANGGAL, TGLBUKU, IDPEL, PETUGAS, KDGERAK,  ";
+//                    sql = sql + " KOGOL, UNITUP, KDKELOMPOK, TARIP, DAYA,  ";
+//                    sql = sql + " BLTH, KDPEMBPP, STATUS, NOREK, UNITKJ,  ";
+//                    sql = sql + " KDINKASO, PEMDA, KDPPJ, KDPEMBAYARSIP3, NOPEL,  ";
+//                    sql = sql + " NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG,  ";
+//                    sql = sql + " RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN,  ";
+//                    sql = sql + " KODEPOS, IDTARIP, KDPEMBTRF, ABONMETER, KDAYA,  ";
+//                    sql = sql + " SUBKOGOL, FRT, FJN, TGLJTTEMPO, KDDK,  ";
+//                    sql = sql + " TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP,  ";
+//                    sql = sql + " SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH,  ";
+//                    sql = sql + " FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH,  ";
+//                    sql = sql + " KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3,  ";
+//                    sql = sql + " RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL,  ";
+//                    sql = sql + " RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO,  ";
+//                    sql = sql + " RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB,  ";
+//                    sql = sql + " KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG,  ";
+//                    sql = sql + " RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF,  ";
+//                    sql = sql + " RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU,  ";
+//                    sql = sql + " RPSELISIH, FLAGSOPP, JNSMUT, BLTHMUT, KDMUT,  ";
+//                    sql = sql + " TGLNYALA, NOGARDU, NOTIANG, NOMETER, DAYABULK,  ";
+//                    sql = sql + " RPBP, RPUJL ";
+//
+//                    sql = sql + " FROM VIEW_PANTAU_11_DFT_B";
+//                    sql = sql + " WHERE ";
+//                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+//                        sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+//                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+//                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+//                        sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+//                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+//                    }
+//                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+//                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+//                    } else {
+//                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+//                    }
+//                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+//                        sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+//                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+//                        sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+//                    }
+                } else if ( vJenis.toUpperCase().equals("REKAP") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, BLTH, KOGOL, KDPEMBPP, STATUS,";
+                    sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+
+                    sql = sql + " FROM VIEW_PANTAU_11_REKAP_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "   TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "   TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,BLTH,KOGOL,KDPEMBPP,STATUS ";
+
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,BLTH,KOGOL,KDPEMBPP,STATUS ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,BLTH,KOGOL,KDPEMBPP,STATUS ";
+                    }
+                }
+            } else if (Transaksi.equals("12 Koreksi Rekening")) {
+                if ( vJenis.toUpperCase().equals("DAFTAR") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDKOREKSI, PETUGAS, BLTH,  ";
+                    sql = sql + " IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY,  ";
+                    sql = sql + " KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR,  ";
+                    sql = sql + " STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA,  ";
+                    sql = sql + " NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG,  ";
+                    sql = sql + " RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN,  ";
+                    sql = sql + " KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER,  ";
+                    sql = sql + " DAYA, KDAYA, KOGOL, SUBKOGOL, FRT,  ";
+                    sql = sql + " FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK,  ";
+                    sql = sql + " TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP,  ";
+                    sql = sql + " SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX,  ";
+                    sql = sql + " FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP,  ";
+                    sql = sql + " BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP,  ";
+                    sql = sql + " RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB,  ";
+                    sql = sql + " RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU,  ";
+                    sql = sql + " RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA,  ";
+                    sql = sql + " KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT,  ";
+                    sql = sql + " RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI,  ";
+                    sql = sql + " RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,  ";
+                    sql = sql + " RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, BLTH_L,  ";
+                    sql = sql + " IDPEL_L, NOPEL_L, KDGERAKMASUK_L, UPLOADTIME_L, UPLOADBY_L,  ";
+                    sql = sql + " KDGERAKKELUAR_L, TGLBAYAR_L, WKTBAYAR_L, KDPP_L, KDPEMBAYAR_L,  ";
+                    sql = sql + " KDKOREKSI_L, TGKOREKSI_L, STATUS_L, KDPEMBPP_L, KDPEMBAYARSIP3_L,  ";
+                    sql = sql + " UNITUP_L, PEMDA_L, NAMA_L, PNJ_L, NAMAPNJ_L,  ";
+                    sql = sql + " NOBANG_L, KETNOBANG_L, RT_L, RW_L, NODLMRT_L,  ";
+                    sql = sql + " KETNODLMRT_L, LINGKUNGAN_L, KODEPOS_L, IDTARIP_L, TARIP_L,  ";
+                    sql = sql + " KDPEMBTRF_L, ABONMETER_L, DAYA_L, KDAYA_L, KOGOL_L,  ";
+                    sql = sql + " SUBKOGOL_L, FRT_L, FJN_L, KDPPJ_L, UNITKJ_L,  ";
+                    sql = sql + " KDINKASO_L, KDKELOMPOK_L, TGLJTTEMPO_L, KDDK_L, TGLBACA_L,  ";
+                    sql = sql + " SLALWBP_L, SAHLWBP_L, SLAWBP_L, SAHWBP_L, SLAKVARH_L,  ";
+                    sql = sql + " SAHKVARH_L, SKVAMAX_L, FAKM_L, FAKMKVARH_L, FAKMKVAMAX_L,  ";
+                    sql = sql + " KWHLWBP_L, KWHWBP_L, BLOK3_L, PEMKWH_L, KWHKVARH_L,  ";
+                    sql = sql + " KELBKVARH_L, RPLWBP_L, RPWBP_L, RPBLOK3_L, RPKVARH_L,  ";
+                    sql = sql + " RPBEBAN_L, CTTLB_L, RPTTLB_L, RPPTL_L, RPTB_L,  ";
+                    sql = sql + " RPPPN_L, RPBPJU_L, RPTRAFO_L, RPSEWATRAFO_L, RPSEWAKAP_L,  ";
+                    sql = sql + " KDANGSA_L, RPANGSA_L, KDANGSB_L, RPANGSB_L, KDANGSC_L,  ";
+                    sql = sql + " RPANGSC_L, RPMAT_L, RPPLN_L, RPTAG_L, RPPRODUKSI_L,  ";
+                    sql = sql + " RPSUBSIDI_L, RPREDUKSI_L, RPINSENTIF_L, RPDISINSENTIF_L, RPBK1_L,  ";
+                    sql = sql + " RPBK2_L, RPBK3_L, RPTDLLAMA_L, RPTDLBARU_L, RPSELISIH_L,  ";
+                    sql = sql + " NOREK_L ";
+
+                    sql = sql + " FROM VIEW_PANTAU_12_DFT_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                    }
+
+                } else if ( vJenis.toUpperCase().equals("REKAP") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, KOGOL, KDPEMBPP, STATUS,KDKOREKSI,DATAREKG,";
+                    sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+
+                    sql = sql + " FROM VIEW_PANTAU_12_REKAP_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "   TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "   TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS,KDKOREKSI,DATAREKG ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,KOGOL,KDPEMBPP,STATUS,KDKOREKSI,DATAREKG ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS,KDKOREKSI,DATAREKG ";
+                    }
+                }
+            } else if (Transaksi.equals("12 Koreksi Rekening Suplisi/Restitusi")) {
+
+                if ( vJenis.toUpperCase().equals("DAFTAR") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDKOREKSI, PETUGAS, BLTH,  ";
+                    sql = sql + " IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY,  ";
+                    sql = sql + " KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR,  ";
+                    sql = sql + " STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA,  ";
+                    sql = sql + " NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG,  ";
+                    sql = sql + " RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN,  ";
+                    sql = sql + " KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER,  ";
+                    sql = sql + " DAYA, KDAYA, KOGOL, SUBKOGOL, FRT,  ";
+                    sql = sql + " FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK,  ";
+                    sql = sql + " TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP,  ";
+                    sql = sql + " SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX,  ";
+                    sql = sql + " FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP,  ";
+                    sql = sql + " BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP,  ";
+                    sql = sql + " RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB,  ";
+                    sql = sql + " RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU,  ";
+                    sql = sql + " RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA,  ";
+                    sql = sql + " KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT,  ";
+                    sql = sql + " RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI,  ";
+                    sql = sql + " RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,  ";
+                    sql = sql + " RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, BLTH_L,  ";
+                    sql = sql + " IDPEL_L, NOPEL_L, KDGERAKMASUK_L, UPLOADTIME_L, UPLOADBY_L,  ";
+                    sql = sql + " KDGERAKKELUAR_L, TGLBAYAR_L, WKTBAYAR_L, KDPP_L, KDPEMBAYAR_L,  ";
+                    sql = sql + " KDKOREKSI_L, TGKOREKSI_L, STATUS_L, KDPEMBPP_L, KDPEMBAYARSIP3_L,  ";
+                    sql = sql + " UNITUP_L, PEMDA_L, NAMA_L, PNJ_L, NAMAPNJ_L,  ";
+                    sql = sql + " NOBANG_L, KETNOBANG_L, RT_L, RW_L, NODLMRT_L,  ";
+                    sql = sql + " KETNODLMRT_L, LINGKUNGAN_L, KODEPOS_L, IDTARIP_L, TARIP_L,  ";
+                    sql = sql + " KDPEMBTRF_L, ABONMETER_L, DAYA_L, KDAYA_L, KOGOL_L,  ";
+                    sql = sql + " SUBKOGOL_L, FRT_L, FJN_L, KDPPJ_L, UNITKJ_L,  ";
+                    sql = sql + " KDINKASO_L, KDKELOMPOK_L, TGLJTTEMPO_L, KDDK_L, TGLBACA_L,  ";
+                    sql = sql + " SLALWBP_L, SAHLWBP_L, SLAWBP_L, SAHWBP_L, SLAKVARH_L,  ";
+                    sql = sql + " SAHKVARH_L, SKVAMAX_L, FAKM_L, FAKMKVARH_L, FAKMKVAMAX_L,  ";
+                    sql = sql + " KWHLWBP_L, KWHWBP_L, BLOK3_L, PEMKWH_L, KWHKVARH_L,  ";
+                    sql = sql + " KELBKVARH_L, RPLWBP_L, RPWBP_L, RPBLOK3_L, RPKVARH_L,  ";
+                    sql = sql + " RPBEBAN_L, CTTLB_L, RPTTLB_L, RPPTL_L, RPTB_L,  ";
+                    sql = sql + " RPPPN_L, RPBPJU_L, RPTRAFO_L, RPSEWATRAFO_L, RPSEWAKAP_L,  ";
+                    sql = sql + " KDANGSA_L, RPANGSA_L, KDANGSB_L, RPANGSB_L, KDANGSC_L,  ";
+                    sql = sql + " RPANGSC_L, RPMAT_L, RPPLN_L, RPTAG_L, RPPRODUKSI_L,  ";
+                    sql = sql + " RPSUBSIDI_L, RPREDUKSI_L, RPINSENTIF_L, RPDISINSENTIF_L, RPBK1_L,  ";
+                    sql = sql + " RPBK2_L, RPBK3_L, RPTDLLAMA_L, RPTDLBARU_L, RPSELISIH_L,  ";
+                    sql = sql + " NOREK_L ";
+
+                    sql = sql + " FROM VIEW_PANTAU_12D_DFT_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                    }
+
+                } else if ( vJenis.toUpperCase().equals("REKAP") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, KOGOL, KDPEMBPP, STATUS,KDKOREKSI,DATAREKG,";
+                    sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+
+                    sql = sql + " FROM VIEW_PANTAU_12D_REKAP_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "   TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "   TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS,KDKOREKSI,DATAREKG ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,KOGOL,KDPEMBPP,STATUS,KDKOREKSI,DATAREKG ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS,KDKOREKSI,DATAREKG ";
+                    }
+                }
+            } else if (Transaksi.equals("13 Rekening Susulan")) {
+
+                if ( vJenis.toUpperCase().equals("DAFTAR") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, IDPEL, PETUGAS, KDGERAK,  ";
+                    sql = sql + " KOGOL, UNITUP, KDKELOMPOK, TARIP, DAYA,  ";
+                    sql = sql + " BLTH, KDPEMBPP, STATUS, NOREK, UNITKJ,  ";
+                    sql = sql + " KDINKASO, PEMDA, KDPPJ, KDPEMBAYARSIP3, NOPEL,  ";
+                    sql = sql + " NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG,  ";
+                    sql = sql + " RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN,  ";
+                    sql = sql + " KODEPOS, IDTARIP, KDPEMBTRF, ABONMETER, KDAYA,  ";
+                    sql = sql + " SUBKOGOL, FRT, FJN, TGLJTTEMPO, KDDK,  ";
+                    sql = sql + " TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP,  ";
+                    sql = sql + " SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH,  ";
+                    sql = sql + " FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH,  ";
+                    sql = sql + " KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3,  ";
+                    sql = sql + " RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL,  ";
+                    sql = sql + " RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO,  ";
+                    sql = sql + " RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB,  ";
+                    sql = sql + " KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG,  ";
+                    sql = sql + " RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF,  ";
+                    sql = sql + " RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU,  ";
+                    sql = sql + " RPSELISIH, FLAGSOPP, JNSMUT, BLTHMUT, KDMUT,  ";
+                    sql = sql + " TGLNYALA, NOGARDU, NOTIANG, NOMETER, DAYABULK,  ";
+                    sql = sql + " RPBP, RPUJL ";
+
+                    sql = sql + " FROM VIEW_PANTAU_13_DFT_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                    }
+                } else if ( vJenis.toUpperCase().equals("REKAP") ) {
+                    sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                    sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, BLTH, KOGOL, KDPEMBPP, STATUS,";
+                    sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+
+                    sql = sql + " FROM VIEW_PANTAU_13_REKAP_T";
+                    sql = sql + " WHERE ";
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+                        sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                    }
+                    if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                        sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                    } else {
+                        sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                    }
+                    sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,BLTH,KOGOL,KDPEMBPP,STATUS ";
+
+                    if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,BLTH,KOGOL,KDPEMBPP,STATUS ";
+                    } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                        sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,BLTH,KOGOL,KDPEMBPP,STATUS ";
+                    }
+                }
+            } else if (Transaksi.equals("21 Pelunasan Off-Line")) {
+
+                if ( tUnitUP.substring(0, 2).equals("52") ) {
+                    if ( vJenis.toUpperCase().equals("DAFTAR") ) {
+                        if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+
+                            String partisi = "";
+                            partisi = "lunas_" + tTglmulai.substring(0, 4) + "_" + tTglmulai.substring(4, 2);
+                            tTglsampai = tTglmulai.substring(0, 6) + tTglsampai.substring(6, 2);
+
+                            //'FROM VIEW_PANTAU_21_DFT_T
+                            sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                            sql = sql + "  TANGGAL, TGLBUKU, IDPEL, WKTLNS , KDPP, PETUGAS, KDGERAK, KOGOL, UNITUP, KDKELOMPOK, TARIP, DAYA, BLTH, KDPEMBPP, STATUS, NOREK, UNITKJ, KDINKASO, PEMDA, KDPPJ, KODE";
+                            sql = sql + "  ,RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3";
+                            sql = sql + " FROM ( ";
+                            sql = sql + " ";
+                            sql = sql + "      select /*+index(a idx_dphoffline_02)*/ ";
+                            sql = sql + "       to_char(tgltransaksi,'YYYYMMDD') as tanggal, tglbayar as tglbuku, idpel, ";
+                            sql = sql + "       wktbayar as wktlns , kdpp,kdpembayar as  petugas, ";
+                            sql = sql + "       kdgerakkeluar as  kdgerak, kogol, unitup, kdkelompok, ";
+                            sql = sql + "       tarip, daya, blth, kdpembpp, status, norek, ";
+                            sql = sql + "       unitkj, kdinkaso, pemda, kdppj, kdkirim as kode, ";
+                            sql = sql + "       rptag,rpptl,rptb, rpppn, rpbpju, rptrafo, rpsewatrafo, rpsewakap, rpangsa,  rpangsb, rpangsc, rpmat, rppln,   rpreduksi, rpinsentif, rpdisinsentif, rpbk1, rpbk2, rpbk3 ";
+                            sql = sql + "       from dphoffline  partition(" + partisi + ") a ";
+                            sql = sql + "       where ";
+                            if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                                sql = sql + "       UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = '" + tUnitAP + "')";
+                            } else {
+                                sql = sql + "       UNITUP  = '" + tUnitUP + "' ";
+                            }
+                            sql = sql + "       and tglbayar  >= '" + tTglmulai + "'";
+                            sql = sql + "       and tglbayar  <= '" + tTglsampai + "'";
+                            sql = sql + "       and kdgerakkeluar = '21' and (kodegagal = '0' or kodegagal is null) ";
+                            sql = sql + "       and tglbataltrans is null ";
+                            sql = sql + " ) v1 ";
+                            sql = sql + " ";
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                        } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+
+                            String partisi = "";
+                            partisi = "lunas_" + tTglmulai.substring(0, 4) + "_" + tTglmulai.substring(4, 2);
+                            tTglsampai = tTglmulai.substring(0, 6) + tTglsampai.substring(6, 2);
+                            //'FROM VIEW_PANTAU_21_DFT_T
+                            sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                            sql = sql + "  TANGGAL, TGLBUKU, IDPEL, WKTLNS , KDPP, PETUGAS, KDGERAK, KOGOL, UNITUP, KDKELOMPOK, TARIP, DAYA, BLTH, KDPEMBPP, STATUS, NOREK, UNITKJ, KDINKASO, PEMDA, KDPPJ, KODE";
+                            sql = sql + "  ,RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3";
+                            sql = sql + " FROM ( ";
+                            sql = sql + " ";
+                            sql = sql + "      select /*+index(a idx_dphoffline_tgltransaksi, idx_dphoffline_unitup)*/  ";
+                            sql = sql + "       to_char(tgltransaksi,'YYYYMMDD') as tanggal, tglbayar as tglbuku, idpel, ";
+                            sql = sql + "       wktbayar as wktlns , kdpp,kdpembayar as  petugas, ";
+                            sql = sql + "       kdgerakkeluar as  kdgerak, kogol, unitup, kdkelompok, ";
+                            sql = sql + "       tarip, daya, blth, kdpembpp, status, norek, ";
+                            sql = sql + "       unitkj, kdinkaso, pemda, kdppj, kdkirim as kode, ";
+                            sql = sql + "       rptag,rpptl,rptb, rpppn, rpbpju, rptrafo, rpsewatrafo, rpsewakap, rpangsa,  rpangsb, rpangsc, rpmat, rppln,   rpreduksi, rpinsentif, rpdisinsentif, rpbk1, rpbk2, rpbk3 ";
+                            sql = sql + "       from dphoffline a ";
+                            sql = sql + "       where ";
+                            if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                                sql = sql + "       UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = '" + tUnitAP + "')";
+                            } else {
+                                sql = sql + "       UNITUP  = '" + tUnitUP + "' ";
+                            }
+                            sql = sql + "       and tgltransaksi  >=  to_date('" + tTglmulai + "','YYYYMMDD')";
+                            sql = sql + "       and tgltransaksi  < (to_date('" + tTglsampai + "','YYYYMMDD') + 1)";
+                            sql = sql + "       and kdgerakkeluar = '21' and (kodegagal = '0' or kodegagal is null) ";
+                            sql = sql + "       and tglbataltrans is null ";
+                            sql = sql + " ) v1 ";
+                            sql = sql + " ";
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                        }
+
+                    } else if ( vJenis.toUpperCase().equals("REKAP") ) {
+                        if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                            String partisi = "";
+                            partisi = "lunas_" + tTglmulai.substring(0, 4) + "_" + tTglmulai.substring(4, 2);
+                            tTglsampai = tTglmulai.substring(0, 6) + tTglsampai.substring(6, 2);
+
+                            //'FROM VIEW_PANTAU_21_REKAP_T
+                            sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                            sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, KOGOL, KDPEMBPP, STATUS,";
+                            sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+                            sql = sql + " FROM ( ";
+                            sql = sql + " ";
+                            sql = sql + "    select /*+index(a idx_dphoffline_02)*/ ";
+                            sql = sql + "     to_char(tgltransaksi,'YYYYMMDD') as tanggal, ";
+                            sql = sql + "     tglbayar as tglbuku, ";
+                            sql = sql + "     kdgerakkeluar as kdgerak, ";
+                            sql = sql + "     unitup, kogol, kdpembpp, status, ";
+                            sql = sql + "     count(idpel) as lembar, ";
+                            sql = sql + "     sum(rptag) as rptag,sum(rpptl) as rpptl, ";
+                            sql = sql + "     sum(rptb) as rptb, sum(rpppn) as rpppn, sum(rpbpju) as rpbpju, ";
+                            sql = sql + "     sum(rptrafo) as rptrafo, sum(rpsewatrafo) as rpsewatrafo, sum(rpsewakap) as rpsewakap, ";
+                            sql = sql + "     sum(rpangsa) as rpangsa, sum(rpangsb) as rpangsb, sum(rpangsc) as rpangsc, ";
+                            sql = sql + "     sum(rpmat) as rpmat, sum(rppln) as rppln, sum(rpreduksi) as rpreduksi, ";
+                            sql = sql + "     sum(rpinsentif) as rpinsentif, sum(rpdisinsentif) as rpdisinsentif, ";
+                            sql = sql + "     sum(rpbk1) as rpbk1, sum(rpbk2) as rpbk2, sum(rpbk3) as rpbk3 ";
+                            sql = sql + "     from dphoffline  partition(" + partisi + ") a ";
+                            sql = sql + "     where ";
+                            if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                                sql = sql + "       UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = '" + tUnitAP + "')";
+                            } else {
+                                sql = sql + "       UNITUP  = '" + tUnitUP + "' ";
+                            }
+                            sql = sql + "     and tglbayar  >= '" + tTglmulai + "'";
+                            sql = sql + "     and tglbayar  <= '" + tTglsampai + "'";
+                            sql = sql + "     and kdgerakkeluar = '21' and (kodegagal = '0' or kodegagal is null) ";
+                            sql = sql + "     and tglbataltrans is null ";
+                            sql = sql + "     and kdpembpp = 'R1' ";
+                            sql = sql + "     group by to_char(tgltransaksi,'YYYYMMDD'),tglbayar,kdgerakkeluar,unitup, kogol,kdpembpp,status ";
+                            sql = sql + " ) v1 ";
+                            sql = sql + " ";
+                            sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS ";
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,KOGOL,KDPEMBPP,STATUS ";
+                        } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                            String partisi = "";
+                            partisi = "lunas_" + tTglmulai.substring(0, 4) + "_" + tTglmulai.substring(4, 2);
+                            tTglsampai = tTglmulai.substring(0, 6) + tTglsampai.substring(6, 2);
+
+                            //'FROM VIEW_PANTAU_21_REKAP_T
+                            sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                            sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, KOGOL, KDPEMBPP, STATUS,";
+                            sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+                            sql = sql + " FROM ( ";
+                            sql = sql + " ";
+                            sql = sql + "    select  /*+index(a idx_dphoffline_tgltransaksi, idx_dphoffline_unitup)*/  ";
+                            sql = sql + "     to_char(tgltransaksi,'YYYYMMDD') as tanggal, ";
+                            sql = sql + "     tglbayar as tglbuku, ";
+                            sql = sql + "     kdgerakkeluar as kdgerak, ";
+                            sql = sql + "     unitup, kogol, kdpembpp, status, ";
+                            sql = sql + "     count(idpel) as lembar, ";
+                            sql = sql + "     sum(rptag) as rptag,sum(rpptl) as rpptl, ";
+                            sql = sql + "     sum(rptb) as rptb, sum(rpppn) as rpppn, sum(rpbpju) as rpbpju, ";
+                            sql = sql + "     sum(rptrafo) as rptrafo, sum(rpsewatrafo) as rpsewatrafo, sum(rpsewakap) as rpsewakap, ";
+                            sql = sql + "     sum(rpangsa) as rpangsa, sum(rpangsb) as rpangsb, sum(rpangsc) as rpangsc, ";
+                            sql = sql + "     sum(rpmat) as rpmat, sum(rppln) as rppln, sum(rpreduksi) as rpreduksi, ";
+                            sql = sql + "     sum(rpinsentif) as rpinsentif, sum(rpdisinsentif) as rpdisinsentif, ";
+                            sql = sql + "     sum(rpbk1) as rpbk1, sum(rpbk2) as rpbk2, sum(rpbk3) as rpbk3 ";
+                            sql = sql + "     from dphoffline a ";
+                            sql = sql + "     where ";
+                            if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                                sql = sql + "       UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = '" + tUnitAP + "')";
+                            } else {
+                                sql = sql + "       UNITUP  = '" + tUnitUP + "' ";
+                            }
+                            sql = sql + "       and tgltransaksi  >=  to_date('" + tTglmulai + "','YYYYMMDD')";
+                            sql = sql + "       and tgltransaksi  < (to_date('" + tTglsampai + "','YYYYMMDD') + 1)";
+                            sql = sql + "     and kdgerakkeluar = '21' and (kodegagal = '0' or kodegagal is null) ";
+                            sql = sql + "     and tglbataltrans is null ";
+                            sql = sql + "     and kdpembpp = 'R1' ";
+                            sql = sql + "     group by to_char(tgltransaksi,'YYYYMMDD'),tglbayar,kdgerakkeluar,unitup, kogol,kdpembpp,status ";
+                            sql = sql + " ) v1 ";
+                            sql = sql + " ";
+                            sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS ";
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS ";
+                        }
+                    }
+                } else {
+                    if ( vJenis.toUpperCase().equals("DAFTAR") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + "  TANGGAL, TGLBUKU, IDPEL, WKTLNS , KDPP, PETUGAS, KDGERAK, KOGOL, UNITUP, KDKELOMPOK, TARIP, DAYA, BLTH, KDPEMBPP, STATUS, NOREK, UNITKJ, KDINKASO, PEMDA, KDPPJ, KODE";
+                        sql = sql + "  ,RPTAG, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT, RPPLN, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3";
+                        sql = sql + " FROM VIEW_PANTAU_21_DFT_T";
+                        sql = sql + " WHERE ";
+                        if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                            sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+                            sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                        } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                            sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+                            sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                        }
+                        if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        } else {
+                            sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        }
+                        if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                        } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
+                        }
+                    } else if ( vJenis.toUpperCase().equals("REKAP") ) {
+                        sql = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK,";
+                        sql = sql + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, KOGOL, KDPEMBPP, STATUS,";
+                        sql = sql + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3";
+
+                        sql = sql + " FROM VIEW_PANTAU_21_REKAP_T";
+                        sql = sql + " WHERE ";
+                        if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                            sql = sql + "  TGLBUKU  >= '" + tTglmulai + "'";
+                            sql = sql + " AND TGLBUKU  <= '" + tTglsampai + "'";
+                        } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                            sql = sql + "  TANGGAL  >= '" + tTglmulai + "'";
+                            sql = sql + " AND TANGGAL  <= '" + tTglsampai + "'";
+                        }
+                        if ( tUnitUP.toUpperCase().equals("ALL") ) {
+                            sql = sql + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "')))";
+                        } else {
+                            sql = sql + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "'))";
+                        }
+                        sql = sql + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS ";
+
+                        if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN") ) {
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,KOGOL,KDPEMBPP,STATUS ";
+                        } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI") ) {
+                            sql = sql + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,KOGOL,KDPEMBPP,STATUS ";
+                        }
+                    }
+                }
+            } else if (Transaksi.equals("21 Pelunasan Suplisi")) {
+                sql = "";
+            } else if (Transaksi.equals("22 Pelunasan On-Line")) {
+                sql = "";
+            } else if (Transaksi.equals("23 Pelunasan NotaBuku")) {
+                sql = "";
+            } else if (Transaksi.equals("23 Pelunasan Terpusat")) {
+                sql = "";
+            } else if (Transaksi.equals("31 Pembatalan Rekening")) {
+                sql = "";
+            } else if (Transaksi.equals("41 Pindah Lancar ke Ragu2")) {
+                sql = "";
+            } else if (Transaksi.equals("32 Penghapusan Rekening")) {
+                sql = "";
+            } else if (Transaksi.equals("a. Cicilan Rekening KWH")) {
+                sql = "";
+            } else if (Transaksi.equals("b. Kirim Rekening ke Unit Lain")) {
+                sql = "";
+            } else if (Transaksi.equals("c. Terima Rekening dari Unit Lain")) {
+                sql = "";
+            }
+
+
             cst = con.prepareCall(sql);
             rs = cst.executeQuery();
 

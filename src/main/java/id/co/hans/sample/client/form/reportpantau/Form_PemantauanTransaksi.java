@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportpantau;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,11 +23,34 @@ public class Form_PemantauanTransaksi {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnit cbUnit;
+    ComboJenisTransaksi cbJenisTransaksi;
+    Radio radioTopJenisPemantauanDaftar;
+    Radio radioTopJenisPemantauanRekap;
+
+    Radio radioTopJenisTanggalTransaksi;
+    Radio radioTopJenisTanggalPembukuan;
+
+    DateField dfTopTanggalAwal;
+    DateField dfTopTanggalAkhir;
+
+    TextField tfBottomRpTagihan;
+    TextField tfBottomRpBK;
+
+    TextButton btnCetak;
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -55,10 +81,10 @@ public class Form_PemantauanTransaksi {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnit cbUnit = new ComboUnit();
+        cbUnit = new ComboUnit();
         vlcPReferensi.add(cbUnit);
 
-        ComboJenisTransaksi cbJenisTransaksi = new ComboJenisTransaksi();
+        cbJenisTransaksi = new ComboJenisTransaksi();
         cbJenisTransaksi.setFormAsal("Form_PemantauanTransaksi");
         vlcPReferensi.add(cbJenisTransaksi);
 
@@ -72,11 +98,11 @@ public class Form_PemantauanTransaksi {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        Radio radioTopJenisPemantauanDaftar = new Radio();
+        radioTopJenisPemantauanDaftar = new Radio();
         radioTopJenisPemantauanDaftar.setBoxLabel("Daftar");
         radioTopJenisPemantauanDaftar.setValue(true);
 
-        Radio radioTopJenisPemantauanRekap = new Radio();
+        radioTopJenisPemantauanRekap = new Radio();
         radioTopJenisPemantauanRekap.setBoxLabel("Rekap");
 
         HorizontalPanel hp1 = new HorizontalPanel();
@@ -95,11 +121,11 @@ public class Form_PemantauanTransaksi {
         VerticalLayoutContainer vlcPReferensiJnsTgl = new VerticalLayoutContainer();
         panelReferensiJnsTgl.add(vlcPReferensiJnsTgl);
 
-        Radio radioTopJenisTanggalTransaksi = new Radio();
+        radioTopJenisTanggalTransaksi = new Radio();
         radioTopJenisTanggalTransaksi.setBoxLabel("Transaksi");
         radioTopJenisTanggalTransaksi.setValue(true);
 
-        Radio radioTopJenisTanggalPembukuan = new Radio();
+        radioTopJenisTanggalPembukuan = new Radio();
         radioTopJenisTanggalPembukuan.setBoxLabel("Pembukuan");
 
         hp1 = new HorizontalPanel();
@@ -118,8 +144,8 @@ public class Form_PemantauanTransaksi {
         VerticalLayoutContainer vlcPReferensiJnsTgl2 = new VerticalLayoutContainer();
         panelReferensiTgl2.add(vlcPReferensiJnsTgl2);
 
-        DateField dfTopTanggalAwal = new DateField();
-        DateField dfTopTanggalAkhir = new DateField();
+        dfTopTanggalAwal = new DateField();
+        dfTopTanggalAkhir = new DateField();
 
         TextButton bTopTampilkan = new TextButton("Tampilkan");
 
@@ -155,10 +181,10 @@ public class Form_PemantauanTransaksi {
         VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
         panelButton.add(vlcPButton);
 
-        TextField tfBottomRpTagihan = new TextField();
-        TextField tfBottomRpBK = new TextField();
+        tfBottomRpTagihan = new TextField();
+        tfBottomRpBK = new TextField();
 
-        TextButton btnCetak = new TextButton("Cetak");
+        btnCetak = new TextButton("Cetak");
         btnCetak.setWidth(220);
 
 
@@ -186,5 +212,35 @@ public class Form_PemantauanTransaksi {
         tg2.add(radioTopJenisTanggalTransaksi);
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        btnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+                String url = "";
+
+//                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanTransaksi"
+//                        +"&vPilihSaldo="+pilihSaldo
+//                        +"&vPilihRep="+pilihRep
+//                        +"&tUnitUP="+cbUnits.getUnitUpValue()
+//                        +"&tUnitAP="+cbUnits.getUnitApValue()
+//                        +"&tTglmulai="+""
+//                        +"&tTglsampai="+""
+//                        +"&tBlTh="+""
+//                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+//                        +"&judulsatu="+judulsatu
+//                        +"&juduldua="+juduldua
+//                ;
+
+//                url+="&report=report/ReportPantau/Saldo/" + sRptName + ".rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

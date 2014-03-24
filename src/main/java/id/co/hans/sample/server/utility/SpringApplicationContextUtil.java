@@ -5,6 +5,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
+/**
+ * 
+ * It should not create a new instance of ApplicationContext.
+ *
+ */
+@Deprecated
 public class SpringApplicationContextUtil implements ApplicationContextAware{
 
 	private static ApplicationContext CONTEXT; 

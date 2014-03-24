@@ -35,7 +35,7 @@ public class Form_Report23BebanKantor_Kode {
 
     public Widget asWidget(String idUser, String unitupUser, String levelUser) {
         this.idUser=idUser;
-        this.unitUser=unitUser;
+        this.unitUser=unitupUser;
         this.levelUser=levelUser;
 
         if (vp == null) {
@@ -74,6 +74,8 @@ public class Form_Report23BebanKantor_Kode {
         panelReferensi.add(vlcPReferensi);
 
         cbKdBebanKantor = new ComboKodeBebanKantor();
+        cbKdBebanKantor.setUnitUp(unitUser);
+        cbKdBebanKantor.setIBebanKantor("1");
         vlcPReferensi.add(cbKdBebanKantor);
 
         p.add(panelReferensi);

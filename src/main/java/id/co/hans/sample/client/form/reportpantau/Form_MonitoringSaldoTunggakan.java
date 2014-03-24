@@ -1,5 +1,7 @@
 package id.co.hans.sample.client.form.reportpantau;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +14,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,11 +23,27 @@ public class Form_MonitoringSaldoTunggakan {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnits cbUnits;
+    ComboJenisLaporan cbJenisLaporan;
+    IconDynamicGrid gpData;
+
+    TextButton btnTampil;
+    TextButton btnExcel;
+    TextButton btnCetak;
+
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -55,7 +74,7 @@ public class Form_MonitoringSaldoTunggakan {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnits cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits();
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -69,22 +88,118 @@ public class Form_MonitoringSaldoTunggakan {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
+        cbJenisLaporan = new ComboJenisLaporan();
         cbJenisLaporan.setFormAsal("Form_MonitoringSaldoTunggakan");
         vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);
 
+        // ===
+        FramedPanel panelParameter = new FramedPanel();
+        panelParameter.setBodyStyle("background: none; padding: 5px");
+        panelParameter.setWidth(620);
 
-        IconDynamicGrid gpData = new IconDynamicGrid();
+        VerticalLayoutContainer vlcPParameter = new VerticalLayoutContainer();
+        panelParameter.add(vlcPParameter);
+
+        btnTampil = new TextButton("Tampilkan");
+        btnExcel = new TextButton("Excel");
+        btnCetak = new TextButton("Cetak");
+
+        btnTampil.setWidth(220);
+        btnExcel.setWidth(220);
+        btnCetak.setWidth(220);
+
+        HorizontalPanel hp1 = new HorizontalPanel();
+
+        hp1.add(btnTampil);
+
+        vlcPParameter.add(hp1);
+
+        hp1 = new HorizontalPanel();
+
+        hp1.add(btnExcel);
+
+        vlcPParameter.add(hp1);
+
+        hp1 = new HorizontalPanel();
+
+        hp1.add(btnCetak);
+
+        vlcPParameter.add(hp1);
+
+        p.add(panelParameter);
+        // ===
+
+        gpData = new IconDynamicGrid();
         gpData.setGridDimension(620, 300);
         gpData.setGridHeader("LAPORAN MONITORING SALDO TUNGGAKAN");
-        gpData.setStoreUrl("url");
+        gpData.setStoreUrl("emptyUrl");
         gpData.addColumn("No", 100);
 
         p.add(gpData);
 
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        btnTampil.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String url= GWT.getHostPageBaseURL()+ "Ws_ReportTransaksi/getMonitoringLapSaldoTunggakan.json"
+                        +"&in_jenis="+cbJenisLaporan.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&in_unitap="+cbUnits.getUnitApValue()
+                        +"&in_unitup="+cbUnits.getUnitUpValue();
+
+                gpData.setStoreUrl(url);
+            }
+        });
+        btnExcel.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=getMonitoringLapSaldoTunggakan"
+                        +"&in_jenis="+cbJenisLaporan.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&in_unitap="+cbUnits.getUnitApValue()
+                        +"&in_unitup="+cbUnits.getUnitUpValue()
+                        +"&judulsatu="+"MONITORING TUNGGAKAN"
+                        +"&juduldua="+cbJenisLaporan.getSelectedValue()
+                        +"&export="+"Excel"
+                        ;
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldotunggakan.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
+        btnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi;
+
+                petugas = idUser;
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=getMonitoringLapSaldoTunggakan"
+                        +"&in_jenis="+cbJenisLaporan.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&in_unitap="+cbUnits.getUnitApValue()
+                        +"&in_unitup="+cbUnits.getUnitUpValue()
+                        +"&judulsatu="+"MONITORING TUNGGAKAN"
+                        +"&juduldua="+cbJenisLaporan.getSelectedValue()
+                        +"&export="+"rpt"
+                        ;
+
+                url+="&report=report/ReportPantau/Saldo/cr_saldotunggakan.rpt";
+
+                Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
+            }
+        });
     }
 }

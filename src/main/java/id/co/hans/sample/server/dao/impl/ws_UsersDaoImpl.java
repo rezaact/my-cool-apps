@@ -103,7 +103,7 @@ public class ws_UsersDaoImpl implements ws_UsersDao {
             con = jdbcTemplate.getDataSource().getConnection();
 
             if(jnstrans == 0){
-                sql = "INSERT INTO SIP3SINGLE.PENGELOLA (KODEPENGELOLA, PENGELOLA, ALAMAT, TELPPENGELOLA) VALUES (" +
+                sql = "INSERT INTO PENGELOLA (KODEPENGELOLA, PENGELOLA, ALAMAT, TELPPENGELOLA) VALUES (" +
                         "'" + kode + "','" + nama + "','" + alamat + "','" + notelp + "')";
             } else if(jnstrans == 1) {
                 sql = " UPDATE PENGELOLA " +

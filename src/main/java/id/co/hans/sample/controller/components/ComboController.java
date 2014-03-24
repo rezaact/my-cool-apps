@@ -1,6 +1,9 @@
 package id.co.hans.sample.controller.components;
 
+import id.co.hans.sample.server.dao.MasterDao;
 import id.co.hans.sample.server.dao.ws_TransaksiDao;
+import id.co.hans.sample.server.dao.ws_UsersDao;
+import id.co.hans.sample.server.utility.CommonModule;
 import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,12 @@ public class ComboController {
 
     @Autowired
     private ws_TransaksiDao ws_transaksiDao;
+
+    @Autowired
+    private MasterDao masterDao;
+
+    @Autowired
+    private ws_UsersDao ws_usersDao;
 
     @RequestMapping(value = "**/components/testHitUrl.json", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -48,8 +57,8 @@ public class ComboController {
 
         for (int currDate = firstDate.get(Calendar.DAY_OF_MONTH); currDate <= lastDate.get(Calendar.DAY_OF_MONTH); currDate++) {
             currDateData = new HashMap<>();
-            currDateData.put("fieldValue", ("0" + currDate).substring(("0" + currDate).length() - 2, ("0" + currDate).length()));
-            currDateData.put("displayValue", currDate);
+            currDateData.put("fieldValue", ("0" + String.valueOf(currDate)).substring(("0" + String.valueOf(currDate)).length() - 2, ("0" + String.valueOf(currDate)).length()));
+            currDateData.put("displayValue", String.valueOf(currDate));
 
             dataList.add(currDateData);
         }
@@ -152,11 +161,13 @@ public class ComboController {
 
         for (int currYear = lastDate.get(Calendar.YEAR); currYear >= firstDate.get(Calendar.YEAR); currYear--) {
             currYearData = new HashMap<>();
-            currYearData.put("fieldValue", currYear);
-            currYearData.put("displayValue", currYear);
+            currYearData.put("fieldValue", String.valueOf(currYear));
+            currYearData.put("displayValue", String.valueOf(currYear));
 
             dataList.add(currYearData);
         }
+
+        CommonModule.getLogger(this).info(dataList);
 
         retVal.put("records", dataList);
 
@@ -561,36 +572,20 @@ public class ComboController {
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = ws_transaksiDao.getMasterUnit(userUnit);
+        Map<String, Object> wsData = masterDao.getMasterUnit("UPI", userUnit.substring(1,2));
 
-        if (addUpiSemua == "1") {
+        if (addUpiSemua.equals("1")) {
             currData = new HashMap<>();
             currData.put("fieldValue", "SEMUA");
             currData.put("displayValue", "SEMUA");
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn_UNITUPI")) {
-            switch (levelUnits) {
-                case "PLN" :
-                    currData = new HashMap<>();
-
-                    currData.put("fieldValue", tmp.get("kodekolektif"));
-                    currData.put("displayValue", tmp.get("kodekolektif"));
-
-                    dataList.add(currData);
-                    break;
-                default :
-                    if (tmp.get("UNITUPI") == userUnit.substring(1,2)) {
-                        currData = new HashMap<>();
-
-                        currData.put("fieldValue", tmp.get("kodekolektif"));
-                        currData.put("displayValue", tmp.get("kodekolektif"));
-
-                        dataList.add(currData);
-                    }
-                    break;
-            }
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+            currData = new HashMap<>();
+            currData.put("fieldValue", tmp.get("unitupi"));
+            currData.put("displayValue", tmp.get("unitupi") + "-" + tmp.get("nama"));
+            dataList.add(currData);
         }
 
         retVal.put("records", dataList);
@@ -610,71 +605,20 @@ public class ComboController {
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = ws_transaksiDao.getMasterUnit(userUnit);
+        Map<String, Object> wsData = masterDao.getMasterUnit("APbyUPI", selectedUnitUpi);
 
-        if (addApSemua == "1") {
+        if (addApSemua.equals("1")) {
             currData = new HashMap<>();
             currData.put("fieldValue", "SEMUA");
             currData.put("displayValue", "SEMUA");
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn_UNITAP")) {
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
             currData = new HashMap<>();
-            switch (levelUnits) {
-                case "PLN" :
-                    if (selectedUnitUpi == "") {
-                        currData.put("fieldValue", tmp.get("kodekolektif"));
-                        currData.put("displayValue", tmp.get("kodekolektif"));
-                        dataList.add(currData);
-                    } else {
-                        if (tmp.get("UNITUPI") == selectedUnitUpi) {
-                            currData.put("fieldValue", tmp.get("kodekolektif"));
-                            currData.put("displayValue", tmp.get("kodekolektif"));
-                            dataList.add(currData);
-                        }
-                    }
-                    break;
-                case "UPI" :
-                    if (selectedUnitUpi == "") {
-                        currData.put("fieldValue", tmp.get("kodekolektif"));
-                        currData.put("displayValue", tmp.get("kodekolektif"));
-                        dataList.add(currData);
-                    } else {
-                        if (tmp.get("UNITUPI") == selectedUnitUpi) {
-                            currData.put("fieldValue", tmp.get("kodekolektif"));
-                            currData.put("displayValue", tmp.get("kodekolektif"));
-                            dataList.add(currData);
-                        }
-                    }
-                    break;
-                case "AP" :
-                    if (selectedUnitUpi == "") {
-                        if (tmp.get("UNITAP") == userUnit) {
-                            currData.put("fieldValue", tmp.get("kodekolektif"));
-                            currData.put("displayValue", tmp.get("kodekolektif"));
-                            dataList.add(currData);
-                        }
-                    } else if (tmp.get("UNITUPI") == selectedUnitUpi) {
-                        currData.put("fieldValue", tmp.get("kodekolektif"));
-                        currData.put("displayValue", tmp.get("kodekolektif"));
-                        dataList.add(currData);
-                    }
-                    break;
-                case "UP" :
-                    if (selectedUnitUpi == "") {
-                        if (tmp.get("UNITUPI") == userUnit) {
-                            currData.put("fieldValue", tmp.get("kodekolektif"));
-                            currData.put("displayValue", tmp.get("kodekolektif"));
-                            dataList.add(currData);
-                        }
-                    } else if (tmp.get("UNITAP") == selectedUnitUpi) {
-                        currData.put("fieldValue", tmp.get("kodekolektif"));
-                        currData.put("displayValue", tmp.get("kodekolektif"));
-                        dataList.add(currData);
-                    }
-                    break;
-            }
+            currData.put("fieldValue", tmp.get("unitap"));
+            currData.put("displayValue", tmp.get("unitap") + "-" + tmp.get("nama"));
+            dataList.add(currData);
         }
 
         retVal.put("records", dataList);
@@ -688,35 +632,192 @@ public class ComboController {
     public JSONObject getComboUnitPelayanan(@RequestParam(value = "levelUnits", defaultValue = "")String levelUnits,
                                             @RequestParam(value = "userUnit", defaultValue = "")String userUnit,
                                             @RequestParam(value = "addUpSemua", defaultValue = "0")String addUpSemua,
-                                            @RequestParam(value = "selectedUp", defaultValue = "")String selectedUp) {
+                                            @RequestParam(value = "selectedUnitAp", defaultValue = "")String selectedUnitAp) {
         JSONObject retVal = new JSONObject();
 
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = ws_transaksiDao.getMasterUnit(userUnit);
+        Map<String, Object> wsData = masterDao.getMasterUnit("UPbyAP", selectedUnitAp);
 
-        if (addUpSemua == "1") {
+        if (addUpSemua.equals("1")) {
             currData = new HashMap<>();
-
             currData.put("fieldValue", "SEMUA");
             currData.put("displayValue", "SEMUA");
-
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn_UNITUP")) {
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
             currData = new HashMap<>();
+            currData.put("fieldValue", tmp.get("unitup"));
+            currData.put("displayValue", tmp.get("unitup") + "-" + tmp.get("nama"));
+            dataList.add(currData);
+        }
 
-            switch (levelUnits) {
-                case "PLN" :
-                    break;
-                case "UPI" :
-                    break;
-                case "AP" :
-                    break;
-                case "UP" :
-                    break;
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboKodeSiklis.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboKodeSiklis(@RequestParam(value = "unitUp", defaultValue = "")String unitUp,
+                                         @RequestParam(value = "addSemua", defaultValue = "0")String addSemua) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = masterDao.getKodeSiklis(unitUp);
+
+        if (addSemua.equals("1")) {
+            currData = new HashMap<>();
+            currData.put("fieldValue", "SEMUA");
+            currData.put("displayValue", "SEMUA");
+            dataList.add(currData);
+        }
+
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+            currData = new HashMap<>();
+            currData.put("fieldValue", tmp.get("unitup"));
+            currData.put("displayValue", tmp.get("unitup") + "-" + tmp.get("kodesiklis"));
+            dataList.add(currData);
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboKodePaymentPoint.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboKodePaymentPoint(@RequestParam(value = "unitUp", defaultValue = "")String unitUp) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = masterDao.getKodePaymentPoint(unitUp);
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<>();
+                    currData.put("fieldValue", tmp.get("kodepp"));
+                    currData.put("displayValue", tmp.get("namapp"));
+                    dataList.add(currData);
+                }
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboPetugas.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboPetugas(@RequestParam(value = "kodePP", defaultValue = "")String kodePP) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = masterDao.getKodePetugas(kodePP);
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<>();
+                    currData.put("fieldValue", tmp.get("id_user"));
+                    currData.put("displayValue", tmp.get("nama_user"));
+                    dataList.add(currData);
+                }
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboDataKolektifGiralisasi.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboDataKolektifGiralisasi(@RequestParam(value = "unitUp", defaultValue = "")String unitUp) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = masterDao.getDataKolektifGiralisasi(unitUp);
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<>();
+                    currData.put("fieldValue", tmp.get("kodekolektif"));
+                    currData.put("displayValue", tmp.get("namakolektif"));
+                    dataList.add(currData);
+                }
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboDataKolektifNotaBuku.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboDataKolektifNotaBuku(@RequestParam(value = "unitUp", defaultValue = "")String unitUp,
+                                                   @RequestParam(value = "iBebanKantor", defaultValue = "")String iBebanKantor) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = masterDao.getDataKolektifNotaBuku(unitUp, iBebanKantor);
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<>();
+                    currData.put("fieldValue", tmp.get("kodekolektif"));
+                    currData.put("displayValue", tmp.get("namakolektif"));
+                    dataList.add(currData);
+                }
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboDataKolektifNotaTerpusat.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboDataKolektifNotaTerpusat(@RequestParam(value = "unitUp", defaultValue = "")String unitUp) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = masterDao.getDataKolektifNotaTerpusat(unitUp);
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<>();
+                    currData.put("fieldValue", tmp.get("kodekolektif"));
+                    currData.put("displayValue", tmp.get("namakolektif"));
+                    dataList.add(currData);
+                }
             }
         }
 
