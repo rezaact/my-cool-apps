@@ -113,7 +113,7 @@ public class IconComboBox implements IsWidget{
         comboBox.setAllowBlank(false);
         comboBox.setTypeAhead(true);
         comboBox.setEditable(true);
-        comboBox.setWidth(this.comboWidth);
+//        comboBox.setWidth(this.comboWidth);
 
         comboBox.setTriggerAction(ComboBoxCell.TriggerAction.ALL);
 

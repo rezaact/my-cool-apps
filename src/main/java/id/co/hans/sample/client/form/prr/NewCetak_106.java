@@ -19,9 +19,6 @@ import com.sencha.gxt.widget.core.client.toolbar.SeparatorToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 import id.co.hans.sample.client.components.*;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
 
 public class NewCetak_106 {
     private VerticalPanel vp;
