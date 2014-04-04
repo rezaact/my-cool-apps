@@ -1,11 +1,15 @@
 package id.co.hans.sample.client;
 
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 
 public abstract class AbstractForm {
+	
+	protected static final String DATE_FORMAT_PATTERN = "dd-MMM-yy";
+	protected static final DateTimeFormat DEFAULT_DATETIME_FORMATER = DateTimeFormat.getFormat(DATE_FORMAT_PATTERN);
 
 	private String idUser;
 	private String unitupUser;

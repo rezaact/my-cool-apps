@@ -43,6 +43,8 @@ import id.co.hans.sample.client.form.reportpantau.Form_PemantauanTransaksi;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import id.co.hans.sample.client.form.proses.*;
+import id.co.hans.sample.client.form.reportmain.*;
 
 public class View implements IsWidget {
     private static View instance;
@@ -158,6 +160,39 @@ public class View implements IsWidget {
         } else if (id_menu.toUpperCase().equals("Form_PemantauanTransaksi".toUpperCase())){
             widgetMenu =new Form_PemantauanTransaksi().asWidget(idUser,unitupUser,levelUser);
         }
+
+
+        //yk
+        else if (id_menu.toUpperCase().equals("Form_23AnggotaNotaBuku".toUpperCase())){
+            widgetMenu =new Form_23AnggotaNotaBuku().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_23AnggotaNotaTerpusat".toUpperCase())){
+            widgetMenu =new Form_23AnggotaNotaTerpusat().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_23KodeNotaTerpusat".toUpperCase())){
+            widgetMenu =new Form_23KodeNotaTerpusat().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_BatalNotaKolektif".toUpperCase())){
+            widgetMenu =new Form_BatalNotaKolektif().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_31Idpel".toUpperCase())){
+            widgetMenu =new Form_31Idpel().asWidget(idUser, unitupUser, levelUser);
+        } else if (id_menu.toUpperCase().equals("Form_21Upload".toUpperCase())){
+            widgetMenu =new Form_21Upload().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_23KodeNotaBuku".toUpperCase())){
+            widgetMenu =new Form_23KodeNotaBuku().asWidget(idUser, unitupUser, levelUser);
+        }  else if (id_menu.toUpperCase().equals("Form_MonitoringPending".toUpperCase())){
+            widgetMenu =new Form_MonitoringPending().asWidget(idUser, unitupUser, levelUser);
+        }    else if (id_menu.toUpperCase().equals("Form_12Manual".toUpperCase())){
+            widgetMenu =new Form_12Manual().asWidget(idUser, unitupUser, levelUser);
+        }  else if (id_menu.toUpperCase().equals("Form_23PelunasanNotaTerpusat".toUpperCase())){
+            widgetMenu =new Form_23PelunasanNotaTerpusat().asWidget(idUser, unitupUser, levelUser);
+        }   else if (id_menu.toUpperCase().equals("Form_23PelunasanBebanKantor".toUpperCase())){
+            widgetMenu =new Form_23PelunasanBebanKantor().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_21Entri".toUpperCase())){
+            widgetMenu =new Form_21Entri().asWidget(idUser, unitupUser, levelUser);
+        }else if (id_menu.toUpperCase().equals("Form_23EntriLunasRestitusi".toUpperCase())){
+            widgetMenu =new Form_23EntriLunasRestitusi().asWidget(idUser, unitupUser, levelUser);
+        }
+
+
+
 
         return widgetMenu;
     }

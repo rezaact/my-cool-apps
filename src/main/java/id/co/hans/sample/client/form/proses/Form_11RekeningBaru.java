@@ -14,7 +14,7 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
-public class Form_11RekeningBaru {
+    public class Form_11RekeningBaru {
 
 
     private VerticalPanel vp;
