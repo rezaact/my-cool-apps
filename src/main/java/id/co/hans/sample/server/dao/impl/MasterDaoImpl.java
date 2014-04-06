@@ -22,38 +22,176 @@ public class MasterDaoImpl implements MasterDao{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Map<String, Object> getMasterUnit(String inTipe, String inValue) {
+    public Map<String, Object> getMasterUser(String idUser) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapRecords = new ArrayList<Map<String,String>>();
+
+        //leveluser = PUSAT, UPI, AP, UP, VENDOR, (null)
 
         try
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "";
-            if (inTipe.equals("UPI")){
-                sql="select * from unitupi";
-            }else if (inTipe.equals("UPIbyUPI")){
-                sql="select * from unitupi where unitupi=?";
-            }else if(inTipe.equals("APbyUPI")){
-                sql="select * from unitap where unitupi=?";
-            }else if(inTipe.equals("APbyAP")){
-                sql="select * from unitap where unitap=?";
-            }else if(inTipe.equals("UPbyAP")){
-                sql="select * from unitup where unitap=?";
-            }else if(inTipe.equals("UPbyUP")){
-                sql="select * from unitup where unitup=?";
-            }
-
-            CallableStatement cst;
-            cst = con.prepareCall(sql);
-
-            if (!inTipe.equals("UPI")){
-                cst.setString(1, inValue);
-            }
+            String sql = "select * from secman.usertab where id_user = ?";
+            CallableStatement cst = con.prepareCall(sql);
+            cst.setString(1, idUser);
 
             ResultSet rs = cst.executeQuery();
+            lMapRecords = CommonModule.convertResultsetToListStr(rs);
 
+            if (lMapRecords.size() == 0) {
+                retValue.put("wsReturn", null);
+            } else {
+                retValue.put("wsReturn", lMapRecords);
+            }
+
+            retValue.put("wsByRefError", "");
+
+            con.close();
+        } catch (Exception ex)
+        {
+            retValue.put("wsReturn", null);
+            retValue.put("wsByRefError", ex.getMessage());
+        }
+        return retValue;
+    }
+
+    @Override
+    public Map<String, Object> getMasterUnit(String inTipe, String userUnit, String selectedUnit) {
+        Map<String, Object> retValue = new HashMap<String, Object>();
+        List<Map<String,String>> lMapRecords = new ArrayList<Map<String,String>>();
+
+        //leveluser = PUSAT, UPI, AP, UP, VENDOR, (null)
+
+        try
+        {
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+
+            String sql = "select * from dual";
+            CallableStatement cst = con.prepareCall(sql);
+
+            //get UPI
+            if (inTipe.toUpperCase().equals("UPI_BY_PUSAT")){
+                sql = "select * from unitupi";
+                cst = con.prepareCall(sql);
+            }else if (inTipe.toUpperCase().equals("UPI_BY_UPI")){
+                sql = "select * from unitupi where unitupi=?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, userUnit);
+            }else if (inTipe.toUpperCase().equals("UPI_BY_AP")){
+                sql = "";
+                sql+= "select * from unitupi upi";
+                sql+= " where upi.unitupi = ";
+                sql+= "  (";
+                sql+= "    select ap.unitupi ";
+                sql+= "      from unitap ap";
+                sql+= "     where ap.unitap = ?";
+                sql+= "  )";
+                cst = con.prepareCall(sql);
+                cst.setString(1, userUnit);
+            }else if (inTipe.toUpperCase().equals("UPI_BY_UP")){
+                sql = "";
+                sql+= "select * from unitupi upi ";
+                sql+= " where upi.unitupi = ";
+                sql+= "  (";
+                sql+= "    select ap.unitupi ";
+                sql+= "      from unitap ap ";
+                sql+= "     where ap.unitap = ";
+                sql+= "      (";
+                sql+= "        select up.unitap ";
+                sql+= "          from unitup up ";
+                sql+= "         where up.unitup = ? ";
+                sql+= "      ) ";
+                sql+= "  ) ";
+                cst = con.prepareCall(sql);
+                cst.setString(1, userUnit);
+            }
+
+            //get AP
+            else if(inTipe.toUpperCase().equals("AP_BY_PUSAT")){
+                sql = "";
+                sql+="select * from unitap where unitupi=?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("AP_BY_UPI")){
+                sql = "";
+                sql+="select * from unitap where unitupi=?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("AP_BY_AP")){
+                sql = "";
+                sql+="select * from unitap where unitupi=? and unitap=?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+                cst.setString(2, userUnit);
+            }else if(inTipe.toUpperCase().equals("AP_BY_UP")){
+                sql = "";
+                sql+="select * from unitap ap ";
+                sql+="  where ap.unitupi = ?";
+                sql+="        and ap.unitap = ";
+                sql+="          (";
+                sql+="            select up.unitap ";
+                sql+="              from unitup up";
+                sql+="             where up.unitup = ?";
+                sql+="          )";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+                cst.setString(2, userUnit);
+            }
+
+            //get UP
+            else if(inTipe.toUpperCase().equals("UP_BY_PUSAT")){
+                sql = "";
+                sql+="select * from unitup where unitap = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("UP_BY_UPI")){
+                sql = "";
+                sql+="select * from unitup where unitap = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("UP_BY_AP")){
+                sql = "";
+                sql+="select * from unitup where unitap = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("UP_BY_UP")){
+                sql = "";
+                sql+="select * from unitup where unitap = ? and unitup = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+                cst.setString(2, userUnit);
+            }
+
+            //khusus combounit
+            else if(inTipe.toUpperCase().equals("UP_BY_COMBOUP")){
+                sql = "";
+                sql+="select * from unitup where unitup = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, userUnit);
+            }
+
+            //get untuk laporan
+            else if(inTipe.toUpperCase().equals("UPI_BY_REPORT")){
+                sql = "";
+                sql+="select * from unitupi where unitupi = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("AP_BY_REPORT")){
+                sql = "";
+                sql+="select * from unitap where unitap = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }else if(inTipe.toUpperCase().equals("UP_BY_REPORT")){
+                sql = "";
+                sql+="select * from unitup where unitup = ?";
+                cst = con.prepareCall(sql);
+                cst.setString(1, selectedUnit);
+            }
+
+            CommonModule.getLogger(this).info("sql :: " + sql);
+
+            ResultSet rs = cst.executeQuery();
             lMapRecords = CommonModule.convertResultsetToListStr(rs);
 
             if (lMapRecords.size() == 0) {

@@ -54,7 +54,6 @@
         <Column name="RPTDLLAMA" type="6" />
         <Column name="RPTDLBARU" type="6" />
         <Column name="RPSELISIH" type="6" />
-        <Column name="RPUJL" type="6" />
       </Tablesource>
     </Datasource>
   <Database>

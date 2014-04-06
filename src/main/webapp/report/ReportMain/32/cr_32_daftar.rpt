@@ -44,9 +44,6 @@
         <Column name="KDPPJ" type="11" />
         <Column name="TARIP" type="11" />
         <Column name="DAYA" type="6" />
-        <Column name="KDKIRIM" type="11" />
-        <Column name="UNITUPKDPP" type="11" />
-        <Column name="KDPP" type="11" />
       </Tablesource>
     </Datasource>
   <Database>

@@ -127,7 +127,7 @@ public class Form_Report23NotaTerpusat_Kode {
         panel.addButton(bBottomTampilkan);
 
         ToggleGroup tg = new ToggleGroup();
-        tg.add(radioLunas);
+        tg.add(radioSemua);
         tg.add(radioBelumLunas);
         tg.add(radioLunas);
 
@@ -153,7 +153,9 @@ public class Form_Report23NotaTerpusat_Kode {
                         +"&jenis="+jenis
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tPetugas="+petugas
-                        +"&kode="+cbKdNotaBuku.getSelectedValue();
+                        +"&kode="+cbKdNotaBuku.getSelectedValue()
+                        +"&unitpetugas="+unitUser
+                        ;
 
                 if (radioSemua.getValue())
                     url+="&report=report/ReportMain/23/cr_22NotaTerpusat_kode.rpt";

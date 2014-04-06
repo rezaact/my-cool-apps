@@ -3,18 +3,35 @@
 <inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
     <Datasource>
       <DataSourceConfiguration name="fielddef.dll">
+        <property name="supportsWhere" value="true"/>
+        <property name="url" value=""/>
+        <property name="escapeEverything" value="false"/>
+        <property name="quotesLowerCase" value="false"/>
+        <property name="savePassword" value="true"/>
+        <property name="driverClassName" value=""/>
+        <property name="user" value=""/>
+        <property name="catalog" value=""/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="driverLibrary" value=""/>
+        <property name="databaseClassName" value=""/>
+        <property name="aliasToken" value=" "/>
+        <property name="password" value="007FEB1638451BB7CB6EFE452CD6534EF37FEB614E66D68684BE7A26BD8636D3BC"/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="supportsSQL92" value="true"/>
       </DataSourceConfiguration>
       <Tablesource alias="cr_DaftarLunasKolektif" databaseIdentifier="cr_DaftarLunasKolektif">
         <Column name="KODEKOLEKTIF" type="11" />
         <Column name="TGLBAYAR" type="11" />
-        <Column name="NAMA" type="11" />
-        <Column name="ALAMAT" type="11" />
         <Column name="IDPEL" type="11" />
         <Column name="BLTH" type="11" />
+        <Column name="NAMA" type="11" />
+        <Column name="ALAMAT" type="11" />
         <Column name="TARIP" type="11" />
         <Column name="DAYA" type="6" />
         <Column name="KWH" type="6" />
         <Column name="RPPLN" type="6" />
+        <Column name="RPBK" type="6" />
         <Column name="RPPTL" type="6" />
         <Column name="RPPPJ" type="6" />
         <Column name="RPPPN" type="6" />
@@ -23,7 +40,6 @@
         <Column name="RPANG" type="6" />
         <Column name="RPKAP" type="6" />
         <Column name="RPTAG" type="6" />
-        <Column name="RPBK" type="6" />
       </Tablesource>
     </Datasource>
   <Database>
@@ -195,7 +211,7 @@
     <Attribute name="report subject" value=""/>
     <Attribute name="report template" value=""/>
     <Attribute name="report comments" value=""/>
-    <Attribute name="report last saved" value="14 Jan 2014 00:10:23 GMT"/>
+    <Attribute name="report last saved" value="23 Mar 2014 03:52:51 GMT"/>
     <Attribute name="report created" value="14 Sep 2007 14:22:27 GMT"/>
     <Attribute name="mailing label type 1" value=""/>
     <Attribute name="mailing label type 2" value=""/>
@@ -804,6 +820,7 @@
         </Element>
         <Element type="FieldElement" x_position="9940" y_position="98" width="480" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -825,6 +842,7 @@
         </Element>
         <Element type="FieldElement" x_position="10560" y_position="93" width="720" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -846,6 +864,7 @@
         </Element>
         <Element type="FieldElement" x_position="11395" y_position="93" width="960" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -867,6 +886,7 @@
         </Element>
         <Element type="FieldElement" x_position="12500" y_position="103" width="620" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -888,6 +908,7 @@
         </Element>
         <Element type="FieldElement" x_position="13270" y_position="93" width="1090" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -926,6 +947,7 @@
         </Element>
         <Element type="FieldElement" x_position="13928" y_position="451" width="1566" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="1"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -944,6 +966,7 @@
         </Element>
         <Element type="FieldElement" x_position="8850" y_position="80" width="870" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1032,6 +1055,7 @@
         </Element>
         <Element type="FieldElement" x_position="7400" y_position="20" width="480" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1040,7 +1064,7 @@
             <Attribute name="font size" value="160"/>
           </FontProperties>
           <NumberProperties>
-            <Attribute name="system default number type" value="2"/>
+            <Attribute name="system default number type" value="3"/>
             <Attribute name="negative type" value="3"/>
             <Attribute name="use thousand separators" value="false"/>
             <Attribute name="n decimal places" value="0"/>
@@ -1054,6 +1078,7 @@
         </Element>
         <Element type="FieldElement" x_position="8040" y_position="20" width="589" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1063,7 +1088,8 @@
           </FontProperties>
           <NumberProperties>
             <Attribute name="system default number type" value="2"/>
-            <Attribute name="n decimal places" value="3"/>
+            <Attribute name="n decimal places" value="0"/>
+            <Attribute name="rounding type" value="11"/>
             <Attribute name="thousand separators symbol" value="."/>
             <Attribute name="decimal separators symbol" value=","/>
             <Attribute name="currency symbol" value=""/>
@@ -1073,6 +1099,7 @@
         </Element>
         <Element type="FieldElement" x_position="9945" y_position="23" width="480" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1093,6 +1120,7 @@
         </Element>
         <Element type="FieldElement" x_position="10575" y_position="8" width="690" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1113,6 +1141,7 @@
         </Element>
         <Element type="FieldElement" x_position="11400" y_position="20" width="960" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1133,6 +1162,7 @@
         </Element>
         <Element type="FieldElement" x_position="12495" y_position="33" width="620" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1153,6 +1183,7 @@
         </Element>
         <Element type="FieldElement" x_position="13260" y_position="20" width="1115" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -1184,6 +1215,7 @@
         </Element>
         <Element type="FieldElement" x_position="8865" y_position="23" width="900" height="192">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>

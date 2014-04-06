@@ -4,7 +4,6 @@
     <Datasource>
       <DataSourceConfiguration name="adoplus.dll">
       </DataSourceConfiguration>
-      <Tablesource alias="TAB_KODEKOLEKTIF" databaseIdentifier="TAB_KODEKOLEKTIF">
         <Column name="TGLCETAK" type="15" />
         <Column name="BLTH" type="11" />
         <Column name="IDPEL" type="11" />

@@ -192,7 +192,8 @@ public class Form_Report11_Rekap {
                         +"&tPetugas="+petugas
                         +"&kode="+kdSiklis
                         +"&tparAP="+unitAp
-                        +"&in_unitupi="+unitUpi;
+                        +"&in_unitupi="+unitUpi
+                        ;
 
                 url+="&report=report/ReportMain/11/cr_11_gol.rpt";
 
@@ -212,14 +213,19 @@ public class Form_Report11_Rekap {
                 String tglAwal, tglAkhir;
 
                 parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
 
-                DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
+                DateTimeFormat format = DateTimeFormat.getFormat("MMddyyyy");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=cetak_rekap11TglUpload"
                         +"&vJenis="  + "11rekap_perTanggalUpload"
                         +"&tparUp="  + parUp
                         +"&tglAwal=" + format.format(dfTopTanggalAwal.getValue())
-                        +"&tglAkhir="+ format.format(dfTopTanggalAkhir.getValue());
+                        +"&tglAkhir="+ format.format(dfTopTanggalAkhir.getValue())
+                        +"&tparAP="+unitAp
+                        +"&in_unitupi="+unitUpi
+                        ;
 
                 url+="&report=report/ReportMain/11/cr_11_tglUpload.rpt";
 
@@ -242,7 +248,7 @@ public class Form_Report11_Rekap {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
+                DateTimeFormat format = DateTimeFormat.getFormat("MMddyyyy");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
                         +"&vJenis="     + "11rekap_taripdaya"
@@ -274,7 +280,7 @@ public class Form_Report11_Rekap {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                DateTimeFormat format = DateTimeFormat.getFormat("MMddYYYY");
+                DateTimeFormat format = DateTimeFormat.getFormat("MMddyyyy");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_11rekap"
                         +"&vJenis="     + "11rekap_inkaso"

@@ -23,7 +23,7 @@ public class Form_Report24Nota_Rekap {
 
     private VerticalPanel vp;
 
-    ComboKodeNotaBuku cbKdNotaBuku;
+    ComboUnits comboUnits;
     ComboTahunBulan cbTahunBulan;
     ComboJenisLaporan cbJenisLaporan;
 
@@ -71,9 +71,8 @@ public class Form_Report24Nota_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbKdNotaBuku = new ComboKodeNotaBuku();
-        cbKdNotaBuku.setUnitUp(unitUser);
-        vlcPReferensi.add(cbKdNotaBuku);
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
+        vlcPReferensi.add(comboUnits);
 
         p.add(panelReferensi);
 
@@ -109,13 +108,24 @@ public class Form_Report24Nota_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = comboUnits.getUnitUpValue();
+                unitAp = comboUnits.getUnitApValue();
+                unitUpi = comboUnits.getUnitUpiValue();
+
                 petugas = idUser;
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Terpusat_Kode"
-                        +"&jenis="+cbJenisLaporan.getSelectedValue()
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_24notarekap"
+                        +"&vjenis="+cbJenisLaporan.getSelectedValue()
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tParUpi="+unitUpi
+                        +"&tParAp="+unitAp
+                        +"&tParUp="+parUp
                         +"&tPetugas="+petugas
-                        +"&kode="+cbKdNotaBuku.getSelectedValue();
+                        +"&tanggal="+""
+                        +"&kode="+""
+                        +"&judul="+"DAFTAR PELUNASAN BEBAN KANTOR"
+                        +"&juduldua="+"BEBAN KANTOR"
+                        ;
 
                 if (cbJenisLaporan.getSelectedValue().equals("24notarekapkode"))
                     url+="&report=report/ReportMain/23/cr_23nota_kode.rpt";

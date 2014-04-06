@@ -6,13 +6,8 @@
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="VIEW_REPORT_12DLAMA404">
         <Column name="TGLCETAK" type="15" />
-        <Column name="KDGERAK" type="11" />
-        <Column name="UNITUP" type="11" />
-        <Column name="KOGOL" type="11" />
         <Column name="TANGGAL" type="11" />
-        <Column name="JALANTUNGGAK" type="11" />
-        <Column name="KDPEMBPP" type="11" />
-        <Column name="STATUS" type="11" />
+        <Column name="KOGOL" type="11" />
         <Column name="LEMBAR" type="6" />
         <Column name="RPTAG" type="6" />
         <Column name="RPPTL" type="6" />
@@ -33,8 +28,10 @@
         <Column name="RPBK1" type="6" />
         <Column name="RPBK2" type="6" />
         <Column name="RPBK3" type="6" />
-        <Column name="UNITUPKDPP" type="11" />
-        <Column name="KDPP" type="11" />
+        <Column name="KDGERAK" type="11" />
+        <Column name="KDPEMBPP" type="11" />
+        <Column name="STATUS" type="11" />
+        <Column name="UNITUP" type="11" />
         <Column name="KDKIRIM" type="11" />
       </Tablesource>
     </Datasource>

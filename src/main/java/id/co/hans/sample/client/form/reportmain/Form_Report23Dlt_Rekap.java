@@ -78,7 +78,7 @@ public class Form_Report23Dlt_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);

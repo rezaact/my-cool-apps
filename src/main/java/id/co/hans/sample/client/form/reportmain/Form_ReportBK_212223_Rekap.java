@@ -72,7 +72,7 @@ public class Form_ReportBK_212223_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -130,6 +130,9 @@ public class Form_ReportBK_212223_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_BK_212223rekap"
@@ -137,7 +140,10 @@ public class Form_ReportBK_212223_Rekap {
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&tpetugas="+petugas
-                        +"&kode="+"";
+                        +"&kode="+""
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/11/cr_bk_212223_gol.rpt";
 
@@ -149,6 +155,9 @@ public class Form_ReportBK_212223_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_BK_212223rekap"
@@ -156,7 +165,10 @@ public class Form_ReportBK_212223_Rekap {
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&tpetugas="+petugas
-                        +"&kode="+"";
+                        +"&kode="+""
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/11/cr_bk_212223_tarip.rpt";
 

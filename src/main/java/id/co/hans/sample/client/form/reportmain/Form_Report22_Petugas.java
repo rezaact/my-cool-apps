@@ -274,7 +274,9 @@ public class Form_Report22_Petugas {
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
-                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length());
+                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_tgl.rpt";
 
@@ -301,7 +303,9 @@ public class Form_Report22_Petugas {
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
-                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length());
+                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_gol_tgl.rpt";
 
@@ -328,7 +332,9 @@ public class Form_Report22_Petugas {
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
-                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length());
+                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_daftar.rpt";
 
@@ -356,7 +362,9 @@ public class Form_Report22_Petugas {
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
-                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length());
+                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_unit_tgl.rpt";
 
@@ -382,7 +390,9 @@ public class Form_Report22_Petugas {
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
-                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length());
+                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_unitgol_tgl.rpt";
 
@@ -408,7 +418,9 @@ public class Form_Report22_Petugas {
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
-                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length());
+                        +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_unit_daftar.rpt";
 
@@ -438,7 +450,9 @@ public class Form_Report22_Petugas {
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
                         +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
                         +"&vDayaAwal="+tfBottomDayaAwal.getValue()
-                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue();
+                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_tgl.rpt";
 
@@ -466,9 +480,11 @@ public class Form_Report22_Petugas {
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
                         +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
                         +"&vDayaAwal="+tfBottomDayaAwal.getValue()
-                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue();
+                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
-                url+="&report=report/ReportMain/22/cr_22petugas_gol_tgl.rpt";
+                url+="&report=report/ReportMain/22/cr_22petugas_tgl.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
@@ -494,7 +510,9 @@ public class Form_Report22_Petugas {
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
                         +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
                         +"&vDayaAwal="+tfBottomDayaAwal.getValue()
-                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue();
+                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_daftar.rpt";
 
@@ -524,7 +542,9 @@ public class Form_Report22_Petugas {
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
                         +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
                         +"&vDayaAwal="+tfBottomDayaAwal.getValue()
-                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue();
+                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_unit_tgl.rpt";
 
@@ -552,7 +572,9 @@ public class Form_Report22_Petugas {
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
                         +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
                         +"&vDayaAwal="+tfBottomDayaAwal.getValue()
-                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue();
+                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_unitgol_tgl.rpt";
 
@@ -580,7 +602,9 @@ public class Form_Report22_Petugas {
                         +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
                         +"&sATM="+cbTopKodePP.getSelectedValue().substring(cbTopKodePP.getSelectedValue().length() - 2, cbTopKodePP.getSelectedValue().length())
                         +"&vDayaAwal="+tfBottomDayaAwal.getValue()
-                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue();
+                        +"&vDayaAkhir="+tfBottomDayaAwal.getValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi;
 
                 url+="&report=report/ReportMain/22/cr_22petugas_unit_daftar.rpt";
 
@@ -605,6 +629,7 @@ public class Form_Report22_Petugas {
                 Map<String, String> data = (Map<String, String>) event.getSelectedItem();
                 cbTopKodePP.setSelectedValue(data.get("fieldValue"));
 
+                cbTopKodePetugas.getComboBox().getComboBox().clear();
                 cbTopKodePetugas.getComboBox().setStoreUrl("components/getComboPetugas.json?kodePP=" + cbTopKodePP.getSelectedValue());
                 cbTopKodePetugas.getComboBox().loadStore();
             }

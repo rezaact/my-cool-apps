@@ -1,6 +1,7 @@
 package id.co.hans.sample.controller.components;
 
 import id.co.hans.sample.server.dao.MasterDao;
+import id.co.hans.sample.server.dao.ws_404Dao;
 import id.co.hans.sample.server.dao.ws_TransaksiDao;
 import id.co.hans.sample.server.dao.ws_UsersDao;
 import id.co.hans.sample.server.utility.CommonModule;
@@ -24,6 +25,9 @@ public class ComboController {
 
     @Autowired
     private ws_UsersDao ws_usersDao;
+
+    @Autowired
+    private ws_404Dao ws_404Dao;
 
     @RequestMapping(value = "**/components/testHitUrl.json", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -372,6 +376,74 @@ public class ComboController {
 
                 break;
 
+            case "prr.lampiran_ia":
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Daftar Usulan PRR");
+                currData.put("displayValue", "Daftar Usulan PRR");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Pendukung Daftar Usulan PRR");
+                currData.put("displayValue", "Pendukung Daftar Usulan PRR");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "B.A Penelitian Piutang Ragu");
+                currData.put("displayValue", "B.A Penelitian Piutang Ragu");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Pendukung B.A Penelitian Piutang Ragu");
+                currData.put("displayValue", "Pendukung B.A Penelitian Piutang Ragu");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Daftar Piutang Ragu-Ragu");
+                currData.put("displayValue", "Daftar Piutang Ragu-Ragu");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Daftar Piutang Pelanggan < UJL");
+                currData.put("displayValue", "Daftar Piutang Pelanggan < UJL");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Pendukung Daftar Piutang Pelanggan < UJL");
+                currData.put("displayValue", "Pendukung Daftar Piutang Pelanggan < UJL");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Daftar Usulan Penghapusan PRR");
+                currData.put("displayValue", "Daftar Usulan Penghapusan PRR");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Pendukung Daftar Usulan Penghapusan PRR");
+                currData.put("displayValue", "Pendukung Daftar Usulan Penghapusan PRR");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Formulir SUPPR-UP");
+                currData.put("displayValue", "Formulir SUPPR-UP");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Formulir SUPPR-UPI");
+                currData.put("displayValue", "Formulir SUPPR-UPI");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Daftar Penghapusan PRR");
+                currData.put("displayValue", "Daftar Penghapusan PRR");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "Pendukung Daftar Penghapusan PRR");
+                currData.put("displayValue", "Pendukung Daftar Penghapusan PRR");
+                dataList.add(currData);
+
+                break;
+
             default:
                 currData = new HashMap<>();
                 currData.put("fieldValue", "_");
@@ -513,6 +585,18 @@ public class ComboController {
                 dataList.add(currData);
 
                 break;
+            case "Form_LaporanIV04_New":
+                currData = new HashMap<>();
+                currData.put("fieldValue", "plus");
+                currData.put("displayValue", "Plus");
+                dataList.add(currData);
+
+                currData = new HashMap<>();
+                currData.put("fieldValue", "nonplus");
+                currData.put("displayValue", "Non Plus");
+                dataList.add(currData);
+
+                break;
 
             default:
                 currData = new HashMap<>();
@@ -540,9 +624,9 @@ public class ComboController {
         //Err : passByReference
         //strGlobalUnitupPetugas : Session("unitup_user")
         //iBebanKantor : String.empty
-//        Map<String, Object> wsData = ws_transaksiDao.GetDataKolektifNotaBukuUnitup("53577","0");
+        Map<String, Object> wsData = ws_transaksiDao.GetDataKolektifNotaBukuUnitup("53577","0");
 //        Map<String, Object> wsData = ws_transaksiDao.GetViewIdPel_21entri("537316334606","IdPel","","");
-        Map<String, Object> wsData = ws_transaksiDao.GetView21("53551","01122010","31122010");
+//        Map<String, Object> wsData = ws_transaksiDao.GetView21("53551","01122010","31122010");
 
         for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsData")) {
             currData = new HashMap<>();
@@ -572,7 +656,7 @@ public class ComboController {
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = masterDao.getMasterUnit("UPI", userUnit.substring(1,2));
+        Map<String, Object> wsData = masterDao.getMasterUnit("UPI_BY_"+levelUnits, userUnit, "");
 
         if (addUpiSemua.equals("1")) {
             currData = new HashMap<>();
@@ -581,11 +665,13 @@ public class ComboController {
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
-            currData = new HashMap<>();
-            currData.put("fieldValue", tmp.get("unitupi"));
-            currData.put("displayValue", tmp.get("unitupi") + "-" + tmp.get("nama"));
-            dataList.add(currData);
+        if ((List<Map<String,String>>)wsData.get("wsReturn") != null) {
+            for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                currData = new HashMap<>();
+                currData.put("fieldValue", tmp.get("unitupi"));
+                currData.put("displayValue", tmp.get("satuan") + " " + tmp.get("nama"));
+                dataList.add(currData);
+            }
         }
 
         retVal.put("records", dataList);
@@ -605,7 +691,7 @@ public class ComboController {
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = masterDao.getMasterUnit("APbyUPI", selectedUnitUpi);
+        Map<String, Object> wsData = masterDao.getMasterUnit("AP_BY_"+levelUnits, userUnit, selectedUnitUpi);
 
         if (addApSemua.equals("1")) {
             currData = new HashMap<>();
@@ -614,11 +700,13 @@ public class ComboController {
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
-            currData = new HashMap<>();
-            currData.put("fieldValue", tmp.get("unitap"));
-            currData.put("displayValue", tmp.get("unitap") + "-" + tmp.get("nama"));
-            dataList.add(currData);
+        if ((List<Map<String,String>>)wsData.get("wsReturn") != null) {
+            for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                currData = new HashMap<>();
+                currData.put("fieldValue", tmp.get("unitap"));
+                currData.put("displayValue", tmp.get("satuan") + " " + tmp.get("nama"));
+                dataList.add(currData);
+            }
         }
 
         retVal.put("records", dataList);
@@ -638,7 +726,11 @@ public class ComboController {
         List<Map<String, Object>> dataList = new ArrayList<>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = masterDao.getMasterUnit("UPbyAP", selectedUnitAp);
+        Map<String, Object> wsData = masterDao.getMasterUnit("UP_BY_"+levelUnits, userUnit, selectedUnitAp);
+
+        if (userUnit.equals(selectedUnitAp)) {
+            wsData = masterDao.getMasterUnit("UP_BY_COMBOUP", userUnit, selectedUnitAp);
+        }
 
         if (addUpSemua.equals("1")) {
             currData = new HashMap<>();
@@ -647,11 +739,13 @@ public class ComboController {
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
-            currData = new HashMap<>();
-            currData.put("fieldValue", tmp.get("unitup"));
-            currData.put("displayValue", tmp.get("unitup") + "-" + tmp.get("nama"));
-            dataList.add(currData);
+        if ((List<Map<String,String>>)wsData.get("wsReturn") != null) {
+            for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                currData = new HashMap<>();
+                currData.put("fieldValue", tmp.get("unitup"));
+                currData.put("displayValue", tmp.get("satuan") + " " + tmp.get("nama"));
+                dataList.add(currData);
+            }
         }
 
         retVal.put("records", dataList);
@@ -824,6 +918,76 @@ public class ComboController {
         retVal.put("records", dataList);
         retVal.put("wsByRefError", wsData.get("wsByRefError"));
         wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboDataUnsur404.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboDataUnsur404() {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = ws_404Dao.ambilUnsur404_Baru();
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<>();
+                    currData.put("fieldValue", tmp.get("unsur"));
+                    currData.put("displayValue", tmp.get("unsur"));
+                    dataList.add(currData);
+                }
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getKodeGolongan.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getKodeGolongan() {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<>();
+        Map<String, Object> currData;
+
+        currData = new HashMap<>();
+        currData.put("fieldValue", "Semua");
+        currData.put("displayValue", "Semua");
+        dataList.add(currData);
+
+        currData = new HashMap<>();
+        currData.put("fieldValue", "0 | U M U M");
+        currData.put("displayValue", "0 | U M U M");
+        dataList.add(currData);
+
+        currData = new HashMap<>();
+        currData.put("fieldValue", "1 | A B R I");
+        currData.put("displayValue", "1 | A B R I");
+        dataList.add(currData);
+
+        currData = new HashMap<>();
+        currData.put("fieldValue", "2 | Vertikal");
+        currData.put("displayValue", "2 | Vertikal");
+        dataList.add(currData);
+
+        currData = new HashMap<>();
+        currData.put("fieldValue", "3 | P E M D A");
+        currData.put("displayValue", "3 | P E M D A");
+        dataList.add(currData);
+
+        currData = new HashMap<>();
+        currData.put("fieldValue", "4 | B U M N");
+        currData.put("displayValue", "4 | B U M N");
+        dataList.add(currData);
+
+        retVal.put("records", dataList);
+
         return retVal;
     }
 

@@ -21,13 +21,11 @@
         <property name="supportsSQL92" value="true"/>
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="SIP3SINGLEJABAR.REKAPDPPMONITORINGSALDOHARI">
-        <Column name="TANGGAL" type="11" />
-        <Column name="UNITUPI" type="11" />
-        <Column name="UNITAP" type="11" />
         <Column name="UNITUP" type="11" />
         <Column name="JENIS_LAPORAN" type="11" />
         <Column name="KODE" type="11" />
         <Column name="URAIAN" type="11" />
+        <Column name="TANGGAL" type="11" />
         <Column name="PLG_LBR_1" type="6" />
         <Column name="RP_LBR_1" type="6" />
         <Column name="PLG_LBR_2" type="6" />

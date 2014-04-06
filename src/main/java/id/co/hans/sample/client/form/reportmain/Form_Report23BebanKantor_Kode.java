@@ -128,9 +128,11 @@ public class Form_Report23BebanKantor_Kode {
         panel.addButton(bBottomTampilkan);
 
         ToggleGroup tg = new ToggleGroup();
-        tg.add(radioLunas);
+        tg.add(radioSemua);
         tg.add(radioBelumLunas);
         tg.add(radioLunas);
+
+        radioSemua.setValue(true);
 
         return panel;
     }
@@ -155,12 +157,14 @@ public class Form_Report23BebanKantor_Kode {
                     jenis = "23NOTAKODEBLMLUNAS";
 
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Terima_Rekap"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Nota_Kode"
                         +"&jenis="+jenis
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tPetugas="+petugas
                         +"&kode="+cbKdBebanKantor.getSelectedValue()
-                        +"&iBebanKantor="+"1";
+                        +"&iBebanKantor="+"1"
+                        +"&judul="+"LAPORAN TAGIHAN KODE KOLEKTIF BEBAN KANTOR"
+                        +"&unitPetugas="+unitUser;
 
                 if (radioSemua.getValue())
                     url+="&report=report/ReportMain/23/cr_22Nota_kode.rpt";

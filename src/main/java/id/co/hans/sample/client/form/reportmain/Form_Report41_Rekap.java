@@ -75,7 +75,7 @@ public class Form_Report41_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -155,13 +155,19 @@ public class Form_Report41_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
                         +"&vjenis="+"41daftarrekg"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/41/cr_41_daftar.rpt";
 
@@ -173,13 +179,19 @@ public class Form_Report41_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
                         +"&vjenis="+"41rekapdaftar"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/41/cr_41_plg_daftar.rpt";
 
@@ -191,13 +203,19 @@ public class Form_Report41_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
                         +"&vjenis="+"41rekap502"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/41/41rekap502.rpt";
 
@@ -209,13 +227,19 @@ public class Form_Report41_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_41rekap"
                         +"&vjenis="+"41rekap404"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/41/cr_41_404.rpt";
 

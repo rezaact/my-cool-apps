@@ -72,7 +72,7 @@ public class Form_ReportPenetapanBK_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -137,8 +137,8 @@ public class Form_ReportPenetapanBK_Rekap {
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&tpetugas="+petugas
-                        +"&tparap="+petugas
-                        +"&in_unitupi="+petugas
+                        +"&tparap="+cbUnits.getUnitApValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&kode="+"";
 
                 url+="&report=report/ReportMain/11/cr_11bk_gol.rpt";
@@ -158,8 +158,8 @@ public class Form_ReportPenetapanBK_Rekap {
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&tpetugas="+petugas
-                        +"&tparap="+petugas
-                        +"&in_unitupi="+petugas
+                        +"&tparap="+cbUnits.getUnitApValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&kode="+"";
 
                 url+="&report=report/ReportMain/11/cr_11bk_tarip.rpt";

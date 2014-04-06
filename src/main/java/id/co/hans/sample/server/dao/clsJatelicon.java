@@ -32,7 +32,7 @@ public class clsJatelicon {
             cls_Aplikasi cCekBK = new cls_Aplikasi();
             Map<String, Object> retCCekBK = cCekBK.cekBKSudahDibuat();
 
-            if ((Boolean)retCCekBK.get("wsReturn") == false) {
+            if (retCCekBK.get("wsReturn") == false) {
                 throw new Exception("Database sedang melakukan proses rekap,transaksi belum diijinkan !");
             }
 
@@ -86,7 +86,7 @@ public class clsJatelicon {
             cls_Aplikasi cCekBK = new cls_Aplikasi();
             Map<String, Object> retCCekBK = cCekBK.cekBKSudahDibuat();
 
-            if ((Boolean)retCCekBK.get("wsReturn") == false) {
+            if (retCCekBK.get("wsReturn") == false) {
                 throw new Exception("Database sedang melakukan proses rekap,transaksi belum diijinkan !");
             }
 

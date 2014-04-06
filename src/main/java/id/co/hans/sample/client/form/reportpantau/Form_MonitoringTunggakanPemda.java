@@ -71,7 +71,7 @@ public class Form_MonitoringTunggakanPemda {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -126,6 +126,9 @@ public class Form_MonitoringTunggakanPemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetTunggakanPemda"
@@ -133,7 +136,22 @@ public class Form_MonitoringTunggakanPemda {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&in_unitap="+cbUnits.getUnitApValue()
                         +"&in_unitup="+cbUnits.getUnitUpValue()
+                        +"&in_blth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
                         ;
+
+                if (cbJenisLaporan.getSelectedValue().equals("PEMDAN1"))
+                    url += "&judul=TAGIHAN LISTRIK S.D BULAN " + cbTahunBulan.getCbBulanSelectedValue() + " " + cbTahunBulan.getCbTahunSelectedValue() + " YANG MASIH MENUNGGAK";
+                else if (cbJenisLaporan.getSelectedValue().equals("PEMDAN"))
+                    url += "&judul=TAGIHAN LISTRIK BULAN " + cbTahunBulan.getCbBulanSelectedValue() + " " + cbTahunBulan.getCbTahunSelectedValue() + " YANG MASIH MENUNGGAK";
+                else if (cbJenisLaporan.getSelectedValue().equals("SELURUH"))
+                    url += "&judul=TAGIHAN LISTRIK YANG MASIH MENUNGGAK KESELURUHAN";
+                else if (cbJenisLaporan.getSelectedValue().equals("DAFTAR"))
+                    url += "&judul=DAFTAR";
 
                 if (cbJenisLaporan.getSelectedValue().equals("DAFTAR"))
                     url+="&report=report/ReportPantau/Saldo/cr_TunggakanPemdaDetail.rpt";

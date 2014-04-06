@@ -70,7 +70,7 @@ public class Form_Report21_Unit {
     private FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Report 21 - Restitusi");
+        panel.setHeadingText("Report 21 - Unit");
         panel.setBodyStyle("background: none; padding: 5px");
         panel.setWidth(650);
 
@@ -124,22 +124,109 @@ public class Form_Report21_Unit {
         bBottomMeRoamingRekapitulasiPerTanggal = new TextButton("Rekapitulasi Per Tanggal");
         bBottomMeRoamingRekapitulasiBahan404 = new TextButton("Rekapitulasi u/ Bahan 404");
 
-        panel.addButton(bBottomRekapitulasiPerPaymentPoint);
-        panel.addButton(bBottomRekapitulasiPerTanggal);
-        panel.addButton(bBottomRekapitulasiRekgBerjalanTunggakan);
-        panel.addButton(bBottomRekapitulasiPerGolonganTarip);
+        bBottomRekapitulasiPerPaymentPoint.setWidth(250);
+        bBottomRekapitulasiPerTanggal.setWidth(250);
+        bBottomRekapitulasiRekgBerjalanTunggakan.setWidth(250);
+        bBottomRekapitulasiPerGolonganTarip.setWidth(250);
 
-        panel.addButton(bBottomMilikSendiriRekapitulasiPerPaymentPoint);
-        panel.addButton(bBottomMilikSendiriRekapitulasiPerTanggal);
-        panel.addButton(bBottomMilikSendiriRekapitulasiBahan404);
+        bBottomMilikSendiriRekapitulasiPerPaymentPoint.setWidth(250);
+        bBottomMilikSendiriRekapitulasiPerTanggal.setWidth(250);
+        bBottomMilikSendiriRekapitulasiBahan404.setWidth(250);
 
-        panel.addButton(bBottomDiRoamingRekapitulasiPerUnitUpKirim);
-        panel.addButton(bBottomDiRoamingRekapitulasiPerTanggal);
-        panel.addButton(bBottomDiRoamingRekapitulasiBahan404);
+        bBottomDiRoamingRekapitulasiPerUnitUpKirim.setWidth(250);
+        bBottomDiRoamingRekapitulasiPerTanggal.setWidth(250);
+        bBottomDiRoamingRekapitulasiBahan404.setWidth(250);
 
-        panel.addButton(bBottomMeRoamingRekapitulasiPerUnitUpTerima);
-        panel.addButton(bBottomMeRoamingRekapitulasiPerTanggal);
-        panel.addButton(bBottomMeRoamingRekapitulasiBahan404);
+        bBottomMeRoamingRekapitulasiPerUnitUpTerima.setWidth(250);
+        bBottomMeRoamingRekapitulasiPerTanggal.setWidth(250);
+        bBottomMeRoamingRekapitulasiBahan404.setWidth(250);
+
+        FramedPanel panelButton = new FramedPanel();
+        panelButton.setHeadingText("Rekapitulasi");
+        panelButton.setBodyStyle("background: none; padding: 5px");
+        panelButton.setWidth(620);
+
+        VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
+        panelButton.add(vlcPButton);
+
+        HorizontalPanel hpButton = new HorizontalPanel();
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiPerPaymentPoint);
+        hpButton.add(bBottomRekapitulasiPerTanggal);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiRekgBerjalanTunggakan);
+        hpButton.add(bBottomRekapitulasiPerGolonganTarip);
+        vlcPButton.add(hpButton);
+
+        p.add(panelButton);
+
+        FramedPanel panelButtonMs = new FramedPanel();
+        panelButtonMs.setHeadingText("Rekening Milik Sendiri");
+        panelButtonMs.setBodyStyle("background: none; padding: 5px");
+        panelButtonMs.setWidth(620);
+
+        VerticalLayoutContainer vlcPButtonMs = new VerticalLayoutContainer();
+        panelButtonMs.add(vlcPButtonMs);
+
+        HorizontalPanel hpButtonMs = new HorizontalPanel();
+
+        hpButtonMs = new HorizontalPanel();
+        hpButtonMs.add(bBottomMilikSendiriRekapitulasiPerPaymentPoint);
+        hpButtonMs.add(bBottomMilikSendiriRekapitulasiPerTanggal);
+        vlcPButtonMs.add(hpButtonMs);
+
+        hpButtonMs = new HorizontalPanel();
+        hpButtonMs.add(bBottomMilikSendiriRekapitulasiBahan404);
+        vlcPButtonMs.add(hpButtonMs);
+
+        p.add(panelButtonMs);
+
+
+        FramedPanel panelButtonMr = new FramedPanel();
+        panelButtonMr.setHeadingText("Rekening Me-Roaming");
+        panelButtonMr.setBodyStyle("background: none; padding: 5px");
+        panelButtonMr.setWidth(620);
+
+        VerticalLayoutContainer vlcPButtonMr = new VerticalLayoutContainer();
+        panelButtonMr.add(vlcPButtonMr);
+
+        HorizontalPanel hpButtonMr = new HorizontalPanel();
+
+        hpButtonMr = new HorizontalPanel();
+        hpButtonMr.add(bBottomMeRoamingRekapitulasiPerUnitUpTerima);
+        hpButtonMr.add(bBottomMeRoamingRekapitulasiPerTanggal);
+        vlcPButtonMr.add(hpButtonMr);
+
+        hpButtonMr = new HorizontalPanel();
+        hpButtonMr.add(bBottomMeRoamingRekapitulasiBahan404);
+        vlcPButtonMr.add(hpButtonMr);
+
+        p.add(panelButtonMr);
+
+
+        FramedPanel panelButtonDr = new FramedPanel();
+        panelButtonDr.setHeadingText("Rekening Di-Roaming");
+        panelButtonDr.setBodyStyle("background: none; padding: 5px");
+        panelButtonDr.setWidth(620);
+
+        VerticalLayoutContainer vlcPButtonDr = new VerticalLayoutContainer();
+        panelButtonDr.add(vlcPButtonDr);
+
+        HorizontalPanel hpButtonDr = new HorizontalPanel();
+
+        hpButtonDr = new HorizontalPanel();
+        hpButtonDr.add(bBottomDiRoamingRekapitulasiPerUnitUpKirim);
+        hpButtonDr.add(bBottomDiRoamingRekapitulasiPerTanggal);
+        vlcPButtonDr.add(hpButtonDr);
+
+        hpButtonDr = new HorizontalPanel();
+        hpButtonDr.add(bBottomDiRoamingRekapitulasiBahan404);
+        vlcPButtonDr.add(hpButtonDr);
+
+        p.add(panelButtonDr);
 
         return panel;
     }

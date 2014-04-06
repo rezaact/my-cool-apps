@@ -25,6 +25,8 @@ public class Form_Report2122_DoubleBayar {
 
     ComboUnits cbUnits;
     ComboTahunBulan cbTahunBulan;
+    ComboKodeGolongan cbKdGolongan;
+    ComboJenisLaporan cbJenisLaporan;
 
     TextButton bBottomExcel;
     TextButton bBottomCetakLaporan;
@@ -72,10 +74,10 @@ public class Form_Report2122_DoubleBayar {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
-        ComboKodeGolongan cbKdGolongan = new ComboKodeGolongan();
+        cbKdGolongan = new ComboKodeGolongan();
         vlcPReferensi.add(cbKdGolongan);
 
         p.add(panelReferensi);
@@ -92,8 +94,9 @@ public class Form_Report2122_DoubleBayar {
         cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
-        vlcPReferensiTgl.add(cbJenisLaporan);
+        //cbJenisLaporan = new ComboJenisLaporan();
+        //cbJenisLaporan.setFormAsal("Form_Report2122_DoubleBayar");
+        //vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);
 
@@ -136,11 +139,20 @@ public class Form_Report2122_DoubleBayar {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_2122DoubleBayarNew"
                         +"&sunit="+cbUnits.getUnitUpValue()
-                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue();
+                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&kogol="+cbKdGolongan.getSelectedValue()
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_DoubleBayar.rpt";
 
@@ -153,11 +165,20 @@ public class Form_Report2122_DoubleBayar {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_2122DoubleBayarNew"
                         +"&sunit="+cbUnits.getUnitUpValue()
-                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue();
+                        +"&sblnbayar="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&kogol="+cbKdGolongan.getSelectedValue()
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_DoubleBayar.rpt";
 

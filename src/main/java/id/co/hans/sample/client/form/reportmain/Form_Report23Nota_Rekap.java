@@ -73,7 +73,7 @@ public class Form_Report23Nota_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -126,6 +126,7 @@ public class Form_Report23Nota_Rekap {
                         +"&tparUp="+parUp
                         +"&tPetugas="+petugas
                         +"&tanggal="+""
+                        +"&tparupi="+unitUpi
                         +"&kode="+"";
 
                 url+="&report=report/ReportMain/23/cr_23nota_kode.rpt";
@@ -155,6 +156,8 @@ public class Form_Report23Nota_Rekap {
                         +"&tparUp="+parUp
                         +"&tPetugas="+petugas
                         +"&tanggal="+""
+                        +"&kode="+""
+                        +"&tparupi="+unitUpi
                         +"&kode="+"";
 
                 url+="&report=report/ReportMain/23/cr_23nota_tgl.rpt";
@@ -184,6 +187,8 @@ public class Form_Report23Nota_Rekap {
                         +"&tparUp="+parUp
                         +"&tPetugas="+petugas
                         +"&tanggal="+""
+                        +"&kode="+""
+                        +"&tparupi="+unitUpi
                         +"&kode="+"";
 
                 url+="&report=report/ReportMain/23/cr_23nota_404.rpt";

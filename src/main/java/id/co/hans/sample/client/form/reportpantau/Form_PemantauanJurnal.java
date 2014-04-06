@@ -77,7 +77,7 @@ public class Form_PemantauanJurnal {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -173,6 +173,9 @@ public class Form_PemantauanJurnal {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -184,6 +187,12 @@ public class Form_PemantauanJurnal {
                         +"&tTglmulai="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tTglsampai="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&judulsatu="+"PEMANTAUAN TRANSAKSI DATA PIUTANG PELANGGAN - DPP"
+                        +"&juduldua="+"KDPEMBPP = R1 - REKENING LISTRIK"
                         ;
                 else
                     url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanJurnal"
@@ -193,12 +202,18 @@ public class Form_PemantauanJurnal {
                             +"&tTglmulai="+cbMiddlePilihTanggalAwal.getSelectedValue()
                             +"&tTglsampai="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                             +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
+                            +"&tparupi="+unitUpi
+                            +"&tparap="+unitAp
+                            +"&tparup="+parUp
+                            +"&tpetugas="+petugas
+                            +"&judulsatu="+"PEMANTAUAN TRANSAKSI DATA PIUTANG PELANGGAN - DPP"
+                            +"&juduldua="+"KDPEMBPP = R1 - REKENING LISTRIK"
                             ;
 
                 if (radioBerdasarkanTanggalTransaksi.getValue())
-                    url+="&report=report/ReportPantau/Saldo/cr_pantau_jurnal_tgl.rpt";
+                    url+="&report=report/ReportPantau/Jurnal/cr_pantau_jurnal_tgl.rpt";
                 else
-                    url+="&report=report/ReportPantau/Saldo/cr_pantau_jurnal_buku.rpt";
+                    url+="&report=report/ReportPantau/Jurnal/cr_pantau_jurnal_buku.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

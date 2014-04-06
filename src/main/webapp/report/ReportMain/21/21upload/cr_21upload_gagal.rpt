@@ -11,12 +11,6 @@
         <Column name="LEMBAR" type="6" />
         <Column name="RPTAGIHAN" type="6" />
         <Column name="RPBK" type="6" />
-        <Column name="LEMBAR_LUNAS" type="6" />
-        <Column name="RPTAGIHAN_LUNAS" type="6" />
-        <Column name="RPBK_LUNAS" type="6" />
-        <Column name="LEMBAR_GAGALLUNAS" type="6" />
-        <Column name="RPTAGIHAN_GAGALLUNAS" type="6" />
-        <Column name="RPBK_GAGALLUNAS" type="6" />
       </Tablesource>
     </Datasource>
   <Database>

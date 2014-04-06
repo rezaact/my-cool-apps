@@ -72,7 +72,7 @@ public class Form_Report_Restitusi {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -126,18 +126,27 @@ public class Form_Report_Restitusi {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReportRestitusi"
                         +"&in_jenis="+cbJenisLaporan.getSelectedValue()
                         +"&in_blth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitap="+cbUnits.getUnitApValue()
-                        +"&in_unitup="+cbUnits.getUnitUpValue();
+                        +"&in_unitup="+cbUnits.getUnitUpValue()
+                        +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 if (cbJenisLaporan.getSelectedValue().toUpperCase().equals("DAFTAR_KOREKSI_BLM_RESTITUSI"))
-                    url+="&report=report/ReportMain/21/cr_Daftar_BlmRestitusi.rpt";
+                    url+="&report=report/ReportMain/12/cr_Daftar_BlmRestitusi.rpt";
                 else
-                    url+="&report=report/ReportMain/21/cr_Rekap_Restitusi.rpt";
+                    url+="&report=report/ReportMain/12/cr_Rekap_Restitusi.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

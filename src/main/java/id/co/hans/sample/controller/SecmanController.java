@@ -24,7 +24,7 @@ public class SecmanController {
     SecmanDao secmanDao;
 
 
-    @RequestMapping(value = "**/Secman/etUserMenuByIdsesion.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/SecmanController/getUserMenuByIdsesion.json", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
     JSONObject getUserMenuByIdsesion(@RequestParam(value = "idSesion", defaultValue = "")String idSesion,
                            @RequestParam(value = "page", defaultValue = "")String page) {
@@ -36,11 +36,30 @@ public class SecmanController {
 
         String retVal = "Init";
         try {
-            retValue=  secmanDao.getUserMenuByIdsesion(idSesion,page);
+            retValue = secmanDao.getUserMenuByIdsesion(idSesion,page);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
+        }
+        catch (Exception ex) {
+            retVal = "Error parsing JSON. Msg: " + ex.getMessage();
+        }
+
+        return obj;
+
+    }
+
+    @RequestMapping(value = "**/SecmanController/getUserDataByIdSession.json", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody
+    JSONObject getUserDataByIdSession(@RequestParam(value = "idSession", defaultValue = "")String idSession) {
+        Map<String, Object> retValue = new HashMap<String, Object>();
+        //List<Map<String, String>> retValue = new ArrayList<Map<String, String>>();
+
+        JSONObject obj = new JSONObject();
+        StringWriter out = new StringWriter();
+
+        String retVal = "Init";
+        try {
+            retValue = secmanDao.getUserDataByIdSession(idSession);
+            obj.put("result", retValue);
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();

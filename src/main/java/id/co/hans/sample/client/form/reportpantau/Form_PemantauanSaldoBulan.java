@@ -50,6 +50,7 @@ public class Form_PemantauanSaldoBulan {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -80,7 +81,7 @@ public class Form_PemantauanSaldoBulan {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -191,6 +192,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -205,6 +209,10 @@ public class Form_PemantauanSaldoBulan {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
                         +"&juduldua="+"LANCAR"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
                         ;
 
 
@@ -218,6 +226,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -232,7 +243,11 @@ public class Form_PemantauanSaldoBulan {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
                         +"&juduldua="+"RAGU-RAGU"
-                        ;
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_LR.rpt";
@@ -245,6 +260,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -258,8 +276,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO PIUTANG PELANGGAN BERDASARKAN TARIP"
-                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue();
-                        ;
+                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue()
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_jlntgk_tarip.rpt";
@@ -274,6 +296,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -287,8 +312,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
-                        +"&juduldua="+"LANCAR per GOLONGAN";
-                        ;
+                        +"&juduldua="+"LANCAR per GOLONGAN"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_gol.rpt";
@@ -301,6 +330,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -314,8 +346,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
-                        +"&juduldua="+"LANCAR per BLTH REKENING";
-                        ;
+                        +"&juduldua="+"LANCAR per BLTH REKENING"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_blth.rpt";
@@ -328,6 +364,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -341,8 +380,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO PIUTANG PELANGGAN BERDASARKAN TARIP"
-                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue();
-                        ;
+                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue()
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_jlntgk_tarip_blth.rpt";
@@ -357,6 +400,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -370,8 +416,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO PIUTANG PELANGGAN BERDASARKAN UNSUR PIUTANG"
-                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue();
-                        ;
+                        +"&juduldua="+"BULAN : " + cbTahunBulan.getCbBulanSelectedValue() + " " +cbTahunBulan.getCbTahunSelectedValue()
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_unsur.rpt";
@@ -384,6 +434,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -397,8 +450,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
-                        +"&juduldua="+"LANCAR (PER LEMBAR)";
-                        ;
+                        +"&juduldua="+"LANCAR (PER LEMBAR)"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_lembar.rpt";
@@ -411,6 +468,9 @@ public class Form_PemantauanSaldoBulan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -424,8 +484,12 @@ public class Form_PemantauanSaldoBulan {
                         +"&tBlTh="+cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
-                        +"&juduldua="+"LANCAR per GOLONGAN DAN PER BLTH REKENING";
-                        ;
+                        +"&juduldua="+"LANCAR per GOLONGAN DAN PER BLTH REKENING"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                ;
 
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldobulan_L_gol_blth.rpt";

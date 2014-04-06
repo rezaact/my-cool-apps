@@ -72,7 +72,7 @@ public class Form_PemantauanSaldoIni {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -269,6 +269,9 @@ public class Form_PemantauanSaldoIni {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
                 String url = "";
 
@@ -398,6 +401,10 @@ public class Form_PemantauanSaldoIni {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+judulsatu
                         +"&juduldua="+juduldua
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
                 ;
 
                 url+="&report=report/ReportPantau/Saldo/" + sRptName + ".rpt";

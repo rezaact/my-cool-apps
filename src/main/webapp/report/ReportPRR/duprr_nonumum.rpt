@@ -40,6 +40,7 @@
         <Column name="NAMAAP" type="11" />
         <Column name="UNITUP" type="11" />
         <Column name="NAMAUP" type="11" />
+        <Column name="UNITUPI" type="11" />
         <Column name="NAMAUPI" type="11" />
         <Column name="NO_SURAT_DUPPR" type="11" />
         <Column name="NO_SUPPR_UP" type="11" />
