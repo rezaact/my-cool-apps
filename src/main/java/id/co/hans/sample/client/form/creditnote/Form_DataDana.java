@@ -23,74 +23,68 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 
 public class Form_DataDana extends AbstractForm {
 
-	private ComboUnit cbTopPilihUnitUp;
-	private DateField dfMiddleTanggalAwal;
-	private DateField dfMiddleTanggalAkhir;
-	private ComboKodePP cbTopPilihKodePp;
+  private ComboUnit cbTopPilihUnitUp;
+  private DateField dfMiddleTanggalAwal;
+  private DateField dfMiddleTanggalAkhir;
+  private ComboKodePP cbTopPilihKodePp;
 
-	@Override
-	@SuppressWarnings("unchecked")
-	protected void initEvent() {
-		sendRequest(RequestBuilder.GET,
-				WsUmumUrlHelper.getTanggalDatabaseURL(), null,
-				new RequestCallback() {
 
-					@Override
-					public void onError(Request request, Throwable exception) {
-					}
+  @Override
+  @SuppressWarnings("unchecked")
+  protected void initEvent() {
+    sendRequest(RequestBuilder.GET, WsUmumUrlHelper.getTanggalDatabaseURL(), null,
+        new RequestCallback() {
 
-					@Override
-					public void onResponseReceived(Request request,
-							Response response) {
-						JSONObject json = new JSONObject(JsonUtils
-								.safeEval(response.getText()));
-						GWT.log("json object : " + json.get("result"));
-						Date tanggalDatabase = DEFAULT_DATETIME_FORMATER
-								.parse(json.get("result").toString());
-						dfMiddleTanggalAwal.setValue(tanggalDatabase);
-						dfMiddleTanggalAkhir.setValue(tanggalDatabase);
-					}
-				});
+          @Override
+          public void onError(Request request, Throwable exception) {}
 
-		cbTopPilihUnitUp.getChangesComboBoxStore().put(
-				cbTopPilihKodePp.getComboBox().getComboBox(),
-				WsUmumUrlHelper.getKodePPURL(getUnitupUser()));
+          @Override
+          public void onResponseReceived(Request request, Response response) {
+            JSONObject json = new JSONObject(JsonUtils.safeEval(response.getText()));
+            GWT.log("json object : " + json.get("result"));
+            Date tanggalDatabase = DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
+            dfMiddleTanggalAwal.setValue(tanggalDatabase);
+            dfMiddleTanggalAkhir.setValue(tanggalDatabase);
+          }
+        });
 
-	}
+    cbTopPilihUnitUp.getChangesComboBoxStore().put(cbTopPilihKodePp.getComboBox().getComboBox(),
+        WsUmumUrlHelper.getKodePPURL(getUnitupUser()));
 
-	@Override
-	protected FramedPanel panelMain() {
+  }
 
-		FramedPanel panel = new FramedPanel();
-		panel.setHeadingText("Perbandingan Data dan Dana");
-		panel.setBodyStyle("background: none; padding: 5px");
-		panel.setWidth(650);
+  @Override
+  protected FramedPanel panelMain() {
 
-		VerticalLayoutContainer p = new VerticalLayoutContainer();
-		panel.add(p);
+    FramedPanel panel = new FramedPanel();
+    panel.setHeadingText("Perbandingan Data dan Dana");
+    panel.setBodyStyle("background: none; padding: 5px");
+    panel.setWidth(650);
 
-		cbTopPilihUnitUp = new ComboUnit();
-		p.add(cbTopPilihUnitUp);
+    VerticalLayoutContainer p = new VerticalLayoutContainer();
+    panel.add(p);
 
-		Label label1 = new Label(
-				"Pemantauan per-Tanggal Pelunasan berdasarkan Payment Point :");
-		p.add(label1);
+    cbTopPilihUnitUp = new ComboUnit();
+    p.add(cbTopPilihUnitUp);
 
-		cbTopPilihKodePp = new ComboKodePP();
-		p.add(cbTopPilihKodePp);
+    Label label1 = new Label("Pemantauan per-Tanggal Pelunasan berdasarkan Payment Point :");
+    p.add(label1);
 
-		dfMiddleTanggalAwal = new DateField();
-		p.add(new FieldLabel(dfMiddleTanggalAwal, "Tanggal Awal"),
-				new VerticalLayoutContainer.VerticalLayoutData(1, -1));
+    cbTopPilihKodePp = new ComboKodePP();
+    p.add(cbTopPilihKodePp);
 
-		dfMiddleTanggalAkhir = new DateField();
-		p.add(new FieldLabel(dfMiddleTanggalAkhir, "Tanggal Akhir"),
-				new VerticalLayoutContainer.VerticalLayoutData(1, -1));
+    dfMiddleTanggalAwal = new DateField();
+    p.add(new FieldLabel(dfMiddleTanggalAwal, "Tanggal Awal"),
+        new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
-		TextButton bMiddleTampilkan = new TextButton("Tampilkan");
-		panel.addButton(bMiddleTampilkan);
+    dfMiddleTanggalAkhir = new DateField();
+    p.add(new FieldLabel(dfMiddleTanggalAkhir, "Tanggal Akhir"),
+        new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
-		return panel;
-	}
+    TextButton bMiddleTampilkan = new TextButton("Tampilkan");
+    panel.addButton(bMiddleTampilkan);
+
+    return panel;
+  }
 
 }

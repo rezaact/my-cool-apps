@@ -20,176 +20,178 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 
 public class Form_BatalCN extends AbstractForm {
 
-    private static final String EMPTY_STRING = "";
-	private static final Date TODAY = new Date();
-	private Radio radioTopTglLunas;
-	private HorizontalPanel hlcRentangRaktuCNTanggalPelunasan;
-	private TextField tfBottomNoBA;
-	private TextField tfBottomTglPelunasan;
-	private TextField tfBottomTglPenyetoran;
-	private TextField tfBottomRpTotal;
-	private DateField dfMiddleTglLunasAwal;
-	private DateField dfMiddleTglLunasAkhir;
-	private DateField dfMiddleTglSetorAwal;
-	private DateField dfMiddleTglSetorAkhir;
-	private ComboKodePP cbTopPilihKodePp;
+  private static final String EMPTY_STRING = "";
+  private static final Date TODAY = new Date();
+  private Radio radioTopTglLunas;
+  private HorizontalPanel hlcRentangRaktuCNTanggalPelunasan;
+  private TextField tfBottomNoBA;
+  private TextField tfBottomTglPelunasan;
+  private TextField tfBottomTglPenyetoran;
+  private TextField tfBottomRpTotal;
+  private DateField dfMiddleTglLunasAwal;
+  private DateField dfMiddleTglLunasAkhir;
+  private DateField dfMiddleTglSetorAwal;
+  private DateField dfMiddleTglSetorAkhir;
+  private ComboKodePP cbTopPilihKodePp;
 
-	@Override
-    protected FramedPanel panelMain() {
+  @Override
+  protected void initEvent() {
+    radioTopTglLunas.setValue(true);
+    tfBottomNoBA.setValue(EMPTY_STRING);
+    tfBottomTglPelunasan.setValue(EMPTY_STRING);
+    tfBottomTglPenyetoran.setValue(EMPTY_STRING);
+    tfBottomRpTotal.setValue(EMPTY_STRING);
+    dfMiddleTglLunasAwal.setValue(TODAY);
+    dfMiddleTglLunasAkhir.setValue(TODAY);
+    dfMiddleTglSetorAwal.setValue(TODAY);
+    dfMiddleTglSetorAkhir.setValue(TODAY);
+  }
 
-        FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Laporan Pembatalan Credit Note");
-        panel.setBodyStyle("background: none; padding: 5px");
-        panel.setWidth(650);
+  @Override
+  protected FramedPanel panelMain() {
 
-        VerticalLayoutContainer p = new VerticalLayoutContainer();
-        panel.add(p);
+    FramedPanel panel = new FramedPanel();
+    panel.setHeadingText("Laporan Pembatalan Credit Note");
+    panel.setBodyStyle("background: none; padding: 5px");
+    panel.setWidth(650);
 
-        // panel "Berdasarkan Kode PP"
-        FramedPanel panelBerdasarkanKodePP = new FramedPanel();
-        panelBerdasarkanKodePP.setHeadingText("Berdasarkan Kode PP");
-        panelBerdasarkanKodePP.setBodyStyle("background: none; padding: 5px");
-        panelBerdasarkanKodePP.setWidth(623);
+    VerticalLayoutContainer p = new VerticalLayoutContainer();
+    panel.add(p);
 
-        VerticalLayoutContainer vlcBerdasarkanKodePP = new VerticalLayoutContainer();
-        panelBerdasarkanKodePP.add(vlcBerdasarkanKodePP);
+    // panel "Berdasarkan Kode PP"
+    FramedPanel panelBerdasarkanKodePP = new FramedPanel();
+    panelBerdasarkanKodePP.setHeadingText("Berdasarkan Kode PP");
+    panelBerdasarkanKodePP.setBodyStyle("background: none; padding: 5px");
+    panelBerdasarkanKodePP.setWidth(623);
 
-
-        CheckBox chkPP = new CheckBox();
-        chkPP.setBoxLabel("Pilih Kode PP");
-        vlcBerdasarkanKodePP.add(chkPP);
-
-
-        cbTopPilihKodePp = new ComboKodePP();
-        vlcBerdasarkanKodePP.add(cbTopPilihKodePp);
-
-        p.add(panelBerdasarkanKodePP);
-
-        // panel "Parameter Rentang Waktu CN"
-        FramedPanel panelParameterRentangWaktuCN = new FramedPanel();
-        panelParameterRentangWaktuCN.setHeadingText("Parameter Rentang Waktu CN");
-        panelParameterRentangWaktuCN.setBodyStyle("background: none; padding: 5px");
-        panelParameterRentangWaktuCN.setWidth(623);
-        panelParameterRentangWaktuCN.setHeight(135);
-
-        VerticalLayoutContainer vlcRentangWaktuCN = new VerticalLayoutContainer();
-        panelParameterRentangWaktuCN.add(vlcRentangWaktuCN);
-
-        hlcRentangRaktuCNTanggalPelunasan = new HorizontalPanel();
-
-        radioTopTglLunas = new Radio();
-        radioTopTglLunas.setBoxLabel("Tanggal Pelunasan");
-        hlcRentangRaktuCNTanggalPelunasan.add(radioTopTglLunas);
-
-        dfMiddleTglLunasAwal = new DateField();
-        dfMiddleTglLunasAwal.getElement().getStyle().setMarginLeft(6, Style.Unit.PX);
-        hlcRentangRaktuCNTanggalPelunasan.add(dfMiddleTglLunasAwal);
-
-        Label lbl01 = new Label("Sampai");
-        lbl01.getElement().getStyle().setMarginLeft(5, Style.Unit.PX);
-        lbl01.getElement().getStyle().setMarginRight(5, Style.Unit.PX);
-        lbl01.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
-        hlcRentangRaktuCNTanggalPelunasan.add(lbl01);
-
-        dfMiddleTglLunasAkhir = new DateField();
-        hlcRentangRaktuCNTanggalPelunasan.add(dfMiddleTglLunasAkhir);
-
-        vlcRentangWaktuCN.add(hlcRentangRaktuCNTanggalPelunasan, new VerticalLayoutContainer.VerticalLayoutData(-1,1));
+    VerticalLayoutContainer vlcBerdasarkanKodePP = new VerticalLayoutContainer();
+    panelBerdasarkanKodePP.add(vlcBerdasarkanKodePP);
 
 
-        HorizontalPanel hlcRentangRaktuCNTanggalSetoran = new HorizontalPanel();
-
-        Radio radioTopTglSetor = new Radio();
-        radioTopTglSetor.setBoxLabel("Tanggal Penyetoran");
-        hlcRentangRaktuCNTanggalSetoran.add(radioTopTglSetor);
-
-        dfMiddleTglSetorAwal = new DateField();
-        hlcRentangRaktuCNTanggalSetoran.add(dfMiddleTglSetorAwal);
-
-        Label lbl02 = new Label("Sampai");
-        lbl02.getElement().getStyle().setMarginLeft(5, Style.Unit.PX);
-        lbl02.getElement().getStyle().setMarginRight(5, Style.Unit.PX);
-        lbl02.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
-        hlcRentangRaktuCNTanggalSetoran.add(lbl02);
-
-        dfMiddleTglSetorAkhir = new DateField();
-        hlcRentangRaktuCNTanggalSetoran.add(dfMiddleTglSetorAkhir);
-
-        vlcRentangWaktuCN.add(hlcRentangRaktuCNTanggalSetoran, new VerticalLayoutContainer.VerticalLayoutData(-1,1));
-
-        TextButton bMiddleCekData = new TextButton("Cek Data");
-
-        vlcRentangWaktuCN.add(bMiddleCekData);
-        vlcRentangWaktuCN.add(new Label("_"));
-        vlcRentangWaktuCN.add(new Label("_"));
-
-        p.add(panelParameterRentangWaktuCN);
+    CheckBox chkPP = new CheckBox();
+    chkPP.setBoxLabel("Pilih Kode PP");
+    vlcBerdasarkanKodePP.add(chkPP);
 
 
-        // panel "Data CN"
+    cbTopPilihKodePp = new ComboKodePP();
+    vlcBerdasarkanKodePP.add(cbTopPilihKodePp);
 
-        IconDynamicGrid gpDataCN = new IconDynamicGrid();
-        gpDataCN.setGridHeader("Data CN");
-        gpDataCN.setGridDimension(623, 200);
-        gpDataCN.setStoreUrl("BasicProject/thuGetString.json?name=store1");
-        gpDataCN.addColumn("CEK", 100);
-        gpDataCN.addColumn("KDPP", 100);
-        gpDataCN.addColumn("NO_BATULV06", 100);
-        gpDataCN.addColumn("TGLTRANSAKSI", 100);
-        gpDataCN.addColumn("TRANSAKSIID", 100);
-        gpDataCN.addColumn("TRANSAKSIBY", 100);
-        gpDataCN.addColumn("TGL_PELUNASAN", 100);
-        gpDataCN.addColumn("TGL_SETOR", 100);
-        gpDataCN.addColumn("RPTOTAL", 100);
+    p.add(panelBerdasarkanKodePP);
 
-        p.add(gpDataCN);
+    // panel "Parameter Rentang Waktu CN"
+    FramedPanel panelParameterRentangWaktuCN = new FramedPanel();
+    panelParameterRentangWaktuCN.setHeadingText("Parameter Rentang Waktu CN");
+    panelParameterRentangWaktuCN.setBodyStyle("background: none; padding: 5px");
+    panelParameterRentangWaktuCN.setWidth(623);
+    panelParameterRentangWaktuCN.setHeight(135);
+
+    VerticalLayoutContainer vlcRentangWaktuCN = new VerticalLayoutContainer();
+    panelParameterRentangWaktuCN.add(vlcRentangWaktuCN);
+
+    hlcRentangRaktuCNTanggalPelunasan = new HorizontalPanel();
+
+    radioTopTglLunas = new Radio();
+    radioTopTglLunas.setBoxLabel("Tanggal Pelunasan");
+    hlcRentangRaktuCNTanggalPelunasan.add(radioTopTglLunas);
+
+    dfMiddleTglLunasAwal = new DateField();
+    dfMiddleTglLunasAwal.getElement().getStyle().setMarginLeft(6, Style.Unit.PX);
+    hlcRentangRaktuCNTanggalPelunasan.add(dfMiddleTglLunasAwal);
+
+    Label lbl01 = new Label("Sampai");
+    lbl01.getElement().getStyle().setMarginLeft(5, Style.Unit.PX);
+    lbl01.getElement().getStyle().setMarginRight(5, Style.Unit.PX);
+    lbl01.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
+    hlcRentangRaktuCNTanggalPelunasan.add(lbl01);
+
+    dfMiddleTglLunasAkhir = new DateField();
+    hlcRentangRaktuCNTanggalPelunasan.add(dfMiddleTglLunasAkhir);
+
+    vlcRentangWaktuCN.add(hlcRentangRaktuCNTanggalPelunasan,
+        new VerticalLayoutContainer.VerticalLayoutData(-1, 1));
 
 
-        // panel "Data CN yang akan dihapus"
-        FramedPanel panelDataCNYangAkanDihapus = new FramedPanel();
-        panelDataCNYangAkanDihapus.setHeadingText("Data CN yang akan dihapus");
-        panelDataCNYangAkanDihapus.setBodyStyle("background: none; padding: 5px");
-        panelDataCNYangAkanDihapus.setWidth(623);
-        panelDataCNYangAkanDihapus.setHeight(200);
+    HorizontalPanel hlcRentangRaktuCNTanggalSetoran = new HorizontalPanel();
 
-        VerticalLayoutContainer vlcDataCNYangAkanDihapus = new VerticalLayoutContainer();
-        panelDataCNYangAkanDihapus.add(vlcDataCNYangAkanDihapus);
+    Radio radioTopTglSetor = new Radio();
+    radioTopTglSetor.setBoxLabel("Tanggal Penyetoran");
+    hlcRentangRaktuCNTanggalSetoran.add(radioTopTglSetor);
 
-        HorizontalPanel hlcDataCNYangAkanDihapus = new HorizontalPanel();
+    dfMiddleTglSetorAwal = new DateField();
+    hlcRentangRaktuCNTanggalSetoran.add(dfMiddleTglSetorAwal);
 
-        tfBottomNoBA = new TextField();
-        hlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomNoBA, "No BA"));
+    Label lbl02 = new Label("Sampai");
+    lbl02.getElement().getStyle().setMarginLeft(5, Style.Unit.PX);
+    lbl02.getElement().getStyle().setMarginRight(5, Style.Unit.PX);
+    lbl02.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
+    hlcRentangRaktuCNTanggalSetoran.add(lbl02);
 
-        hlcDataCNYangAkanDihapus.add(new TextButton("Hapus Data"));
+    dfMiddleTglSetorAkhir = new DateField();
+    hlcRentangRaktuCNTanggalSetoran.add(dfMiddleTglSetorAkhir);
 
-        vlcDataCNYangAkanDihapus.add(hlcDataCNYangAkanDihapus);
+    vlcRentangWaktuCN.add(hlcRentangRaktuCNTanggalSetoran,
+        new VerticalLayoutContainer.VerticalLayoutData(-1, 1));
 
-        HorizontalPanel hlcDataCNYangAkanDihapus2 = new HorizontalPanel();
-        tfBottomTglPelunasan = new TextField();
-        hlcDataCNYangAkanDihapus2.add(new FieldLabel(tfBottomTglPelunasan, "Tanggal Pelunasan"));
-        vlcDataCNYangAkanDihapus.add(hlcDataCNYangAkanDihapus2);
+    TextButton bMiddleCekData = new TextButton("Cek Data");
 
-        tfBottomTglPenyetoran = new TextField();
-        vlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomTglPenyetoran, "Tanggal Penyetoran"));
+    vlcRentangWaktuCN.add(bMiddleCekData);
+    vlcRentangWaktuCN.add(new Label("_"));
+    vlcRentangWaktuCN.add(new Label("_"));
 
-        tfBottomRpTotal = new TextField();
-        vlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomRpTotal, "Rp Total"));
+    p.add(panelParameterRentangWaktuCN);
 
-        p.add(panelDataCNYangAkanDihapus);
 
-        return panel;
-    }
+    // panel "Data CN"
 
-	@Override
-	protected void initEvent() {
-		radioTopTglLunas.setValue(true);
-		tfBottomNoBA.setValue(EMPTY_STRING);
-		tfBottomTglPelunasan.setValue(EMPTY_STRING);
-		tfBottomTglPenyetoran.setValue(EMPTY_STRING);
-		tfBottomRpTotal.setValue(EMPTY_STRING);
-		dfMiddleTglLunasAwal.setValue(TODAY);
-		dfMiddleTglLunasAkhir.setValue(TODAY);
-		dfMiddleTglSetorAwal.setValue(TODAY);
-		dfMiddleTglSetorAkhir.setValue(TODAY);
-	}
+    IconDynamicGrid gpDataCN = new IconDynamicGrid();
+    gpDataCN.setGridHeader("Data CN");
+    gpDataCN.setGridDimension(623, 200);
+    gpDataCN.setStoreUrl("BasicProject/thuGetString.json?name=store1");
+    gpDataCN.addColumn("CEK", 100);
+    gpDataCN.addColumn("KDPP", 100);
+    gpDataCN.addColumn("NO_BATULV06", 100);
+    gpDataCN.addColumn("TGLTRANSAKSI", 100);
+    gpDataCN.addColumn("TRANSAKSIID", 100);
+    gpDataCN.addColumn("TRANSAKSIBY", 100);
+    gpDataCN.addColumn("TGL_PELUNASAN", 100);
+    gpDataCN.addColumn("TGL_SETOR", 100);
+    gpDataCN.addColumn("RPTOTAL", 100);
+
+    p.add(gpDataCN);
+
+
+    // panel "Data CN yang akan dihapus"
+    FramedPanel panelDataCNYangAkanDihapus = new FramedPanel();
+    panelDataCNYangAkanDihapus.setHeadingText("Data CN yang akan dihapus");
+    panelDataCNYangAkanDihapus.setBodyStyle("background: none; padding: 5px");
+    panelDataCNYangAkanDihapus.setWidth(623);
+    panelDataCNYangAkanDihapus.setHeight(200);
+
+    VerticalLayoutContainer vlcDataCNYangAkanDihapus = new VerticalLayoutContainer();
+    panelDataCNYangAkanDihapus.add(vlcDataCNYangAkanDihapus);
+
+    HorizontalPanel hlcDataCNYangAkanDihapus = new HorizontalPanel();
+
+    tfBottomNoBA = new TextField();
+    hlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomNoBA, "No BA"));
+
+    hlcDataCNYangAkanDihapus.add(new TextButton("Hapus Data"));
+
+    vlcDataCNYangAkanDihapus.add(hlcDataCNYangAkanDihapus);
+
+    HorizontalPanel hlcDataCNYangAkanDihapus2 = new HorizontalPanel();
+    tfBottomTglPelunasan = new TextField();
+    hlcDataCNYangAkanDihapus2.add(new FieldLabel(tfBottomTglPelunasan, "Tanggal Pelunasan"));
+    vlcDataCNYangAkanDihapus.add(hlcDataCNYangAkanDihapus2);
+
+    tfBottomTglPenyetoran = new TextField();
+    vlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomTglPenyetoran, "Tanggal Penyetoran"));
+
+    tfBottomRpTotal = new TextField();
+    vlcDataCNYangAkanDihapus.add(new FieldLabel(tfBottomRpTotal, "Rp Total"));
+
+    p.add(panelDataCNYangAkanDihapus);
+
+    return panel;
+  }
 }
