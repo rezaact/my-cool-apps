@@ -37,5 +37,10 @@ Method yang harus diimplementasikan antara lain :
 * panelMain
     ini implementasi dari method ini adalah untuk mendefinisikan/menginisialisasi component-component yang terdapat pada kelas tersebut.
 
+<<<<<<< HEAD
 	
 **TESTING**
+=======
+
+**test add line by dedy**
+>>>>>>> 8c18d88cba7e995f415c1a32be102e0f4090d6db
