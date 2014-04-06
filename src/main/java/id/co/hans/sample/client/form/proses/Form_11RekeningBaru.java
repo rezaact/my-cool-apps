@@ -1,65 +1,48 @@
 package id.co.hans.sample.client.form.proses;
 
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.util.ToggleGroup;
+import id.co.hans.sample.client.AbstractForm;
+import id.co.hans.sample.client.components.ComboKodeProses;
+import id.co.hans.sample.client.components.ComboTahunBulan;
+import id.co.hans.sample.client.components.ComboUnits;
+
 import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.*;
-import id.co.hans.sample.client.components.*;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.TextField;
 
-    public class Form_11RekeningBaru {
+public class Form_11RekeningBaru extends AbstractForm {
 
+  @Override
+  protected void initEvent() {
 
-    private VerticalPanel vp;
+  }
 
-    public Widget asWidget() {
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
-    }
+  @Override
+  protected FramedPanel panelMain() {
+    FramedPanel panel = new FramedPanel();
+    panel.setHeadingText("Form 11 Rekening Baru");
+    panel.setBodyStyle("background: none; padding: 5px");
+    panel.setWidth(650);
 
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
+    VerticalLayoutContainer p = new VerticalLayoutContainer();
+    panel.add(p);
 
-        vp.add(panelMain());
-    }
+    ComboUnits cbUnits = new ComboUnits();
+    p.add(cbUnits);
 
-    private FramedPanel panelMain() {
+    ComboTahunBulan cbBlth = new ComboTahunBulan();
+    p.add(cbBlth);
 
-        FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Form 11 Rekening Baru");
-        panel.setBodyStyle("background: none; padding: 5px");
-        panel.setWidth(650);
+    ComboKodeProses cbKdProses = new ComboKodeProses();
+    p.add(cbKdProses);
 
-        VerticalLayoutContainer p = new VerticalLayoutContainer();
-        panel.add(p);
+    TextField tNorekAwal = new TextField();
+    p.add(new FieldLabel(tNorekAwal, "NOREK Awal Rekening"));
 
-        ComboUnits cbUnits = new ComboUnits();
-        p.add(cbUnits);
+    TextButton btnUploadSorek = new TextButton("UPLOAD");
+    panel.addButton(btnUploadSorek);
 
-        ComboTahunBulan cbBlth = new ComboTahunBulan();
-        p.add(cbBlth);
-
-        ComboKodeProses cbKdProses = new ComboKodeProses();
-        p.add(cbKdProses);
-
-        TextField tNorekAwal = new TextField();
-        p.add(new FieldLabel(tNorekAwal, "NOREK Awal Rekening"));
-
-        TextButton btnUploadSorek = new TextButton("UPLOAD");
-        panel.addButton(btnUploadSorek);
-
-        return panel;
-    }
+    return panel;
+  }
 }

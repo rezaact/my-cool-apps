@@ -7,7 +7,6 @@ import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
 import java.util.Date;
 
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -36,11 +35,13 @@ public class Form_DataDana extends AbstractForm {
         new RequestCallback() {
 
           @Override
-          public void onError(Request request, Throwable exception) {}
+          public void onError(Request request, Throwable exception) {
+            GWT.log("can not do a request", exception);
+          }
 
           @Override
           public void onResponseReceived(Request request, Response response) {
-            JSONObject json = new JSONObject(JsonUtils.safeEval(response.getText()));
+            JSONObject json = transformResponseToJSON(response.getText());
             GWT.log("json object : " + json.get("result"));
             Date tanggalDatabase = DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
             dfMiddleTanggalAwal.setValue(tanggalDatabase);

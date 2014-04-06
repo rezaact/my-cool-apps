@@ -4,7 +4,14 @@ import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.ComboTahunBulan;
 import id.co.hans.sample.client.components.ComboUnits;
 import id.co.hans.sample.client.components.IconDynamicGrid;
+import id.co.hans.sample.client.helper.WsTransaksiUrlHelper;
 
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.sencha.gxt.core.client.util.ToggleGroup;
@@ -17,9 +24,34 @@ import com.sencha.gxt.widget.core.client.form.Radio;
 public class Form_MonitoringJournal extends AbstractForm {
 
   private Radio radioTopBulan;
+  private ComboTahunBulan cbTahunBulan;
 
   @Override
-  protected void initEvent() {}
+  protected void initEvent() {
+    sendRequest(RequestBuilder.GET, WsTransaksiUrlHelper.getTanggalHariIniURL(), null,
+        new RequestCallback() {
+
+          @Override
+          public void onError(Request request, Throwable exception) {
+            GWT.log("can not do a request", exception);
+          }
+
+          @SuppressWarnings("unchecked")
+          @Override
+          public void onResponseReceived(Request request, Response response) {
+            JSONObject json = transformResponseToJSON(response.getText());
+            String[] dateStringArray = null;
+            if (json.get("result").toString().contains("/")) {
+              dateStringArray = json.get("result").toString().split("/");
+            } else if (json.get("result").toString().contains("-")) {
+              dateStringArray = json.get("result").toString().split("-");
+            }
+            // Date tanggalHariIni = DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
+            cbTahunBulan.getCbTahun().getComboBox().setValue(dateStringArray[0]);
+            cbTahunBulan.getCbBulan().getComboBox().setValue(dateStringArray[1]);
+          }
+        });
+  }
 
   @Override
   protected FramedPanel panelMain() {
@@ -50,8 +82,6 @@ public class Form_MonitoringJournal extends AbstractForm {
 
     h1.add(panel1_1);
 
-
-
     // panel Title="Pilih Parameter"
     FramedPanel panel1_2 = new FramedPanel();
     panel1_2.setHeadingText("Pilih Parameter");
@@ -69,7 +99,7 @@ public class Form_MonitoringJournal extends AbstractForm {
     radioTopBulan.setValue(true);
     radioTopBulan.setWidth(80);
 
-    ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+    cbTahunBulan = new ComboTahunBulan();
     cbTahunBulan.hideLabel();
 
     hp.add(radioTopBulan);

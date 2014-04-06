@@ -28,6 +28,7 @@ public class Form_MonitoringKirimTerima {
         return vp;
     }
 
+    
     private void initKomponen(){
         AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
         progressBox.setProgressText("wait...");

@@ -27,22 +27,22 @@ public class Form_LaporanIV04_New {
 
     private VerticalPanel vp;
 
-    ComboUnits cbUnits;
-    ComboJenisPembukuan cbPembukuan;
-    ComboTahunBulan cbTahunBulan;
-    ComboUnsurLaporan404 cbTopPilihUnsurLaporanIV04;
+    private ComboUnits cbUnits;
+    private ComboJenisPembukuan cbPembukuan;
+    private ComboTahunBulan cbTahunBulan;
+    private ComboUnsurLaporan404 cbTopPilihUnsurLaporanIV04;
 
-    CheckBox chkSorek;
-    CheckBox chkLunasOffline;
-    CheckBox chkLunasTerpusat;
-    CheckBox chkLunasSuplisi;
-    CheckBox chkSusulan;
-    CheckBox chkLunasOnline;
-    CheckBox chkLunasNota;
-    CheckBox chkBk;
-    CheckBox chkKoreksiRekening;
-    CheckBox chkKirimTerima;
-    CheckBox chkBatalPiutang;
+    private CheckBox chkSorek;
+    private CheckBox chkLunasOffline;
+    private CheckBox chkLunasTerpusat;
+    private CheckBox chkLunasSuplisi;
+    private CheckBox chkSusulan;
+    private CheckBox chkLunasOnline;
+    private CheckBox chkLunasNota;
+    private CheckBox chkBk;
+    private CheckBox chkKoreksiRekening;
+    private CheckBox chkKirimTerima;
+    private CheckBox chkBatalPiutang;
 
     TextButton bBottomTampilkanLaporan;
     TextButton bBottomRekapUlang;

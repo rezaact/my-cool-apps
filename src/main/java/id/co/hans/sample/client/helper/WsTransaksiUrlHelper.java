@@ -18,20 +18,20 @@ public class WsTransaksiUrlHelper {
   private static final String DATA_KOLEKTIF_GIRALISASI = WS_TRANSAKSI_PREFIX
       + "GetDataKolektifGiralisasi.json";
 
-  public String getDataKolektifGiralisasiURL() {
+  public static String getDataKolektifGiralisasiURL() {
     UrlBuilder builder = new UrlBuilder();
     builder.setPath(DATA_KOLEKTIF_GIRALISASI);
     return builder.toString();
   }
 
-  public String getMasterUnit(String unitPetugas) {
+  public static String getMasterUnit(String unitPetugas) {
     UrlBuilder builder = new UrlBuilder();
     builder.setPath(MASTER_UNIT);
     builder.setParameter("in_unitpetugas", unitPetugas);
     return builder.toString();
   }
 
-  public String getMonitoringUploadSorekURL(String unit, String blth, String satuan) {
+  public static String getMonitoringUploadSorekURL(String unit, String blth, String satuan) {
     UrlBuilder builder = new UrlBuilder();
     builder.setPath(MONITORING_UPLOAD_SOREK);
     builder.setParameter("unit", unit);
@@ -40,7 +40,7 @@ public class WsTransaksiUrlHelper {
     return builder.toString();
   }
 
-  public String getTanggalHariIniURL() {
+  public static String getTanggalHariIniURL() {
     UrlBuilder builder = new UrlBuilder();
     builder.setPath(TANGGAL_HARI_INI);
     return builder.toString();

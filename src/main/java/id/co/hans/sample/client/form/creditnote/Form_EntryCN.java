@@ -2,6 +2,7 @@ package id.co.hans.sample.client.form.creditnote;
 
 import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.IconComboBox;
+import id.co.hans.sample.client.helper.WsCreditNoteUrlHelper;
 import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
 import java.util.Date;
@@ -307,22 +308,8 @@ public class Form_EntryCN extends AbstractForm {
         // TODO : create dsValue
         String dsValue = "{}";
         dsJsonObject.put("ds", new JSONObject(JsonUtils.safeEval(dsValue)));
-        sendRequest(RequestBuilder.GET, WsUmumUrlHelper.getTanggalDatabaseURL(), null,
-            new RequestCallback() {
-
-              @Override
-              public void onError(Request request, Throwable exception) {}
-
-              @Override
-              public void onResponseReceived(Request request, Response response) {
-                JSONObject json = new JSONObject(JsonUtils.safeEval(response.getText()));
-                GWT.log("json object : " + json.get("result"));
-                Date tanggalDatabase =
-                    DEFAULT_DATETIME_FORMATER.parse(json.get("result").toString());
-                dt_Pelunasan.setValue(tanggalDatabase);
-                dt_Penyetoran.setValue(tanggalDatabase);
-              }
-            });
+        sendRequest(RequestBuilder.GET, WsCreditNoteUrlHelper.simpanDataCN(dsJsonObject, bEdit),
+            null);
       }
     });
   }
