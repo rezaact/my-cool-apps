@@ -31,7 +31,13 @@ public class NewMonitoring_DUPR {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -70,7 +76,7 @@ public class NewMonitoring_DUPR {
 
         p.add(toolBar);
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
         VerticalLayoutContainer vlc = new VerticalLayoutContainer();

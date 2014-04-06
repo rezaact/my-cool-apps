@@ -1,6 +1,8 @@
 package id.co.hans.sample.client.form.prr;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.*;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -23,6 +25,9 @@ public class NewMonitoring_LunasPRR {
 
     private TextButton bttnCetak, bttnFilter, bttnReset;
 
+    DateField deAwal;
+    DateField deAkhir;
+
     private IconAlertMessageBox mb;
     private RequestBuilder rb;
 
@@ -31,7 +36,13 @@ public class NewMonitoring_LunasPRR {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -70,15 +81,15 @@ public class NewMonitoring_LunasPRR {
 
         p.add(toolBar);
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
         VerticalLayoutContainer vlc = new VerticalLayoutContainer();
         HorizontalPanel hp = new HorizontalPanel();
 
-        DateField deAwal = new DateField();
+        deAwal = new DateField();
         Label label = new Label(" - ");
-        DateField deAkhir = new DateField();
+        deAkhir = new DateField();
 
         hp.add(deAwal);
         hp.add(label);
@@ -94,6 +105,38 @@ public class NewMonitoring_LunasPRR {
         bttnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi, blth;
+                petugas = idUser;
+
+                String lampiran = "", no = "";
+
+                //unitUpi = comboUnits.getUnitUpiValue();
+                //unitAp = comboUnits.getUnitApValue();
+                //parUp = comboUnits.getUnitUpValue();
+                //blth = comboTahunBulan.getCbTahunSelectedValue()+comboTahunBulan.getCbBulanSelectedValue();
+                lampiran = "Laporan Pelunasan PRR";
+
+                String url = "";
+
+                DateTimeFormat formatter = DateTimeFormat.getFormat("yyyyMMdd");
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=prr_getLampiran"
+                        +"&unitupi="
+                        +"&unitap="
+                        +"&unitup="
+                        +"&blth="+""
+                        +"&lampiran="+lampiran
+                        +"&no="+""
+                        +"&idpel="+""
+                        +"&unsur="+""
+                        +"&pembukuan="+""
+                        +"&tglmulai="+formatter.format(deAwal.getValue())
+                        +"&tglsampai="+formatter.format(deAkhir.getValue())
+                ;
+
+                url+="&report=report/ReportPRR/Laporan_LunasPRR.rpt";
+
+                com.google.gwt.user.client.Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
         });
     }

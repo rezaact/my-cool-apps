@@ -1,5 +1,6 @@
 package id.co.hans.sample.client.form.prr;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.*;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -30,7 +31,13 @@ public class NewLaporan_LPPRH {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -69,7 +76,7 @@ public class NewLaporan_LPPRH {
 
         p.add(toolBar);
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
         comboTahunBulan = new ComboTahunBulan();
@@ -82,6 +89,36 @@ public class NewLaporan_LPPRH {
         bttnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi, blth;
+                petugas = idUser;
+
+                String lampiran = "", no = "";
+
+                unitUpi = comboUnits.getUnitUpiValue();
+                unitAp = comboUnits.getUnitApValue();
+                parUp = comboUnits.getUnitUpValue();
+                blth = comboTahunBulan.getCbTahunSelectedValue()+comboTahunBulan.getCbBulanSelectedValue();
+                lampiran = "Lampiran VIIIB";
+
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=prr_getLampiran"
+                        +"&unitupi="+unitUpi
+                        +"&unitap="+unitAp
+                        +"&unitup="+parUp
+                        +"&blth="+blth
+                        +"&lampiran="+lampiran
+                        +"&no="+""
+                        +"&idpel="+""
+                        +"&unsur="+""
+                        +"&pembukuan="+""
+                        +"&tglmulai="+""
+                        +"&tglsampai="+""
+                ;
+
+                url+="&report=report/ReportPRR/tul_lpprh.rpt";
+
+                com.google.gwt.user.client.Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
         });
     }

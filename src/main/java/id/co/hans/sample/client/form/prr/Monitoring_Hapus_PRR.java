@@ -1,5 +1,6 @@
 package id.co.hans.sample.client.form.prr;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -19,6 +20,9 @@ import com.sencha.gxt.widget.core.client.toolbar.SeparatorToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 import id.co.hans.sample.client.components.*;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
 
 public class Monitoring_Hapus_PRR {
     private VerticalPanel vp;
@@ -40,7 +44,13 @@ public class Monitoring_Hapus_PRR {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -79,7 +89,7 @@ public class Monitoring_Hapus_PRR {
 
         p.add(toolBar);
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
         comboTahunBulan = new ComboTahunBulan();
@@ -92,6 +102,36 @@ public class Monitoring_Hapus_PRR {
         bttnCetak.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
+                String parUp, jenis="", petugas, unitAp, unitUpi, blth;
+                petugas = idUser;
+
+                String lampiran = "", no = "";
+
+                unitUpi = comboUnits.getUnitUpiValue();
+                unitAp = comboUnits.getUnitApValue();
+                parUp = comboUnits.getUnitUpValue();
+                blth = comboTahunBulan.getCbTahunSelectedValue()+comboTahunBulan.getCbBulanSelectedValue();
+                lampiran = "Laporan Daftar Penghapusan PRR";
+
+                String url = "";
+
+                url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=prr_getLampiran"
+                        +"&unitupi="+unitUpi
+                        +"&unitap="+unitAp
+                        +"&unitup="+parUp
+                        +"&blth="+comboTahunBulan.getCbTahunSelectedValue()+comboTahunBulan.getCbBulanSelectedValue()
+                        +"&lampiran="+lampiran
+                        +"&no="+no
+                        +"&idpel="+""
+                        +"&unsur="+""
+                        +"&pembukuan="+""
+                        +"&tglmulai="+""
+                        +"&tglsampai="+""
+                ;
+
+                url+="&report=report/ReportPRR/Laporan_Daftar_DUPPR.rpt";
+
+                com.google.gwt.user.client.Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
         });
     }

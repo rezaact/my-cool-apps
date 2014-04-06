@@ -31,7 +31,13 @@ public class NewDaftar_SisaUjl {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -71,7 +77,7 @@ public class NewDaftar_SisaUjl {
         p.add(toolBar);
 
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
 

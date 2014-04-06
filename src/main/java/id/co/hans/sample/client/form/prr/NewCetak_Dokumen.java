@@ -23,6 +23,12 @@ public class NewCetak_Dokumen {
 
     private TextButton bttnSimpan, bttnFilter;
 
+    TextField tKriteria;
+    TextField tVI01;
+    TextField tKVI01;
+    TextField tVI03;
+    TextField tKVI03;
+
     private IconAlertMessageBox mb;
     private RequestBuilder rb;
 
@@ -31,7 +37,13 @@ public class NewCetak_Dokumen {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -69,7 +81,7 @@ public class NewCetak_Dokumen {
 
         toolBar.add(new SeparatorToolItem());
 
-        TextField tKriteria = new TextField();
+        tKriteria = new TextField();
         toolBar.add(new FieldLabel(tKriteria, "Kriteria"));
 
         toolBar.add(new SeparatorToolItem());
@@ -88,8 +100,8 @@ public class NewCetak_Dokumen {
 
         HorizontalPanel hp = new HorizontalPanel();
 
-        TextField tVI01 = new TextField();
-        TextField tKVI01 = new TextField();
+        tVI01 = new TextField();
+        tKVI01 = new TextField();
 
         hp.add(tVI01);
         hp.add(tKVI01);
@@ -102,8 +114,8 @@ public class NewCetak_Dokumen {
 
         hp = new HorizontalPanel();
 
-        TextField tVI03 = new TextField();
-        TextField tKVI03 = new TextField();
+        tVI03 = new TextField();
+        tKVI03 = new TextField();
 
         hp.add(tVI03);
         hp.add(tKVI03);

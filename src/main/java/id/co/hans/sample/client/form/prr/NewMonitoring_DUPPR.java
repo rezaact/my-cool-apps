@@ -21,7 +21,7 @@ public class NewMonitoring_DUPPR {
     private ComboTahunBulan comboTahunBulan;
     private ComboUnits comboUnits;
 
-    private TextButton bttnCetak, bttnFilter, bttnReset;
+    private TextButton bttnFilter;
 
     private IconAlertMessageBox mb;
     private RequestBuilder rb;
@@ -31,7 +31,13 @@ public class NewMonitoring_DUPPR {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -65,12 +71,14 @@ public class NewMonitoring_DUPPR {
 
         ToolBar toolBar = new ToolBar();
 
+
+
         bttnFilter = new TextButton("Filter");
         toolBar.add(bttnFilter);
 
         p.add(toolBar);
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
         VerticalLayoutContainer vlc = new VerticalLayoutContainer();

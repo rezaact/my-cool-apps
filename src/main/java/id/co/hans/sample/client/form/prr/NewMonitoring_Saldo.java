@@ -23,6 +23,8 @@ public class NewMonitoring_Saldo {
 
     private TextButton bttnCetak, bttnFilter, bttnReset;
 
+    IconDynamicGrid gpData;
+
     private IconAlertMessageBox mb;
     private RequestBuilder rb;
 
@@ -31,7 +33,13 @@ public class NewMonitoring_Saldo {
     private String wsByRefError;
 
 
-    public Widget asWidget() {
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -70,10 +78,10 @@ public class NewMonitoring_Saldo {
 
         p.add(toolBar);
 
-        comboUnits = new ComboUnits();
+        comboUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         p.add(comboUnits);
 
-        IconDynamicGrid gpData = new IconDynamicGrid();
+        gpData = new IconDynamicGrid();
         gpData.setStoreUrl("/Ws_Null");
 
         gpData.setGridHeader("Data Pelanggan");
