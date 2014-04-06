@@ -102,7 +102,9 @@ public abstract class AbstractForm {
 
     try {
       RequestBuilder rb = new RequestBuilder(method, URL.encode(url));
-      rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+      if (RequestBuilder.POST.equals(method)) {
+        rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+      }
 
       rb.sendRequest(null, callback);
       if (progressBox != null) {
@@ -128,5 +130,5 @@ public abstract class AbstractForm {
   protected JSONObject transformResponseToJSON(String jsonResult) {
     return new JSONObject(JsonUtils.safeEval(jsonResult));
   }
-  
+
 }
