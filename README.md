@@ -36,3 +36,6 @@ Method yang harus diimplementasikan antara lain :
     isi implementasi dari method ini adalah untuk meregistrasikan event/handler yang terjadi di component-component yang telah di definiskan pada kelas tersebut.
 * panelMain
     ini implementasi dari method ini adalah untuk mendefinisikan/menginisialisasi component-component yang terdapat pada kelas tersebut.
+
+	
+**TESTING**
