@@ -1,5 +1,8 @@
 package id.co.hans.sample.client.form.reporttul.report309;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -12,6 +15,7 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.components.*;
 
@@ -20,11 +24,30 @@ public class Form_LaporanIII09 {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
+    ComboUnit cbUnit;
+    Radio radioTopPilihReferensiMurni;
+    Radio radioTopPilihReferensiPerUnit;
+    ComboTahunBulan cbTahunBulan;
+
+    Radio radioTulIII07;
+    Radio radioKoreksiLbrI;
+    Radio radioKoreksiLbrII;
+
+    TextButton bBottomBuatLaporan;
+    TextButton bBottomTampilkanLaporan;
+
+    private String idUser, levelUser, unitUser;
+
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
             initKomponen();
+            initEvent();
         }
         return vp;
     }
@@ -55,14 +78,14 @@ public class Form_LaporanIII09 {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        ComboUnit cbUnit = new ComboUnit();
+        cbUnit = new ComboUnit(levelUser, unitUser);
         vlcPReferensi.add(cbUnit);
 
-        Radio radioTopPilihReferensiMurni = new Radio();
+        radioTopPilihReferensiMurni = new Radio();
         radioTopPilihReferensiMurni.setValue(true);
         radioTopPilihReferensiMurni.setBoxLabel("Murni");
 
-        Radio radioTopPilihReferensiPerUnit = new Radio();
+        radioTopPilihReferensiPerUnit = new Radio();
         radioTopPilihReferensiPerUnit.setBoxLabel("per Unit");
 
         HorizontalPanel hp1 = new HorizontalPanel();
@@ -82,7 +105,7 @@ public class Form_LaporanIII09 {
         VerticalLayoutContainer vlcPReferensiTgl = new VerticalLayoutContainer();
         panelReferensiTgl.add(vlcPReferensiTgl);
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
         p.add(panelReferensiTgl);
@@ -96,14 +119,14 @@ public class Form_LaporanIII09 {
         VerticalLayoutContainer vlcPReferensiJnsLaporan = new VerticalLayoutContainer();
         panelReferensiJnsLaporan.add(vlcPReferensiJnsLaporan);
 
-        Radio radioTulIII07 = new Radio();
+        radioTulIII07 = new Radio();
         radioTulIII07.setBoxLabel("TUL III-07");
         radioTulIII07.setValue(true);
 
-        Radio radioKoreksiLbrI = new Radio();
+        radioKoreksiLbrI = new Radio();
         radioKoreksiLbrI.setBoxLabel("Koreksi Lbr I");
 
-        Radio radioKoreksiLbrII = new Radio();
+        radioKoreksiLbrII = new Radio();
         radioKoreksiLbrII.setBoxLabel("Koreksi Lbr II");
 
         Radio radioTulIII09 = new Radio();
@@ -127,10 +150,10 @@ public class Form_LaporanIII09 {
         VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
         panelButton.add(vlcPButton);
 
-        TextButton bBottomBuatLaporan = new TextButton("Cetak");
+        bBottomBuatLaporan = new TextButton("Buat Laporan");
         bBottomBuatLaporan.setWidth(220);
 
-        TextButton bBottomTampilkanLaporan = new TextButton("Cetak");
+        bBottomTampilkanLaporan = new TextButton("Tampilkan Laporan");
         bBottomTampilkanLaporan.setWidth(220);
 
         hp1 = new HorizontalPanel();
@@ -152,5 +175,22 @@ public class Form_LaporanIII09 {
         tg2.add(radioTulIII09);
 
         return panel;
+    }
+
+
+    private void initEvent() {
+        bBottomBuatLaporan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+
+            }
+        });
+
+
+        bBottomTampilkanLaporan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent selectEvent) {
+            }
+        });
     }
 }
