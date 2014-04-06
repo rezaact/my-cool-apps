@@ -15,9 +15,6 @@ import id.co.hans.sample.client.form.proses.Form_23PelunasanNotaTerpusat;
 import id.co.hans.sample.client.form.proses.Form_31Idpel;
 import id.co.hans.sample.client.form.proses.Form_BatalNotaKolektif;
 import id.co.hans.sample.client.form.proses.Form_MonitoringPending;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
-
 import id.co.hans.sample.client.form.prr.Lampiran;
 import id.co.hans.sample.client.form.prr.Monitoring_Hapus_PRR;
 import id.co.hans.sample.client.form.prr.NewCetak_106;
@@ -338,6 +335,7 @@ public class View implements IsWidget {
       widgetMenu = new Form_21Entri().asWidget(idUser, unitupUser, levelUser);
     } else if (id_menu.toUpperCase().equals("Form_23EntriLunasRestitusi".toUpperCase())) {
       widgetMenu = new Form_23EntriLunasRestitusi().asWidget(idUser, unitupUser, levelUser);
+    }
     // PRR
     else if (id_menu.toUpperCase().equals("prr_Lampiran".toUpperCase())) {
       widgetMenu = new Lampiran().asWidget(idUser, unitupUser, levelUser);
