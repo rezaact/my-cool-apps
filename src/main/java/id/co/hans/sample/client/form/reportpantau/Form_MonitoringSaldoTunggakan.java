@@ -74,7 +74,7 @@ public class Form_MonitoringSaldoTunggakan {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -162,6 +162,9 @@ public class Form_MonitoringSaldoTunggakan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=getMonitoringLapSaldoTunggakan"
@@ -172,6 +175,10 @@ public class Form_MonitoringSaldoTunggakan {
                         +"&judulsatu="+"MONITORING TUNGGAKAN"
                         +"&juduldua="+cbJenisLaporan.getSelectedValue()
                         +"&export="+"Excel"
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
                         ;
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldotunggakan.rpt";
@@ -184,6 +191,9 @@ public class Form_MonitoringSaldoTunggakan {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=getMonitoringLapSaldoTunggakan"
@@ -194,6 +204,10 @@ public class Form_MonitoringSaldoTunggakan {
                         +"&judulsatu="+"MONITORING TUNGGAKAN"
                         +"&juduldua="+cbJenisLaporan.getSelectedValue()
                         +"&export="+"rpt"
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
                         ;
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldotunggakan.rpt";

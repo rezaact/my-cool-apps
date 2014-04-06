@@ -127,15 +127,52 @@ public class Form_Report12_Rekap {
         bBottomRekapitulasiKoreksiRekening = new TextButton("Rekapitulasi Koreksi Rekening");
         bBottomRekapitulasiPerKodeKoreksi = new TextButton("Rekapitulasi Per Kode Koreksi");
 
-        panel.addButton(bBottomDaftarRekeningKoreksi);
-        panel.addButton(bBottomRekapitulasiPerTaripDiperbaikiSebelum);
-        panel.addButton(bBottomRekapitulasiPerTaripPerbaikanSesudah);
-        panel.addButton(bBottomRekapitulasiPerTanggalDiperbaikiSebelum);
-        panel.addButton(bBottomRekapitulasiPerTanggalPerbaikanSesudah);
-        panel.addButton(bBottomRekapitulasiBahan404DiperbaikiSebelum);
-        panel.addButton(bBottomRekapitulasiBahan404PerbaikanSesudah);
-        panel.addButton(bBottomRekapitulasiKoreksiRekening);
-        panel.addButton(bBottomRekapitulasiPerKodeKoreksi);
+        bBottomDaftarRekeningKoreksi.setWidth("250");
+        bBottomRekapitulasiPerTaripDiperbaikiSebelum.setWidth("250");
+        bBottomRekapitulasiPerTaripPerbaikanSesudah.setWidth("250");
+        bBottomRekapitulasiPerTanggalDiperbaikiSebelum.setWidth("250");
+        bBottomRekapitulasiPerTanggalPerbaikanSesudah.setWidth("250");
+        bBottomRekapitulasiBahan404DiperbaikiSebelum.setWidth("250");
+        bBottomRekapitulasiBahan404PerbaikanSesudah.setWidth("250");
+        bBottomRekapitulasiKoreksiRekening.setWidth("250");
+        bBottomRekapitulasiPerKodeKoreksi.setWidth("250");
+
+
+        FramedPanel panelButton = new FramedPanel();
+        panelButton.setBodyStyle("background: none; padding: 5px");
+        panelButton.setWidth(620);
+
+        VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
+        panelButton.add(vlcPButton);
+
+
+        HorizontalPanel hpButton = new HorizontalPanel();
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomDaftarRekeningKoreksi);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiKoreksiRekening);
+        hpButton.add(bBottomRekapitulasiPerKodeKoreksi);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiPerTaripDiperbaikiSebelum);
+        hpButton.add(bBottomRekapitulasiPerTaripPerbaikanSesudah);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiPerTanggalDiperbaikiSebelum);
+        hpButton.add(bBottomRekapitulasiPerTanggalPerbaikanSesudah);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiBahan404DiperbaikiSebelum);
+        hpButton.add(bBottomRekapitulasiBahan404PerbaikanSesudah);
+        vlcPButton.add(hpButton);
+
+        p.add(panelButton);
 
         ToggleGroup tg = new ToggleGroup();
         tg.add(rGolTaripDaya);

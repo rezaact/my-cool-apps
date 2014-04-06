@@ -137,9 +137,11 @@ public class Form_Report21_Restitusi {
                         +"&in_unitap="+unitAp
                         +"&in_unitup="+parUp
                         +"&in_blth="+thbl
-                        +"&in_jenis="+cbJenisLaporan.getSelectedValue();
+                        +"&in_jenis="+cbJenisLaporan.getSelectedValue()
+                        +"&tpetugas="+petugas
+                        ;
 
-                if (cbJenisLaporan.getSelectedValue() == "REKAP")
+                if (cbJenisLaporan.getSelectedValue().equals("REKAP"))
                     url+="&report=report/ReportMain/21/cr_21RekapRestitusi.rpt";
                 else
                     url+="&report=report/ReportMain/21/cr_21DaftarRestitusi.rpt";

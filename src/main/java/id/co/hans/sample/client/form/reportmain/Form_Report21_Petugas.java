@@ -171,7 +171,7 @@ public class Form_Report21_Petugas {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21Petugas"
                         +"&vJenis="+"21petugas_pptglrekap"
                         +"&tBLTH="+thbl
                         +"&tparUp="+parUp
@@ -179,7 +179,10 @@ public class Form_Report21_Petugas {
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
-                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        +"&tparAp="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21petugas_tgl.rpt";
 
@@ -198,7 +201,7 @@ public class Form_Report21_Petugas {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21Petugas"
                         +"&vJenis="+"21petugas_pptglrekapgol"
                         +"&tBLTH="+thbl
                         +"&tparUp="+parUp
@@ -206,7 +209,10 @@ public class Form_Report21_Petugas {
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
-                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        +"&tparAp="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21petugas_gol_tgl.rpt";
 
@@ -225,7 +231,7 @@ public class Form_Report21_Petugas {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21Petugas"
                         +"&vJenis="+"21petugas_pptgldaftar"
                         +"&tBLTH="+thbl
                         +"&tparUp="+parUp
@@ -233,7 +239,10 @@ public class Form_Report21_Petugas {
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
-                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        +"&tparAp="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21petugas_daftar.rpt";
 
@@ -253,7 +262,7 @@ public class Form_Report21_Petugas {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21Petugas"
                         +"&vJenis="+"21petugas_unittglrekap"
                         +"&tBLTH="+thbl
                         +"&tparUp="+parUp
@@ -261,7 +270,10 @@ public class Form_Report21_Petugas {
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
-                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        +"&tparAp="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21petugas_unit_tgl.rpt";
 
@@ -279,7 +291,7 @@ public class Form_Report21_Petugas {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21Petugas"
                         +"&vJenis="+"21petugas_unittglrekapgol"
                         +"&tBLTH="+thbl
                         +"&tparUp="+parUp
@@ -287,7 +299,10 @@ public class Form_Report21_Petugas {
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
-                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        +"&tparAp="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21petugas_unitgol_tgl.rpt";
 
@@ -305,7 +320,7 @@ public class Form_Report21_Petugas {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21petugas"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_21Petugas"
                         +"&vJenis="+"21petugas_unittgldaftar"
                         +"&tBLTH="+thbl
                         +"&tparUp="+parUp
@@ -313,7 +328,10 @@ public class Form_Report21_Petugas {
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&kode="+cbTopKodePP.getSelectedValue()
-                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue();
+                        +"&kdPembayar="+cbTopKodePetugas.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        +"&tparAp="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21petugas_unit_daftar.rpt";
 

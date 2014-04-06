@@ -73,7 +73,7 @@ public class Form_Report31_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -110,14 +110,19 @@ public class Form_Report31_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_31rekap"
                         +"&vjenis="+"31daftarrekg"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparap="+petugas
-                        +"&tparup="+petugas
-                        +"&tpetugas="+petugas;
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        ;
 
                 url+="&report=report/ReportMain/31/cr_31_daftar.rpt";
 
@@ -130,14 +135,19 @@ public class Form_Report31_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_31rekap"
                         +"&vjenis="+"31rekap502"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparap="+petugas
-                        +"&tparup="+petugas
-                        +"&tpetugas="+petugas;
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        ;
 
                 url+="&report=report/ReportMain/31/cr_31_tgl.rpt";
 
@@ -150,14 +160,19 @@ public class Form_Report31_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_31rekap"
                         +"&vjenis="+"31rekap404"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparap="+petugas
-                        +"&tparup="+petugas
-                        +"&tpetugas="+petugas;
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        ;
 
                 url+="&report=report/ReportMain/31/cr_31_404.rpt";
 

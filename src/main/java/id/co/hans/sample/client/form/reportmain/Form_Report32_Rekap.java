@@ -83,7 +83,7 @@ public class Form_Report32_Rekap {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -190,13 +190,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32daftarrekg"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_daftar.rpt";
 
@@ -209,13 +215,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekapdaftar"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_plg_daftar.rpt";
 
@@ -228,13 +240,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekapdaftar_BA"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
 
@@ -247,13 +265,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekap502"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_tgl.rpt";
 
@@ -272,13 +296,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekap406"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 //url+="&report=report/ReportMain/32/cr_32_tgl.rpt";
 
@@ -293,13 +323,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekapdaftar_kurang2juta"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_plg_daftar_kurang2juta.rpt";
 
@@ -312,13 +348,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekapdaftar_lebih2juta"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_plg_daftar_lebih2juta.rpt";
 
@@ -331,13 +373,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekapdaftar_BA"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
 
@@ -350,13 +398,19 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
                         +"&vjenis="+"32rekapdaftar_BA"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
                 url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
 
@@ -369,15 +423,21 @@ public class Form_Report32_Rekap {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_32rekap"
-                        +"&vjenis="+"32rekapdaftar_BA"
+                        +"&vjenis="+"32rekap502_TARIP"
                         +"&tblth="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
-                        +"&tparup="+cbUnits.getUnitUpValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                //url+="&report=report/ReportMain/32/cr_32_plg_daftar_BA.rpt";
+                //url+="&report=report/ReportMain/32/cr_32_rekaptarip.rpt";
 
                 //Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

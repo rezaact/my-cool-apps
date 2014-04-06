@@ -119,9 +119,14 @@ public class Form_Report23_Kirim {
                         +"&vJenis="+"23KirimRekap"
                         +"&tThbl="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tParUp="+parUp
-                        +"&tPetugas="+petugas;
+                        +"&tPetugas="+petugas
+                        +"&tPetugas="+petugas
+                        +"&tParUpi="+unitUpi
+                        +"&tParAp="+unitAp
+                        +"&judul="+"Laporan Pengiriman Rekening ke Unit Lain"
+                        ;
 
-                url+="&report=report/ReportMain/23/rpt_23KirTer_Rekap.rpt";
+                url+="&report=report/ReportMain/23KirTer/rpt_23KirTer_Rekap.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
@@ -141,9 +146,12 @@ public class Form_Report23_Kirim {
                         +"&vJenis="+"23KirimDaftar"
                         +"&tThbl="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tParUp="+parUp
-                        +"&tPetugas="+petugas;
+                        +"&tPetugas="+petugas
+                        +"&tParUpi="+unitUpi
+                        +"&tParAp="+unitAp
+                        +"&judul="+"Laporan Pengiriman Rekening ke Unit Lain";
 
-                url+="&report=report/ReportMain/23/rpt_23KirTer_Daftar.rpt";
+                url+="&report=report/ReportMain/23KirTer/rpt_23KirTer_Daftar.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

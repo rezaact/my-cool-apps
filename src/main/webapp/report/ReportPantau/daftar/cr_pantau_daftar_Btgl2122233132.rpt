@@ -5,6 +5,7 @@
       <DataSourceConfiguration name="adoplus.dll">
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="VIEW_PANTAU_23DLT_DFT_T">
+        <Column name="TGLCETAK" type="15" />
         <Column name="TANGGAL" type="11" />
         <Column name="TGLBUKU" type="11" />
         <Column name="IDPEL" type="11" />
@@ -45,7 +46,6 @@
         <Column name="RPBK1" type="6" />
         <Column name="RPBK2" type="6" />
         <Column name="RPBK3" type="6" />
-        <Column name="TGLCETAK" type="15" />
       </Tablesource>
     </Datasource>
   <Database>

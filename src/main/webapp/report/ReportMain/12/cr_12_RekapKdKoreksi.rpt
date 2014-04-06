@@ -3,22 +3,38 @@
 <inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="4" id="0">
     <Datasource>
       <DataSourceConfiguration name="adoplus.dll">
+        <property name="quotesLowerCase" value="false"/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="supportsWhere" value="true"/>
+        <property name="databaseClassName" value=""/>
+        <property name="user" value=""/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="catalog" value=""/>
+        <property name="url" value=""/>
+        <property name="savePassword" value="true"/>
+        <property name="driverLibrary" value=""/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="supportsSQL92" value="true"/>
+        <property name="aliasToken" value=" "/>
+        <property name="driverClassName" value=""/>
+        <property name="escapeEverything" value="false"/>
+        <property name="password" value="00E2A7E425722BE9B8AEEEA5B6F60A3E81E2A7ADC955E2F33AFF4E7767060AC154"/>
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12REKAPNEW_KOREKSI" databaseIdentifier="VIEW_REPORT_12REKAPNEW_KOREKSI">
         <Column name="TGLCETAK" type="15" />
         <Column name="LEMBAR" type="6" />
-        <Column name="TGKOREKSI" type="11" />
+        <Column name="BLTHREK" type="11" />
         <Column name="KDKOREKSI" type="11" />
-        <Column name="STATUS" type="11" />
         <Column name="UNITUP" type="11" />
-        <Column name="KOGOL" type="11" />
         <Column name="TOTAL_PEMKWH" type="6" />
         <Column name="TOTAL_RPTAG" type="6" />
-        <Column name="KOGOL_L" type="11" />
         <Column name="TOTAL_PEMKWH_L" type="6" />
         <Column name="TOTAL_RPTAG_L" type="6" />
         <Column name="UNITAP" type="11" />
-        <Column name="BLTHREK" type="11" />
+        <Column name="TGKOREKSI" type="11" />
+        <Column name="STATUS" type="11" />
+        <Column name="KOGOL" type="11" />
+        <Column name="KOGOL_L" type="11" />
       </Tablesource>
     </Datasource>
   <Database>
@@ -260,7 +276,7 @@
     <Attribute name="report subject" value="koreksi "/>
     <Attribute name="report template" value=""/>
     <Attribute name="report comments" value=""/>
-    <Attribute name="report last saved" value="13 Jan 2014 23:00:30 GMT"/>
+    <Attribute name="report last saved" value="23 Mar 2014 02:14:45 GMT"/>
     <Attribute name="report created" value="29 Feb 2004 17:24:32 GMT"/>
     <Attribute name="mailing label type 1" value=""/>
     <Attribute name="mailing label type 2" value=""/>

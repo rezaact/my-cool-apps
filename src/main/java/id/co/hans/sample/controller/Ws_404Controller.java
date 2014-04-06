@@ -274,7 +274,7 @@ public class Ws_404Controller {
 
 
 
-    @RequestMapping(value = "**/Ws_404Controller/RekapUlang404.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_404Controller/RekapUlang404.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject RekapUlang404(@RequestParam(value = "parBLTH", defaultValue = "")String parBLTH,
                                @RequestParam(value = "parUnit", defaultValue = "")String parUnit,

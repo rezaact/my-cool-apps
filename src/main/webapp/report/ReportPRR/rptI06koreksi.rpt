@@ -3,6 +3,22 @@
 <inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
     <Datasource>
       <DataSourceConfiguration name="adoplus.dll">
+        <property name="quotesLowerCase" value="false"/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="supportsWhere" value="true"/>
+        <property name="databaseClassName" value=""/>
+        <property name="user" value=""/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="catalog" value=""/>
+        <property name="url" value=""/>
+        <property name="savePassword" value="true"/>
+        <property name="driverLibrary" value=""/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="supportsSQL92" value="true"/>
+        <property name="aliasToken" value=" "/>
+        <property name="driverClassName" value=""/>
+        <property name="escapeEverything" value="false"/>
+        <property name="password" value="00700D967DC9421724B974DE3AAE4DB73C700D9DB1DC1071069FBF7BC578D79AF6"/>
       </DataSourceConfiguration>
       <Tablesource alias="ds_cetakI06" databaseIdentifier="ds_cetakI06">
         <Column name="No_pelanggan" type="11" />
@@ -81,12 +97,12 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
       <Attribute name="basic syntax" value="false"/>
       <![CDATA[sum({ds_cetakI06.RPTAG})]]>
     </Field>
-    <Field type="FormulaField" valueType="-1">
+    <Field type="FormulaField" valueType="11">
       <Attribute name="name" value="rptag_terbilang"/>
       <Attribute name="shortName" value="rptag_terbilang"/>
       <Attribute name="formula type" value="0"/>
       <Attribute name="basic syntax" value="false"/>
-      <![CDATA[terbilang(ToNumber({@TOTAL_RPTAG})) & " rupiah"]]>
+      <![CDATA[{ds_cetakI06.TERBILANG}  & " rupiah"]]>
     </Field>
   </FormulaFields>
   <PromptFields>
@@ -124,7 +140,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
     <Attribute name="report subject" value=""/>
     <Attribute name="report template" value=""/>
     <Attribute name="report comments" value=""/>
-    <Attribute name="report last saved" value="14 Jan 2014 02:06:40 GMT"/>
+    <Attribute name="report last saved" value="27 Mar 2014 08:53:24 GMT"/>
     <Attribute name="report created" value="4 Apr 2005 06:10:58 GMT"/>
     <Attribute name="mailing label type 1" value=""/>
     <Attribute name="mailing label type 2" value=""/>
@@ -418,7 +434,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="Text" count="1" x_position="6720" y_position="4110" width="1215" height="226">
+        <Element type="Text" count="1" x_position="6750" y_position="4200" width="1215" height="226">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -436,7 +452,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="Text" count="1" x_position="196" y_position="6580" width="1344" height="226">
+        <Element type="Text" count="1" x_position="150" y_position="6600" width="1344" height="226">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -491,7 +507,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="FieldElement" x_position="2730" y_position="6590" width="915" height="223">
+        <Element type="FieldElement" x_position="2700" y_position="6600" width="915" height="223">
           <CommonProperties>
             <Attribute name="horizontal align" value="4"/>
             <Attribute name="keep together" value="true"/>
@@ -527,7 +543,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="Text" count="1" x_position="9156" y_position="5572" width="112" height="256">
+        <Element type="Text" count="1" x_position="9150" y_position="5550" width="112" height="256">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -713,7 +729,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
           </FontProperties>
           <Reference name="field" type="DatabaseField" refname="ds_cetakI06.NAMA_RANTING"/>
         </Element>
-        <Element type="FieldElement" x_position="6045" y_position="5580" width="3080" height="256">
+        <Element type="FieldElement" x_position="6000" y_position="5550" width="3080" height="256">
           <CommonProperties>
             <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
@@ -725,8 +741,9 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
           </FontProperties>
           <Reference name="field" type="DatabaseField" refname="ds_cetakI06.NAMA_RANTING"/>
         </Element>
-        <Element type="FieldElement" x_position="9268" y_position="5572" width="1260" height="256">
+        <Element type="FieldElement" x_position="9300" y_position="5550" width="1532" height="256">
           <CommonProperties>
+            <Attribute name="horizontal align" value="1"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -766,7 +783,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
           </NumberProperties>
           <Reference name="field" type="DatabaseField" refname="ds_cetakI06.NOKWITANSI"/>
         </Element>
-        <Element type="Text" count="1" x_position="8175" y_position="4090" width="2565" height="226">
+        <Element type="Text" count="1" x_position="8250" y_position="4200" width="2565" height="226">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -784,7 +801,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="Text" count="1" x_position="8025" y_position="4095" width="80" height="226">
+        <Element type="Text" count="1" x_position="8100" y_position="4200" width="80" height="226">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -856,7 +873,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="Text" count="1" x_position="120" y_position="2665" width="4170" height="336">
+        <Element type="Text" count="1" x_position="120" y_position="2665" width="5280" height="336">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -874,7 +891,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             </Element>
           </Element>
         </Element>
-        <Element type="Text" count="1" x_position="1596" y_position="6635" width="1092" height="223">
+        <Element type="Text" count="1" x_position="1500" y_position="6600" width="1092" height="223">
           <CommonProperties>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
@@ -893,6 +910,7 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
         </Element>
         <Element type="FieldElement" x_position="2220" y_position="3000" width="1920" height="271">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -907,8 +925,9 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
           </NumberProperties>
           <Reference name="field" type="FormulaField" refname="@TOTAL_RPTAG"/>
         </Element>
-        <Element type="FieldElement" x_position="1855" y_position="3345" width="5160" height="240">
+        <Element type="FieldElement" x_position="1855" y_position="3345" width="8945" height="240">
           <CommonProperties>
+            <Attribute name="horizontal align" value="1"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -916,15 +935,6 @@ ELSE ToText ({NonRekening.RP_OPAL_ADM},0)]]>
             <Attribute name="font name" value="Century Gothic"/>
             <Attribute name="font size" value="220"/>
           </FontProperties>
-          <NumberProperties>
-            <Attribute name="thousand separators symbol" value=","/>
-            <Attribute name="decimal separators symbol" value="."/>
-            <Attribute name="currency symbol" value="$"/>
-          </NumberProperties>
-          <TimeProperties>
-            <Attribute name="am string" value=" AM"/>
-            <Attribute name="pm string" value=" PM"/>
-          </TimeProperties>
           <Reference name="field" type="FormulaField" refname="@rptag_terbilang"/>
         </Element>
       </Section>

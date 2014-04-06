@@ -27,8 +27,6 @@
         <Column name="JABATAN_USUL" type="11" />
         <Column name="NAMA_PEJABAT_SETUJU" type="11" />
         <Column name="JABATAN_SETUJU" type="11" />
-        <Column name="BLTHLAP" type="11" />
-        <Column name="BULANTAHUN" type="11" />
         <Column name="NAMA" type="11" />
         <Column name="ALAMAT" type="11" />
         <Column name="NOPEL" type="11" />
@@ -48,6 +46,8 @@
         <Column name="NAMAUP" type="11" />
         <Column name="UNITUPI" type="11" />
         <Column name="NAMAUPI" type="11" />
+        <Column name="BLTHLAP" type="11" />
+        <Column name="BULANTAHUN" type="11" />
       </Tablesource>
     </Datasource>
   <Database>

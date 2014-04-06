@@ -5,10 +5,11 @@
       <DataSourceConfiguration name="adoplus.dll">
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="TAB_PANTAU_23KIRTER_RKP">
-        <Column name="TANGGAL" type="11" />
-        <Column name="TGLBUKU" type="11" />
+        <Column name="TGLCETAK" type="15" />
         <Column name="KDKIRIM" type="11" />
         <Column name="KDTERIMA" type="11" />
+        <Column name="TANGGAL" type="11" />
+        <Column name="TGLBUKU" type="11" />
         <Column name="KDGERAK" type="11" />
         <Column name="UNITUP" type="11" />
         <Column name="BLTH" type="11" />

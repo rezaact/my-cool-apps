@@ -38,6 +38,7 @@
         <Column name="NAMAAP" type="11" />
         <Column name="UNITUP" type="11" />
         <Column name="NAMAUP" type="11" />
+        <Column name="UNITUPI" type="11" />
         <Column name="NAMAUPI" type="11" />
         <Column name="NO_BA_TELITI" type="11" />
         <Column name="NAMA_PEJABAT_SETUJU" type="11" />

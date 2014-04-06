@@ -25,6 +25,7 @@ public class Form_Report_Pemda {
 
     ComboUnits cbUnits;
     ComboTahunBulan cbTahunBulan;
+    ComboJenisLaporan cbJenisLaporan;
 
     TextButton bBottom11RekeningBaru;
     TextButton bBottom12KoreksiRekening;
@@ -77,7 +78,7 @@ public class Form_Report_Pemda {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -94,8 +95,9 @@ public class Form_Report_Pemda {
         cbTahunBulan = new ComboTahunBulan();
         vlcPReferensiTgl.add(cbTahunBulan);
 
-        ComboJenisLaporan cbJenisLaporan = new ComboJenisLaporan();
-        vlcPReferensiTgl.add(cbJenisLaporan);
+//        cbJenisLaporan = new ComboJenisLaporan();
+//        cbJenisLaporan.setFormAsal("Form_Report_Pemda");
+//        vlcPReferensiTgl.add(cbJenisLaporan);
 
         p.add(panelReferensiTgl);
 
@@ -157,6 +159,9 @@ public class Form_Report_Pemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_Pemda"
@@ -165,11 +170,16 @@ public class Form_Report_Pemda {
                         +"&tparap="+cbUnits.getUnitApValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                url+="&judul=REKENING BARU PERPEMDA";
+                url+="&judulsatu=LAPORAN REKAP PEMDA";
+                url+="&juduldua=REKENING BARU PERPEMDA";
 
-                url+="&report=report/ReportMain/41/cr_pemdaRev.rpt";
+                url+="&report=report/ReportMain/Pemda/cr_pemdaRev.rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }
@@ -179,6 +189,9 @@ public class Form_Report_Pemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_Pemda"
@@ -187,9 +200,14 @@ public class Form_Report_Pemda {
                         +"&tparap="+cbUnits.getUnitApValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                url+="&judul=KOREKSI REKENING";
+                url+="&judulsatu=LAPORAN REKAP PEMDA";
+                url+="&juduldua=KOREKSI REKENING";
 
                 url+="&report=report/ReportMain/Pemda/cr_pemdaRev.rpt";
 
@@ -201,6 +219,9 @@ public class Form_Report_Pemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_Pemda"
@@ -209,9 +230,14 @@ public class Form_Report_Pemda {
                         +"&tparap="+cbUnits.getUnitApValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                url+="&judul=SALDO PERPEMDA";
+                url+="&judulsatu=LAPORAN REKAP PEMDA";
+                url+="&juduldua=SALDO PERPEMDA";
 
                 url+="&report=report/ReportMain/Pemda/cr_pemdaRev.rpt";
 
@@ -224,6 +250,9 @@ public class Form_Report_Pemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_Pemda"
@@ -232,9 +261,14 @@ public class Form_Report_Pemda {
                         +"&tparap="+cbUnits.getUnitApValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                url+="&judul=PELUNASAN OFFLINE";
+                url+="&judulsatu=LAPORAN REKAP PEMDA";
+                url+="&juduldua=PELUNASAN OFFLINE";
 
                 url+="&report=report/ReportMain/Pemda/cr_pemdaRev.rpt";
 
@@ -246,6 +280,9 @@ public class Form_Report_Pemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_Pemda"
@@ -254,9 +291,14 @@ public class Form_Report_Pemda {
                         +"&tparap="+cbUnits.getUnitApValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                url+="&judul=PELUNASAN ONLINE";
+                url+="&judulsatu=LAPORAN REKAP PEMDA";
+                url+="&juduldua=PELUNASAN ONLINE";
 
                 url+="&report=report/ReportMain/Pemda/cr_pemdaRev.rpt";
 
@@ -268,6 +310,9 @@ public class Form_Report_Pemda {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_Pemda"
@@ -276,9 +321,14 @@ public class Form_Report_Pemda {
                         +"&tparap="+cbUnits.getUnitApValue()
                         +"&tparup="+cbUnits.getUnitUpValue()
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
-                        +"&tpetugas="+petugas;
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        ;
 
-                url+="&judul=PELUNASAN NOTA";
+                url+="&judulsatu=LAPORAN REKAP PEMDA";
+                url+="&juduldua=PELUNASAN NOTA";
 
                 url+="&report=report/ReportMain/Pemda/cr_pemdaRev.rpt";
 

@@ -5,11 +5,10 @@
       <DataSourceConfiguration name="adoplus.dll">
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="VIEW_PANTAU_23DLT_DFT_T">
+        <Column name="TGLCETAK" type="15" />
         <Column name="TANGGAL" type="11" />
         <Column name="TGLBUKU" type="11" />
         <Column name="IDPEL" type="11" />
-        <Column name="WKTLNS" type="11" />
-        <Column name="KDPP" type="11" />
         <Column name="PETUGAS" type="11" />
         <Column name="KDGERAK" type="11" />
         <Column name="KOGOL" type="11" />
@@ -25,8 +24,52 @@
         <Column name="KDINKASO" type="11" />
         <Column name="PEMDA" type="11" />
         <Column name="KDPPJ" type="11" />
-        <Column name="KODE" type="11" />
-        <Column name="RPTAG" type="6" />
+        <Column name="KDPEMBAYARSIP3" type="11" />
+        <Column name="NOPEL" type="11" />
+        <Column name="NAMA" type="11" />
+        <Column name="PNJ" type="11" />
+        <Column name="NAMAPNJ" type="11" />
+        <Column name="NOBANG" type="11" />
+        <Column name="KETNOBANG" type="11" />
+        <Column name="RT" type="11" />
+        <Column name="RW" type="11" />
+        <Column name="NODLMRT" type="11" />
+        <Column name="KETNODLMRT" type="11" />
+        <Column name="LINGKUNGAN" type="11" />
+        <Column name="KODEPOS" type="11" />
+        <Column name="IDTARIP" type="11" />
+        <Column name="KDPEMBTRF" type="11" />
+        <Column name="ABONMETER" type="11" />
+        <Column name="KDAYA" type="11" />
+        <Column name="SUBKOGOL" type="11" />
+        <Column name="FRT" type="11" />
+        <Column name="FJN" type="11" />
+        <Column name="TGLJTTEMPO" type="11" />
+        <Column name="KDDK" type="11" />
+        <Column name="TGLBACA" type="11" />
+        <Column name="SLALWBP" type="11" />
+        <Column name="SAHLWBP" type="11" />
+        <Column name="SLAWBP" type="11" />
+        <Column name="SAHWBP" type="11" />
+        <Column name="SLAKVARH" type="11" />
+        <Column name="SAHKVARH" type="11" />
+        <Column name="SKVAMAX" type="11" />
+        <Column name="FAKM" type="11" />
+        <Column name="FAKMKVARH" type="11" />
+        <Column name="FAKMKVAMAX" type="11" />
+        <Column name="KWHLWBP" type="11" />
+        <Column name="KWHWBP" type="11" />
+        <Column name="BLOK3" type="11" />
+        <Column name="PEMKWH" type="11" />
+        <Column name="KWHKVARH" type="11" />
+        <Column name="KELBKVARH" type="11" />
+        <Column name="RPLWBP" type="11" />
+        <Column name="RPWBP" type="11" />
+        <Column name="RPBLOK3" type="11" />
+        <Column name="RPKVARH" type="11" />
+        <Column name="RPBEBAN" type="11" />
+        <Column name="CTTLB" type="11" />
+        <Column name="RPTTLB" type="6" />
         <Column name="RPPTL" type="6" />
         <Column name="RPTB" type="6" />
         <Column name="RPPPN" type="6" />
@@ -34,18 +77,37 @@
         <Column name="RPTRAFO" type="6" />
         <Column name="RPSEWATRAFO" type="6" />
         <Column name="RPSEWAKAP" type="6" />
+        <Column name="KDANGSA" type="11" />
         <Column name="RPANGSA" type="6" />
+        <Column name="KDANGSB" type="11" />
         <Column name="RPANGSB" type="6" />
+        <Column name="KDANGSC" type="11" />
         <Column name="RPANGSC" type="6" />
         <Column name="RPMAT" type="6" />
         <Column name="RPPLN" type="6" />
+        <Column name="RPTAG" type="6" />
+        <Column name="RPPRODUKSI" type="6" />
+        <Column name="RPSUBSIDI" type="6" />
         <Column name="RPREDUKSI" type="6" />
         <Column name="RPINSENTIF" type="6" />
         <Column name="RPDISINSENTIF" type="6" />
         <Column name="RPBK1" type="6" />
         <Column name="RPBK2" type="6" />
         <Column name="RPBK3" type="6" />
-        <Column name="TGLCETAK" type="15" />
+        <Column name="RPTDLLAMA" type="6" />
+        <Column name="RPTDLBARU" type="6" />
+        <Column name="RPSELISIH" type="6" />
+        <Column name="FLAGSOPP" type="11" />
+        <Column name="JNSMUT" type="11" />
+        <Column name="BLTHMUT" type="11" />
+        <Column name="KDMUT" type="11" />
+        <Column name="TGLNYALA" type="11" />
+        <Column name="NOGARDU" type="11" />
+        <Column name="NOTIANG" type="11" />
+        <Column name="NOMETER" type="11" />
+        <Column name="DAYABULK" type="11" />
+        <Column name="RPBP" type="6" />
+        <Column name="RPUJL" type="6" />
       </Tablesource>
     </Datasource>
   <Database>

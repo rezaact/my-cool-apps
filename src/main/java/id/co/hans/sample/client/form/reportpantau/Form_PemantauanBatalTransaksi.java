@@ -88,7 +88,7 @@ public class Form_PemantauanBatalTransaksi {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnit = new ComboUnit();
+        cbUnit = new ComboUnit(levelUser, unitUser);
         vlcPReferensi.add(cbUnit);
 
         cbJenisTransaksi = new ComboJenisTransaksi();
@@ -276,16 +276,17 @@ public class Form_PemantauanBatalTransaksi {
             @Override
             public void onSelect(SelectEvent selectEvent) {
 
-                if (gpData.getDataCount() == 0) {
-                    IconAlertMessageBox mb = new IconAlertMessageBox("Kesalahan", "Data yang ingin dicetak harus ditampilkan terlebih dahulu ke dalam Grid!");
-                    return;
-                }
+                //if (gpData.getDataCount() == 0) {
+                //    IconAlertMessageBox mb = new IconAlertMessageBox("Kesalahan", "Data yang ingin dicetak harus ditampilkan terlebih dahulu ke dalam Grid!");
+                //    return;
+                //}
 
                 String parUp, jenis="", petugas, unitAp, unitUpi;
                 String pilihTgl;
                 String rep = "", judulsatu = "", juduldua = "";
 
                 petugas = idUser;
+
                 String url = "";
 
                 if (radioTopJenisTanggalPembukuan.getValue())
@@ -298,105 +299,105 @@ public class Form_PemantauanBatalTransaksi {
 
                     if ( cbJenisTransaksi.getSelectedValue().equals("11 Rekening Baru") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku111341";
+                            rep = "cr_pantau_rekap_Bbuku111341";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl111341";
+                            rep = "cr_pantau_rekap_Btgl111341";
                         }
                         judulsatu = "REKAPITULASI REKENING LISTRIK BARU";
                         juduldua = "BATAL TRANSAKSI UPLOAD SOREK";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("12 Koreksi Rekening") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku12";
+                            rep = "cr_pantau_rekap_Bbuku12";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl12";
+                            rep = "cr_pantau_rekap_Btgl12";
                         }
                         judulsatu = "DAFTAR REKENING LISTRIK TARIP TUNGGAL DAN GANDA DENGAN KVARH";
                         juduldua = "BATAL TRANSAKSI KOREKSI REKENING";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("13 Rekening Susulan") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku111341";
+                            rep = "cr_pantau_rekap_Bbuku1113";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl111341";
+                            rep = "cr_pantau_rekap_Btgl1113";
                         }
                         judulsatu = "REKAPITULASI REKENING LISTRIK TARIP TUNGGAL DAN GANDA DENGAN KVARH";
                         juduldua = "BATAL TRANSAKSI UPLOAD REKENING SUSULAN";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("21 Pelunasan Off-Line") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku2122233132";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl2122233132";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "DAFTAR PELUNASAN REKENING LISTRIK OFFLINE";
                         juduldua = "BATAL TRANSAKSI PELUNASAN PP OFFLINE, MANUAL, GIRALISASI";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("22 Pelunasan On-Line") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku2122233132";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl2122233132";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "REKAPITULASI PELUNASAN REKENING LISTRIK ONLINE";
                         juduldua = "BATAL TRANSAKSI PELUNASAN PP ONLINE";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("23 Pelunasan NotaBuku") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku2122233132";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl2122233132";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "REKAPITULASI PELUNASAN REKENING LISTRIK NOTA BUKU";
                         juduldua = "BATAL TRANSAKSI Pelunasan Nota Buku";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("23 Pelunasan Terpusat") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku2122233132";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl2122233132";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "REKAPITULASI PELUNASAN REKENING LISTRIK NOTA BUKU";
                         juduldua = "BATAL TRANSAKSI Pelunasan Terpusat";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("31 Pembatalan Rekening") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku2122233132";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl2122233132";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "REKAPITULASI PEMBATALAN REKENING LISTRIK";
                         juduldua = "BATAL TRANSAKSI PEMBATALAN REKENING TERBIT / GAGAL MUTASI";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("41 Pindah Lancar ke Ragu2") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku111341";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl111341";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "REKAPITULASI MUTASI REKENING LISTRIK LANCAR KE RAGU2";
                         juduldua = "BATAL TRANSAKSI PINDAH LANCAR KE RAGU2";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("32 Penghapusan Rekening") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku2122233132";
+                            rep = "cr_pantau_rekap_Bbuku212223314132";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl2122233132";
+                            rep = "cr_pantau_rekap_Btgl212223314132";
                         }
                         judulsatu = "REKAPITULASI PENGHAPUSAN REKENING LISTRIK RAGU-RAGU";
                         juduldua = "BATAL TRANSAKSI HAPUS RAGU-RAGU";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("a. Cicilan Rekening KWH") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_BbukuCilrek";
+                            rep = "cr_pantau_rekap_BbukuCilrek";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_BtglCilrek";
+                            rep = "cr_pantau_rekap_BtglCilrek";
                         }
                         judulsatu = "REKAPITULASI CICILAN REKENING LISTRIK";
                         juduldua = "BATAL TRANSAKSI CICILAN REKENING";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("b. Kirim Rekening ke Unit Lain") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku23KirTer";
+                            rep = "cr_pantau_rekap_Bbuku23KirTer";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl23KirTer";
+                            rep = "cr_pantau_rekap_Btgl23KirTer";
                         }
                         judulsatu = "REKAPITULASI KIRIM REKENING KE UNIT LAIN";
                         juduldua = "BATAL TRANSAKSI PENGIRIMAN REKENING LISTRIK";
                     } else if ( cbJenisTransaksi.getSelectedValue().equals("c. Terima Rekening dari Unit Lain") ) {
                         if ( pilihTgl.equals("PEMBUKUAN") ) {
-                            rep = "cr_pantau_daftar_Bbuku23KirTer";
+                            rep = "cr_pantau_rekap_Bbuku23KirTer";
                         } else if ( pilihTgl.equals("TRANSAKSI") ) {
-                            rep = "cr_pantau_daftar_Btgl23KirTer";
+                            rep = "cr_pantau_rekap_Btgl23KirTer";
                         }
                         judulsatu = "REKAPITULASI TERIMA REKENING DARI UNIT LAIN";
                         juduldua = "BATAL TRANSAKSI PENERIMAAN REKENING LISTRIK";
@@ -510,10 +511,13 @@ public class Form_PemantauanBatalTransaksi {
                         judulsatu = "DAFTAR TERIMA REKENING DARI UNIT LAIN";
                         juduldua = "BATAL TRANSAKSI PENERIMAAN REKENING LISTRIK";
                     }
+
+                    rep = "daftar/" + rep;
                 }
 
 
-                DateTimeFormat formatter = DateTimeFormat.getFormat("yyyy/MM/dd");
+                DateTimeFormat formatter = DateTimeFormat.getFormat("yyyyMMdd");
+                DateTimeFormat formatterThbl = DateTimeFormat.getFormat("yyyyMM");
 
                 url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanBatalTransaksi"
                         +"&transaksi="+cbJenisTransaksi.getSelectedValue()
@@ -523,15 +527,18 @@ public class Form_PemantauanBatalTransaksi {
                         +"&tunitup="+cbUnit.getSelectedValue()
                         +"&tunitap="+""
                         +"&ttglmulai="+formatter.format(dfTopTanggalAwal.getValue())
-                        +"&ttglsampai="+formatter.format(dfTopTanggalAwal.getValue())
+                        +"&ttglsampai="+formatter.format(dfTopTanggalAkhir.getValue())
                         +"&tkdpp="+""
                         +"&tkdpembayar="+""
                         +"&tkode="+""
                         +"&judulsatu="+judulsatu
                         +"&juduldua="+juduldua
+                        +"&tpetugas="+idUser
+                        +"&tparup="+cbUnit.getSelectedValue()
+                        +"&tblth="+formatterThbl.format(dfTopTanggalAwal.getValue())
                 ;
 
-                url+="&report=report/ReportPantau/Saldo/" + rep + ".rpt";
+                url+="&report=report/ReportPantau/" + rep + ".rpt";
 
                 Window.open(url, "Report Viewer", "directories=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=no,status=yes");
             }

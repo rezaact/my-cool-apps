@@ -37,7 +37,7 @@ public class MasterController {
 
         String retVal = "Init";
         try {
-            retValue=  masterDao.getMasterUnit(inTipe,inValue);
+            retValue=  masterDao.getMasterUnit(inTipe,inValue,"");
             obj.put("result", retValue);
 //            obj.put("records", ws_usersDao.getPengelola());
 //            obj.writeJSONString(out);

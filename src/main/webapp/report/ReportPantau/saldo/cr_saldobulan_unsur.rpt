@@ -7,6 +7,7 @@
       <Tablesource alias="C__SALDOBULAN_UNSUR" databaseIdentifier="C$_SALDOBULAN_UNSUR">
         <Column name="NOMOR" type="6" />
         <Column name="THBLREP" type="11" />
+        <Column name="UNITUP" type="11" />
         <Column name="URAIAN" type="11" />
         <Column name="UMUM" type="6" />
         <Column name="ABRI" type="6" />

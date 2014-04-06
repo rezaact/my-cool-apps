@@ -167,6 +167,7 @@ public class Form_Report22_AP {
                 else jnsunit = "detil";
 
                 DateTimeFormat format = DateTimeFormat.getFormat("yyyyMMdd");
+                DateTimeFormat formatJudul = DateTimeFormat.getFormat("dd/MM/yyyy");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22rekap_Global"
                         +"&vJenis="+"kogol"
@@ -175,7 +176,9 @@ public class Form_Report22_AP {
                         +"&tparAp="+unitAp
                         +"&tparUp="+parUp
                         +"&tanggal="+format.format(dfTanggalPelunasanAwal.getValue())
-                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue());
+                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue())
+                        +"&judul="+"TANGGAL : " + formatJudul.format(dfTanggalPelunasanAwal.getValue()) + "S/D" + formatJudul.format(dfTanggalPelunasanAkhir.getValue())
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22unit_kogol.rpt";
 
@@ -204,6 +207,7 @@ public class Form_Report22_AP {
                 else jnsunit = "detil";
 
                 DateTimeFormat format = DateTimeFormat.getFormat("yyyyMMdd");
+                DateTimeFormat formatJudul = DateTimeFormat.getFormat("dd/MM/yyyy");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22rekap_Global"
                         +"&vJenis="+"tgllunas"
@@ -212,7 +216,9 @@ public class Form_Report22_AP {
                         +"&tparAp="+unitAp
                         +"&tparUp="+parUp
                         +"&tanggal="+format.format(dfTanggalPelunasanAwal.getValue())
-                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue());
+                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue())
+                        +"&judul="+"TANGGAL : " + formatJudul.format(dfTanggalPelunasanAwal.getValue()) + "S/D" + formatJudul.format(dfTanggalPelunasanAkhir.getValue())
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22unit_pertgllunas.rpt";
 
@@ -241,6 +247,7 @@ public class Form_Report22_AP {
                 else jnsunit = "detil";
 
                 DateTimeFormat format = DateTimeFormat.getFormat("yyyyMMdd");
+                DateTimeFormat formatJudul = DateTimeFormat.getFormat("dd/MM/yyyy");
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22rekap_Global"
                         +"&vJenis="+"kdpp"
@@ -249,7 +256,9 @@ public class Form_Report22_AP {
                         +"&tparAp="+unitAp
                         +"&tparUp="+parUp
                         +"&tanggal="+format.format(dfTanggalPelunasanAwal.getValue())
-                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue());
+                        +"&tanggalend="+format.format(dfTanggalPelunasanAkhir.getValue())
+                        +"&judul="+"TANGGAL : " + formatJudul.format(dfTanggalPelunasanAwal.getValue()) + "S/D" + formatJudul.format(dfTanggalPelunasanAkhir.getValue())
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22unit_perkdpp.rpt";
 

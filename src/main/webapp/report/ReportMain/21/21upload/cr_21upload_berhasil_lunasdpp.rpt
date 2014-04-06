@@ -3,6 +3,22 @@
 <inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
     <Datasource>
       <DataSourceConfiguration name="adoplus.dll">
+        <property name="supportsWhere" value="true"/>
+        <property name="url" value=""/>
+        <property name="escapeEverything" value="false"/>
+        <property name="quotesLowerCase" value="false"/>
+        <property name="savePassword" value="true"/>
+        <property name="driverClassName" value=""/>
+        <property name="user" value=""/>
+        <property name="catalog" value=""/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="driverLibrary" value=""/>
+        <property name="databaseClassName" value=""/>
+        <property name="aliasToken" value=" "/>
+        <property name="password" value="00F956032371E1E8327FC3A10E03F8386CF956BBD588D18D19545FF2BD140EB3D4"/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="supportsSQL92" value="true"/>
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_21UPLOAD_GAGALDPP" databaseIdentifier="VIEW_REPORT_21UPLOAD_GAGALDPP">
         <Column name="TGLCETAK" type="15" />
@@ -17,9 +33,6 @@
         <Column name="RPBK" type="6" />
         <Column name="RPBK_DPP" type="6" />
         <Column name="KODEGAGAL" type="6" />
-        <Column name="KDGERAKKELUAR_DPP" type="11" />
-        <Column name="TGLBAYAR_DPP" type="11" />
-        <Column name="KDPP_DPP" type="11" />
       </Tablesource>
     </Datasource>
   <Database>
@@ -134,7 +147,7 @@
     <Attribute name="report subject" value=""/>
     <Attribute name="report template" value=""/>
     <Attribute name="report comments" value=""/>
-    <Attribute name="report last saved" value="13 Jan 2014 23:15:03 GMT"/>
+    <Attribute name="report last saved" value="4 Apr 2014 02:44:38 GMT"/>
     <Attribute name="report created" value="15 Feb 2004 17:33:40 GMT"/>
     <Attribute name="mailing label type 1" value=""/>
     <Attribute name="mailing label type 2" value=""/>
@@ -823,7 +836,7 @@
       <AreaProperties>
         <Attribute name="hold minimal pagefooter free" value="1"/>
       </AreaProperties>
-      <Section type="Detail" count="13" width="15466" height="509" id="4">
+      <Section type="Detail" count="10" width="15466" height="509" id="4">
         <SectionProperties>
           <Attribute name="keep together" value="true"/>
           <Attribute name="hold minimal pagefooter free" value="1"/>
@@ -837,6 +850,7 @@
         </Element>
         <Element type="FieldElement" x_position="68" y_position="68" width="460" height="216">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -854,6 +868,7 @@
         </Element>
         <Element type="FieldElement" x_position="680" y_position="68" width="1224" height="224">
           <CommonProperties>
+            <Attribute name="horizontal align" value="1"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -924,6 +939,7 @@
         </Element>
         <Element type="FieldElement" x_position="8092" y_position="68" width="476" height="224">
           <CommonProperties>
+            <Attribute name="horizontal align" value="3"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -939,6 +955,7 @@
         </Element>
         <Element type="FieldElement" x_position="13736" y_position="68" width="1496" height="224">
           <CommonProperties>
+            <Attribute name="horizontal align" value="1"/>
             <Attribute name="keep together" value="true"/>
             <Attribute name="close border on page break" value="false"/>
           </CommonProperties>
@@ -959,36 +976,6 @@
             <Attribute name="pm string" value="PM"/>
           </TimeProperties>
           <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_21UPLOAD_GAGALDPP.TGLTRANSAKSI"/>
-        </Element>
-        <Element type="FieldElement" x_position="8772" y_position="68" width="1156" height="224">
-          <CommonProperties>
-            <Attribute name="keep together" value="true"/>
-            <Attribute name="close border on page break" value="false"/>
-          </CommonProperties>
-          <FontProperties>
-            <Attribute name="font name" value="Times New Roman"/>
-          </FontProperties>
-          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_21UPLOAD_GAGALDPP.KDGERAKKELUAR_DPP"/>
-        </Element>
-        <Element type="FieldElement" x_position="10200" y_position="68" width="1156" height="224">
-          <CommonProperties>
-            <Attribute name="keep together" value="true"/>
-            <Attribute name="close border on page break" value="false"/>
-          </CommonProperties>
-          <FontProperties>
-            <Attribute name="font name" value="Times New Roman"/>
-          </FontProperties>
-          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_21UPLOAD_GAGALDPP.TGLBAYAR_DPP"/>
-        </Element>
-        <Element type="FieldElement" x_position="11492" y_position="68" width="1470" height="224">
-          <CommonProperties>
-            <Attribute name="keep together" value="true"/>
-            <Attribute name="close border on page break" value="false"/>
-          </CommonProperties>
-          <FontProperties>
-            <Attribute name="font name" value="Times New Roman"/>
-          </FontProperties>
-          <Reference name="field" type="DatabaseField" refname="VIEW_REPORT_21UPLOAD_GAGALDPP.KDPP_DPP"/>
         </Element>
       </Section>
     </Area>

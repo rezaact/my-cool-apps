@@ -92,6 +92,8 @@ public class ws_404DaoImpl implements ws_404Dao {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
             String sql = " select distinct nourut,group_unsur unsur ";
+            sql += " from t_404unsur ";
+            sql += " order by nourut ";
             CallableStatement cst;
             cst = con.prepareCall(sql);
 
@@ -417,46 +419,94 @@ public class ws_404DaoImpl implements ws_404Dao {
 
             String sJenis[] = parJenisTrans.split(",");
             for (String rowData : sJenis) {
-                if (rowData.toLowerCase() == "sorek" ) {
+                if (rowData.toLowerCase().equals("sorek") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "sorekbaru");
                 }
-                if (rowData.toLowerCase() == "koreksi" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("koreksi") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dkrplama");
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dkrpbaru");
                 }
-                if (rowData.toLowerCase() == "susulan" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("susulan") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "soreksusulan");
                 }
-                if (rowData.toLowerCase() == "dphoffline" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("dphoffline") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dphoffline");
                 }
-                if (rowData.toLowerCase() == "dphbaru" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("dphbaru") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dphbaru");
                 }
-                if (rowData.toLowerCase() == "dphnota" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("dphnota") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dphnota");
                 }
-                if (rowData.toLowerCase() == "dltbaru" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("dltbaru") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dltbaru");
                 }
-                if (rowData.toLowerCase() == "dphresup" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("dphresup") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dphresup");
                 }
-                if (rowData.toLowerCase() == "kirimterima" ) {
+                if (rowData.toLowerCase().equals("kirimterima") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dppkirimbaru");
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dppterima");
                 }
-                if (rowData.toLowerCase() == "dbpbaru" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("dbpbaru") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dbpbaru");
                 }
-                if (rowData.toLowerCase() == "bk" ) {
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+                if (rowData.toLowerCase().equals("bk") ) {
                     retValue = cProc.setLap_f_404_inserttemp(parBLTH, parUnit, parPetugas, "dppbkbaru");
                 }
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
+
+                if (String.valueOf(retValue.get("wsByRefError")).equals("")) {
+                    retValue = cProc.setLap_f_404_insert404new(parBLTH, parUnit, parPetugas, parSatuan);
+                }
+
+                if (!String.valueOf(retValue.get("wsByRefError")).equals(""))
+                    throw new Exception(String.valueOf(retValue.get("wsByRefError")));
+
             }
         } catch (Exception ex)
         {
             retValue.put("wsReturn", false);
-            retValue.put("wsByRefError", ex.getMessage());
+            retValue.put("wsByRefError", "Exception:" + ex.getMessage());
         }
         return retValue;
     }

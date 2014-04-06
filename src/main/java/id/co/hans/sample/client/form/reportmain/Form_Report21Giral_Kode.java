@@ -74,6 +74,7 @@ public class Form_Report21Giral_Kode {
         panelReferensi.add(vlcPReferensi);
 
         cbKdGiralisasi = new ComboKodeGiralisasi();
+        cbKdGiralisasi.setUnitUp(unitUser);
         vlcPReferensi.add(cbKdGiralisasi);
 
         p.add(panelReferensi);
@@ -126,7 +127,7 @@ public class Form_Report21Giral_Kode {
         panel.addButton(bBottomTampilkan);
 
         ToggleGroup tg = new ToggleGroup();
-        tg.add(radioLunas);
+        tg.add(radioSemua);
         tg.add(radioBelumLunas);
         tg.add(radioLunas);
 
@@ -154,7 +155,9 @@ public class Form_Report21Giral_Kode {
                         +"&jenis="+jenis
                         +"&tBLTH="+thbl
                         +"&tPetugas="+petugas
-                        +"&kode="+cbKdGiralisasi.getSelectedValue();
+                        +"&kode="+cbKdGiralisasi.getSelectedValue()
+                        +"&unitPetugas="+unitUser
+                        ;
 
                 if (radioSemua.getValue()) {
                     url+="&report=report/ReportMain/21/cr_21giral_kode.rpt";

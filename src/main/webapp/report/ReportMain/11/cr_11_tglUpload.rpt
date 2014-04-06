@@ -5,47 +5,16 @@
       <DataSourceConfiguration name="adoplus.dll">
       </DataSourceConfiguration>
       <Tablesource alias="RekapUpload" databaseIdentifier="RekapUpload">
-        <Column name="UNITUP" type="11" />
-        <Column name="BLTH" type="11" />
-        <Column name="LEMBAR" type="6" />
-        <Column name="KWHLWBP" type="6" />
-        <Column name="KWHWBP" type="6" />
-        <Column name="BLOK3" type="6" />
-        <Column name="PEMKWH" type="6" />
-        <Column name="KWHKVARH" type="6" />
-        <Column name="KELBKVARH" type="6" />
-        <Column name="RPLWBP" type="6" />
-        <Column name="RPWBP" type="6" />
-        <Column name="RPBLOK3" type="6" />
-        <Column name="RPKVARH" type="6" />
-        <Column name="RPBEBAN" type="6" />
-        <Column name="RPTTLB" type="6" />
-        <Column name="RPPTL" type="6" />
-        <Column name="RPTB" type="6" />
-        <Column name="RPPPN" type="6" />
-        <Column name="RPBPJU" type="6" />
-        <Column name="RPTRAFO" type="6" />
-        <Column name="RPSEWATRAFO" type="6" />
-        <Column name="RPSEWAKAP" type="6" />
-        <Column name="RPANGSA" type="6" />
-        <Column name="RPANGSB" type="6" />
-        <Column name="RPANGSC" type="6" />
-        <Column name="RPMAT" type="6" />
-        <Column name="RPPLN" type="6" />
-        <Column name="RPTAG" type="6" />
-        <Column name="RPPRODUKSI" type="6" />
-        <Column name="RPSUBSIDI" type="6" />
-        <Column name="RPREDUKSI" type="6" />
-        <Column name="RPINSENTIF" type="6" />
-        <Column name="RPDISINSENTIF" type="6" />
-        <Column name="RPBK1" type="6" />
-        <Column name="RPBK2" type="6" />
-        <Column name="RPBK3" type="6" />
-        <Column name="RPTDLLAMA" type="6" />
-        <Column name="RPTDLBARU" type="6" />
-        <Column name="RPSELISIH" type="6" />
-        <Column name="UNITAP" type="11" />
         <Column name="UPLOADTIME" type="15" />
+        <Column name="UNITAP" type="11" />
+        <Column name="LEMBAR" type="6" />
+        <Column name="RPPTL" type="6" />
+        <Column name="RPBPJU" type="6" />
+        <Column name="RPPPN" type="6" />
+        <Column name="RPMAT" type="6" />
+        <Column name="RPANGSA" type="6" />
+        <Column name="RPTAG" type="6" />
+        <Column name="RPBK1" type="6" />
       </Tablesource>
     </Datasource>
   <Database>

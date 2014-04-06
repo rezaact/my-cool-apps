@@ -23,6 +23,9 @@ public class Form_Report23Nota_Kode {
 
     private VerticalPanel vp;
 
+    Integer iBebanKantor;
+    String sLabel = "";
+
     ComboKodeBebanKantor cbKdBebanKantor;
     ComboTahunBulan cbTahunBulan;
     Radio radioSemua;
@@ -33,10 +36,22 @@ public class Form_Report23Nota_Kode {
 
     private String idUser, levelUser, unitUser;
 
-    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+    public Widget asWidget(String idUser, String unitupUser, String levelUser, Integer iBebanKantor) {
         this.idUser=idUser;
         this.unitUser=unitupUser;
         this.levelUser=levelUser;
+
+        if (iBebanKantor == null) {
+            this.iBebanKantor = 0;
+        } else {
+            this.iBebanKantor = iBebanKantor;
+        }
+
+        if (this.iBebanKantor == 0) sLabel = "Nota Buku";
+        else if (this.iBebanKantor == 1) sLabel = "Beban Kantor";
+        else if (this.iBebanKantor == 2) sLabel = "Memo DUPR";
+        else if (this.iBebanKantor == 3) sLabel = "Bayar di Muka";
+
 
         if (vp == null) {
             vp = new VerticalPanel();
@@ -57,7 +72,7 @@ public class Form_Report23Nota_Kode {
     private FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Laporan Tagihan per-Kode Nota Buku");
+        panel.setHeadingText("Laporan Tagihan per-Kode " + this.sLabel);
         panel.setBodyStyle("background: none; padding: 5px");
         panel.setWidth(650);
 
@@ -75,7 +90,7 @@ public class Form_Report23Nota_Kode {
 
         cbKdBebanKantor = new ComboKodeBebanKantor();
         cbKdBebanKantor.setUnitUp(unitUser);
-        cbKdBebanKantor.setIBebanKantor("0");
+        cbKdBebanKantor.setIBebanKantor(String.valueOf(this.iBebanKantor));
         vlcPReferensi.add(cbKdBebanKantor);
 
         p.add(panelReferensi);
@@ -107,6 +122,7 @@ public class Form_Report23Nota_Kode {
 
         radioSemua = new Radio();
         radioSemua.setBoxLabel("Semua");
+        radioSemua.setValue(true);
 
         radioBelumLunas = new Radio();
         radioBelumLunas.setBoxLabel("Belum Lunas");
@@ -128,7 +144,7 @@ public class Form_Report23Nota_Kode {
         panel.addButton(bBottomTampilkan);
 
         ToggleGroup tg = new ToggleGroup();
-        tg.add(radioLunas);
+        tg.add(radioSemua);
         tg.add(radioBelumLunas);
         tg.add(radioLunas);
 
@@ -140,22 +156,45 @@ public class Form_Report23Nota_Kode {
             @Override
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
+                String judulReport = "";
 
                 petugas = idUser;
 
-                if (radioSemua.getValue())
+                if (radioSemua.getValue()) {
                     jenis = "23NOTAKODESEMUA";
-                else if (radioLunas.getValue())
+                    if (iBebanKantor == 0)
+                        judulReport = "LAPORAN TAGIHAN KODE KOLEKTIF NOTA BUKU";
+                    else if (iBebanKantor == 1)
+                        judulReport = "LAPORAN TAGIHAN KODE KOLEKTIF BEBAN KANTOR";
+                    else if (iBebanKantor == 2)
+                        judulReport = "LAPORAN TAGIHAN KODE KOLEKTIF MEMO DUPR";
+                }
+                else if (radioLunas.getValue()) {
                     jenis = "23NOTAKODELUNAS";
-                else if (radioBelumLunas.getValue())
-                    jenis = "23NOTAKODEBLMLUNAS";
+                    if (radioLunas.getValue())
+                        judulReport = "DAFTAR " + sLabel.toUpperCase() + " YANG SUDAH LUNAS";
+                    else
+                        judulReport = "DAFTAR " + sLabel.toUpperCase() + " YANG BELUM LUNAS";
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Terima_Rekap"
+                }
+                else if (radioBelumLunas.getValue()) {
+                    jenis = "23NOTAKODEBLMLUNAS";
+                    if (radioLunas.getValue())
+                        judulReport = "DAFTAR " + sLabel.toUpperCase() + " YANG SUDAH LUNAS";
+                    else
+                        judulReport = "DAFTAR " + sLabel.toUpperCase() + " YANG BELUM LUNAS";
+
+                }
+
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_23Nota_Kode"
                         +"&jenis="+jenis
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tPetugas="+petugas
                         +"&kode="+cbKdBebanKantor.getSelectedValue()
-                        +"&iBebanKantor="+"1";
+                        +"&iBebanKantor="+String.valueOf(iBebanKantor)
+                        +"&unitPetugas="+unitUser
+                        +"&judul="+judulReport
+                        ;
 
                 if (radioSemua.getValue())
                     url+="&report=report/ReportMain/23/cr_22Nota_kode.rpt";

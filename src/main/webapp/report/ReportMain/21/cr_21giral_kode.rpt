@@ -3,6 +3,22 @@
 <inet:Report xmlns:inet="http://www.inetsoftware.de" major_version="10" minor_version="0" major_xml_version="8" minor_xml_version="2" count="3" id="0">
     <Datasource>
       <DataSourceConfiguration name="adoplus.dll">
+        <property name="quotesLowerCase" value="false"/>
+        <property name="supportsParenthesesForJoin" value="true"/>
+        <property name="supportsWhere" value="true"/>
+        <property name="databaseClassName" value=""/>
+        <property name="user" value=""/>
+        <property name="supportsOrderBy" value="true"/>
+        <property name="catalog" value=""/>
+        <property name="url" value=""/>
+        <property name="savePassword" value="true"/>
+        <property name="driverLibrary" value=""/>
+        <property name="identifierQuoteString" value=""/>
+        <property name="supportsSQL92" value="true"/>
+        <property name="aliasToken" value=" "/>
+        <property name="driverClassName" value=""/>
+        <property name="escapeEverything" value="false"/>
+        <property name="password" value="00994C37206D60CA049A3C34A6ABAFAA25994C7BB2D51EFF321DC6B2AF09DE4094"/>
       </DataSourceConfiguration>
       <Tablesource alias="TAB_KODEKOLEKTIF" databaseIdentifier="TAB_KODEKOLEKTIF">
         <Column name="TGLCETAK" type="15" />
@@ -268,7 +284,7 @@
     <Attribute name="report subject" value=""/>
     <Attribute name="report template" value=""/>
     <Attribute name="report comments" value=""/>
-    <Attribute name="report last saved" value="13 Jan 2014 23:17:38 GMT"/>
+    <Attribute name="report last saved" value="23 Mar 2014 03:35:28 GMT"/>
     <Attribute name="report created" value="20 Feb 2007 13:27:02 GMT"/>
     <Attribute name="mailing label type 1" value=""/>
     <Attribute name="mailing label type 2" value=""/>

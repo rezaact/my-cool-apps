@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface MasterDao {
-	public Map<String, Object> getMasterUnit(String inTipe, String inValue);
+    public Map<String, Object> getMasterUser(String idUser);
+	public Map<String, Object> getMasterUnit(String inTipe, String userUnit, String selectedUnit);
     public Map<String, Object> getKodeSiklis(String parUp);
     public Map<String, Object> getKodePaymentPoint(String parUp);
     public Map<String, Object> getKodePetugas(String kodePP);

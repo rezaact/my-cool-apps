@@ -5,4 +5,5 @@ import java.util.Map;
 
 public interface SecmanDao {
 	public  Map<String, Object> getUserMenuByIdsesion(String idSesion, String page);
+	public  Map<String, Object> getUserDataByIdSession(String idSession);
 }

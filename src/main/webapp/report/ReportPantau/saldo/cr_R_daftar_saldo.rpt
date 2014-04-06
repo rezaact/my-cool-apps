@@ -5,9 +5,9 @@
       <DataSourceConfiguration name="adoplus.dll">
       </DataSourceConfiguration>
       <Tablesource alias="VIEW_REPORT_12DLAMA404" databaseIdentifier="VIEW_REPORT_21DAFTARREKG">
+        <Column name="NOMOR" type="11" />
         <Column name="TGLCETAK" type="15" />
         <Column name="TANGGAL" type="11" />
-        <Column name="WKTBAYAR" type="11" />
         <Column name="IDPEL" type="11" />
         <Column name="KOGOL" type="11" />
         <Column name="BLTH" type="11" />
@@ -36,6 +36,8 @@
         <Column name="RPBK2" type="6" />
         <Column name="RPBK3" type="6" />
         <Column name="KDGERAK" type="11" />
+        <Column name="KDKOREKSI" type="11" />
+        <Column name="KDKOREKSIBY" type="11" />
         <Column name="UNITUP" type="11" />
         <Column name="UNITKJ" type="11" />
         <Column name="KDINKASO" type="11" />
@@ -44,6 +46,8 @@
         <Column name="KDPPJ" type="11" />
         <Column name="TARIP" type="11" />
         <Column name="DAYA" type="6" />
+        
+        <Column name="WKTBAYAR" type="11" />
         <Column name="KDKIRIM" type="11" />
         <Column name="UNITUPKDPP" type="11" />
         <Column name="KDPP" type="11" />

@@ -63,7 +63,7 @@ public class Form_Report21_BA {
     private FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Rekap 22 - Lunas Online Per KDPP");
+        panel.setHeadingText("Rekap 21 - BA Offline");
         panel.setBodyStyle("background: none; padding: 5px");
         panel.setWidth(650);
 
@@ -149,7 +149,7 @@ public class Form_Report21_BA {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, thbl, petugas, unitAp, unitUpi;
 
-                DateTimeFormat formatThbl = DateTimeFormat.getFormat("YYYYmm");
+                DateTimeFormat formatThbl = DateTimeFormat.getFormat("yyyyMM");
                 DateTimeFormat formatDate = DateTimeFormat.getFormat("dd");
 
                 parUp = cbUnits.getUnitUpValue();
@@ -166,7 +166,9 @@ public class Form_Report21_BA {
                         +"&tanggal="+formatDate.format(dfBeritaAcaraTanggalPelunasan.getValue())
                         +"&tanggalend="+""
                         +"&kode="+""
-                        +"&pengelola="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&pengelola="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+unitUpi
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_BALunasOffline.rpt";
 
@@ -179,7 +181,7 @@ public class Form_Report21_BA {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, thbl, petugas, unitAp, unitUpi;
 
-                DateTimeFormat formatThbl = DateTimeFormat.getFormat("YYYYmm");
+                DateTimeFormat formatThbl = DateTimeFormat.getFormat("yyyyMM");
                 DateTimeFormat formatDate = DateTimeFormat.getFormat("dd");
 
                 parUp = cbUnits.getUnitUpValue();

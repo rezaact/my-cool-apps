@@ -171,7 +171,10 @@ public class Form_Report21_Kdpp {
                         +"&tPetugas="+petugas
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
-                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&tparap="+cbUnits.getUnitApValue()
+                        ;
 
                 url+="&report=report/ReportMain/21/cr_21kdpp_tgl.rpt";
 
@@ -195,7 +198,9 @@ public class Form_Report21_Kdpp {
                         +"&tPetugas="+petugas
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
-                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&tparap="+cbUnits.getUnitApValue();
 
                 url+="&report=report/ReportMain/21/cr_21kdpp_gol_tgl.rpt";
 
@@ -219,7 +224,9 @@ public class Form_Report21_Kdpp {
                         +"&tPetugas="+petugas
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
-                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&tparap="+cbUnits.getUnitApValue();
 
                 url+="&report=report/ReportMain/21/cr_21kdpp_daftar.rpt";
 
@@ -245,7 +252,9 @@ public class Form_Report21_Kdpp {
                         +"&tPetugas="+petugas
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
-                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&tparap="+cbUnits.getUnitApValue();
 
                 url+="&report=report/ReportMain/21/cr_21kdpp_unit_tgl.rpt";
 
@@ -269,7 +278,9 @@ public class Form_Report21_Kdpp {
                         +"&tPetugas="+petugas
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
-                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&tparap="+cbUnits.getUnitApValue();
 
                 url+="&report=report/ReportMain/21/cr_21kdpp_unitgol_tgl.rpt";
 
@@ -293,7 +304,9 @@ public class Form_Report21_Kdpp {
                         +"&tPetugas="+petugas
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
-                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue();
+                        +"&kode="+cbTopKodePengelolaPaymentPoint.getSelectedValue()
+                        +"&in_unitupi="+cbUnits.getUnitUpiValue()
+                        +"&tparap="+cbUnits.getUnitApValue();
 
                 url+="&report=report/ReportMain/21/cr_21kdpp_unit_daftar.rpt";
 

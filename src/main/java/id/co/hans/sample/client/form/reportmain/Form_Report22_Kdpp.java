@@ -159,13 +159,18 @@ public class Form_Report22_Kdpp {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                //String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp"
                         +"&vJenis="+"22kdpp_pptglrekap"
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&tparUp="+parUp
-                        +"&kode="+cbKdPP.getSelectedValue();
+                        +"&kode="+cbKdPP.getSelectedValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi
+                        +"&tpetugas="+petugas
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22kdpp_tgl.rpt";
 
@@ -183,13 +188,18 @@ public class Form_Report22_Kdpp {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                //String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp"
                         +"&vJenis="+"22KDPP_PPTGLREKAP_JLNTGK"
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&tparUp="+parUp
-                        +"&kode="+cbKdPP.getSelectedValue();
+                        +"&kode="+cbKdPP.getSelectedValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi
+                        +"&tpetugas="+petugas
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22unit_404.rpt";
 
@@ -207,13 +217,18 @@ public class Form_Report22_Kdpp {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                //String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp"
                         +"&vJenis="+"22kdpp_pptglrekapgol"
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&tparUp="+parUp
-                        +"&kode="+cbKdPP.getSelectedValue();
+                        +"&kode="+cbKdPP.getSelectedValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi
+                        +"&tpetugas="+petugas
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22kdpp_gol_tgl.rpt";
 
@@ -231,13 +246,18 @@ public class Form_Report22_Kdpp {
                 unitAp = cbUnits.getUnitApValue();
                 unitUpi = cbUnits.getUnitUpiValue();
 
-                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                //String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp_v3"
+                String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=GetReport_22kdpp"
                         +"&vJenis="+"22kdpp_pptgldaftar"
                         +"&tBLTH="+cbTahunBulan.getCbTahunSelectedValue()+cbTahunBulan.getCbBulanSelectedValue()
                         +"&tanggal="+cbMiddlePilihTanggalAwal.getSelectedValue()
                         +"&tanggalend="+cbMiddelPilihTanggalAkhir.getSelectedValue()
                         +"&tparUp="+parUp
-                        +"&kode="+cbKdPP.getSelectedValue();
+                        +"&kode="+cbKdPP.getSelectedValue()
+                        +"&tparap="+unitAp
+                        +"&in_unitupi="+unitUpi
+                        +"&tpetugas="+petugas
+                        ;
 
                 url+="&report=report/ReportMain/22/cr_22unit_ppcbo_daftar.rpt";
 

@@ -76,7 +76,7 @@ public class Form_PemantauanSaldoHari {
         VerticalLayoutContainer vlcPReferensi = new VerticalLayoutContainer();
         panelReferensi.add(vlcPReferensi);
 
-        cbUnits = new ComboUnits();
+        cbUnits = new ComboUnits(levelUser, unitUser, 1, 1, 1);
         vlcPReferensi.add(cbUnits);
 
         p.add(panelReferensi);
@@ -156,6 +156,9 @@ public class Form_PemantauanSaldoHari {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
@@ -169,6 +172,10 @@ public class Form_PemantauanSaldoHari {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
                         +"&juduldua="+"LANCAR"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
                         ;
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldohari_LR.rpt";
@@ -181,6 +188,9 @@ public class Form_PemantauanSaldoHari {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
@@ -194,6 +204,10 @@ public class Form_PemantauanSaldoHari {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
                         +"&juduldua="+"LANCAR per GOLONGAN"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
                         ;
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldohari_L_gol.rpt";
@@ -206,6 +220,9 @@ public class Form_PemantauanSaldoHari {
             public void onSelect(SelectEvent selectEvent) {
                 String parUp, jenis="", petugas, unitAp, unitUpi;
 
+                parUp = cbUnits.getUnitUpValue();
+                unitAp = cbUnits.getUnitApValue();
+                unitUpi = cbUnits.getUnitUpiValue();
                 petugas = idUser;
 
                 String url= GWT.getHostPageBaseURL()+ "ReportServlet?idjenislaporan=PemantauanSaldo"
@@ -219,6 +236,10 @@ public class Form_PemantauanSaldoHari {
                         +"&in_unitupi="+cbUnits.getUnitUpiValue()
                         +"&judulsatu="+"SALDO REKENING LISTRIK"
                         +"&juduldua="+"RAGU-RAGU"
+                        +"&tparupi="+unitUpi
+                        +"&tparap="+unitAp
+                        +"&tparup="+parUp
+                        +"&tpetugas="+petugas
                         ;
 
                 url+="&report=report/ReportPantau/Saldo/cr_saldohari_LR.rpt";

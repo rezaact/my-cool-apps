@@ -139,12 +139,37 @@ public class Form_Report21_Upload {
         bBottomRekapitulasiDoubleUpload = new TextButton("Rekapitulasi Double Upload");
         bBottomDaftarRekeningDoubleUpload = new TextButton("Daftar Rekening Double Upload");
 
-        panel.addButton(bBottomRekapitulasiUploadRekgLunas);
-        panel.addButton(bBottomDaftarRekgBerhasilUpdateDPP);
-        panel.addButton(bBottomDaftarRekgGagalUpdateDPP);
+        bBottomRekapitulasiUploadRekgLunas.setWidth(250);
+        bBottomDaftarRekgBerhasilUpdateDPP.setWidth(250);
+        bBottomDaftarRekgGagalUpdateDPP.setWidth(250);
+        bBottomRekapitulasiDoubleUpload.setWidth(250);
+        bBottomDaftarRekeningDoubleUpload.setWidth(250);
 
-        panel.addButton(bBottomRekapitulasiDoubleUpload);
-        panel.addButton(bBottomDaftarRekeningDoubleUpload);
+
+        FramedPanel panelButton = new FramedPanel();
+        panelButton.setBodyStyle("background: none; padding: 5px");
+        panelButton.setWidth(620);
+
+        VerticalLayoutContainer vlcPButton = new VerticalLayoutContainer();
+        panelButton.add(vlcPButton);
+
+        HorizontalPanel hpButton = new HorizontalPanel();
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiUploadRekgLunas);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomDaftarRekgBerhasilUpdateDPP);
+        hpButton.add(bBottomDaftarRekgGagalUpdateDPP);
+        vlcPButton.add(hpButton);
+
+        hpButton = new HorizontalPanel();
+        hpButton.add(bBottomRekapitulasiDoubleUpload);
+        hpButton.add(bBottomDaftarRekeningDoubleUpload);
+        vlcPButton.add(hpButton);
+
+        p.add(panelButton);
 
         return panel;
     }
