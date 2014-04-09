@@ -255,43 +255,42 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        switch (blthrek.substring(1,3)) {
-            case "Jan":
-                retValue.put("wsReturn", "02" + blthrek.substring(5,4));
-                break;
-            case "Feb":
-                retValue.put("wsReturn", "03" + blthrek.substring(5,4));
-                break;
-            case "Mar":
-                retValue.put("wsReturn", "04" + blthrek.substring(5,4));
-                break;
-            case "Apr":
-                retValue.put("wsReturn", "05" + blthrek.substring(5,4));
-                break;
-            case "Mei":
-                retValue.put("wsReturn", "06" + blthrek.substring(5,4));
-                break;
-            case "Jun":
-                retValue.put("wsReturn", "07" + blthrek.substring(5,4));
-                break;
-            case "Jul":
-                retValue.put("wsReturn", "08" + blthrek.substring(5,4));
-                break;
-            case "Agu":
-                retValue.put("wsReturn", "09" + blthrek.substring(5,4));
-                break;
-            case "Sep":
-                retValue.put("wsReturn", "10" + blthrek.substring(5,4));
-                break;
-            case "Okt":
-                retValue.put("wsReturn", "11" + blthrek.substring(5,4));
-                break;
-            case "Nop":
-                retValue.put("wsReturn", "12" + blthrek.substring(5,4));
-                break;
-            case "Des":
-                retValue.put("wsReturn", "01" + blthrek.substring(5,4));
-                break;
+        if (blthrek.substring(0,3).equals("Jan")) {
+            retValue.put("wsReturn", "02" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Feb")) {
+            retValue.put("wsReturn", "03" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Mar")) {
+            retValue.put("wsReturn", "04" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Apr")) {
+            retValue.put("wsReturn", "05" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Mei")) {
+            retValue.put("wsReturn", "06" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Jun")) {
+            retValue.put("wsReturn", "07" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Jul")) {
+            retValue.put("wsReturn", "08" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Agu")) {
+            retValue.put("wsReturn", "09" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Sep")) {
+            retValue.put("wsReturn", "10" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Okt")) {
+            retValue.put("wsReturn", "11" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Nop")) {
+            retValue.put("wsReturn", "12" + blthrek.substring(5,4));
+
+        } else if (blthrek.substring(0,3).equals("Des")) {
+            retValue.put("wsReturn", "01" + blthrek.substring(5,4));
+
         }
 
         return retValue;
@@ -1149,22 +1148,23 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
 
         try
         {
-            switch (alasan.trim().toUpperCase()) {
-                case "DAFTAR PELANGGAN YANG PERLU DIPERHATIKAN" :
-                    retValue.put("wsReturn", "A");
-                case "GAGAL PEREMAJAAN DIL" :
-                    retValue.put("wsReturn", "B");
-                case "KOMPLAIN PELANGGAN" :
-                    retValue.put("wsReturn", "C");
-                case "SUPLISI" :
-                    retValue.put("wsReturn", "D");
-                case "RESTITUSI" :
-                    retValue.put("wsReturn", "D");
-                case "PEMBATALAN PELUNASAN SALAH BAYAR" :
-                    retValue.put("wsReturn", "E");
-                case "KOREKSI KODE GOLONGAN" :
-                    retValue.put("wsReturn", "F");
+
+            if (alasan.trim().toUpperCase().equals("DAFTAR PELANGGAN YANG PERLU DIPERHATIKAN")) {
+                retValue.put("wsReturn", "A");
+            } else if (alasan.trim().toUpperCase().equals("GAGAL PEREMAJAAN DIL")) {
+                retValue.put("wsReturn", "B");
+            } else if (alasan.trim().toUpperCase().equals("KOMPLAIN PELANGGAN")) {
+                retValue.put("wsReturn", "C");
+            } else if (alasan.trim().toUpperCase().equals("SUPLISI")) {
+                retValue.put("wsReturn", "D");
+            } else if (alasan.trim().toUpperCase().equals("RESTITUSI")) {
+                retValue.put("wsReturn", "D");
+            } else if (alasan.trim().toUpperCase().equals("PEMBATALAN PELUNASAN SALAH BAYAR")) {
+                retValue.put("wsReturn", "E");
+            } else if (alasan.trim().toUpperCase().equals("KOREKSI KODE GOLONGAN")) {
+                retValue.put("wsReturn", "F");
             }
+
         } catch (Exception ex)
         {
             retValue.put("wsReturn", "");
@@ -1176,31 +1176,30 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
     public Map<String, Object> bl_th(String blth) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        switch (blth.substring(5,2)) {
-            case "01" :
-                retValue.put("wsReturn", "01" + blth.substring(1,4));
-            case "02" :
-                retValue.put("wsReturn", "02" + blth.substring(1,4));
-            case "03" :
-                retValue.put("wsReturn", "03" + blth.substring(1,4));
-            case "04" :
-                retValue.put("wsReturn", "04" + blth.substring(1,4));
-            case "05" :
-                retValue.put("wsReturn", "05" + blth.substring(1,4));
-            case "06" :
-                retValue.put("wsReturn", "06" + blth.substring(1,4));
-            case "07" :
-                retValue.put("wsReturn", "07" + blth.substring(1,4));
-            case "08" :
-                retValue.put("wsReturn", "08" + blth.substring(1,4));
-            case "09" :
-                retValue.put("wsReturn", "09" + blth.substring(1,4));
-            case "10" :
-                retValue.put("wsReturn", "10" + blth.substring(1,4));
-            case "11" :
-                retValue.put("wsReturn", "11" + blth.substring(1,4));
-            case "12" :
-                retValue.put("wsReturn", "12" + blth.substring(1,4));
+        if (blth.substring(4,2).equals("01")) {
+            retValue.put("wsReturn", "01" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("02")) {
+            retValue.put("wsReturn", "02" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("03")) {
+            retValue.put("wsReturn", "03" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("04")) {
+            retValue.put("wsReturn", "04" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("05")) {
+            retValue.put("wsReturn", "05" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("06")) {
+            retValue.put("wsReturn", "06" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("07")) {
+            retValue.put("wsReturn", "07" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("08")) {
+            retValue.put("wsReturn", "08" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("09")) {
+            retValue.put("wsReturn", "09" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("10")) {
+            retValue.put("wsReturn", "10" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("11")) {
+            retValue.put("wsReturn", "11" + blth.substring(1,4));
+        } else if (blth.substring(4,2).equals("12")) {
+            retValue.put("wsReturn", "12" + blth.substring(1,4));
         }
 
         return retValue;
@@ -1440,31 +1439,30 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
     public Map<String, Object> getUraian(String blth) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        switch (blth.substring(5,2)) {
-            case "01" :
-                retValue.put("wsReturn", "Des-" + (Integer.parseInt(blth.substring(3, 4)) - 1));
-            case "02" :
-                retValue.put("wsReturn", "Jan-" + blth.substring(3,4));
-            case "03" :
-                retValue.put("wsReturn", "Feb-" + blth.substring(3,4));
-            case "04" :
-                retValue.put("wsReturn", "Mar-" + blth.substring(3,4));
-            case "05" :
-                retValue.put("wsReturn", "Apr-" + blth.substring(3,4));
-            case "06" :
-                retValue.put("wsReturn", "Mei-" + blth.substring(3,4));
-            case "07" :
-                retValue.put("wsReturn", "Jun-" + blth.substring(3,4));
-            case "08" :
-                retValue.put("wsReturn", "Jul-" + blth.substring(3,4));
-            case "09" :
-                retValue.put("wsReturn", "Agu-" + blth.substring(3,4));
-            case "10" :
-                retValue.put("wsReturn", "Sep-" + blth.substring(3,4));
-            case "11" :
-                retValue.put("wsReturn", "Okt-" + blth.substring(3,4));
-            case "12" :
-                retValue.put("wsReturn", "Nop-" + blth.substring(3,4));
+        if (blth.substring(4,2).equals("01")) {
+            retValue.put("wsReturn", "Des-" + (Integer.parseInt(blth.substring(3, 4)) - 1));
+        } else if (blth.substring(4,2).equals("02")) {
+            retValue.put("wsReturn", "Jan-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("03")) {
+            retValue.put("wsReturn", "Feb-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("04")) {
+            retValue.put("wsReturn", "Mar-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("05")) {
+            retValue.put("wsReturn", "Apr-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("06")) {
+            retValue.put("wsReturn", "Mei-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("07")) {
+            retValue.put("wsReturn", "Jun-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("08")) {
+            retValue.put("wsReturn", "Jul-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("09")) {
+            retValue.put("wsReturn", "Agu-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("10")) {
+            retValue.put("wsReturn", "Sep-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("11")) {
+            retValue.put("wsReturn", "Okt-" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("12")) {
+            retValue.put("wsReturn", "Nop-" + blth.substring(3,4));
         }
 
         return retValue;
@@ -1475,31 +1473,30 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
     public Map<String, Object> getBlThRekening(String blth) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        switch (blth.substring(5,2)) {
-            case "01" :
-                retValue.put("wsReturn", "12" + (Integer.parseInt(blth.substring(3, 4)) - 1));
-            case "02" :
-                retValue.put("wsReturn", "01" + blth.substring(3,4));
-            case "03" :
-                retValue.put("wsReturn", "02" + blth.substring(3,4));
-            case "04" :
-                retValue.put("wsReturn", "03" + blth.substring(3,4));
-            case "05" :
-                retValue.put("wsReturn", "04" + blth.substring(3,4));
-            case "06" :
-                retValue.put("wsReturn", "05" + blth.substring(3,4));
-            case "07" :
-                retValue.put("wsReturn", "06" + blth.substring(3,4));
-            case "08" :
-                retValue.put("wsReturn", "07" + blth.substring(3,4));
-            case "09" :
-                retValue.put("wsReturn", "08" + blth.substring(3,4));
-            case "10" :
-                retValue.put("wsReturn", "09" + blth.substring(3,4));
-            case "11" :
-                retValue.put("wsReturn", "10" + blth.substring(3,4));
-            case "12" :
-                retValue.put("wsReturn", "11" + blth.substring(3,4));
+        if (blth.substring(4,2).equals("01")) {
+            retValue.put("wsReturn", "12" + (Integer.parseInt(blth.substring(3, 4)) - 1));
+        } else if (blth.substring(4,2).equals("02")) {
+            retValue.put("wsReturn", "01" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("03")) {
+            retValue.put("wsReturn", "02" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("04")) {
+            retValue.put("wsReturn", "03" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("05")) {
+            retValue.put("wsReturn", "04" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("06")) {
+            retValue.put("wsReturn", "05" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("07")) {
+            retValue.put("wsReturn", "06" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("08")) {
+            retValue.put("wsReturn", "07" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("09")) {
+            retValue.put("wsReturn", "08" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("10")) {
+            retValue.put("wsReturn", "09" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("11")) {
+            retValue.put("wsReturn", "10" + blth.substring(3,4));
+        } else if (blth.substring(4,2).equals("12")) {
+            retValue.put("wsReturn", "11" + blth.substring(3,4));
         }
 
         return retValue;
@@ -1754,7 +1751,7 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
                 strSQL = strSQL + " and DIS.Uraian= '" + strBlthRekening + "'";
                 strSQL = strSQL + " group by DIS.Tgl_Jatuh_Tempo";
 
-                if (strBlthRekening.trim() != "-") {
+                if (!strBlthRekening.trim().equals("-")) {
                     cst = con.prepareCall(strSQL);
                     rs = cst.executeQuery();
                     dsBlThRekening = CommonModule.convertResultsetToListStr(rs);
@@ -1791,11 +1788,10 @@ public class ws_InterfaceDaoImpl implements ws_InterfaceDao{
                                 if (strNoPelanggan.substring(3,3) == strKodePetugas.substring(1,3)) {
                                     kdGrkKeluar = "21";
                                 } else {
-                                    switch (strKdGol) {
-                                        case "1" : kdGrkKeluar = "24"; break;
-                                        case "2" : kdGrkKeluar = "24"; break;
-                                        case "3" : kdGrkKeluar = "24"; break;
-                                        case "4" : kdGrkKeluar = "24"; break;
+                                    if (strKdGol.equals("1")) { kdGrkKeluar = "24";
+                                    } else if (strKdGol.equals("2")) { kdGrkKeluar = "24";
+                                    } else if (strKdGol.equals("3")) { kdGrkKeluar = "24";
+                                    } else if (strKdGol.equals("4")) { kdGrkKeluar = "24";
                                     }
                                 }
 

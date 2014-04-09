@@ -60,8 +60,13 @@ public class Form_MasterJatuhTempo {
     private frmMode MODE;
 
 
+    private String idUser, levelUser, unitUser;
 
-    public Widget asWidget() {
+    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
+        this.idUser=idUser;
+        this.unitUser=unitupUser;
+        this.levelUser=levelUser;
+
         if (vp == null) {
             vp = new VerticalPanel();
             vp.setSpacing(5);
@@ -94,7 +99,7 @@ public class Form_MasterJatuhTempo {
         VerticalLayoutContainer p = new VerticalLayoutContainer();
         form.add(p);
 
-        cb_unitup = new ComboUnit();
+        cb_unitup = new ComboUnit(this.levelUser, this.unitUser);
         p.add(cb_unitup);
 
         comboTahunBulan = new ComboTahunBulan();

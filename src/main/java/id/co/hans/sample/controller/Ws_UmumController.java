@@ -36,9 +36,6 @@ public class Ws_UmumController {
         try {
             retValue=  ws_umumDao.ambilTanggalHariIni();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -915,9 +912,6 @@ public class Ws_UmumController {
         try {
             retValue=  ws_umumDao.ambilTanggalDatabase();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();

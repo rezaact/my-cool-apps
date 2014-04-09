@@ -204,7 +204,7 @@ public class cls_CetakUlang {
             ResultSet rs;
 
             List<Map<String, String>> dsFilter = (List<Map<String, String>>)dsTrans.get("FILTER");
-            if (dsFilter.get(0).get("JENISCETUL") != "LUNASGIRAL") {
+            if (!dsFilter.get(0).get("JENISCETUL").equals("LUNASGIRAL")) {
                 throw new Exception("Jenis cetak ulang tidak sesuai !");
             }
 
@@ -255,7 +255,7 @@ public class cls_CetakUlang {
             ResultSet rs;
 
             List<Map<String, String>> dsFilter = (List<Map<String, String>>)dsTrans.get("FILTER");
-            if (dsFilter.get(0).get("JENISCETUL") != "LUNASNOTABUKU") {
+            if (!dsFilter.get(0).get("JENISCETUL").equals("LUNASNOTABUKU")) {
                 throw new Exception("Jenis cetak ulang tidak sesuai !");
             }
 
@@ -306,7 +306,7 @@ public class cls_CetakUlang {
             ResultSet rs;
 
             List<Map<String, String>> dsFilter = (List<Map<String, String>>)dsTrans.get("FILTER");
-            if (dsFilter.get(0).get("JENISCETUL") != "LUNASTERPUSAT") {
+            if (!dsFilter.get(0).get("JENISCETUL").equals("LUNASTERPUSAT")) {
                 throw new Exception("Jenis cetak ulang tidak sesuai !");
             }
 

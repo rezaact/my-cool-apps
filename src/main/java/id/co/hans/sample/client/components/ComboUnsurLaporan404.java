@@ -32,7 +32,7 @@ public class ComboUnsurLaporan404 extends AbstractComboComponent {
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cb.setStoreUrl("components/getComboDataUnsur404.json");
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

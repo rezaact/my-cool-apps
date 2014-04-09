@@ -1073,14 +1073,17 @@ public class ws_UmumDaoImpl implements ws_UmumDao {
 
             lMapRecords = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("ambilTanggalDatabase", lMapRecords);
+            retValue.put("wsReturn", lMapRecords);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
     @Override
     public Map<String, Object> ambilNamaApdariUp(String unitUp) {

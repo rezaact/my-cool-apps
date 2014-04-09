@@ -105,11 +105,8 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        switch (Transaksi.trim()) {
-            case "11 Rekening Baru":
-                break;
-            default:
-                break;
+        if (Transaksi.trim().equals("11 Rekening Baru")) {
+
         }
 
         return null;
@@ -122,13 +119,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -184,13 +181,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -246,13 +243,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -308,13 +305,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -370,13 +367,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -432,13 +429,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -494,13 +491,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -556,13 +553,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -618,13 +615,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -693,13 +690,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -768,13 +765,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -830,13 +827,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -892,13 +889,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -954,13 +951,13 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
             wsReturn = GetIdpel(vJenis, tpel);
 
-            if (wsReturn.get("wsByRefError") != "") {
+            if (!wsReturn.get("wsByRefError").equals("")) {
                 throw new Exception(wsReturn.get("wsByRefError").toString());
             }
 
@@ -1014,7 +1011,7 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
@@ -1063,7 +1060,7 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
@@ -1103,7 +1100,7 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
@@ -1146,7 +1143,7 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
@@ -1187,7 +1184,7 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {
@@ -1228,7 +1225,7 @@ public class clsBatalTransaksi_view {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
-        Map<String, Object> wsReturn = new HashMap<>();
+        Map<String, Object> wsReturn = new HashMap<String, Object>();
 
         try
         {

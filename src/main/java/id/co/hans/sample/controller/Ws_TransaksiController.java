@@ -1539,10 +1539,7 @@ public class Ws_TransaksiController {
         String retVal = "Init";
         try {
             retValue=  ws_transaksiDao.PemantauanTransaksi(Transaksi,vJenis,vPilihTgl,tUnitKJ,tUnitUP,tUnitAP,tTglmulai,tTglsampai,tKdpp,tKdPembayar,tKode);
-            obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
+            obj.put("result", retValue.get("wsReturn"));
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1571,9 +1568,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.PemantauanJurnal(vPilihTgl,tUnitUP,tUnitAP,tTglmulai,tTglsampai,tBlTh);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1601,9 +1595,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.PemantauanSaldo(vPilihSaldo,vPilihRep,tUnitUP,tUnitAP,tTglmulai,tTglsampai,tBlTh,in_unitup);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1632,9 +1623,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.PemantauanSaldo_v2(vPilihSaldo,vPilihRep,tUnitUP,tUnitAP,tUnitUPI,tTglmulai,tTglsampai,tBlTh,in_unitup);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1657,9 +1645,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewALASANHAPUSBK(vJenis,tPetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1681,9 +1666,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.ambilTanggalHariIni();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1705,9 +1687,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEPP(vJenis,tPetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1729,9 +1708,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF21GIRALISASI();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1753,9 +1729,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF21GIRALISASIUNITUP(sUnitup);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1776,9 +1749,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF23PUSAT();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1799,9 +1769,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF23PUSATUNITUP(sUnitup);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1822,9 +1789,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF23NOTA();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1845,24 +1809,8 @@ public class Ws_TransaksiController {
 
         String retVal = "Init";
         try {
-            List<Map<String, String>> datas = new ArrayList<>();
-            Map<String, String> el = new HashMap<>();
-            el.put("kol1", "data11");
-            el.put("kol2", "data12");
-            datas.add(el);
-            el.put("kol1", "data21");
-            el.put("kol2", "data22");
-            datas.add(el);
-
-
-            retValue.put("wsByRefError", "");
-            retValue.put("wsReturn", datas);
-
-            //retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF23NOTAUNITUP(sunitup,iBebanKantor);
+            retValue=  ws_transaksiDao.GetViewKODEKOLEKTIF23NOTAUNITUP(sunitup,iBebanKantor);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1885,9 +1833,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKELOMPOK(tTHBL,tPetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1909,9 +1854,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKELOMPOKUNIT(tTHBL,tUNIT);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1934,9 +1876,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKELOMPOKBYSIKLIS(tTHBL,tSIKLIS);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1958,9 +1897,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODERR(tUNIT);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -1981,9 +1917,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetTempSorek();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2004,9 +1937,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKODEKOREKSI();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2027,9 +1957,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetTempDKRP();
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -4804,10 +4731,7 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.PemantauanBatalTransaksi(Transaksi,vpilihtglsama,vJenis,vPilihTgl,tUnitKJ,tUnitUP,
                     tUnitAP,tTglmulai,tTglsampai,tKdpp,tKdPembayar,tKode);
-            obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
+            obj.put("result", retValue.get("wsReturn"));
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();

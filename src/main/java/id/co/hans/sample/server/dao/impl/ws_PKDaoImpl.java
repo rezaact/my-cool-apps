@@ -433,15 +433,14 @@ public class ws_PKDaoImpl implements ws_PKDao{
             m = formatterMonth.format(strTgl);
             y = formatterYear.format(strTgl);
 
-            switch (m) {
-                case "May" : m = "Mei"; break;
-                case "Oct" : m = "Okt"; break;
-                case "Aug" : m = "Agu"; break;
-                case "Dec" : m = "Des"; break;
-                case "Nov" : m = "Nop"; break;
-                case "Agust" : m = "Agu"; break;
-                default: m = m.substring(1,3);
-            }
+            if (m.equals("May"))  m = "Mei";
+            else if (m.equals("Oct"))  m = "Okt";
+            else if (m.equals("Aug"))  m = "Agu";
+            else if (m.equals("Dec"))  m = "Des";
+            else if (m.equals("Nov"))  m = "Nop";
+            else if (m.equals("Agust"))  m = "Agu";
+            else  m = m.substring(1,3);
+
 
             retValue.put("wsReturn", m + "-" + y);
         } catch (Exception ex)
@@ -1411,83 +1410,83 @@ public class ws_PKDaoImpl implements ws_PKDao{
                     ket = rowData.get("GrupPiutang");
                     Nopel = rowData.get("No_Pelanggan");
 
-                    switch (rowData.get("GrupPiutang").toUpperCase()) {
-                        case "REKENING" :
-                            sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            cst = con.prepareCall(sql);
-                            rs = cst.executeQuery();
-                            lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
-                            if (lMapRecordsProses.size() == 0) {
-                                sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, Rekening)";
-                                sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
-                            } else {
-                                sql = "Update TULVILAPORANsemuatunggakan set Rekening = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            }
-                            cst = con.prepareCall(sql);
-                            cst.execute();
-                            break;
 
-                        case "PAJAK PENERANGAN JALAN UMUM" :
-                            sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            cst = con.prepareCall(sql);
-                            rs = cst.executeQuery();
-                            lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
-                            if (lMapRecordsProses.size() == 0) {
-                                sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, PPJU)";
-                                sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
-                            } else {
-                                sql = "Update TULVILAPORANsemuatunggakan set PPJU = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            }
-                            cst = con.prepareCall(sql);
-                            cst.execute();
-                            break;
-                        case "BIAYA KETERLAMBATAN" :
-                            sql = "SELECT NO_PELANGGAN, bk FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            cst = con.prepareCall(sql);
-                            rs = cst.executeQuery();
-                            lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
-                            if (lMapRecordsProses.size() == 0) {
-                                sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, BK)";
-                                sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
-                            } else {
-                                Integer RpBK1, RpBK2, Total;
-                                RpBK1 = Integer.parseInt(lMapRecordsProses.get(0).get("BK"));
-                                RpBK2 = Integer.parseInt(rowData.get("JmlRupiah"));
-                                Total = (RpBK1 + RpBK2);
-                                sql = "Update TULVILAPORANsemuatunggakan set BK = '" + Total + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            }
-                            cst = con.prepareCall(sql);
-                            cst.execute();
-                            break;
-                        case "MATERAI REKENING" :
-                            sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            cst = con.prepareCall(sql);
-                            rs = cst.executeQuery();
-                            lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
-                            if (lMapRecordsProses.size() == 0) {
-                                sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, MateraiRekening)";
-                                sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
-                            } else {
-                                sql = "Update TULVILAPORANsemuatunggakan set MateraiRekening = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            }
-                            cst = con.prepareCall(sql);
-                            cst.execute();
-                            break;
-                        case "PPN" :
-                            sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            cst = con.prepareCall(sql);
-                            rs = cst.executeQuery();
-                            lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
-                            if (lMapRecordsProses.size() == 0) {
-                                sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, PPN)";
-                                sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy') ," + rowData.get("JmlRupiah") + ")";
-                            } else {
-                                sql = "Update TULVILAPORANsemuatunggakan set PPN = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
-                            }
-                            cst = con.prepareCall(sql);
-                            cst.execute();
-                            break;
+                    if (rowData.get("GrupPiutang").toUpperCase().equals("REKENING")) {
+                        sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        cst = con.prepareCall(sql);
+                        rs = cst.executeQuery();
+                        lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
+                        if (lMapRecordsProses.size() == 0) {
+                            sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, Rekening)";
+                            sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
+                        } else {
+                            sql = "Update TULVILAPORANsemuatunggakan set Rekening = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        }
+                        cst = con.prepareCall(sql);
+                        cst.execute();
+
+                    } else if (rowData.get("GrupPiutang").toUpperCase().equals("PAJAK PENERANGAN JALAN UMUM")) {
+                        sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        cst = con.prepareCall(sql);
+                        rs = cst.executeQuery();
+                        lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
+                        if (lMapRecordsProses.size() == 0) {
+                            sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, PPJU)";
+                            sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
+                        } else {
+                            sql = "Update TULVILAPORANsemuatunggakan set PPJU = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        }
+                        cst = con.prepareCall(sql);
+                        cst.execute();
+
+                    } else if (rowData.get("GrupPiutang").toUpperCase().equals("BIAYA KETERLAMBATAN")) {
+                        sql = "SELECT NO_PELANGGAN, bk FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        cst = con.prepareCall(sql);
+                        rs = cst.executeQuery();
+                        lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
+                        if (lMapRecordsProses.size() == 0) {
+                            sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, BK)";
+                            sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
+                        } else {
+                            Integer RpBK1, RpBK2, Total;
+                            RpBK1 = Integer.parseInt(lMapRecordsProses.get(0).get("BK"));
+                            RpBK2 = Integer.parseInt(rowData.get("JmlRupiah"));
+                            Total = (RpBK1 + RpBK2);
+                            sql = "Update TULVILAPORANsemuatunggakan set BK = '" + Total + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        }
+                        cst = con.prepareCall(sql);
+                        cst.execute();
+
+                    } else if (rowData.get("GrupPiutang").toUpperCase().equals("MATERAI REKENING")) {
+                        sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        cst = con.prepareCall(sql);
+                        rs = cst.executeQuery();
+                        lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
+                        if (lMapRecordsProses.size() == 0) {
+                            sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, MateraiRekening)";
+                            sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy')," + rowData.get("JmlRupiah") + ")";
+                        } else {
+                            sql = "Update TULVILAPORANsemuatunggakan set MateraiRekening = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        }
+                        cst = con.prepareCall(sql);
+                        cst.execute();
+
+                    } else if (rowData.get("GrupPiutang").toUpperCase().equals("PPN")) {
+                        sql = "SELECT NO_PELANGGAN FROM TULVILAPORANsemuatunggakan WHERE TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        cst = con.prepareCall(sql);
+                        rs = cst.executeQuery();
+                        lMapRecordsProses = CommonModule.convertResultsetToListStr(rs);
+                        if (lMapRecordsProses.size() == 0) {
+                            sql = "Insert into TULVILAPORANsemuatunggakan (No_Pelanggan, TH_Bl_Rek, Tgl_Jatuh_Tempo, PPN)";
+                            sql = sql + " VALUES ('" + rowData.get("No_Pelanggan") + "', '" + strThBlRekening + "',to_date('" + formatterDay.format(dsTanggal) + "-" + formatterMonth.format(dsTanggal) + "-" + formatterYear.format(dsTanggal) + "','dd-mm-yyyy') ," + rowData.get("JmlRupiah") + ")";
+                        } else {
+                            sql = "Update TULVILAPORANsemuatunggakan set PPN = '" + rowData.get("JmlRupiah") + "' where TH_Bl_Rek = '" + strThBlRekening + "' AND NO_PELANGGAN='" + rowData.get("No_Pelanggan") + "'";
+                        }
+                        cst = con.prepareCall(sql);
+                        cst.execute();
+
                     }
+
                 }
             }
 

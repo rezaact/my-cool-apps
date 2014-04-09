@@ -55,6 +55,7 @@ public class LaporanReportServlet extends ReportServlet{
         super.init(config);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void checkProperties(Engine engine, Properties prop, Object serviceRequest) throws ReportException {
         String idjenislaporan=(String) prop.get("idjenislaporan");
@@ -1905,46 +1906,33 @@ public class LaporanReportServlet extends ReportServlet{
 
         String bulan = blth.substring(4,6);
         String tahun = blth.substring(0,4);
-        switch (bulan) {
-            case "01" :
-                returnValue = "JANUARI " + tahun;
-                break;
-            case "02" :
-                returnValue = "FEBRUARI " + tahun;
-                break;
-            case "03" :
-                returnValue = "MARET " + tahun;
-                break;
-            case "04" :
-                returnValue = "APRIL " + tahun;
-                break;
-            case "05" :
-                returnValue = "MEI " + tahun;
-                break;
-            case "06" :
-                returnValue = "JUNI " + tahun;
-                break;
-            case "07" :
-                returnValue = "JULI " + tahun;
-                break;
-            case "08" :
-                returnValue = "AGUSTUS " + tahun;
-                break;
-            case "09" :
-                returnValue = "SEPTEMBER " + tahun;
-                break;
-            case "10" :
-                returnValue = "OKTOBER " + tahun;
-                break;
-            case "11" :
-                returnValue = "NOPEMBER " + tahun;
-                break;
-            case "12" :
-                returnValue = "DESEMBER " + tahun;
-                break;
-            default:
-                returnValue = blth;
-                break;
+
+        if (bulan.equals("01")) {
+            returnValue = "JANUARI " + tahun;
+        } else if (bulan.equals("02")) {
+            returnValue = "FEBRUARI " + tahun;
+        } else if (bulan.equals("03")) {
+            returnValue = "MARET " + tahun;
+        } else if (bulan.equals("04")) {
+            returnValue = "APRIL " + tahun;
+        } else if (bulan.equals("05")) {
+            returnValue = "MEI " + tahun;
+        } else if (bulan.equals("06")) {
+            returnValue = "JUNI " + tahun;
+        } else if (bulan.equals("07")) {
+            returnValue = "JULI " + tahun;
+        } else if (bulan.equals("08")) {
+            returnValue = "AGUSTUS " + tahun;
+        } else if (bulan.equals("09")) {
+            returnValue = "SEPTEMBER " + tahun;
+        } else if (bulan.equals("10")) {
+            returnValue = "OKTOBER " + tahun;
+        } else if (bulan.equals("11")) {
+            returnValue = "NOPEMBER " + tahun;
+        } else if (bulan.equals("12")) {
+            returnValue = "DESEMBER " + tahun;
+        } else {
+            returnValue = blth;
         }
 
         return returnValue;
@@ -1959,8 +1947,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_11rekap(engine, vJenis, tBLTH, tparUp, tPetugas, kode, tparAP, in_unitupi);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -1977,8 +1965,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().cetak_rekap11TglUpload(engine, tparUp, tglAwal, tglAkhir);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -1999,8 +1987,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_12rekapGabungan(engine, vJenis, tBLTH, tparUp, tPetugas, kode, tparAP, in_unitupi);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2019,8 +2007,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_13rekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2040,8 +2028,8 @@ public class LaporanReportServlet extends ReportServlet{
                                                            tanggal, tanggalend, kode, pengelola);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2059,8 +2047,8 @@ public class LaporanReportServlet extends ReportServlet{
                                                             tanggal, tanggalend, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2078,8 +2066,8 @@ public class LaporanReportServlet extends ReportServlet{
                                                                tanggal, tanggalend, kode, kdPembayar);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2096,8 +2084,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport21Restitusi(engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2114,8 +2102,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_21rekap(engine, vJenis, tBLTH, tparUp, tPetugas, tanggal, tanggalend, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2133,8 +2121,8 @@ public class LaporanReportServlet extends ReportServlet{
                     tanggal, tanggalend, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2152,8 +2140,8 @@ public class LaporanReportServlet extends ReportServlet{
                     jenis);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2174,8 +2162,8 @@ public class LaporanReportServlet extends ReportServlet{
                     tparAp, tparUp, tanggal, tanggalend);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2193,8 +2181,8 @@ public class LaporanReportServlet extends ReportServlet{
                     tanggalend, tparUp, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2214,8 +2202,8 @@ public class LaporanReportServlet extends ReportServlet{
                     kode, kdPembayar, sATM);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2236,8 +2224,8 @@ public class LaporanReportServlet extends ReportServlet{
                     kode, kdPembayar, sATM, vDayaAwal, vDayaAkhir);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2257,8 +2245,8 @@ public class LaporanReportServlet extends ReportServlet{
                     kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2277,8 +2265,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_23Kirim_Rekap(engine, tThbl, tParUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2294,8 +2282,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_23Kirim_Daftar(engine, tThbl, tParUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2311,8 +2299,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_23Terima_Rekap(engine, tThbl, tParUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2328,8 +2316,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_23Terima_Daftar(engine, tThbl, tParUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2345,8 +2333,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_23Nota_Kode(engine, tBLTH, tPetugas, kode, jenis, iBebanKantor);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2364,8 +2352,8 @@ public class LaporanReportServlet extends ReportServlet{
                      tanggal, kode, tparUPI);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2383,8 +2371,8 @@ public class LaporanReportServlet extends ReportServlet{
                      tanggal, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2400,8 +2388,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_23Terpusat_Kode(engine, tBLTH, tPetugas, kode, jenis);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2421,8 +2409,8 @@ public class LaporanReportServlet extends ReportServlet{
                     tPetugas, tanggal, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2440,8 +2428,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_31rekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2459,8 +2447,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_32rekap(engine, vJenis, tBLTH, tparUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2478,8 +2466,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_41rekap(engine, vJenis, tBLTH, tparAp, tparUp, tPetugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2497,8 +2485,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_2122DoubleBayarNew(engine, sUnit, sBlnBayar);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2516,8 +2504,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_Pemda( engine, tparAP, tparUp, tBLTH, vJenis, tPetugas, in_unitupi);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2535,8 +2523,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReportRestitusi(engine, in_unitap, in_unitup, in_blth, in_jenis);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2554,8 +2542,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetReport_BK_212223rekap(engine, vJenis, tBLTH, tparUp, tPetugas, kode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2573,8 +2561,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().getLaporanMonitoringTunggakan(engine, in_jenis, in_unitupi, in_unitap, in_unitup);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2590,8 +2578,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().GetTunggakanPemda(engine, in_unitupi, in_unitap, in_unitup, in_blth, in_jenis);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2608,8 +2596,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().PemantauanJurnal(engine, vPilihTgl, tUnitUP, tUnitAP, tTglmulai, tTglsampai, tBlTh);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2627,8 +2615,8 @@ public class LaporanReportServlet extends ReportServlet{
                     , tTglsampai, tBlTh, in_unitupi);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2646,8 +2634,8 @@ public class LaporanReportServlet extends ReportServlet{
                     , tUnitAP, tTglmulai, tTglsampai, tKdpp, tKdPembayar, tKode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2665,8 +2653,8 @@ public class LaporanReportServlet extends ReportServlet{
                     , tUnitAP, tTglmulai, tTglsampai, tKdpp, tKdPembayar, tKode);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2686,8 +2674,8 @@ public class LaporanReportServlet extends ReportServlet{
                     , satuan);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2703,8 +2691,8 @@ public class LaporanReportServlet extends ReportServlet{
             Map<String, Object> dataStatus = baseService.getReportService().ambilLaporanV02(engine, parUp, parGol, thbl, petugas);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }
@@ -2724,8 +2712,8 @@ public class LaporanReportServlet extends ReportServlet{
                     idpel, unsur, pembukuan, tglmulai, tglsampai);
 
             errorCode = 0;
-            if ((int)dataStatus.get(ERRORCODE) != 0) {
-                errorCode = (int)dataStatus.get(ERRORCODE);
+            if ((Integer)dataStatus.get(ERRORCODE) != 0) {
+                errorCode = (Integer)dataStatus.get(ERRORCODE);
                 errorMsg = (String)dataStatus.get(ERRORMSG);
                 throw new Exception(errorMsg);
             }

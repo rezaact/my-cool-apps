@@ -89,6 +89,9 @@ public class IconComboBox implements IsWidget{
 
     public void addSelectionHandler(SelectionHandler<Map<String, String>> handler) {
         this.selectionHandler = handler;
+        if (this != null) {
+            comboBox.addSelectionHandler(this.selectionHandler);
+        }
     }
 
     public void loadStore(){
@@ -113,7 +116,7 @@ public class IconComboBox implements IsWidget{
         comboBox.setAllowBlank(false);
         comboBox.setTypeAhead(true);
         comboBox.setEditable(true);
-//        comboBox.setWidth(this.comboWidth);
+        comboBox.setWidth(this.comboWidth);
 
         comboBox.setTriggerAction(ComboBoxCell.TriggerAction.ALL);
 

@@ -2169,7 +2169,7 @@ public class cls_view_report_dphoffline {
         String partisi = "";
         partisi = "lunas_" + tBLTH.substring(0, 4) + "_" + tBLTH.substring(4, 2);
 
-        if ( pengelola.toUpperCase() != "SEMUA" && pengelola.trim() != "" ) {
+        if ( !pengelola.toUpperCase().equals("SEMUA") && !pengelola.trim().equals("") ) {
             sql = " SELECT * ";
             sql = sql + " FROM VIEW_REPORT_21_BA_OFFLINE ";
             sql = sql + "   WHERE  ";
@@ -2194,7 +2194,7 @@ public class cls_view_report_dphoffline {
         String partisi = "";
         partisi = "lunas_" + tBLTH.substring(0, 4) + "_" + tBLTH.substring(4, 2);
 
-        if ( pengelola.toUpperCase() != "SEMUA" && pengelola.trim() != "" ) {
+        if ( !pengelola.toUpperCase().equals("SEMUA") && !pengelola.trim().equals("") ) {
             sql = " SELECT * ";
             sql += " FROM VIEW_REPORT21_REKAPTOTLNS ";
             sql += "   WHERE PENGELOLA  = Rtrim()(Ltrim()('" + pengelola + " ')) ";

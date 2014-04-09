@@ -32,7 +32,7 @@ public class ComboJenisTransaksi extends AbstractComboComponent {
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
+        cb.setStoreUrl("components/getJenisTransaksi.json?formOriginalName=" + this.form);
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

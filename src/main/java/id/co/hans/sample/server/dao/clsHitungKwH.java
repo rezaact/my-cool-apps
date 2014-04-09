@@ -194,7 +194,7 @@ public class clsHitungKwH {
             rs = cst.executeQuery();
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            if (lMapData.get(0).get("kode_kva") != "") {
+            if (!lMapData.get(0).get("kode_kva").equals("")) {
                 if (lMapData.get(0).get("kode_kva") == "K") {
                     sql = sql + " and trp.daya_max >= (dl.daya*1000) and trp.daya_min <= (dl.daya*1000)";
                 }
@@ -221,7 +221,7 @@ public class clsHitungKwH {
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
             for (Map<String, String> rowData : lMapData) {
-                if (rowData.get("Bl_th_Berlaku") != "") {
+                if (!rowData.get("Bl_th_Berlaku").equals("")) {
                     if (Double.parseDouble(VBlThRekening) >= Double.parseDouble(rowData.get("Bl_th_Berlaku"))) {
                         strBl_Th_Berlaku = rowData.get("Bl_th_Berlaku");
                         break;
@@ -497,7 +497,7 @@ public class clsHitungKwH {
                         } else if (rowData.get("Tarip") == "P1" || rowData.get("Tarip") == "R2" || rowData.get("Tarip") == "R3") {
                             vkwhlwbp = PenguranganStand;
                         } else if (rowData.get("Tarip") == "P3") {
-                            if (rowData.get("Kode_Abunemen_Meter") != "") {
+                            if (!rowData.get("Kode_Abunemen_Meter").equals("")) {
                                 if (rowData.get("Kode_Abunemen_Meter") == "3" || Double.parseDouble(rowData.get("Kode_Abunemen_Meter")) == 3) {
                                     vkwhlwbp = ((375 * Double.parseDouble(rowData.get("Daya"))) / 1000);
                                 } else if (rowData.get("Kode_Abunemen_Meter") == "2" || Double.parseDouble(rowData.get("Kode_Abunemen_Meter")) == 2) {
@@ -546,7 +546,7 @@ public class clsHitungKwH {
                                 PenguranganStandwbp = (Double.parseDouble(prmStandAkhirWBPBaru) - Double.parseDouble(prmStandAwalWBPBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh"));
                             }
 
-                            if (rowData.get("KD_PT") != "") {
+                            if (!rowData.get("KD_PT").equals("")) {
                                 if (rowData.get("KD_PT") == "1") {
                                     TotalkWhLwbp = (PenguranganStand * Koefisien);
                                     A.MasukanKwh(TotalkWhLwbp);
@@ -634,44 +634,44 @@ public class clsHitungKwH {
                             if (Double.parseDouble(prmStandAkhirKVARHBaru) < Double.parseDouble(prmStandAwalKVARHBaru)) {
                                 switch (Integer.parseInt(PanjangStandAwalKVARH.toString())) {
                                     case 1:
-                                        if (rowData.get("Faktor_kali_kvarh") != "") {
+                                        if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                             VkWhKVARH = ((10 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                         } else {
                                             VkWhKVARH = ((10 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
                                         }
                                     case 2:
-                                        if (rowData.get("Faktor_kali_kvarh") != "") {
+                                        if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                             VkWhKVARH = ((100 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                         } else {
                                             VkWhKVARH = ((100 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
                                         }
                                     case 3:
-                                        if (rowData.get("Faktor_kali_kvarh") != "") {
+                                        if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                             VkWhKVARH = ((1000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                         } else {
                                             VkWhKVARH = ((1000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
                                         }
                                     case 4:
-                                        if (rowData.get("Faktor_kali_kvarh") != "") {
+                                        if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                             VkWhKVARH = ((10000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                         } else {
                                             VkWhKVARH = ((10000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
                                         }
                                     case 5:
-                                        if (rowData.get("Faktor_kali_kvarh") != "") {
+                                        if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                             VkWhKVARH = ((100000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                         } else {
                                             VkWhKVARH = ((100000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
                                         }
                                     case 6:
-                                        if (rowData.get("Faktor_kali_kvarh") != "") {
+                                        if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                             VkWhKVARH = ((1000000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                         } else {
                                             VkWhKVARH = ((1000000 + Double.parseDouble(prmStandAkhirKVARHBaru)) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
                                         }
                                 }
                             } else {
-                                if (rowData.get("Faktor_kali_kvarh") != "") {
+                                if (!rowData.get("Faktor_kali_kvarh").equals("")) {
                                     VkWhKVARH = (Double.parseDouble(prmStandAkhirKVARHBaru) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kwh")) * 1D;
                                 } else {
                                     VkWhKVARH = (Double.parseDouble(prmStandAkhirKVARHBaru) - Double.parseDouble(prmStandAwalKVARHBaru)) * Double.parseDouble(rowData.get("Faktor_kali_kvarh")) * 1D;
@@ -737,12 +737,12 @@ public class clsHitungKwH {
                         sql = sql + vkwhlwbp + ",";
 
                         if (
-                                rowData.get("Tarip") != "S3" &&
-                                rowData.get("Tarip") != "B3" &&
-                                rowData.get("Tarip") != "P2" &&
-                                rowData.get("Tarip") != "I2" &&
-                                rowData.get("Tarip") != "I3" &&
-                                rowData.get("Tarip") != "I4"
+                                !rowData.get("Tarip").equals("S3") &&
+                                !rowData.get("Tarip").equals("B3") &&
+                                !rowData.get("Tarip").equals("P2") &&
+                                !rowData.get("Tarip").equals("I2") &&
+                                !rowData.get("Tarip").equals("I3") &&
+                                !rowData.get("Tarip").equals("I4")
                             ) {
                             sql = sql + prmStandAwalLWBPBaru + ",";
                             sql = sql + prmStandAkhirLWBPBaru + ",";

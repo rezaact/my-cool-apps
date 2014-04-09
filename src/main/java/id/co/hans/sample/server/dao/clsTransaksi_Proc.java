@@ -331,7 +331,7 @@ public class clsTransaksi_Proc {
                         String status = lMapData.get(0).get(0).toString();
 
                         if (Integer.parseInt(lMapData.get(0).get(0).substring(0,1)) == 1) {
-                            List<Map<String, String>> dsDacen = new ArrayList<>();
+                            List<Map<String, String>> dsDacen = new ArrayList<Map<String, String>>();
 
                             sql = "{ call PROC_DACEN_KIRIM_DBP(?,?,?) }";
 
@@ -348,7 +348,7 @@ public class clsTransaksi_Proc {
 
                             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-                            if (lMapData.get(0).get(0).toString().substring(0,1) != "1") {
+                            if (!lMapData.get(0).get(0).toString().substring(0,1).equals("1")) {
                                 Err = lMapData.get(0).get(0).toString();
                             }
 
@@ -1381,7 +1381,7 @@ public class clsTransaksi_Proc {
             i++;
             //todo: InsertTempDPHOFFLINE(rowData, tTransaksiBy);
 
-            if (Err != "") {
+            if (!Err.equals("")) {
                 retValue.put("wsReturn", "Gagal Proses insert ke TempDPHoffline, record ke " + i + " , " + Err);
                 retValue.put("wsByRefError", "Gagal Proses insert ke TempDPHoffline, record ke " + i + " , " + Err);
             }
@@ -1570,7 +1570,7 @@ public class clsTransaksi_Proc {
                         //VALIDASI CLOSE DATE
                         cls_CloseDate cClose = new cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("41", tanggal);
-                        if (retFunc.get("wsByRefError").toString() != "") {
+                        if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                         }
                         //END VALIDASI CLOSE DATE
@@ -1714,7 +1714,7 @@ public class clsTransaksi_Proc {
                     //VALIDASI CLOSE DATE
                     cls_CloseDate cClose = new cls_CloseDate();
                     Map<String, Object> retFunc = cClose.CekCloseDate("23DLT", rowData.get("TGLBAYAR"));
-                    if (retFunc.get("wsByRefError").toString() != "") {
+                    if (!retFunc.get("wsByRefError").toString().equals("")) {
                         throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                     }
                     //END VALIDASI CLOSE DATE
@@ -1850,7 +1850,7 @@ public class clsTransaksi_Proc {
             //VALIDASI CLOSE DATE
             cls_CloseDate cClose = new cls_CloseDate();
             Map<String, Object> retFunc = cClose.CekCloseDate("21G", tTglBayar);
-            if (retFunc.get("wsByRefError").toString() != "") {
+            if (!retFunc.get("wsByRefError").toString().equals("")) {
                 //throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                 throw new Exception("");
             }
@@ -1923,7 +1923,7 @@ public class clsTransaksi_Proc {
                             rs = cst.executeQuery();
                             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-                            if (lMapData.get(0).get(0).substring(0,1) != "1") {
+                            if (!lMapData.get(0).get(0).substring(0,1).equals("1")) {
                                 Err = lMapData.get(0).get(0);
                             }
 
@@ -2025,7 +2025,7 @@ public class clsTransaksi_Proc {
 
                         cls_CloseDate cClose = new cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23BK", rowData.get("TGLBAYAR"));
-                        if (retFunc.get("wsByRefError").toString() != "") {
+                        if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                         }
                     } else if (iBebanKantor == 2) {
@@ -2033,7 +2033,7 @@ public class clsTransaksi_Proc {
 
                         cls_CloseDate cClose = new cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23MD", rowData.get("TGLBAYAR"));
-                        if (retFunc.get("wsByRefError").toString() != "") {
+                        if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                         }
                     } else if (iBebanKantor == 3) {
@@ -2041,7 +2041,7 @@ public class clsTransaksi_Proc {
 
                         cls_CloseDate cClose = new cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23BM", rowData.get("TGLBAYAR"));
-                        if (retFunc.get("wsByRefError").toString() != "") {
+                        if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                         }
                     } else {
@@ -2049,7 +2049,7 @@ public class clsTransaksi_Proc {
 
                         cls_CloseDate cClose = new cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23NB", rowData.get("TGLBAYAR"));
-                        if (retFunc.get("wsByRefError").toString() != "") {
+                        if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
                         }
                     }
@@ -2239,7 +2239,7 @@ public class clsTransaksi_Proc {
 
                         if (Integer.parseInt(lMapData.get(0).get(0).substring(0,1)) == 1) {
                             rowData.put("HASIL", status);
-                            if (sTransIDs != "") {
+                            if (!sTransIDs.equals("")) {
                                 sTransIDs += "," + lMapData.get(0).get(0);
                             } else {
                                 sTransIDs += "" + lMapData.get(0).get(0);
@@ -2252,7 +2252,7 @@ public class clsTransaksi_Proc {
                 }
             }
 
-            if (sTransIDs.trim() != "" && Err.trim() != "") {
+            if (!sTransIDs.trim().equals("") && !Err.trim().equals("")) {
                 //todo: clsTransaksi_View clsView = new clsTransaksi_View();
                 cls_ReportBA clsBA = new cls_ReportBA();
                 Map<String, Object> retFuncClsView, retFuncClsBA;
@@ -2315,10 +2315,10 @@ public class clsTransaksi_Proc {
                         tdaya = tdaya;
                     }
 
-                    Map<String, Object> retFuncTarip = new HashMap<>();
+                    Map<String, Object> retFuncTarip = new HashMap<String, Object>();
                     //todo: retFuncTarip = cekTarip(ttarip, tdaya, tBlTh);
 
-                    if (retFuncTarip.get("wsByRefError") != "") {
+                    if (!retFuncTarip.get("wsByRefError").equals("")) {
                         Err = "";
                         IdTarip = "0000000000";
                     } else {
@@ -2326,10 +2326,10 @@ public class clsTransaksi_Proc {
                     }
                     rowData.put("IDTARIP", IdTarip);
 
-                    Map<String, Object> retFuncInsertTempDKRP = new HashMap<>();
+                    Map<String, Object> retFuncInsertTempDKRP = new HashMap<String, Object>();
                     //todo: retFuncInsertTempDKRP = InsertTempDKRP(dTrans);
 
-                    if (retFuncInsertTempDKRP.get("wsByRefError") != "") {
+                    if (!retFuncInsertTempDKRP.get("wsByRefError").equals("")) {
                         Err = retFuncInsertTempDKRP.get("wsByRefError").toString();
                         throw new Exception(Err);
                     }
@@ -2554,10 +2554,10 @@ public class clsTransaksi_Proc {
                         tDAYA = tDAYA;
                     }
 
-                    Map<String, Object> retFuncTarip = new HashMap<>();
+                    Map<String, Object> retFuncTarip = new HashMap<String, Object>();
                     //todo: retFuncTarip = cekTarip(ttarip, tdaya, tBlTh);
 
-                    if (retFuncTarip.get("wsByRefError") != "") {
+                    if (!retFuncTarip.get("wsByRefError").equals("")) {
                         Err = "";
                         IdTarip = "0000000000";
                     } else {
@@ -3083,10 +3083,10 @@ public class clsTransaksi_Proc {
                         tdaya = tdaya;
                     }
 
-                    Map<String, Object> retFuncTarip = new HashMap<>();
+                    Map<String, Object> retFuncTarip = new HashMap<String, Object>();
                     //todo: retFuncTarip = cekTarip(ttarip, tdaya, tBlTh);
 
-                    if (retFuncTarip.get("wsByRefError") != "") {
+                    if (!retFuncTarip.get("wsByRefError").equals("")) {
                         throw new Exception("Gagal Proses, " + retFuncTarip.get("wsByRefError"));
                     }
                     IdTarip = ((List<Map<String,String>>) retFuncTarip.get("wsReturn")).get(0).get("IDTARIP");
@@ -3676,44 +3676,43 @@ public class clsTransaksi_Proc {
                 }
                 if (Integer.parseInt(rowData.get("RPANGSA")) > 0) {
                     String KDANGSA = rowData.get("KDANGSA");
-                    if (KDANGSA != "1"
-                            && KDANGSA != "3"
-                            && KDANGSA != "4"
-                            && KDANGSA != "8"
-                            && KDANGSA != "9"
-                            && KDANGSA != "A"
-                            && KDANGSA != "B"
-                            && KDANGSA != "C"
-                            && KDANGSA != "D"
-                            && KDANGSA != "E")
+                    if (!KDANGSA.equals("1")
+                        && !KDANGSA.equals("3")
+                        && !KDANGSA.equals("4")
+                        && !KDANGSA.equals("8")
+                        && !KDANGSA.equals("9")
+                        && !KDANGSA.equals("A")
+                        && !KDANGSA.equals("B")
+                        && !KDANGSA.equals("C")
+                        && !KDANGSA.equals("D")
+                        && !KDANGSA.equals("E"))
                     throw new Exception("KODE ANGSA TIDAK VALID");
                 }
                 if (Integer.parseInt(rowData.get("RPANGSB")) > 0) {
                     String KDANGSB = rowData.get("KDANGSB");
-                    if (KDANGSB != "1"
-                            && KDANGSB != "3"
-                            && KDANGSB != "4"
-                            && KDANGSB != "8"
-                            && KDANGSB != "9"
-                            && KDANGSB != "A"
-                            && KDANGSB != "B"
-                            && KDANGSB != "C"
-                            && KDANGSB != "D"
-                            && KDANGSB != "E")
+                    if (!KDANGSB.equals("1")
+                        && !KDANGSB.equals("3")
+                        && !KDANGSB.equals("4")
+                        && !KDANGSB.equals("8")
+                        && !KDANGSB.equals("9")
+                        && !KDANGSB.equals("A")
+                        && !KDANGSB.equals("B")
+                        && !KDANGSB.equals("D")
+                        && !KDANGSB.equals("E"))
                     throw new Exception("KODE ANGSB TIDAK VALID");
                 }
                 if (Integer.parseInt(rowData.get("RPANGSC")) > 0) {
                     String KDANGSC = rowData.get("KDANGSC");
-                    if (KDANGSC != "1"
-                            && KDANGSC != "3"
-                            && KDANGSC != "4"
-                            && KDANGSC != "8"
-                            && KDANGSC != "9"
-                            && KDANGSC != "A"
-                            && KDANGSC != "B"
-                            && KDANGSC != "C"
-                            && KDANGSC != "D"
-                            && KDANGSC != "E")
+                    if (!KDANGSC.equals("1")
+                        && !KDANGSC.equals("3")
+                        && !KDANGSC.equals("4")
+                        && !KDANGSC.equals("8")
+                        && !KDANGSC.equals("9")
+                        && !KDANGSC.equals("A")
+                        && !KDANGSC.equals("B")
+                        && !KDANGSC.equals("C")
+                        && !KDANGSC.equals("D")
+                        && !KDANGSC.equals("E"))
                     throw new Exception("KODE ANGSC TIDAK VALID");
                 }
 
@@ -5678,7 +5677,7 @@ public class clsTransaksi_Proc {
 
             Err = cst.getString("parError");
 
-            if (Err.trim() != "") {
+            if (!Err.trim().equals("")) {
                 throw  new Exception(Err);
             }
 
@@ -5721,7 +5720,7 @@ public class clsTransaksi_Proc {
 
             Err = cst.getString("parError");
 
-            if (Err.trim() != "") {
+            if (!Err.trim().equals("")) {
                 throw  new Exception(Err);
             }
 
@@ -5783,7 +5782,7 @@ public class clsTransaksi_Proc {
             rs = cst.executeQuery();
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            if (lMapData.get(0).get(0).substring(0,1) != "1") {
+            if (!lMapData.get(0).get(0).substring(0,1).equals("1")) {
                 throw  new Exception(lMapData.get(0).get(0));
             }
 
@@ -6776,7 +6775,7 @@ public class clsTransaksi_Proc {
             rs = cst.executeQuery();
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            if (lMapData.get(0).get(0) != "0") {
+            if (!lMapData.get(0).get(0).equals("0")) {
                 sql = " INSERT INTO SATKERSAH SELECT NOFORM,IDPEL,'" + vBlth + "' BLTH,'" + SahBy + "' SAHBY,SYSDATE AS TGLSAH FROM SATKERANGGOTA WHERE NOFORM='" + vNoForm + "' ";
                 cst = con.prepareCall(sql);
                 cst.execute();

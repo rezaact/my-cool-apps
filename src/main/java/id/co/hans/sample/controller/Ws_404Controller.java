@@ -289,9 +289,6 @@ public class Ws_404Controller {
         try {
             retValue=  ws_404Dao.RekapUlang404(parBLTH,parUnit,parPetugas,parJenisTrans,parSatuan);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
