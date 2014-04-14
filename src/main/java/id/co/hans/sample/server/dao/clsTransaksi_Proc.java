@@ -17,6 +17,8 @@ import java.util.*;
 @Service
 public class clsTransaksi_Proc {
 
+    public static final org.apache.commons.logging.Log log = LogFactory.getLog(clsTransaksi_Proc.class);
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -266,7 +268,6 @@ public class clsTransaksi_Proc {
 
     public Map<String, Object> SetDataIdpel_31(String tTransaksiBy,
                                                List<Map<String,String>> dTrans) {
-
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
@@ -277,29 +278,36 @@ public class clsTransaksi_Proc {
 
         try
         {
+
+            String tanggal = "", waktu = "";
+            Map<String, Object> dataTanggalEksekusi = ambilTanggaleksekusi();
+            tanggal = String.valueOf(dataTanggalEksekusi.get("wsReturn"));
+            waktu = String.valueOf(dataTanggalEksekusi.get("wsByRefWaktu"));
+
             Connection con = jdbcTemplate.getDataSource().getConnection();
             ResultSet rs;
             CallableStatement cst;
             String sql;
 
-            String tanggal = "", waktu = "";
-            //todo: tanggal = ambilTanggaleksekusi(Err, waktu)
-
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+
+                if (rowData.get("SIMPAN").equals("true") && rowData.get("HASIL").equals("")) {
+
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
                     tKdGerakM = rowData.get("KDGERAKMASUK");
-                    tBlTh = rowData.get("BLTH").toString().substring(3, 4) + rowData.get("BLTH").toString().substring(0, 2);
+                    tBlTh = rowData.get("BLTH"); //rowData.get("BLTH").toString().substring(2, 4) + rowData.get("BLTH").toString().substring(0, 2);
                     tStatus = rowData.get("STATUS");
                     tNorek = rowData.get("NOREK");
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
-                    tRPBK = Integer.parseInt(rowData.get("RPBK"));
+                    tRPBK = Integer.parseInt(rowData.get("RPBK1")) + Integer.parseInt(rowData.get("RPBK2")) + Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.remove("HASIL");
                         rowData.put("HASIL", " ");
+
+                        log.info("idpelErr.equals(tIDPel)");
                     } else {
                         sql = "{ call PROC_31_BATALPIUTANG(?,?,?,?,?,?,?,?,?,?,?,?) }";
                         cst = con.prepareCall(sql);
@@ -319,6 +327,7 @@ public class clsTransaksi_Proc {
                         cst.execute();
 
                         sql = "select parhasil.getHasil AS HASIL FROM dual";
+
                         cst = con.prepareCall(sql);
                         rs = cst.executeQuery();
 
@@ -328,9 +337,9 @@ public class clsTransaksi_Proc {
                             throw new Exception("Gagal ambil parhasil.");
                         }
 
-                        String status = lMapData.get(0).get(0).toString();
+                        String status = lMapData.get(0).get("hasil").substring(0,1);
 
-                        if (Integer.parseInt(lMapData.get(0).get(0).substring(0,1)) == 1) {
+                        if (Integer.parseInt(lMapData.get(0).get("hasil").substring(0,1)) == 1) {
                             List<Map<String, String>> dsDacen = new ArrayList<Map<String, String>>();
 
                             sql = "{ call PROC_DACEN_KIRIM_DBP(?,?,?) }";
@@ -340,7 +349,7 @@ public class clsTransaksi_Proc {
                             cst.setString(2, tBlTh);
                             cst.setString(3, tanggal);
 
-                            cst.execute();
+                            //cst.execute();
 
                             sql = "select parhasil.getHasil AS HASIL FROM dual";
                             cst = con.prepareCall(sql);
@@ -348,11 +357,10 @@ public class clsTransaksi_Proc {
 
                             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-                            if (!lMapData.get(0).get(0).toString().substring(0,1).equals("1")) {
+                            if (!lMapData.get(0).get("hasil").toString().substring(0,1).equals("1")) {
                                 Err = lMapData.get(0).get(0).toString();
                             }
 
-                            rowData.remove("HASIL");
                             rowData.put("HASIL", status);
 
                             j++;
@@ -366,32 +374,38 @@ public class clsTransaksi_Proc {
 
                             cst = con.prepareCall(sql);
 
+                            log.info("sql :: " + sql);
+
                             rs = cst.executeQuery();
 
                             List<Map<String,String>> dsCetak = CommonModule.convertResultsetToListStr(rs);
+
+                            log.info("dsCetak :: " + dsCetak.toString());
 
                             if (dsCetak.size() == 0) {
                                 throw new Exception("Gagal ambil dscetak.");
                             }
 
-                            rowData.put("TGLBAYAR", dsCetak.get(0).get("TGLBAYAR"));
-                            rowData.put("WKTBAYAR", dsCetak.get(0).get("WKTBAYAR"));
-                            rowData.put("KDPP", dsCetak.get(0).get("KDPP"));
-                            rowData.put("KDPEMBAYAR", dsCetak.get(0).get("KDPEMBAYAR"));
-                            rowData.put("KDKIRIM", dsCetak.get(0).get("KDKIRIM"));
-                            rowData.put("CETAK", dsCetak.get(0).get("CETAK"));
-                            rowData.put("BPAKAI1", dsCetak.get(0).get("BPAKAI1"));
-                            rowData.put("BPAKAI2", dsCetak.get(0).get("BPAKAI2"));
-                            rowData.put("BPAKAI3", dsCetak.get(0).get("BPAKAI3"));
-                            rowData.put("BKVAR", dsCetak.get(0).get("BKVAR"));
-                            rowData.put("PERIODE", dsCetak.get(0).get("PERIODE"));
-                            rowData.put("TELPPENGADUAN", dsCetak.get(0).get("TELPPENGADUAN"));
-                            rowData.put("PESAN", dsCetak.get(0).get("PESAN"));
-                            rowData.put("TGLCETAK", dsCetak.get(0).get("TGLCETAK"));
+                            rowData.put("TGLBAYAR", dsCetak.get(0).get("tglbayar"));
+                            rowData.put("WKTBAYAR", dsCetak.get(0).get("wktbayar"));
+                            rowData.put("KDPP", dsCetak.get(0).get("kdpp"));
+                            rowData.put("KDPEMBAYAR", dsCetak.get(0).get("kdpembayar"));
+                            rowData.put("KDKIRIM", dsCetak.get(0).get("kdkirim"));
+                            rowData.put("CETAK", dsCetak.get(0).get("cetak"));
+                            rowData.put("BPAKAI1", dsCetak.get(0).get("bpakai1"));
+                            rowData.put("BPAKAI2", dsCetak.get(0).get("bpakai2"));
+                            rowData.put("BPAKAI3", dsCetak.get(0).get("bpakai3"));
+                            rowData.put("BKVAR", dsCetak.get(0).get("bkvar"));
+                            rowData.put("PERIODE", dsCetak.get(0).get("periode"));
+                            rowData.put("TELPPENGADUAN", dsCetak.get(0).get("telppengaduan"));
+                            rowData.put("PESAN", dsCetak.get(0).get("pesan"));
+                            rowData.put("TGLCETAK", dsCetak.get(0).get("tglcetak"));
                         } else {
                             idpelErr = tIDPel;
                             rowData.put("HASIL", "0, " + lMapData.get(0).get(0).toString());
                         }
+
+                        log.info("rowData :: " + rowData.toString());
                     }
                 }
 
@@ -404,6 +418,7 @@ public class clsTransaksi_Proc {
             con.close();
         } catch (Exception ex)
         {
+            log.info("Exception :: " + ex.getMessage());
             retValue.put("wsReturn", dTrans);
             retValue.put("wsByRefError", ex.getMessage());
             retValue.put("wsByRefLbrProses", 0);
@@ -429,7 +444,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -440,7 +455,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_32DUPP_BUATDAFTAR(?,?,?,?,?,?,?,?,?,?) }";
@@ -509,7 +524,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -520,7 +535,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_41DUPR_BUATDAFTAR(?,?,?,?,?,?,?,?,?,?) }";
@@ -589,7 +604,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -600,7 +615,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_41_LANCARKERAGU(?,?,?,?,?,?,?,?,?,?) }";
@@ -669,7 +684,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -680,7 +695,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_32_HAPUSPIUTANG(?,?,?,?,?,?,?,?,?,?) }";
@@ -753,7 +768,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -771,7 +786,7 @@ public class clsTransaksi_Proc {
                     tkodeAlasan = rowData.get("KODEALASAN");
                     tdetailAlasan = rowData.get("DETAILALASAN");
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call Proc_BKBATAL(?,?,?,?,?,?,?,?,?,?,?,?,?) }";
@@ -860,7 +875,7 @@ public class clsTransaksi_Proc {
             //todo: tanggal = ambilTanggaleksekusi(Err, waktu)
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -874,7 +889,7 @@ public class clsTransaksi_Proc {
                     tRPBK2 = Integer.parseInt(rowData.get("RPBK2"));
                     tRPBK3 = Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_21ENTRI_LUNAS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";
@@ -1072,7 +1087,7 @@ public class clsTransaksi_Proc {
                 throw new Exception("Gagal proses,");
             }
 
-            if (lMapData.get(0).get(0).substring(0,1) == "1") {
+            if (lMapData.get(0).get(0).substring(0,1).equals("1")) {
                 sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
                 cst = con.prepareCall(sql);
                 cst.setString(1, dTrans.get(0).get("IDPEL"));
@@ -1129,7 +1144,7 @@ public class clsTransaksi_Proc {
             //todo: tanggal = ambilTanggaleksekusi(Err, waktu)
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -1143,7 +1158,7 @@ public class clsTransaksi_Proc {
                     tRPBK2 = Integer.parseInt(rowData.get("RPBK2"));
                     tRPBK3 = Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_21HAPUSGAGALUPLOAD(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";
@@ -1275,7 +1290,7 @@ public class clsTransaksi_Proc {
                     tIDPel = rowData.get("IDPEL");
                 }
 
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     //tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
                     tKdGerakM = ""; //rowData.get("KDGERAKMASUK");
@@ -1414,7 +1429,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -1425,7 +1440,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_32DHPfromDUPP(?,?,?,?,?,?,?,?,?,?,?,?) }";
@@ -1545,7 +1560,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -1566,7 +1581,7 @@ public class clsTransaksi_Proc {
                         throw new Exception("Belum / Tidak Ada Respon.");
                     }
 
-                    if (lMapData.get(0).get(0) == "00") {
+                    if (lMapData.get(0).get(0).equals("00")) {
                         //VALIDASI CLOSE DATE
                         cls_CloseDate cClose = new cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("41", tanggal);
@@ -1575,7 +1590,7 @@ public class clsTransaksi_Proc {
                         }
                         //END VALIDASI CLOSE DATE
 
-                        if (idpelErr == tIDPel) {
+                        if (idpelErr.equals(tIDPel)) {
                             rowData.put("HASIL", " ");
                         } else {
                             sql = "{ call PROC_41PRRfromDUPR(?,?,?,?,?,?,?,?,?,?,?) }";
@@ -1700,7 +1715,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -1728,11 +1743,11 @@ public class clsTransaksi_Proc {
                         throw new Exception("Belum / Tidak Ada Respon.");
                     }
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
 
-                        if (rowData.get("IDPEL").substring(0,2) == "51" || rowData.get("IDPEL").substring(0,2) == "53") {
+                        if (rowData.get("IDPEL").substring(0,2).equals("51") || rowData.get("IDPEL").substring(0,2).equals("53")) {
                             tanggal = rowData.get("TGLBAYAR");
                         }
 
@@ -1864,7 +1879,7 @@ public class clsTransaksi_Proc {
             String Err = "";
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -1875,7 +1890,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "{ call PROC_21_GIRALISASI(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";
@@ -2007,7 +2022,7 @@ public class clsTransaksi_Proc {
             String Err = "";
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -2055,7 +2070,7 @@ public class clsTransaksi_Proc {
                     }
 
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -2190,7 +2205,7 @@ public class clsTransaksi_Proc {
             String Err = "";
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -2202,7 +2217,7 @@ public class clsTransaksi_Proc {
                     tRPBK = rowData.get("RPBK");
                     tKDKIRIM = "KIRIMKE";
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -2296,7 +2311,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -2309,7 +2324,7 @@ public class clsTransaksi_Proc {
                     tdaya = Integer.parseInt(rowData.get("DAYA"));
                     ttarip = rowData.get("TARIP");
 
-                    if (rowData.get("KDAYA") == "K") {
+                    if (rowData.get("KDAYA").equals("K")) {
                         tdaya = tdaya * 1000;
                     } else {
                         tdaya = tdaya;
@@ -2334,7 +2349,7 @@ public class clsTransaksi_Proc {
                         throw new Exception(Err);
                     }
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -2446,7 +2461,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tBLTH = rowData.get("BLTH");
@@ -2548,7 +2563,7 @@ public class clsTransaksi_Proc {
                     tRPTDLBARU = Integer.parseInt(rowData.get("RPTDLBARU"));
                     tRPSELISIH = Integer.parseInt(rowData.get("RPSELISIH"));
 
-                    if (rowData.get("KDAYA") == "K") {
+                    if (rowData.get("KDAYA").equals("K")) {
                         tDAYA = tDAYA * 1000;
                     } else {
                         tDAYA = tDAYA;
@@ -2565,7 +2580,7 @@ public class clsTransaksi_Proc {
                     }
                     rowData.put("IDTARIP", IdTarip);
 
-                    if (idpelErr == tIDPEL) {
+                    if (idpelErr.equals(tIDPEL)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -3008,7 +3023,7 @@ public class clsTransaksi_Proc {
 
             sql = "{ call " + procedurename + " }";
 
-            if (procedurename == "emulsion.bill$51_dkrp.HITUNGKOREKSI@BILLINGJATIM") {
+            if (procedurename.equals("emulsion.bill$51_dkrp.HITUNGKOREKSI@BILLINGJATIM")) {
 
             }
 
@@ -3063,7 +3078,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -3077,7 +3092,7 @@ public class clsTransaksi_Proc {
                     tdaya = Integer.parseInt(rowData.get("DAYA"));
                     ttarip = rowData.get("TARIP");
 
-                    if (rowData.get("KDAYA") == "K") {
+                    if (rowData.get("KDAYA").equals("K")) {
                         tdaya = tdaya * 1000;
                     } else {
                         tdaya = tdaya;
@@ -3096,7 +3111,7 @@ public class clsTransaksi_Proc {
                     //todo: InsertTempDKRP(dtrans, Err)
 
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -3177,7 +3192,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -3190,7 +3205,7 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK1")) + Integer.parseInt(rowData.get("RPBK2")) + Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (tKdkoreksi == "D") {
+                    if (tKdkoreksi.equals("D")) {
                         tdaya = Integer.parseInt(rowData.get("DAYA"));
                         ttarip = rowData.get("TARIP");
 
@@ -3201,14 +3216,14 @@ public class clsTransaksi_Proc {
                     }
 
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
 
-                        if (tKdkoreksi == "D") {
+                        if (tKdkoreksi.equals("D")) {
                             sql = "{ call PROC_12D_RESTITUSI(?,?,?,?,?,?,?,?,?,?,?,?) }";
-                        } else if (tKdkoreksi == "E") {
+                        } else if (tKdkoreksi.equals("E")) {
                             sql = "{ call PROC_12D_SUPLISI(?,?,?,?,?,?,?,?,?,?,?,?) }";
                         }
 
@@ -3286,7 +3301,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -3301,11 +3316,11 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK1")) + Integer.parseInt(rowData.get("RPBK2")) + Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (tKdkoreksi == "D") {
+                    if (tKdkoreksi.equals("D")) {
                         tdaya = Integer.parseInt(rowData.get("DAYA"));
                         ttarip = rowData.get("TARIP");
 
-                        if (rowData.get("KDAYA") == "K") {
+                        if (rowData.get("KDAYA").equals("K")) {
                             tdaya = tdaya * 1000;
                         } else {
                             tdaya = tdaya;
@@ -3326,12 +3341,12 @@ public class clsTransaksi_Proc {
                     }
 
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
 
-                        if (tKdkoreksi == "D") {
+                        if (tKdkoreksi.equals("D")) {
                             if (bSuplisi) {
                                 sql = "{ call PROC_12D_SUPLISI(?,?,?,?,?,?,?,?,?,?,?,?) }";
                             } else {
@@ -3413,7 +3428,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -3428,11 +3443,11 @@ public class clsTransaksi_Proc {
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
                     tRPBK = Integer.parseInt(rowData.get("RPBK1")) + Integer.parseInt(rowData.get("RPBK2")) + Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (tKdkoreksi == "D") {
+                    if (tKdkoreksi.equals("D")) {
                         tdaya = Integer.parseInt(rowData.get("DAYA"));
                         ttarip = rowData.get("TARIP");
 
-                        if (rowData.get("KDAYA") == "K") {
+                        if (rowData.get("KDAYA").equals("K")) {
                             tdaya = tdaya * 1000;
                         } else {
                             tdaya = tdaya;
@@ -3445,12 +3460,12 @@ public class clsTransaksi_Proc {
                     }
 
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
 
-                        if (tKdkoreksi == "D") {
+                        if (tKdkoreksi.equals("D")) {
                             if (bSuplisi) {
                                 sql = "{ call PROC_12D_SUPLISIJATELINDO(?,?,?,?,?,?,?,?,?,?,?) }";
                             } else {
@@ -3530,7 +3545,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -3553,7 +3568,7 @@ public class clsTransaksi_Proc {
 
                     //todo: InsertTempSOREKSUSULAN(tTransaksiBy, dtrans, Err)
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -4232,9 +4247,9 @@ public class clsTransaksi_Proc {
             cst.setString(1, KDKELOMPOK);
             cst.execute();
 
-            if (unitup.substring(0,2) == "13") {
+            if (unitup.substring(0,2).equals("13")) {
                 sql = "{ call PROC_InsertTempSOREK_SUMBAR(?,?,?,?,?,?,?,?) }";
-            } else if (unitup.substring(0,2) == "51") {
+            } else if (unitup.substring(0,2).equals("51")) {
                 sql = "{ call PROC_InsertTempSOREK(?,?,?,?,?,?,?,?) }";
             } else {
                 sql = "{ call PROC_InsertTempSOREK(?,?,?,?,?,?,?,?) }";
@@ -4305,7 +4320,7 @@ public class clsTransaksi_Proc {
             CallableStatement cst;
             String sql = "";
 
-            if (unitup.substring(0,2) == "13") {
+            if (unitup.substring(0,2).equals("13")) {
                 sql = "{ call PROC_InsertTempSOREK_SUMBAR(?,?,?,?,?,?,?,?) }";
             }
 
@@ -4776,7 +4791,7 @@ public class clsTransaksi_Proc {
             cst.execute();
 
             for (Map<String, String> rowData : dtrans) {
-                if (rowData.get("HASIL") == "") {
+                if (rowData.get("HASIL").equals("")) {
                     //todo: InsertTempciciclan(i, dtrans, tTransaksiBy, Err, tnorek, v_NOAGENDA, tIDPel, tBlTh)
 
                     if (rowData == dtrans.get(dtrans.size() -1)) {
@@ -4806,7 +4821,7 @@ public class clsTransaksi_Proc {
                         }
 
                         for (Map<String, String> rowData2 : dtrans) {
-                            if (lMapData.get(0).get(0).substring(0,1) == "1") {
+                            if (lMapData.get(0).get(0).substring(0,1).equals("1")) {
                                 rowData2.put("HASIL", lMapData.get(0).get(0));
                             } else {
                                 rowData2.put("HASIL", "0, " + lMapData.get(0).get(0));
@@ -4926,7 +4941,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -4941,7 +4956,7 @@ public class clsTransaksi_Proc {
                     tKDKIRIM = "TERIMADARI";
                     tKDTERIMA = rowData.get("KDTERIMA");
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -5317,7 +5332,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("HASIL") == "") {
+                if (rowData.get("HASIL").equals("")) {
 
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
@@ -5335,7 +5350,7 @@ public class clsTransaksi_Proc {
                     tKDPP = rowData.get("KDPP");
                     tKdPembayar = "TDKDIPAKAI";
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
                     } else {
                         sql = "";
@@ -5751,7 +5766,7 @@ public class clsTransaksi_Proc {
             CallableStatement cst;
             String sql = "";
 
-            if (pSTATUS_KIRIM == "B") {
+            if (pSTATUS_KIRIM.equals("B")) {
                 sql = "{ call PROC_DACEN_KIRIM_DBP_TEMP_DEP(?,?,?,?,?,?,?,?) }";
                 cst = con.prepareCall(sql);
                 cst.setString(1, "");
@@ -5815,7 +5830,7 @@ public class clsTransaksi_Proc {
             CallableStatement cst;
             String sql = "";
 
-            if (sStatus_terima == "B") {
+            if (sStatus_terima.equals("B")) {
                 sql = "Select rc from V_GETRESPON_PRR where idpel='" + sIdpel + "'";
             } else {
                 sql = "Select rc from V_GETRESPON_DKRP where idpel='" + sIdpel + "'";
@@ -5829,10 +5844,10 @@ public class clsTransaksi_Proc {
                 throw new Exception("Belum ada Respon.");
             }
 
-            if (lMapData.get(0).get(0) == "00") {
-                if (sStatus_terima == "A") {
+            if (lMapData.get(0).get(0).equals("00")) {
+                if (sStatus_terima.equals("A")) {
                     sql = "select idpel from dkrpbaru where idpel='" + sIdpel + "' and tgkoreksi=to_char(sysdate,'yyyymmdd') and kdgerakmasuk='12'";
-                } else if (sStatus_terima == "B") {
+                } else if (sStatus_terima.equals("B")) {
                     sql = "select idpel from dkrpbaru where idpel='" + sIdpel + "' and tgkoreksi=to_char(sysdate,'yyyymmdd') and kdgerakmasuk='12'";
                 }
 
@@ -5845,21 +5860,21 @@ public class clsTransaksi_Proc {
                 } else {
                     pesan ="Kode Respond diijinkan, silahkan lanjut";
                 }
-            } else if (lMapData.get(0).get(0) == "01") {
+            } else if (lMapData.get(0).get(0).equals("01")) {
                 pesan ="Data tidak ditemukan";
-            } else if (lMapData.get(0).get(0) == "02") {
+            } else if (lMapData.get(0).get(0).equals("02")) {
                 pesan = "Sudah lunas (21,22,23)";
-            } else if (lMapData.get(0).get(0) == "03") {
+            } else if (lMapData.get(0).get(0).equals("03")) {
                 pesan = "Sudah dibatalkan sebelumnya(31)";
-            } else if (lMapData.get(0).get(0) == "04") {
+            } else if (lMapData.get(0).get(0).equals("04")) {
                 pesan = "Sudah PRR sebelumnya(41)";
-            } else if (lMapData.get(0).get(0) == "05") {
+            } else if (lMapData.get(0).get(0).equals("05")) {
                 pesan = "Sudah diflag tusbung mandiri sebelumnya";
-            } else if (lMapData.get(0).get(0) == "06") {
+            } else if (lMapData.get(0).get(0).equals("06")) {
                 pesan = "Lain-lain";
-            } else if (lMapData.get(0).get(0) == "43") {
+            } else if (lMapData.get(0).get(0).equals("43")) {
                 pesan = "Pelanggan sudah dipending sebelumnya";
-            } else if (lMapData.get(0).get(0) == "44") {
+            } else if (lMapData.get(0).get(0).equals("44")) {
                 pesan = "Pelanggan sudah diunpending sebelumnya";
             } else {
                 pesan = "Belum ada Respon";
@@ -6024,7 +6039,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true") {
+                if (rowData.get("Simpan").equals("true")) {
                     tIdpel = rowData.get("IDPEL");
 
                     sql = "";
@@ -6043,7 +6058,7 @@ public class clsTransaksi_Proc {
 
                     cst.execute();
 
-                    if (pesan == "") {
+                    if (pesan.equals("")) {
                         sql = "select parhasil.getHasil AS HASIL FROM dual";
                         cst = con.prepareCall(sql);
                         rs = cst.executeQuery();
@@ -6053,7 +6068,7 @@ public class clsTransaksi_Proc {
                             throw new Exception("Gagal ambil parhasil.");
                         }
 
-                        if (lMapData.get(0).get(0) == "TRUE") {
+                        if (lMapData.get(0).get(0).equals("TRUE")) {
                             pesan = "";
                         } else {
                             pesan = "Gagal Simpan Idpel : " + tIdpel + ", " + lMapData.get(0).get(0);
@@ -6155,7 +6170,7 @@ public class clsTransaksi_Proc {
                 throw new Exception("Gagal proses, ");
             }
 
-            if (lMapData.get(0).get(0).substring(0,1) == "1") {
+            if (lMapData.get(0).get(0).substring(0,1).equals("1")) {
                 pesan = lMapData.get(0).get(0).substring(0,2);
             } else {
                 throw new Exception("Gagal proses, " + lMapData.get(0).get(0));
@@ -6202,7 +6217,7 @@ public class clsTransaksi_Proc {
             //todo: tanggal = ambilTanggaleksekusi(Err, waktu)
 
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan") == "true" && rowData.get("HASIL") == "") {
+                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -6216,7 +6231,7 @@ public class clsTransaksi_Proc {
                     tRPBK2 = Integer.parseInt(rowData.get("RPBK2"));
                     tRPBK3 = Integer.parseInt(rowData.get("RPBK3"));
 
-                    if (idpelErr == tIDPel) {
+                    if (idpelErr.equals(tIDPel)) {
                         rowData.remove("HASIL");
                         rowData.put("HASIL", " ");
                     } else {

@@ -3,10 +3,14 @@ package id.co.hans.sample.client.components;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.json.client.JSONArray;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
+import com.sencha.gxt.core.client.IdentityValueProvider;
+import com.sencha.gxt.core.client.Style;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.client.loader.HttpProxy;
 import com.sencha.gxt.data.shared.ListStore;
@@ -17,6 +21,7 @@ import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.grid.CheckBoxSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
@@ -122,6 +127,60 @@ public class IconDynamicGrid implements IsWidget {
         return this.grid.getView();
     }
 
+    public Grid getGrid(){
+        return this.grid;
+    }
+
+
+    public void setJsonData(JSONObject jsonObject){
+        List<Map<String, String>> datas = new ArrayList<Map<String, String>>();
+        Map<String, String> rowData;
+
+        if (jsonObject.containsKey("wsReturn")) {
+            JSONArray array = jsonObject.get("wsReturn").isArray();
+
+            for (int idx = 0; idx < array.size(); idx++) {
+                rowData = new HashMap<String, String>();
+                rowData.put("id", String.valueOf(idx));
+
+                JSONObject sourceRowData = array.get(idx).isObject();
+
+                for (Object obj : sourceRowData.keySet()) {
+                    rowData.put(obj.toString().toUpperCase(), sourceRowData.get(obj.toString()).isString().stringValue());
+                }
+                datas.add(rowData);
+            }
+        }
+
+
+        this.grid.getStore().clear();
+        this.grid.getStore().addAll(datas);
+        //this.grid.getStore().commitChanges();;
+    }
+
+    public void updateJsonData(JSONObject jsonObject){
+        ListStore<Map<String,String>> listStore = this.getGrid().getStore();
+        List<Map<String, String>> datas = new ArrayList<Map<String, String>>();
+        Map<String, String> rowData;
+
+        if (jsonObject.containsKey("wsReturn")) {
+            JSONArray array = jsonObject.get("wsReturn").isArray();
+
+            for (int idx = 0; idx < array.size(); idx++) {
+                rowData = new HashMap<String, String>();
+                //rowData.put("id", String.valueOf(idx));
+
+                JSONObject sourceRowData = array.get(idx).isObject();
+
+                for (Object obj : sourceRowData.keySet()) {
+                    rowData.put(obj.toString().toUpperCase(), sourceRowData.get(obj.toString()).isString().stringValue());
+                }
+                //datas.add(rowData);
+                listStore.update(rowData);
+            }
+        }
+    }
+
     public void setUrlParameters(String parameters) {
         this.storeUrlParameters = parameters;
     }
@@ -162,7 +221,7 @@ public class IconDynamicGrid implements IsWidget {
         store = new ListStore<Map<String, String>>(new ModelKeyProvider<Map<String,String>>() {
             @Override
             public String getKey(Map<String, String> item) {
-                return null;
+                return String.valueOf(item.get("id"));
             }
         });
 
@@ -206,7 +265,6 @@ public class IconDynamicGrid implements IsWidget {
         cm = new ColumnModel<Map<String, String>>(columnConfigs);
 
         grid = new Grid<Map<String, String>>(store, cm);
-//        grid.getView().setForceFit(true);
         grid.setLoader(loader);
         grid.setLoadMask(true);
         grid.setBorders(true);
@@ -215,6 +273,7 @@ public class IconDynamicGrid implements IsWidget {
         grid.getView().setStripeRows(true);
         grid.getView().setColumnLines(true);
 
+        grid.getSelectionModel().setSelectionMode(Style.SelectionMode.SINGLE);
 
         FramedPanel fp = new FramedPanel();
         fp.setHeadingText(this.gridHeader);

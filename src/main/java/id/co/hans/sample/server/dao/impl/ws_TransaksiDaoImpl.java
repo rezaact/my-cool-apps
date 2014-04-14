@@ -9,6 +9,7 @@ import id.co.hans.sample.server.utility.CommonModule;
 import oracle.jdbc.OracleTypes;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private clsTransaksi_Proc clsTransaksiProc;
 
     @Override
     public Map<String, Object> HelloWorld() {
@@ -46,7 +50,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
     public Map<String, Object> cekVersiAplikasi(String versi) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        if (versi == "v.2.0.2") {
+        if (versi.equals("v.2.0.2")) {
             retValue.put("wsReturn", true);
         } else {
             retValue.put("wsReturn", false);
@@ -58,15 +62,16 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
     //---- common module ---
     private String getIdpel(String vJenis, String tpel) {
         String retVal = "";
+        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
         try {
             Connection con = jdbcTemplate.getDataSource().getConnection();
             CallableStatement cst;
             String sql = "";
 
-            if(vJenis == "IdPel") {
+            if(vJenis.equals("IdPel")) {
                 sql = "select IDPEL from dil where IDPEL = '" + tpel + "'";
-            } else if(vJenis == "NoPel") {
+            } else if(vJenis.equals("NoPel")) {
                 sql = "select IDPEL from dil where NOPEL = '" + tpel + "'";
             }
 
@@ -74,10 +79,14 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
             ResultSet rs = cst.executeQuery();
 
-            while(rs.next()) {
-                retVal = rs.getObject(1).toString();
-                break;
-            }
+            lMapData = CommonModule.convertResultsetToListStr(rs);
+
+            if (lMapData.size() == 0) retVal = "";
+            else retVal = lMapData.get(0).get("idpel");
+
+            CommonModule.getLogger(this).info("retVal : " + retVal);
+
+            con.close();
         }
         catch (Exception ex) {
             retVal = "";
@@ -93,9 +102,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql = "";
 
-            if(vJenis == "IdPel") {
+            if(vJenis.equals("IdPel")) {
                 sql = "select UNITUP as tUnitupidpel from dil where IDPEL = '" + tpel + "'";
-            } else if(vJenis == "NoPel") {
+            } else if(vJenis.equals("NoPel")) {
                 sql = "select UNITUP as tUnitupidpel from dil where NOPEL = '" + tpel + "'";
             }
 
@@ -127,7 +136,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -295,7 +304,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -365,7 +374,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -424,8 +433,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
         try
         {
+
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -433,11 +443,18 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql;
 
             sql = "{ call PKG_VIEW_TAMPILFORM.NEW_31_TAMPILFORM(?,?,?,?) }";
+
+            CommonModule.getLogger(this).info(sql);
+            CommonModule.getLogger(this).info("tpel : " + tpel);
+            CommonModule.getLogger(this).info("vJenis : " + vJenis);
+            CommonModule.getLogger(this).info("tBLTH : " + tBLTH);
+            CommonModule.getLogger(this).info("tPetugas : " + tPetugas);
+
             cst = con.prepareCall(sql);
-            cst.registerOutParameter("OUT_DATA", OracleTypes.CURSOR);
             cst.setString("vIDPEL", tpel);
-            cst.setString("vBLTH", tpel);
-            cst.setString("vPETUGAS", tpel);
+            cst.setString("vBLTH", tBLTH);
+            cst.setString("vPETUGAS", tPetugas);
+            cst.registerOutParameter("OUT_DATA", OracleTypes.CURSOR);
             cst.execute();
 
             ResultSet rs = (ResultSet) cst.getObject("OUT_DATA");
@@ -473,7 +490,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -533,7 +550,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -593,7 +610,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -653,7 +670,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -998,7 +1015,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             //todo: method ini mengembalikan dalam bentuk XML dan XMLSchema. Cek method pemanggil.
 
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1052,7 +1069,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             //todo: method ini mengembalikan dalam bentuk XML dan XMLSchema. Cek method pemanggil.
 
             tUnitupidpel = getUnitupIdpel(vJenis, tpel);
-            if (tUnitupidpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tUnitupidpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
@@ -1076,7 +1093,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             cst.execute();
 
             if(ORATOORA) {
-                if(tUnitupidpel.substring(0,2) == "13") {
+                if(tUnitupidpel.substring(0,2).equals("13")) {
                     //---khusus untuk sumbar
                     sql = "SELECT BLTH, IDPEL, NOPEL, KDGERAKMASUK, UPLOADTIME, UPLOADBY, KDGERAKKELUAR, TGLBAYAR, WKTBAYAR, KDPP, KDPEMBAYAR, KDKOREKSI, TGKOREKSI, STATUS, KDPEMBPP, KDPEMBAYARSIP3, UNITUP, PEMDA, NAMA, PNJ, NAMAPNJ, NOBANG, KETNOBANG, RT, RW, NODLMRT, KETNODLMRT, LINGKUNGAN, KODEPOS, IDTARIP, TARIP, KDPEMBTRF, ABONMETER, DAYA, KDAYA, KOGOL, SUBKOGOL, FRT, FJN, KDPPJ, UNITKJ, KDINKASO, KDKELOMPOK, TGLJTTEMPO, KDDK, TGLBACA, SLALWBP, SAHLWBP, SLAWBP, SAHWBP, SLAKVARH, SAHKVARH, SKVAMAX, FAKM, FAKMKVARH, FAKMKVAMAX, KWHLWBP, KWHWBP, BLOK3, PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP, RPBLOK3, RPKVARH, RPBEBAN, CTTLB, RPTTLB, RPPTL, RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO, RPSEWAKAP, KDANGSA, RPANGSA, KDANGSB, RPANGSB, KDANGSC, RPANGSC, RPMAT, RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI, RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3, RPTDLLAMA, RPTDLBARU, RPSELISIH, NOREK, NOAGENDA, FLAGSOPP, FLAGANJA, KDKIRIM, KDTERIMA, TGLKONSLD, KONSLDKE, UPDATEBY, UPDATETIME, ";
                     sql += " JNSMUT, BLTHMUT,  KDMUT,  TGLNYALA,  NOGARDU,  NOTIANG,  NOMETER, RPBP, RPUJL";
@@ -1147,7 +1164,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             //todo: method ini mengembalikan dalam bentuk XML dan XMLSchema. Cek method pemanggil.
 
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1195,7 +1212,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
             tpel = getIdpel(vJenis, tpel);
-            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+            if (tpel.equals("")) throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1257,7 +1274,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
 //            tpel = getIdpel(vJenis, tpel);
-//            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+//            if (tpel.equals("") throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1353,7 +1370,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
 //            tpel = getIdpel(vJenis, tpel);
-//            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+//            if (tpel.equals("") throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1443,7 +1460,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
 //            tpel = getIdpel(vJenis, tpel);
-//            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+//            if (tpel.equals("") throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1513,7 +1530,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
 //            tpel = getIdpel(vJenis, tpel);
-//            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+//            if (tpel.equals("") throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1582,7 +1599,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         try
         {
 //            tpel = getIdpel(vJenis, tpel);
-//            if (tpel == "") throw new Exception("ID Pelanggan tidak ditemukan");
+//            if (tpel.equals("") throw new Exception("ID Pelanggan tidak ditemukan");
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
@@ -1590,7 +1607,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             String sql;
 
             sql = "SELECT TGLCETAK AS TANGGAL, UNITUP, BLTH, KDKELOMPOK, TGLJTTEMPO,  KOGOL, LEMBAR, KWHLWBP, KWHWBP, BLOK3,  PEMKWH, KWHKVARH, KELBKVARH, RPLWBP, RPWBP,  RPBLOK3, RPKVARH, RPBEBAN, RPTTLB, RPPTL,  RPTB, RPPPN, RPBPJU, RPTRAFO, RPSEWATRAFO,  RPSEWAKAP, RPANGSA, RPANGSB, RPANGSC, RPMAT,  RPPLN, RPTAG, RPPRODUKSI, RPSUBSIDI, RPREDUKSI,  RPINSENTIF, RPDISINSENTIF, RPBK1, RPBK2, RPBK3,  RPTDLLAMA, RPTDLBARU, RPSELISIH";
-            if (unitup.substring(0, 2) == "13") {
+            if (unitup.substring(0, 2).equals("13")) {
                 sql += " FROM INTEG_SOREK13000_GOL";
             }
             sql += " WHERE BLTH = '" + thbl + "'";
@@ -1635,9 +1652,9 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
             CallableStatement cst;
             String sql = "";
 
-            if(vJenis == "IdPel") {
+            if(vJenis.equals("IdPel")) {
                 sql = "select IDPEL from dil where IDPEL = '" + tPEL + "'";
-            } else if(vJenis == "NoPel") {
+            } else if(vJenis.equals("NoPel")) {
                 sql = "select IDPEL from dil where NOPEL = '" + tPEL + "'";
             }
 
@@ -1719,7 +1736,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
                                                List<Map<String, String>> strData) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        clsTransaksi_Proc clsTransaksiProc = new clsTransaksi_Proc();
+        //clsTransaksi_Proc clsTransaksiProc = new clsTransaksi_Proc();
         retValue = clsTransaksiProc.SetDataIdpel_31(tTransaksiBy, strData);   // note: parameter lbrproses
 
         return retValue;
@@ -1829,7 +1846,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
         retFunc = clsTransaksiProc.SetData_21insert(dtrans, tTransaksiBy);
 
-        if (retFunc.get("wsReturn") == "") {
+        if (retFunc.get("wsReturn").equals("")) {
             retValue = clsTransaksiProc.SetData_21upload(tTransaksiBy, tTglBayar, tKdPP);
         } else {
             retValue.put("wsReturn", "");
@@ -9799,7 +9816,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 //        List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 //        String mSQL = "", Sql = "";
 //
-//        if ( vJenis.toUpperCase() == "DAFTAR" ) {
+//        if ( vJenis.toUpperCase().equals("DAFTAR" ) {
 ////            Err = "TIDAK DAPAT DITAMPILKAN MELALUI MENU (HUB. ADMINISTRATOR)";
 ////            return;
 //
@@ -9828,49 +9845,49 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 //
 //            mSQL = Sql + " FROM VIEW_PANTAU_11_DFT_B ";
 //            mSQL = mSQL + " WHERE ";
-//            if ( vPilihTgl.toUpperCase() == "PEMBUKUAN" ) {
+//            if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN" ) {
 //                mSQL = mSQL + "  TGLBUKU  >= '" + tTglmulai + "' ";
 //                mSQL = mSQL + " AND TGLBUKU  <= '" + tTglsampai + "' ";
-//            } else if ( vPilihTgl.toUpperCase() == "TRANSAKSI" ) {
+//            } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI" ) {
 //                mSQL = mSQL + "  TANGGAL  >= '" + tTglmulai + "' ";
 //                mSQL = mSQL + " AND TANGGAL  <= '" + tTglsampai + "' ";
 //            }
-//            if ( tUnitUP.toUpperCase() == "ALL" ) {
+//            if ( tUnitUP.toUpperCase().equals("ALL" ) {
 //                mSQL = mSQL + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "'))) ";
 //            } else {
 //                mSQL = mSQL + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "')) ";
 //            }
-//            if ( vPilihTgl.toUpperCase() == "PEMBUKUAN" ) {
+//            if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN" ) {
 //                mSQL = mSQL + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,IDPEL, KOGOL,KDPEMBPP,STATUS ";
-//            } else if ( vPilihTgl.toUpperCase() == "TRANSAKSI" ) {
+//            } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI" ) {
 //                mSQL = mSQL + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,IDPEL, KOGOL,KDPEMBPP,STATUS ";
 //            }
 //
 //
-//        } else if ( vJenis.toUpperCase() == "REKAP" ) {
+//        } else if ( vJenis.toUpperCase().equals("REKAP" ) {
 //            mSQL = "SELECT ' ' AS NOMOR, sysdate as TGLCETAK, ";
 //            mSQL = mSQL + " TANGGAL, TGLBUKU, KDGERAK, UNITUP, BLTH, KOGOL, KDPEMBPP, STATUS, ";
 //            mSQL = mSQL + "   SUM(LEMBAR) AS LEMBAR,SUM(RPTAG) AS RPTAG,SUM(RPPTL) AS RPPTL, SUM(RPTB) AS RPTB, SUM(RPPPN) AS RPPPN, SUM(RPBPJU) AS RPBPJU, SUM(RPTRAFO) AS RPTRAFO, SUM(RPSEWATRAFO) AS RPSEWATRAFO, SUM(RPSEWAKAP) AS RPSEWAKAP, SUM(RPANGSA) AS RPANGSA, SUM(RPANGSB) AS RPANGSB, SUM(RPANGSC) AS RPANGSC, SUM(RPMAT) AS RPMAT, SUM(RPPLN) AS RPPLN, SUM(RPREDUKSI) AS RPREDUKSI, SUM(RPINSENTIF) AS RPINSENTIF, SUM(RPDISINSENTIF) AS RPDISINSENTIF, SUM(RPBK1) AS RPBK1, SUM(RPBK2) AS RPBK2, SUM(RPBK3) AS RPBK3 ";
 //
 //            mSQL = mSQL + " FROM VIEW_PANTAU_11_REKAP_T ";
 //            mSQL = mSQL + " WHERE ";
-//            if ( vPilihTgl.toUpperCase() == "PEMBUKUAN" ) {
+//            if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN" ) {
 //                mSQL = mSQL + "   TGLBUKU  >= '" + tTglmulai + "' ";
 //                mSQL = mSQL + " AND TGLBUKU  <= '" + tTglsampai + "' ";
-//            } else if ( vPilihTgl.toUpperCase() == "TRANSAKSI" ) {
+//            } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI" ) {
 //                mSQL = mSQL + "   TANGGAL  >= '" + tTglmulai + "' ";
 //                mSQL = mSQL + " AND TANGGAL  <= '" + tTglsampai + "' ";
 //            }
-//            if ( tUnitUP.toUpperCase() == "ALL" ) {
+//            if ( tUnitUP.toUpperCase().equals("ALL" ) {
 //                mSQL = mSQL + " AND UNITUP IN(SELECT UNITUP FROM UNITUP WHERE UNITAP = RTRIM(LTRIM('" + tUnitAP + "'))) ";
 //            } else {
 //                mSQL = mSQL + " AND UNITUP  = RTRIM(LTRIM('" + tUnitUP + "')) ";
 //            }
 //            mSQL = mSQL + " GROUP BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,BLTH,KOGOL,KDPEMBPP,STATUS ";
 //
-//            if ( vPilihTgl.toUpperCase() == "PEMBUKUAN" ) {
+//            if ( vPilihTgl.toUpperCase().equals("PEMBUKUAN" ) {
 //                mSQL = mSQL + " ORDER BY KDGERAK,UNITUP,TGLBUKU,TANGGAL,BLTH,KOGOL,KDPEMBPP,STATUS ";
-//            } else if ( vPilihTgl.toUpperCase() == "TRANSAKSI" ) {
+//            } else if ( vPilihTgl.toUpperCase().equals("TRANSAKSI" ) {
 //                mSQL = mSQL + " ORDER BY KDGERAK,UNITUP,TANGGAL,TGLBUKU,BLTH,KOGOL,KDPEMBPP,STATUS ";
 //            }
 //        }

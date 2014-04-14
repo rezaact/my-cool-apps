@@ -1,7 +1,11 @@
 package id.co.hans.sample.controller;
 
 
+import com.google.gwt.json.client.JSONArray;
+import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONValue;
 import id.co.hans.sample.server.dao.ws_TransaksiDao;
+import id.co.hans.sample.server.utility.CommonModule;
 import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -187,7 +191,7 @@ public class Ws_TransaksiController {
 
 
 
-    @RequestMapping(value = "**/Ws_Transaksi/GetViewIdPel_31.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_Transaksi/GetViewIdPel_31.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetViewIdPel_31(@RequestParam(value = "tpel", defaultValue = "")String tpel,
                                             @RequestParam(value = "vJenis", defaultValue = "")String vJenis,
@@ -195,15 +199,12 @@ public class Ws_TransaksiController {
                                             @RequestParam(value = "tPetugas", defaultValue = "")String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         JSONObject obj = new JSONObject();
-        StringWriter out = new StringWriter();
 
         String retVal = "Init";
         try {
             retValue=  ws_transaksiDao.GetViewIdPel_31(tpel,vJenis,tBLTH,tPetugas);
+
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -823,30 +824,34 @@ public class Ws_TransaksiController {
 
     }
 
-
-    @RequestMapping(value = "**/Ws_Transaksi/SetDataIdpel_31.json", method = RequestMethod.GET, produces = "application/json")
+    // strData : {"strData":[{"BLTH":"201008", "ABONMETER":"M", ... }]}
+    @RequestMapping(value = "**/Ws_Transaksi/SetDataIdpel_31.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject SetDataIdpel_31(@RequestParam(value = "lbrproses", defaultValue = "")Integer lbrproses,
                           @RequestParam(value = "tTransaksiBy", defaultValue = "")String tTransaksiBy,
-                          @RequestParam(value = "strData", defaultValue = "")List<Map<String,String>> strData) {
+                          @RequestParam(value = "strData", defaultValue = "")String strData) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         JSONObject obj = new JSONObject();
         StringWriter out = new StringWriter();
 
         String retVal = "Init";
         try {
-            retValue=  ws_transaksiDao.SetDataIdpel_31(lbrproses,tTransaksiBy,strData);
+
+            org.json.simple.parser.JSONParser parser = new org.json.simple.parser.JSONParser();
+            Object sourceDataJsonObject = parser.parse(strData);
+
+            List<Map<String, String>> sourceDataObject = (List<Map<String, String>>) sourceDataJsonObject;
+
+            retValue =  ws_transaksiDao.SetDataIdpel_31(lbrproses,tTransaksiBy,sourceDataObject);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
-            retVal = "Error parsing JSON. Msg: " + ex.getMessage();
+            retValue.put("wsReturn", null);
+            retValue.put("wsByRefError", ex.getMessage());
+            obj.put("result", retValue);
         }
 
         return obj;
-
     }
 
      @RequestMapping(value = "**/Ws_Transaksi/SetDataIdpel_41DUPR.json", method = RequestMethod.GET, produces = "application/json")
