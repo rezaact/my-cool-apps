@@ -15,6 +15,10 @@ public class ComboKodeSiklis extends AbstractComboComponent {
 
     private String cbSelectedValue;
 
+    private String unitUp = "";
+    private String thbl = "";
+    private String addSemua = "0";
+
     private Boolean hideLabel = false;
 
     public IconComboBox getComboBox() {
@@ -33,10 +37,37 @@ public class ComboKodeSiklis extends AbstractComboComponent {
         this.cb.getComboBox().setEnabled(flag);
     }
 
+    public void ComboKodeSiklis() { }
+
+    public void ComboKodeSiklis(String unitUp, String thbl) {
+        this.unitUp = unitUp;
+        this.thbl = thbl;
+    }
+
+    public void ComboKodeSiklis(String unitUp, String thbl, int addSemua) {
+        this.unitUp = unitUp;
+        this.thbl = thbl;
+        this.addSemua = String.valueOf(addSemua);
+    }
+
+    public void reloadWithParams(String unitUp, String thbl) {
+        this.unitUp = unitUp;
+        this.thbl = thbl;
+        cb.setStoreUrl("components/getComboKodeSiklis.json?unitUp=" + this.unitUp + "&thbl=" + this.thbl + "&addSemua=" + this.addSemua);
+        cb.loadStore();
+    }
+    public void reloadWithParams(String unitUp, String thbl, int addSemua) {
+        this.unitUp = unitUp;
+        this.thbl = thbl;
+        this.addSemua = String.valueOf(addSemua);
+        cb.setStoreUrl("components/getComboKodeSiklis.json?unitUp=" + this.unitUp + "&thbl=" + this.thbl + "&addSemua=" + this.addSemua);
+        cb.loadStore();
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("components/getComboKodeSiklis.json?unitUp=&addSemua=1");
+        cb.setStoreUrl("components/getComboKodeSiklis.json?unitUp=" + this.unitUp + "&thbl=" + this.thbl + "&addSemua=" + this.addSemua);
         cb.setComboWidth(79);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {

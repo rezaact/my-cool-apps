@@ -2,7 +2,6 @@ package id.co.hans.sample.server.dao;
 
 import id.co.hans.sample.server.utility.CommonModule;
 import oracle.jdbc.OracleTypes;
-import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +20,9 @@ public class clsTransaksi_Proc {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private Cls_CloseDate cls_CloseDate;
 
 
     public Map<String, Object> SetData_11(String unitup,
@@ -125,12 +127,14 @@ public class clsTransaksi_Proc {
                 throw new Exception("Gagal Proses, ");
             }
 
-            retValue.put("wsReturn", lMapData.get(0).get("HASIL"));
+            retValue.put("wsReturn", lMapData.get(0).get("hasil"));
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
             retValue.put("wsReturn", ex.getMessage());
+            retValue.put("wsByRefError", ex.getMessage());
         }
 
         return retValue;
@@ -290,9 +294,7 @@ public class clsTransaksi_Proc {
             String sql;
 
             for (Map<String, String> rowData : dTrans) {
-
                 if (rowData.get("SIMPAN").equals("true") && rowData.get("HASIL").equals("")) {
-
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
@@ -304,10 +306,7 @@ public class clsTransaksi_Proc {
                     tRPBK = Integer.parseInt(rowData.get("RPBK1")) + Integer.parseInt(rowData.get("RPBK2")) + Integer.parseInt(rowData.get("RPBK3"));
 
                     if (idpelErr.equals(tIDPel)) {
-                        rowData.remove("HASIL");
                         rowData.put("HASIL", " ");
-
-                        log.info("idpelErr.equals(tIDPel)");
                     } else {
                         sql = "{ call PROC_31_BATALPIUTANG(?,?,?,?,?,?,?,?,?,?,?,?) }";
                         cst = con.prepareCall(sql);
@@ -333,13 +332,15 @@ public class clsTransaksi_Proc {
 
                         lMapData = CommonModule.convertResultsetToListStr(rs);
 
+                        //log.info("parhasil.lMapData :: " + lMapData.toString());
+
                         if (lMapData.size() == 0) {
                             throw new Exception("Gagal ambil parhasil.");
                         }
 
                         String status = lMapData.get(0).get("hasil").substring(0,1);
 
-                        if (Integer.parseInt(lMapData.get(0).get("hasil").substring(0,1)) == 1) {
+                        if ((lMapData.get(0).get("hasil").substring(0,1)).equals("1")) {
                             List<Map<String, String>> dsDacen = new ArrayList<Map<String, String>>();
 
                             sql = "{ call PROC_DACEN_KIRIM_DBP(?,?,?) }";
@@ -349,7 +350,7 @@ public class clsTransaksi_Proc {
                             cst.setString(2, tBlTh);
                             cst.setString(3, tanggal);
 
-                            //cst.execute();
+                            cst.execute();
 
                             sql = "select parhasil.getHasil AS HASIL FROM dual";
                             cst = con.prepareCall(sql);
@@ -374,13 +375,9 @@ public class clsTransaksi_Proc {
 
                             cst = con.prepareCall(sql);
 
-                            log.info("sql :: " + sql);
-
                             rs = cst.executeQuery();
 
                             List<Map<String,String>> dsCetak = CommonModule.convertResultsetToListStr(rs);
-
-                            log.info("dsCetak :: " + dsCetak.toString());
 
                             if (dsCetak.size() == 0) {
                                 throw new Exception("Gagal ambil dscetak.");
@@ -400,12 +397,11 @@ public class clsTransaksi_Proc {
                             rowData.put("TELPPENGADUAN", dsCetak.get(0).get("telppengaduan"));
                             rowData.put("PESAN", dsCetak.get(0).get("pesan"));
                             rowData.put("TGLCETAK", dsCetak.get(0).get("tglcetak"));
+
                         } else {
                             idpelErr = tIDPel;
                             rowData.put("HASIL", "0, " + lMapData.get(0).get(0).toString());
                         }
-
-                        log.info("rowData :: " + rowData.toString());
                     }
                 }
 
@@ -418,9 +414,8 @@ public class clsTransaksi_Proc {
             con.close();
         } catch (Exception ex)
         {
-            log.info("Exception :: " + ex.getMessage());
             retValue.put("wsReturn", dTrans);
-            retValue.put("wsByRefError", ex.getMessage());
+            retValue.put("wsByRefError", "ERROR: " + ex.getMessage());
             retValue.put("wsByRefLbrProses", 0);
         }
 
@@ -858,12 +853,16 @@ public class clsTransaksi_Proc {
 
         try
         {
-            cls_CloseDate cClose = new cls_CloseDate();
-            Map<String, Object> retFunc = cClose.CekCloseDate("21E",tTglBayar);
+            Map<String, Object> retFunc = cls_CloseDate.CekCloseDate("21E", tTglBayar);
 
-            if (! (Boolean)retFunc.get("wsReturn")) {
+            if (!(Boolean)retFunc.get("wsReturn")) {
                 throw new Exception(retFunc.get("wsByRefError").toString());
             }
+
+            String tanggal = "", waktu = "";
+            Map<String, Object> dataTanggalEksekusi = ambilTanggaleksekusi();
+            tanggal = String.valueOf(dataTanggalEksekusi.get("wsReturn"));
+            waktu = String.valueOf(dataTanggalEksekusi.get("wsByRefWaktu"));
 
 
             Connection con = jdbcTemplate.getDataSource().getConnection();
@@ -871,23 +870,20 @@ public class clsTransaksi_Proc {
             CallableStatement cst;
             String sql;
 
-            String tanggal = "", waktu = "";
-            //todo: tanggal = ambilTanggaleksekusi(Err, waktu)
-
             for (Map<String, String> rowData : dTrans) {
-                if (rowData.get("Simpan").equals("true") && rowData.get("HASIL").equals("")) {
+                if (rowData.get("SIMPAN").equals("true") && rowData.get("HASIL").equals("")) {
                     tPetugas = tTransaksiBy;
                     tIDPel = rowData.get("IDPEL");
                     tKdPembPP = rowData.get("KDPEMBPP");
                     tKdGerakM = rowData.get("KDGERAKMASUK");
-                    tBlTh = rowData.get("BLTH").toString().substring(3, 4) + rowData.get("BLTH").toString().substring(0, 2);
+                    tBlTh = rowData.get("BLTH"); //.toString().substring(3, 4) + rowData.get("BLTH").toString().substring(0, 2);
                     tStatus = rowData.get("STATUS");
                     tNorek = rowData.get("NOREK");
                     tRPTAG = Integer.parseInt(rowData.get("RPTAG"));
-                    tRPBK = Integer.parseInt(rowData.get("RPBK"));
                     tRPBK1 = Integer.parseInt(rowData.get("RPBK1"));
                     tRPBK2 = Integer.parseInt(rowData.get("RPBK2"));
                     tRPBK3 = Integer.parseInt(rowData.get("RPBK3"));
+                    tRPBK = tRPBK1 + tRPBK2 + tRPBK3;
 
                     if (idpelErr.equals(tIDPel)) {
                         rowData.put("HASIL", " ");
@@ -925,9 +921,9 @@ public class clsTransaksi_Proc {
                             throw new Exception("Gagal ambil parhasil.");
                         }
 
-                        String status = lMapData.get(0).get(0).toString();
+                        String status = lMapData.get(0).get("hasil");
 
-                        if (Integer.parseInt(lMapData.get(0).get(0).substring(0,1)) == 1) {
+                        if (lMapData.get(0).get("hasil").substring(0,1).equals("1")) {
                             rowData.put("HASIL", status);
 
                             j++;
@@ -965,7 +961,7 @@ public class clsTransaksi_Proc {
                             rowData.put("TGLCETAK", dsCetak.get(0).get("TGLCETAK"));
                         } else {
                             idpelErr = tIDPel;
-                            rowData.put("HASIL", "0, " + lMapData.get(0).get(0).toString());
+                            rowData.put("HASIL", "0, " + lMapData.get(0).get("hasil").toString());
                         }
                     }
                 }
@@ -979,6 +975,7 @@ public class clsTransaksi_Proc {
             con.close();
         } catch (Exception ex)
         {
+            log.info("exception :: " + ex.getMessage());
             retValue.put("wsReturn", dTrans);
             retValue.put("wsByRefError", ex.getMessage());
             retValue.put("wsByRefLbrProses", 0);
@@ -1583,7 +1580,7 @@ public class clsTransaksi_Proc {
 
                     if (lMapData.get(0).get(0).equals("00")) {
                         //VALIDASI CLOSE DATE
-                        cls_CloseDate cClose = new cls_CloseDate();
+                        Cls_CloseDate cClose = new Cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("41", tanggal);
                         if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -1727,7 +1724,7 @@ public class clsTransaksi_Proc {
                     tRPBK = Integer.parseInt(rowData.get("RPBK"));
 
                     //VALIDASI CLOSE DATE
-                    cls_CloseDate cClose = new cls_CloseDate();
+                    Cls_CloseDate cClose = new Cls_CloseDate();
                     Map<String, Object> retFunc = cClose.CekCloseDate("23DLT", rowData.get("TGLBAYAR"));
                     if (!retFunc.get("wsByRefError").toString().equals("")) {
                         throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -1863,7 +1860,7 @@ public class clsTransaksi_Proc {
         try
         {
             //VALIDASI CLOSE DATE
-            cls_CloseDate cClose = new cls_CloseDate();
+            Cls_CloseDate cClose = new Cls_CloseDate();
             Map<String, Object> retFunc = cClose.CekCloseDate("21G", tTglBayar);
             if (!retFunc.get("wsByRefError").toString().equals("")) {
                 //throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -2038,7 +2035,7 @@ public class clsTransaksi_Proc {
                         //sKDKIRIM = "BEBAN KANTOR" & tKirim
                         sKDKIRIM = tKirim;
 
-                        cls_CloseDate cClose = new cls_CloseDate();
+                        Cls_CloseDate cClose = new Cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23BK", rowData.get("TGLBAYAR"));
                         if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -2046,7 +2043,7 @@ public class clsTransaksi_Proc {
                     } else if (iBebanKantor == 2) {
                         sKDKIRIM = tKirim;
 
-                        cls_CloseDate cClose = new cls_CloseDate();
+                        Cls_CloseDate cClose = new Cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23MD", rowData.get("TGLBAYAR"));
                         if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -2054,7 +2051,7 @@ public class clsTransaksi_Proc {
                     } else if (iBebanKantor == 3) {
                         sKDKIRIM = tKirim;
 
-                        cls_CloseDate cClose = new cls_CloseDate();
+                        Cls_CloseDate cClose = new Cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23BM", rowData.get("TGLBAYAR"));
                         if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -2062,7 +2059,7 @@ public class clsTransaksi_Proc {
                     } else {
                         sKDKIRIM = tKirim;
 
-                        cls_CloseDate cClose = new cls_CloseDate();
+                        Cls_CloseDate cClose = new Cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("23NB", rowData.get("TGLBAYAR"));
                         if (!retFunc.get("wsByRefError").toString().equals("")) {
                             throw new Exception("Gagal validasi close date. " + retFunc.get("wsByRefError").toString());
@@ -3330,7 +3327,7 @@ public class clsTransaksi_Proc {
                         rowData.put("IDTARIP", IdTarip);
 
 
-                        cls_CloseDate cClose = new cls_CloseDate();
+                        Cls_CloseDate cClose = new Cls_CloseDate();
                         Map<String, Object> retFunc = cClose.CekCloseDate("12",rowData.get("TGKOREKSI"));
 
                         if (! (Boolean)retFunc.get("wsReturn")) {

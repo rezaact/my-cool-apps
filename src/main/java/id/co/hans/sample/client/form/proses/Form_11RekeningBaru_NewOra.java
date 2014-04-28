@@ -1,5 +1,14 @@
 package id.co.hans.sample.client.form.proses;
 
+import com.google.gwt.core.client.JsonUtils;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.FramedPanel;
@@ -8,33 +17,142 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.*;
+import id.co.hans.sample.client.AbstractForm;
+import id.co.hans.sample.client.components.ComboKodeSiklis;
+import id.co.hans.sample.client.components.ComboSourceSorex;
 import id.co.hans.sample.client.components.ComboTahunBulan;
+import id.co.hans.sample.client.components.ComboUnit;
 import id.co.hans.sample.client.components.ComboUnits;
+import id.co.hans.sample.client.components.IconAlertMessageBox;
 import id.co.hans.sample.client.components.IconComboBox;
 import id.co.hans.sample.client.components.IconDynamicGrid;
+import id.co.hans.sample.client.helper.WsUmumUrlHelper;
 
-public class Form_11RekeningBaru_NewOra {
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+public class Form_11RekeningBaru_NewOra extends AbstractForm {
 
     private VerticalPanel vp;
 
-    public Widget asWidget() {
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
+    Date tanggalDatabase;
+
+    ComboUnit cbKodeUnit;
+    TextField tfKodeUnitDesc;
+    ComboTahunBulan cbTahunBulan;
+    ComboKodeSiklis cbKodeSiklis;
+    TextButton bSetSiklis = new TextButton("Set Siklis");
+    TextField tfPeriodeBayar;
+    Radio radioSourceSorexFile;
+    Radio radioSourceSorexOracle;
+    ComboSourceSorex cbPilihSourceSorex;
+    CheckBox cbKirimSorekDJBB;
+    NumberField tfUploadPer;
+    DateField dfTanggalJatuhTempo;
+    DateField dfTglJtBk1;
+    DateField dfTglJtBk2;
+    DateField dfTglJtBk3;
+    CheckBox cbMiddleFileDiServer;
+    TextField tfMiddleFileDiServer;
+    IconDynamicGrid gpTagihan;
+    TextField lMiddleJmlPelanggan;
+    TextField lMiddleJmlRpTag;
+    TextField lBottomStatus;
+    TextField tfBottomBerhasil;
+    TextField tfBottomGagal;
+    TextButton bCetakBA = new TextButton("Cetak BA");
+
+    @Override
+    protected void initEvent() {
+        //GWT.log("url : " + WsUmumUrlHelper.getTanggalDatabaseURL());
+        sendRequest(RequestBuilder.GET, WsUmumUrlHelper.getTanggalDatabaseURL(), null,
+            new RequestCallback() {
+
+                @Override
+                public void onError(Request request, Throwable exception) {
+                }
+
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    JSONObject json = new JSONObject(JsonUtils.safeEval(response.getText()));
+
+                    String wsByRefError = json.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                    if (!wsByRefError.equals("")) {
+                        new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                    } else {
+                        tanggalDatabase = DEFAULT_DATETIME_FORMATER.parse(json.get("result").isObject().get("wsReturn").isArray().get(0).isObject().get("tanggal_database").isString().stringValue());
+                    }
+                }
+            });
+
+        //Map<ComboBox<Map<String, String>>, String> changesComboboxStore = new HashMap<ComboBox<Map<String, String>>, String>();
+        //changesComboboxStore.put(cbKodeSiklis.getComboBox().getComboBox(), "");
+
+        cbKodeUnit.getCbUnitUp().addSelectionHandler(new SelectionHandler<Map<String, String>>() {
+            @Override
+            public void onSelection(SelectionEvent<Map<String, String>> event) {
+                Map<String, String> data = (Map<String, String>)event.getSelectedItem();
+                cbKodeUnit.setSelectedValue(data.get("fieldValue"));
+
+                if (cbTahunBulan.getCbTahunSelectedValue().equals("")) {
+                    new IconAlertMessageBox("Kesalahan", "Tahun belum dipilih", true);
+                    return;
+                }
+
+                if (cbTahunBulan.getCbBulanSelectedValue().equals("")) {
+                    new IconAlertMessageBox("Kesalahan", "Bulan belum dipilih", true);
+                    return;
+                }
+
+                cbKodeSiklis.reloadWithParams(cbKodeUnit.getSelectedValue(), cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue());
+            }
+        });
+
+        cbTahunBulan.getCbTahun().addSelectionHandler(new SelectionHandler<Map<String, String>>() {
+            @Override
+            public void onSelection(SelectionEvent<Map<String, String>> event) {
+                Map<String, String> data = (Map<String, String>)event.getSelectedItem();
+                cbTahunBulan.setCbTahunSelectedValue(data.get("fieldValue"));
+
+                if (cbKodeUnit.getSelectedValue().equals("")) {
+                    new IconAlertMessageBox("Kesalahan", "Unit belum dipilih", true);
+                    return;
+                }
+
+                if (cbTahunBulan.getCbBulanSelectedValue().equals("")) {
+                    new IconAlertMessageBox("Kesalahan", "Bulan belum dipilih", true);
+                    return;
+                }
+
+                cbKodeSiklis.reloadWithParams(cbKodeUnit.getSelectedValue(), cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue());
+            }
+        });
+        cbTahunBulan.getCbBulan().addSelectionHandler(new SelectionHandler<Map<String, String>>() {
+            @Override
+            public void onSelection(SelectionEvent<Map<String, String>> event) {
+                Map<String, String> data = (Map<String, String>)event.getSelectedItem();
+                cbTahunBulan.setCbBulanSelectedValue(data.get("fieldValue"));
+
+                if (cbKodeUnit.getSelectedValue().equals("")) {
+                    new IconAlertMessageBox("Kesalahan", "Unit belum dipilih", true);
+                    return;
+                }
+
+                if (cbTahunBulan.getCbTahunSelectedValue().equals("")) {
+                    new IconAlertMessageBox("Kesalahan", "Tahun belum dipilih", true);
+                    return;
+                }
+
+                cbKodeSiklis.reloadWithParams(cbKodeUnit.getSelectedValue(), cbTahunBulan.getCbTahunSelectedValue() + cbTahunBulan.getCbBulanSelectedValue());
+            }
+        });
+
     }
 
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+    @Override
+    protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("11 Rekening Baru - New Ora");
@@ -47,87 +165,75 @@ public class Form_11RekeningBaru_NewOra {
         VerticalLayoutContainer p = new VerticalLayoutContainer();
         panel.add(p);
 
-        IconComboBox cbKodeUnit = new IconComboBox();
-        cbKodeUnit.setStoreUrl("BasicProject/thuGetComboData2.json");
-        cbKodeUnit.setComboFieldName("Kode Unit");
-        cbKodeUnit.setComboWidth(250);
-        cbKodeUnit.setLabelWidth(180);
+        cbKodeUnit = new ComboUnit(getLevelUser(), getUnitupUser());
         p.add(cbKodeUnit);
 
-        TextField tfKodeUnitDesc = new TextField();
-        p.add(new FieldLabel(tfKodeUnitDesc, "Kode Unit"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
+        //tfKodeUnitDesc = new TextField();
+        //p.add(new FieldLabel(tfKodeUnitDesc, "Kode Unit"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
 
-        ComboTahunBulan cbTahunBulan = new ComboTahunBulan();
+        cbTahunBulan = new ComboTahunBulan();
         p.add(cbTahunBulan);
 
 
-        IconComboBox cbKodeSiklis = new IconComboBox();
-        cbKodeSiklis.setStoreUrl("BasicProject/thuGetComboData2.json");
-        cbKodeSiklis.setComboFieldName("Kode Siklis");
-        cbKodeSiklis.setComboWidth(250);
-        cbKodeSiklis.setLabelWidth(180);
+        cbKodeSiklis = new ComboKodeSiklis();
         p.add(cbKodeSiklis);
 
-        p.add(new TextButton("Set Siklis"));
+        p.add(bSetSiklis);
 
-        TextField tfPeriodeBayar = new TextField();
-        p.add(new FieldLabel(tfPeriodeBayar, "Kode Siklis"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
+        tfPeriodeBayar = new TextField();
+        p.add(new FieldLabel(tfPeriodeBayar, "Periode Bayar"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
 
-        Radio radioSourceSorexFile = new Radio();
+        radioSourceSorexFile = new Radio();
         radioSourceSorexFile.setBoxLabel("File");
         p.add(radioSourceSorexFile);
 
-        Radio radioSourceSorexOracle = new Radio();
+        radioSourceSorexOracle = new Radio();
         radioSourceSorexOracle.setBoxLabel("Oracle");
         p.add(radioSourceSorexOracle);
 
 
 
-        IconComboBox cbPilihSourceSorex = new IconComboBox();
-        cbPilihSourceSorex.setStoreUrl("BasicProject/thuGetComboData2.json");
-        cbPilihSourceSorex.setComboFieldName("File Sorek");
-        cbPilihSourceSorex.setComboWidth(250);
-        cbPilihSourceSorex.setLabelWidth(180);
+        cbPilihSourceSorex = new ComboSourceSorex();
         p.add(cbPilihSourceSorex);
 
 
-        CheckBox cbKirimSorekDJBB = new CheckBox();
+        cbKirimSorekDJBB = new CheckBox();
         cbKirimSorekDJBB.setBoxLabel("Kirim Sorek ke P2APST");
 
 
-        NumberField tfUploadPer = new NumberField(new NumberPropertyEditor.IntegerPropertyEditor());
+        tfUploadPer = new NumberField(new NumberPropertyEditor.IntegerPropertyEditor());
         tfUploadPer.setText("500");
         p.add((new FieldLabel(tfUploadPer, "Upload Per")));
 
 
-        DateField dfTanggalJatuhTempo = new DateField();
+        dfTanggalJatuhTempo = new DateField();
         p.add(new FieldLabel(dfTanggalJatuhTempo, "Tanggal Jatuh Tempo"));
 
 
-        DateField dfTglJtBk1 = new DateField();
+        dfTglJtBk1 = new DateField();
         p.add(new FieldLabel(dfTglJtBk1, "Tanggal JT BK 1"));
 
-        DateField dfTglJtBk2 = new DateField();
+        dfTglJtBk2 = new DateField();
         p.add(new FieldLabel(dfTglJtBk2, "Tanggal JT BK 2"));
 
-        DateField dfTglJtBk3 = new DateField();
+        dfTglJtBk3 = new DateField();
         p.add(new FieldLabel(dfTglJtBk3, "Tanggal JT BK 3"));
 
 
         // button upload file
 
-        CheckBox cbMiddleFileDiServer = new CheckBox();
+        cbMiddleFileDiServer = new CheckBox();
         p.add(new FieldLabel(cbMiddleFileDiServer, "File di Server"));
 
-        TextField tfMiddleFileDiServer = new TextField();
+        tfMiddleFileDiServer = new TextField();
         p.add(new FieldLabel(tfMiddleFileDiServer, "Nama File"));
 
 
         // panel "Data Upload Sorek"
 
-        IconDynamicGrid gpTagihan = new IconDynamicGrid();
+        gpTagihan = new IconDynamicGrid();
         gpTagihan.setGridHeader("Data Tagihan (Sampel data record 1 s/d 100)");
         gpTagihan.setGridDimension(300, 200);
         gpTagihan.setStoreUrl("BasicProject/thuGetString.json?name=store1");
@@ -138,33 +244,30 @@ public class Form_11RekeningBaru_NewOra {
 
 
         // panel south
-        TextField lMiddleJmlPelanggan = new TextField();
+        lMiddleJmlPelanggan = new TextField();
         p.add(new FieldLabel(lMiddleJmlPelanggan, "Jml Pelanggan"));
 
-        TextField lMiddleJmlRpTag = new TextField();
+        lMiddleJmlRpTag = new TextField();
         p.add(new FieldLabel(lMiddleJmlRpTag, "Jml RPTAG"));
 
 
-        TextField lBottomStatus = new TextField();
+        lBottomStatus = new TextField();
         p.add(new FieldLabel(lBottomStatus, "Progress Uploading"));
 
         // add progress bar
 
 
-        TextField tfBottomBerhasil = new TextField();
+        tfBottomBerhasil = new TextField();
         p.add(new FieldLabel(tfBottomBerhasil, "Jml Berhasil"));
 
-        TextField tfBottomGagal = new TextField();
+        tfBottomGagal = new TextField();
         p.add(new FieldLabel(tfBottomGagal, "Jml Gagal"));
 
 
-        p.add(new TextButton("Cetak BA"));
+        p.add(bCetakBA);
 
         // task runner UploadToTempSorek
         // on update untuk merefresh progress upload
-
-
-
 
         return panel;
     }

@@ -731,13 +731,14 @@ public class ComboController {
     @RequestMapping(value = "**/components/getComboKodeSiklis.json", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public JSONObject getComboKodeSiklis(@RequestParam(value = "unitUp", defaultValue = "")String unitUp,
+                                         @RequestParam(value = "thbl", defaultValue = "")String thbl,
                                          @RequestParam(value = "addSemua", defaultValue = "0")String addSemua) {
         JSONObject retVal = new JSONObject();
 
         List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = masterDao.getKodeSiklis(unitUp);
+        Map<String, Object> wsData = masterDao.getKodeSiklis(unitUp, thbl);
 
         if (addSemua.equals("1")) {
             currData = new HashMap<String, Object>();
@@ -746,12 +747,13 @@ public class ComboController {
             dataList.add(currData);
         }
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
-            currData = new HashMap<String, Object>();
-            currData.put("fieldValue", tmp.get("unitup"));
-            currData.put("displayValue", tmp.get("unitup") + "-" + tmp.get("kodesiklis"));
-            dataList.add(currData);
-        }
+        if (wsData.get("wsReturn") != null)
+            for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                currData = new HashMap<String, Object>();
+                currData.put("fieldValue", tmp.get("unitup"));
+                currData.put("displayValue", tmp.get("unitup") + "-" + tmp.get("kodesiklis"));
+                dataList.add(currData);
+            }
 
         retVal.put("records", dataList);
         retVal.put("wsByRefError", wsData.get("wsByRefError"));
@@ -761,13 +763,17 @@ public class ComboController {
 
     @RequestMapping(value = "**/components/getComboKodePaymentPoint.json", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public JSONObject getComboKodePaymentPoint(@RequestParam(value = "unitUp", defaultValue = "")String unitUp) {
+    public JSONObject getComboKodePaymentPoint(@RequestParam(value = "unitUp", defaultValue = "")String unitUp,
+                                               @RequestParam(value = "jenisPP", defaultValue = "")String jenisPP) {
         JSONObject retVal = new JSONObject();
 
         List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
         Map<String, Object> currData;
 
-        Map<String, Object> wsData = masterDao.getKodePaymentPoint(unitUp);
+        Map<String, Object> wsData;
+
+        if (!jenisPP.equals("")) wsData = masterDao.getKodePaymentPoint(unitUp,jenisPP);
+        else wsData = masterDao.getKodePaymentPoint(unitUp);
 
         if (wsData.containsKey("wsReturn")) {
             if (wsData.get("wsReturn") != null) {
@@ -962,6 +968,60 @@ public class ComboController {
 
         retVal.put("records", dataList);
 
+        return retVal;
+    }
+
+
+    @RequestMapping(value = "**/components/getComboSourceSorex.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboSourceSorex() {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> currData;
+
+        currData = new HashMap<String, Object>();
+        currData.put("fieldValue", "txt");
+        currData.put("displayValue", ".TXT");
+        dataList.add(currData);
+
+        currData = new HashMap<String, Object>();
+        currData.put("fieldValue", "dbf");
+        currData.put("displayValue", ".DBF");
+        dataList.add(currData);
+
+        retVal.put("records", dataList);
+
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/getComboKodeProses.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject getComboKodeProses(@RequestParam(value = "unitUp", defaultValue = "")String unitUp,
+                                         @RequestParam(value = "blth", defaultValue = "")String blth) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData;
+
+        wsData = masterDao.getKodeProses(unitUp, blth);
+
+        if (wsData.containsKey("wsReturn")) {
+            if (wsData.get("wsReturn") != null) {
+                for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
+                    currData = new HashMap<String, Object>();
+                    currData.put("fieldValue", tmp.get("kdsiklis"));
+                    currData.put("displayValue", tmp.get("kdsiklis"));
+                    dataList.add(currData);
+                }
+            }
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("wsByRefError", wsData.get("wsByRefError"));
+        wsData = null;
         return retVal;
     }
 

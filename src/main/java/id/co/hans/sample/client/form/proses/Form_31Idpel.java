@@ -149,6 +149,9 @@ public class Form_31Idpel extends AbstractForm  {
                     }
 
                     try {
+                        progressBox.show();
+                        gpData.getGrid().getStore().clear();
+
                         rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetViewIdPel_31.json");
                         rb.setHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -161,6 +164,7 @@ public class Form_31Idpel extends AbstractForm  {
                         rb.sendRequest(sb.toString(), new RequestCallback() {
                             @Override
                             public void onResponseReceived(Request request, Response response) {
+                                progressBox.hide();
 
                                 if (200 == response.getStatusCode()) {
                                     JSONValue value = JSONParser.parse(response.getText());
@@ -190,12 +194,10 @@ public class Form_31Idpel extends AbstractForm  {
                                         for (int idx = 0; idx < array.size(); idx++) {
                                             JSONObject sourceRowData = array.get(idx).isObject();
 
-                                            GWT.log(sourceRowData.get("RPTAG").isString().stringValue());
-
-                                            rpTag += Double.parseDouble(sourceRowData.get("RPTAG").isString().stringValue());
-                                            rpBK += Double.parseDouble(sourceRowData.get("RPBK1").isString().stringValue());
-                                            rpBK += Double.parseDouble(sourceRowData.get("RPBK2").isString().stringValue());
-                                            rpBK += Double.parseDouble(sourceRowData.get("RPBK3").isString().stringValue());
+                                            rpTag += Double.parseDouble(sourceRowData.get("rptag").isString().stringValue());
+                                            rpBK += Double.parseDouble(sourceRowData.get("rpbk1").isString().stringValue());
+                                            rpBK += Double.parseDouble(sourceRowData.get("rpbk2").isString().stringValue());
+                                            rpBK += Double.parseDouble(sourceRowData.get("rpbk3").isString().stringValue());
                                         }
                                     }
 
@@ -209,10 +211,12 @@ public class Form_31Idpel extends AbstractForm  {
 
                             @Override
                             public void onError(Request request, Throwable throwable) {
+                                progressBox.hide();
                                 mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
                             }
                         });
                     } catch (RequestException ex) {
+                        progressBox.hide();
                         mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
                     }
 
@@ -399,6 +403,7 @@ public class Form_31Idpel extends AbstractForm  {
                 jsonObjectSendData.put("strData", jsonArray);
 
                 try {
+                    progressBox.show();
                     rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/SetDataIdpel_31.json");
                     rb.setHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -410,6 +415,7 @@ public class Form_31Idpel extends AbstractForm  {
                     rb.sendRequest(sb.toString(), new RequestCallback() {
                         @Override
                         public void onResponseReceived(Request request, Response response) {
+                            progressBox.hide();
 
                             if (200 == response.getStatusCode()) {
                                 JSONValue value = JSONParser.parse(response.getText());
@@ -430,10 +436,12 @@ public class Form_31Idpel extends AbstractForm  {
 
                         @Override
                         public void onError(Request request, Throwable throwable) {
+                            progressBox.hide();
                             mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
                         }
                     });
                 } catch (RequestException ex) {
+                    progressBox.hide();
                     mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
                 }
 

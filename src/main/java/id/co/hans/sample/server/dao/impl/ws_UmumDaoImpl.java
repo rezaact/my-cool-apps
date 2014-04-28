@@ -1064,7 +1064,8 @@ public class ws_UmumDaoImpl implements ws_UmumDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql =" select sysdate from dual ";
+            //String sql =" select sysdate from dual ";
+            String sql =" select to_char(sysdate, 'YYYY-MM-DD') tanggal_database from dual ";
 
             CallableStatement cst;
             cst = con.prepareCall(sql);

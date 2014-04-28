@@ -212,7 +212,7 @@ public class MasterDaoImpl implements MasterDao{
     }
 
     @Override
-    public Map<String, Object> getKodeSiklis(String parUp) {
+    public Map<String, Object> getKodeSiklis(String parUp, String parTHBL) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapRecords = new ArrayList<Map<String,String>>();
 
@@ -223,16 +223,23 @@ public class MasterDaoImpl implements MasterDao{
             String sql = "";
 
 
-            sql = "SELECT '" + parUp + "' as UNITUP,'SEMUA' AS KODESIKLIS, 'PERIODE' as PERIODE FROM DUAL ";
-            sql += " UNION ALL ";
-            sql += " SELECT * FROM (";
-            sql += " SELECT UNITUP, KODESIKLIS, 'PERIODE' as PERIODE FROM TAB_JATUHTEMPO";
-            sql += " WHERE "; //'''''THBL = '" + tTHBL + "' and";
-            sql += " unitup =  ";
+//            sql = "SELECT '" + parUp + "' as UNITUP,'SEMUA' AS KODESIKLIS, 'PERIODE' as PERIODE FROM DUAL ";
+//            sql += " UNION ALL ";
+//            sql += " SELECT * FROM (";
+//            sql += " SELECT UNITUP, KODESIKLIS, 'PERIODE' as PERIODE FROM TAB_JATUHTEMPO";
+//            sql += " WHERE "; //'''''THBL = '" + tTHBL + "' and";
+//            sql += " unitup =  ";
+//            sql += " '" + parUp + "'";
+//            sql += " group BY UNITUP,KODESIKLIS";
+//            sql += " ORDER BY KODESIKLIS";
+//            sql += " )";
+
+            sql = "SELECT UNITAP, UNITUP, KDPROSESKLP KDSIKLIS, TGLBAYAR_AWAL, TGLBAYAR_AKHIR, KETPROSESKLP, KETPROSESKLP|| ' periode bayar ' || TGLBAYAR_AWAL || ' s/d ' || TGLBAYAR_AKHIR AS PERIODE FROM V_BILL_TABPROSES ";
+            sql += " WHERE THBLREK = '" + parTHBL + "'";
+            sql += " and unitup =  ";
             sql += " '" + parUp + "'";
-            sql += " group BY UNITUP,KODESIKLIS";
-            sql += " ORDER BY KODESIKLIS";
-            sql += " )";
+            sql += " and AKTIF = '1' ";
+            sql += " ORDER BY KDPROSESKLP";
 
             CallableStatement cst;
             cst = con.prepareCall(sql);
@@ -273,6 +280,56 @@ public class MasterDaoImpl implements MasterDao{
             sql = "SELECT * FROM PAYMENTPOINT ";
             sql += " WHERE "; //'''''THBL = '" + tTHBL + "' and";
             sql += " kode_ranting_numerik =  " + " '" + parUp + "'";
+            sql += " ORDER BY UNITUP,KODEPP";
+
+            CallableStatement cst;
+            cst = con.prepareCall(sql);
+
+            ResultSet rs = cst.executeQuery();
+
+            lMapRecords = CommonModule.convertResultsetToListStr(rs);
+
+            if (lMapRecords.size() == 0) {
+                retValue.put("wsReturn", null);
+            } else {
+                retValue.put("wsReturn", lMapRecords);
+            }
+
+            retValue.put("wsByRefError", "");
+
+            con.close();
+        } catch (Exception ex)
+        {
+            retValue.put("wsReturn", null);
+            retValue.put("wsByRefError", ex.getMessage());
+        }
+        return retValue;
+    }
+
+    @Override
+    public Map<String, Object> getKodePaymentPoint(String parUp, String jenisPP) {
+        Map<String, Object> retValue = new HashMap<String, Object>();
+        List<Map<String,String>> lMapRecords = new ArrayList<Map<String,String>>();
+
+        try
+        {
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+
+            String sql = "";
+
+
+            sql = "SELECT UNITKJ, UNITUP, KODEPP, NAMAPP FROM PAYMENTPOINT ";
+            sql += " WHERE ";
+
+            if (jenisPP.equals("MANUAL")) {
+                sql += " JENISPP = 'MANUAL'";
+            } else if (jenisPP.equals("OFFLINE")) {
+                sql += " JENISPP = 'OFFLINE'";
+            } else if (jenisPP.equals("ONLINE")) {
+                sql += " JENISPP = 'ONLINE'";
+            }
+
+            sql += " and kode_ranting_numerik =  " + " '" + parUp + "'";
             sql += " ORDER BY UNITUP,KODEPP";
 
             CallableStatement cst;
@@ -429,6 +486,49 @@ public class MasterDaoImpl implements MasterDao{
             String sql = "";
 
             sql = " select kodekolektif,NAMAKOLEKTIF from kodekolektif23notaTERpusat WHERE TGLTHRU IS NULL AND UNITUP='" + sUnitup + "' order by kodekolektif ";
+
+            CallableStatement cst;
+            cst = con.prepareCall(sql);
+
+            ResultSet rs = cst.executeQuery();
+
+            lMapRecords = CommonModule.convertResultsetToListStr(rs);
+
+            if (lMapRecords.size() == 0) {
+                retValue.put("wsReturn", null);
+            } else {
+                retValue.put("wsReturn", lMapRecords);
+            }
+
+            retValue.put("wsByRefError", "");
+
+            con.close();
+        } catch (Exception ex)
+        {
+            retValue.put("wsReturn", null);
+            retValue.put("wsByRefError", ex.getMessage());
+        }
+        return retValue;
+    }
+
+
+    @Override
+    public Map<String, Object> getKodeProses(String parUp, String blth) {
+        Map<String, Object> retValue = new HashMap<String, Object>();
+        List<Map<String,String>> lMapRecords = new ArrayList<Map<String,String>>();
+
+        try
+        {
+            Connection con = jdbcTemplate.getDataSource().getConnection();
+
+            String sql = "";
+
+
+            sql = " SELECT UNITAP, UNITUP, KDPROSESKLP KDSIKLIS, TGLBAYAR_AWAL, TGLBAYAR_AKHIR, KETPROSESKLP, KETPROSESKLP|| ' periode bayar ' || TGLBAYAR_AWAL || ' s/d ' || TGLBAYAR_AKHIR AS PERIODE FROM V_BILL_TABPROSES ";
+            sql += " WHERE THBLREK = '" + blth + "' ";
+            sql += " and unitup = '" + parUp + "' ";
+            sql += " and AKTIF =  '1' ";
+            sql += " ORDER BY KDPROSESKLP";
 
             CallableStatement cst;
             cst = con.prepareCall(sql);

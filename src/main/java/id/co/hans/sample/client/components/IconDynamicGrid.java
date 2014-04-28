@@ -177,6 +177,7 @@ public class IconDynamicGrid implements IsWidget {
                 }
                 //datas.add(rowData);
                 listStore.update(rowData);
+                listStore.commitChanges();
             }
         }
     }

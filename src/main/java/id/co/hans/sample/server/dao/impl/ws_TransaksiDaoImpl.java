@@ -1697,7 +1697,6 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
                                               String strglobalkodepetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        clsTransaksi_Proc clsTransaksiProc = new clsTransaksi_Proc();
         retValue = clsTransaksiProc.SetData_11_New(unitap, unitup, kdprosesklp, blth, strglobalkodepetugas);
 
         return retValue;
@@ -1736,8 +1735,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
                                                List<Map<String, String>> strData) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        //clsTransaksi_Proc clsTransaksiProc = new clsTransaksi_Proc();
-        retValue = clsTransaksiProc.SetDataIdpel_31(tTransaksiBy, strData);   // note: parameter lbrproses
+        retValue = clsTransaksiProc.SetDataIdpel_31(tTransaksiBy, strData);
 
         return retValue;
     }
@@ -1800,7 +1798,6 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
                                                     List<Map<String, String>> strData) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        clsTransaksi_Proc clsTransaksiProc = new clsTransaksi_Proc();
         retValue = clsTransaksiProc.SetDataIdpel_21entri(tTransaksiBy, tTglBayar, tKdPP, tKDPEMBAYAR, strData);
 
         return retValue;

@@ -1,6 +1,20 @@
 package id.co.hans.sample.client.form.proses;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.json.client.JSONArray;
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONString;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -24,36 +38,319 @@ import com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer.VBoxLayou
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
+import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.*;
 
-public class Form_21Entri {
-    private VerticalPanel vp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class Form_21Entri extends AbstractForm {
+
     ComboKodePP cbKdPP;
+    DateField dTglLunas;
+    TextField IDPel;
+    TextField tKodePP;
 
-    private String idUser, levelUser, unitUser;
+    TextField tTIDPEL = new TextField();
+    TextField tTRekBul = new TextField();
+    TextField tTTDaya = new TextField();
+    TextField tTKBK1 = new TextField();
+    CheckBox check1 = new CheckBox();
 
-    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
-        this.idUser=idUser;
-        this.unitUser=unitupUser;
-        this.levelUser=levelUser;
+    TextField tTNoPEL = new TextField();
+    TextField tTKel = new TextField();
+    TextField tTKog = new TextField();
+    TextField tTKBK2 = new TextField();
+    CheckBox check2 = new CheckBox();
 
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
+    TextField tTNama = new TextField();
+    TextField tTTJatuhTempo = new TextField();
+    TextField tTInkaso = new TextField();
+    TextField tTKBK3 = new TextField();
+    TextField tTKdppj = new TextField();
+    CheckBox check3 = new CheckBox();
+
+    TextField tTAlamat = new TextField();
+    TextField tTFrt = new TextField();
+    TextField tTKedudukan = new TextField();
+    TextField tTPemda = new TextField();
+
+    TextField tTUUP = new TextField();
+
+    TextField tTU = new TextField();
+
+
+    TextField tTRpPTL = new TextField();
+    TextField tTRpBeban0 = new TextField();
+    TextField tTStrafo = new TextField();
+    TextField tTReduksi = new TextField();
+    TextField tTSelisih = new TextField();
+    TextField tTRpTb = new TextField();
+    TextField tTSKap = new TextField();
+    TextField tTInsentif = new TextField();
+    TextField tTTdlLama = new TextField();
+    TextField tTRpPPN = new TextField();
+    TextField tTKdAngA = new TextField();
+    TextField tTKdAngA0 = new TextField();
+    TextField tTDisInsentif = new TextField();
+    TextField tTTdlbaru = new TextField();
+    TextField tTRpBPJU = new TextField();
+    TextField tTKdAngB = new TextField();
+    TextField tTKdAngB0 = new TextField();
+    TextField tTRpTAG = new TextField();
+    TextField tTRpMat = new TextField();
+    TextField tTKdAngC = new TextField();
+    TextField tTKdAngC0 = new TextField();
+    TextField tTProduksi = new TextField();
+    TextField tTRpTrafo = new TextField();
+    TextField tTRpPLN = new TextField();
+    TextField tTRpSubsidi = new TextField();
+
+    TextField tTRpWBP = new TextField();
+
+    TextField tTLWBP = new TextField();
+    TextField tTLWBP0 = new TextField();
+    TextField tTLWBP1 = new TextField();
+    TextField tTRpLWBP = new TextField();
+
+    TextField tTWBP = new TextField();
+    TextField tTWBP0 = new TextField();
+    TextField tTWBP1 = new TextField();
+    TextField tTRpWBP2 = new TextField();
+
+    TextField tTKvArh = new TextField();
+    TextField tTKvArh1 = new TextField();
+    TextField tTBlok3 = new TextField();
+    TextField tTRpKvArh = new TextField();
+
+    TextField tTFKKwh = new TextField();
+    TextField tTTotal = new TextField();
+    TextField tTTTLB = new TextField();
+
+    TextField tTFKKvArh = new TextField();
+    TextField tTKebKvArh = new TextField();
+    TextField tTRpBeban = new TextField();
+
+    IconDynamicGrid gpData;
+
+
+    TextButton bBottomReset = new TextButton("Reset");
+    TextButton bBottomSimpan = new TextButton("Simpan");
+    TextButton bBottomCetak = new TextButton("Cetak Rekg");
+    TextButton bBottomCetakBA = new TextButton("Cetak Rekg");
+
+    TextField tRpTag = new TextField();
+    TextField tRpBK = new TextField();
+
+    private RequestBuilder rb;
+    private Boolean wsReturn;
+    private String wsByRefError;
+    private IconAlertMessageBox mb;
+
+    private String jenisPP = "OFFLINE";
+
+    @Override
+    protected void initEvent() {
+        IDPel.addKeyDownHandler(new KeyDownHandler() {
+            @Override
+            public void onKeyDown(KeyDownEvent event) {
+                if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    if (IDPel.getText().equals("")) {
+                        IconAlertMessageBox mb = new IconAlertMessageBox("Kesalahan", "Masukkan ID Pelanggan", true);
+                        return;
+                    }
+
+                    if (IDPel.getText().length() != 12) {
+                        IconAlertMessageBox mb = new IconAlertMessageBox("Kesalahan", "ID Pelanggan 12 digit", true);
+                        return;
+                    }
+
+                    try {
+                        progressBox.show();
+                        gpData.getGrid().getStore().clear();
+
+                        rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetViewIdPel_21entri.json");
+                        rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("tpel=" + IDPel.getText().trim());
+                        sb.append("&vJenis="+"IdPel");
+                        sb.append("&tBLTH="+"");
+                        sb.append("&tPetugas="+getIdUser());
+
+                        rb.sendRequest(sb.toString(), new RequestCallback() {
+                            @Override
+                            public void onResponseReceived(Request request, Response response) {
+                                progressBox.hide();
+
+                                if (200 == response.getStatusCode()) {
+                                    JSONValue value = JSONParser.parse(response.getText());
+                                    JSONObject jsonObject = value.isObject();
+
+                                    wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                                    if (!wsByRefError.equals("")) {
+                                        mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                                        return;
+                                    }
+
+                                    if (jsonObject.get("result").isObject().get("wsReturn").isArray().size() == 0) {
+                                        mb = new IconAlertMessageBox("Kesalahan", "Piutang tidak ditemukan.", true);
+                                        return;
+                                    }
+
+                                    gpData.setJsonData(jsonObject.get("result").isObject());
+
+                                    List<Map<String, String>> datas = new ArrayList<Map<String, String>>();
+                                    Map<String, String> rowData;
+                                    Double rpTag = 0d, rpBK = 0d;
+
+                                    if (jsonObject.get("result").isObject().containsKey("wsReturn")) {
+                                        JSONArray array = jsonObject.get("result").isObject().get("wsReturn").isArray();
+
+                                        for (int idx = 0; idx < array.size(); idx++) {
+                                            JSONObject sourceRowData = array.get(idx).isObject();
+
+                                            rpTag += Double.parseDouble(sourceRowData.get("rptag").isString().stringValue());
+                                            rpBK += Double.parseDouble(sourceRowData.get("rpbk1").isString().stringValue());
+                                            rpBK += Double.parseDouble(sourceRowData.get("rpbk2").isString().stringValue());
+                                            rpBK += Double.parseDouble(sourceRowData.get("rpbk3").isString().stringValue());
+                                        }
+                                    }
+
+                                    tRpTag.setValue(String.valueOf(rpTag));
+                                    tRpBK.setValue(String.valueOf(rpBK));
+
+                                } else {
+                                    mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Request request, Throwable throwable) {
+                                progressBox.hide();
+                                mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                            }
+                        });
+                    } catch (RequestException ex) {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+                    }
+
+                }
+            }
+        });
+
+        bBottomReset.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+
+        bBottomSimpan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                String _kodePP = "", _tglBayar = "", _tKdPembayar = "";
+
+
+                DateTimeFormat formatter = DateTimeFormat.getFormat("yyyyMMdd");
+
+                _kodePP = cbKdPP.getSelectedValue();
+                _tglBayar = formatter.format(dTglLunas.getValue());
+                _tKdPembayar = getIdUser();
+
+                if (_kodePP.equals("")) {
+                    mb = new IconAlertMessageBox("Kesalahan", "Kode PP belum dipilih!", true);
+                    return;
+                }
+
+
+                JSONObject jsonObjectRowSourceData = new JSONObject();
+                JSONArray jsonArray = new JSONArray();
+
+                List sourceData = gpData.getGrid().getStore().getAll();
+                for (int idx = 0; idx < sourceData.size(); idx++) {
+                    Map<String, String> rowSourceData = (Map<String, String>)sourceData.get(idx);
+                    rowSourceData.put("SIMPAN", "true");
+                    rowSourceData.put("HASIL", "");
+
+
+                    for (Map.Entry<String, String> entry : rowSourceData.entrySet()) {
+                        jsonObjectRowSourceData.put(entry.getKey(), new JSONString(entry.getValue()));
+                    }
+                    jsonArray.set(idx, jsonObjectRowSourceData);
+                }
+
+
+                try {
+                    progressBox.show();
+                    rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/SetDataIdpel_21entri.json");
+                    rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("lbrproses=" + "0");
+                    sb.append("&tTransaksiBy="+getIdUser());
+                    sb.append("&tTglBayar="+_tglBayar);
+                    sb.append("&tKdPP="+_kodePP);
+                    sb.append("&tKDPEMBAYAR="+_tKdPembayar);
+                    sb.append("&strData="+jsonArray);
+
+                    rb.sendRequest(sb.toString(), new RequestCallback() {
+                        @Override
+                        public void onResponseReceived(Request request, Response response) {
+                            progressBox.hide();
+
+                            if (200 == response.getStatusCode()) {
+                                JSONValue value = JSONParser.parse(response.getText());
+                                JSONObject jsonObject = value.isObject();
+
+                                wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                                if (!wsByRefError.equals("")) {
+                                    mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                                    return;
+                                }
+
+                                gpData.setJsonData(jsonObject.get("result").isObject());
+                            } else {
+                                mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Request request, Throwable throwable) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                        }
+                    });
+                } catch (RequestException ex) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+                }
+
+            }
+        });
+
+        bBottomCetak.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+
+        bBottomCetakBA.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
     }
 
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+    protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
         panel.setHeadingText("Entri Pelunasan Konvensional Piutang Rekening");
@@ -69,22 +366,27 @@ public class Form_21Entri {
         VerticalLayoutContainer FieldAtas = new VerticalLayoutContainer();
         fieldSet.add(FieldAtas);
         cbKdPP = new ComboKodePP();
-        DateField dTglLunas = new DateField();
+        cbKdPP.setJenisPP(this.jenisPP);
+        cbKdPP.setUnitUp(getUnitupUser());
+        cbKdPP.setComboWidth(100);
+        cbKdPP.setDescriptionWidth(300);
+
+        dTglLunas = new DateField();
         dTglLunas.setWidth(100);
-        TextField IDPel = new TextField();
-        IDPel.setWidth(80);
+        IDPel = new TextField();
+        IDPel.setWidth(120);
 
         HBoxLayoutContainer hpT = new HBoxLayoutContainer();
         hpT.add(cbKdPP, new BoxLayoutData(new Margins(0, 5, 0, 0)));
-        hpT.add(new FieldLabel(dTglLunas, "Tanggal Lunas"), new BoxLayoutData(new Margins(0, 5, 0, 10)));
-        hpT.add(new FieldLabel(IDPel, "ID Pelanggan"), new BoxLayoutData(new Margins(0, 5, 0, 10)));
         FieldAtas.add(hpT);
 
         hpT = new HBoxLayoutContainer();
-        TextField tKodePP = new TextField();
+        tKodePP = new TextField();
         tKodePP.setEmptyText("Kode Belum Dipilih.");
         tKodePP.setWidth(645);
-        hpT.add(tKodePP, new BoxLayoutData(new Margins(0, 5, 0, 105)));
+        //hpT.add(tKodePP, new BoxLayoutData(new Margins(0, 5, 0, 105)));
+        hpT.add(new FieldLabel(dTglLunas, "Tanggal Lunas"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
+        hpT.add(new FieldLabel(IDPel, "ID Pelanggan"), new BoxLayoutData(new Margins(0, 5, 0, 10)));
         FieldAtas.add(hpT);
 
         p.add(fieldSet);
@@ -96,15 +398,15 @@ public class Form_21Entri {
 
         tabs.add(VTab, "Detail Pelanggan");
 
-        TextField tTIDPEL = new TextField();
+        tTIDPEL = new TextField();
         tTIDPEL.setWidth(80);
-        TextField tTRekBul = new TextField();
+        tTRekBul = new TextField();
         tTRekBul.setWidth(80);
-        TextField tTTDaya = new TextField();
+        tTTDaya = new TextField();
         tTTDaya.setWidth(80);
-        TextField tTKBK1 = new TextField();
+        tTKBK1 = new TextField();
         tTKBK1.setWidth(80);
-        CheckBox check1 = new CheckBox();
+        check1 = new CheckBox();
         check1.setBoxLabel("Hapus BK1");
 
         //Tab 1
@@ -118,15 +420,15 @@ public class Form_21Entri {
         VTab.add(hp1);
 
         hp1 = new HBoxLayoutContainer();
-        TextField tTNoPEL = new TextField();
+        tTNoPEL = new TextField();
         tTNoPEL.setWidth(80);
-        TextField tTKel = new TextField();
+        tTKel = new TextField();
         tTKel.setWidth(80);
-        TextField tTKog = new TextField();
+        tTKog = new TextField();
         tTKog.setWidth(80);
-        TextField tTKBK2 = new TextField();
+        tTKBK2 = new TextField();
         tTKBK2.setWidth(80);
-        CheckBox check2 = new CheckBox();
+        check2 = new CheckBox();
         check2.setBoxLabel("Hapus BK2");
 
         hp1.add(new FieldLabel(tTNoPEL, "NOPEL"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
@@ -137,17 +439,17 @@ public class Form_21Entri {
         VTab.add(hp1);
 
         hp1 = new HBoxLayoutContainer();
-        TextField tTNama = new TextField();
+        tTNama = new TextField();
         tTNama.setWidth(80);
-        TextField tTTJatuhTempo = new TextField();
+        tTTJatuhTempo = new TextField();
         tTTJatuhTempo.setWidth(80);
-        TextField tTInkaso = new TextField();
+        tTInkaso = new TextField();
         tTInkaso.setWidth(80);
-        TextField tTKBK3 = new TextField();
+        tTKBK3 = new TextField();
         tTKBK3.setWidth(80);
-        TextField tTKdppj = new TextField();
+        tTKdppj = new TextField();
         tTKdppj.setWidth(80);
-        CheckBox check3 = new CheckBox();
+        check3 = new CheckBox();
         check3.setBoxLabel("Hapus BK3");
         hp1.add(new FieldLabel(tTNama, "Nama"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp1.add(new FieldLabel(tTTJatuhTempo, "Tgl Jatuh Tempo"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
@@ -157,13 +459,13 @@ public class Form_21Entri {
         VTab.add(hp1);
 
         hp1 = new HBoxLayoutContainer();
-        TextField tTAlamat = new TextField();
+        tTAlamat = new TextField();
         tTAlamat.setWidth(80);
-        TextField tTFrt = new TextField();
+        tTFrt = new TextField();
         tTFrt.setWidth(80);
-        TextField tTKedudukan = new TextField();
+        tTKedudukan = new TextField();
         tTKedudukan.setWidth(80);
-        TextField tTPemda = new TextField();
+        tTPemda = new TextField();
         tTPemda.setWidth(80);
         hp1.add(new FieldLabel(tTAlamat, "Alamat"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp1.add(new FieldLabel(tTKedudukan, "Kendudukan"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
@@ -171,14 +473,14 @@ public class Form_21Entri {
         VTab.add(hp1);
 
         hp1 = new HBoxLayoutContainer();
-        TextField tTUUP = new TextField();
+        tTUUP = new TextField();
         tTUUP.setWidth(80);
         hp1.add(new FieldLabel(tTUUP, "Unit UP"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp1.add(new FieldLabel(tTInkaso, "Inkaso"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         VTab.add(hp1);
 
         hp1 = new HBoxLayoutContainer();
-        TextField tTU = new TextField();
+        tTU = new TextField();
         tTU.setWidth(80);
         hp1.add(new FieldLabel(tTU, "Unit"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         VTab.add(hp1);
@@ -188,55 +490,55 @@ public class Form_21Entri {
 
         tabs.add(VTab, "Detail Rupiah");
 
-        TextField tTRpPTL = new TextField();
+        tTRpPTL = new TextField();
         tTRpPTL.setWidth(70);
-        TextField tTRpBeban0 = new TextField();
+        tTRpBeban0 = new TextField();
         tTRpBeban0.setWidth(70);
-        TextField tTStrafo = new TextField();
+        tTStrafo = new TextField();
         tTStrafo.setWidth(70);
-        TextField tTReduksi = new TextField();
+        tTReduksi = new TextField();
         tTReduksi.setWidth(70);
-        TextField tTSelisih = new TextField();
+        tTSelisih = new TextField();
         tTSelisih.setWidth(70);
-        TextField tTRpTb = new TextField();
+        tTRpTb = new TextField();
         tTRpTb.setWidth(70);
-        TextField tTSKap = new TextField();
+        tTSKap = new TextField();
         tTSKap.setWidth(70);
-        TextField tTInsentif = new TextField();
+        tTInsentif = new TextField();
         tTInsentif.setWidth(70);
-        TextField tTTdlLama = new TextField();
+        tTTdlLama = new TextField();
         tTTdlLama.setWidth(70);
-        TextField tTRpPPN = new TextField();
+        tTRpPPN = new TextField();
         tTRpPPN.setWidth(70);
-        TextField tTKdAngA = new TextField();
+        tTKdAngA = new TextField();
         tTKdAngA.setWidth(45);
-        TextField tTKdAngA0 = new TextField();
+        tTKdAngA0 = new TextField();
         tTKdAngA0.setWidth(20);
-        TextField tTDisInsentif = new TextField();
+        tTDisInsentif = new TextField();
         tTDisInsentif.setWidth(70);
-        TextField tTTdlbaru = new TextField();
+        tTTdlbaru = new TextField();
         tTTdlbaru.setWidth(70);
-        TextField tTRpBPJU = new TextField();
+        tTRpBPJU = new TextField();
         tTRpBPJU.setWidth(70);
-        TextField tTKdAngB = new TextField();
+        tTKdAngB = new TextField();
         tTKdAngB.setWidth(45);
-        TextField tTKdAngB0 = new TextField();
+        tTKdAngB0 = new TextField();
         tTKdAngB0.setWidth(20);
-        TextField tTRpTAG = new TextField();
+        tTRpTAG = new TextField();
         tTRpTAG.setWidth(70);
-        TextField tTRpMat = new TextField();
+        tTRpMat = new TextField();
         tTRpMat.setWidth(70);
-        TextField tTKdAngC = new TextField();
+        tTKdAngC = new TextField();
         tTKdAngC.setWidth(45);
-        TextField tTKdAngC0 = new TextField();
+        tTKdAngC0 = new TextField();
         tTKdAngC0.setWidth(20);
-        TextField tTProduksi = new TextField();
+        tTProduksi = new TextField();
         tTProduksi.setWidth(70);
-        TextField tTRpTrafo = new TextField();
+        tTRpTrafo = new TextField();
         tTRpTrafo.setWidth(70);
-        TextField tTRpPLN = new TextField();
+        tTRpPLN = new TextField();
         tTRpPLN.setWidth(70);
-        TextField tTRpSubsidi = new TextField();
+        tTRpSubsidi = new TextField();
         tTRpSubsidi.setWidth(70);
 
         //Tab 2
@@ -288,7 +590,7 @@ public class Form_21Entri {
         Label Awal = new Label("St. Awal");
         Label Awal1 = new Label("St. Akhir");
         Label Awal2 = new Label("Pemakaian");
-        TextField tTRpWBP = new TextField();
+        tTRpWBP = new TextField();
         tTRpWBP.setWidth(70);
 
         //Tab 3
@@ -300,13 +602,13 @@ public class Form_21Entri {
         VTab.add(hp3);
 
         hp3 = new HBoxLayoutContainer();
-        TextField tTLWBP = new TextField();
+        tTLWBP = new TextField();
         tTLWBP.setWidth(70);
-        TextField tTLWBP0 = new TextField();
+        tTLWBP0 = new TextField();
         tTLWBP0.setWidth(70);
-        TextField tTLWBP1 = new TextField();
+        tTLWBP1 = new TextField();
         tTLWBP1.setWidth(70);
-        TextField tTRpLWBP = new TextField();
+        tTRpLWBP = new TextField();
         tTRpLWBP.setWidth(70);
         hp3.add(new FieldLabel(tTLWBP, "LWBP"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp3.add(tTLWBP0, new BoxLayoutData(new Margins(0, 5, 0, 0)));
@@ -315,13 +617,13 @@ public class Form_21Entri {
         VTab.add(hp3);
 
         hp3 = new HBoxLayoutContainer();
-        TextField tTWBP = new TextField();
+        tTWBP = new TextField();
         tTWBP.setWidth(70);
-        TextField tTWBP0 = new TextField();
+        tTWBP0 = new TextField();
         tTWBP0.setWidth(70);
-        TextField tTWBP1 = new TextField();
+        tTWBP1 = new TextField();
         tTWBP1.setWidth(70);
-        TextField tTRpWBP2 = new TextField();
+        tTRpWBP2 = new TextField();
         tTRpWBP2.setWidth(70);
         hp3.add(new FieldLabel(tTWBP, "WBP"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp3.add(tTWBP0, new BoxLayoutData(new Margins(0, 5, 0, 0)));
@@ -330,13 +632,13 @@ public class Form_21Entri {
         VTab.add(hp3);
 
         hp3 = new HBoxLayoutContainer();
-        TextField tTKvArh = new TextField();
+        tTKvArh = new TextField();
         tTKvArh.setWidth(70);
-        TextField tTKvArh1 = new TextField();
+        tTKvArh1 = new TextField();
         tTKvArh1.setWidth(70);
-        TextField tTBlok3 = new TextField();
+        tTBlok3 = new TextField();
         tTBlok3.setWidth(70);
-        TextField tTRpKvArh = new TextField();
+        tTRpKvArh = new TextField();
         tTRpKvArh.setWidth(70);
         hp3.add(new FieldLabel(tTKvArh, "KvArh"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp3.add(tTKvArh1, new BoxLayoutData(new Margins(0, 5, 0, 0)));
@@ -345,11 +647,11 @@ public class Form_21Entri {
         VTab.add(hp3);
 
         hp3 = new HBoxLayoutContainer();
-        TextField tTFKKwh = new TextField();
+        tTFKKwh = new TextField();
         tTFKKwh.setWidth(70);
-        TextField tTTotal = new TextField();
+        tTTotal = new TextField();
         tTTotal.setWidth(70);
-        TextField tTTTLB = new TextField();
+        tTTTLB = new TextField();
         tTTTLB.setWidth(70);
         hp3.add(new FieldLabel(tTFKKwh, "FK Kwh"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp3.add(new FieldLabel(tTTotal, "Total"), new BoxLayoutData(new Margins(0, 5, 0, 75)));
@@ -357,11 +659,11 @@ public class Form_21Entri {
         VTab.add(hp3);
 
         hp3 = new HBoxLayoutContainer();
-        TextField tTFKKvArh = new TextField();
+        tTFKKvArh = new TextField();
         tTFKKvArh.setWidth(70);
-        TextField tTKebKvArh = new TextField();
+        tTKebKvArh = new TextField();
         tTKebKvArh.setWidth(70);
-        TextField tTRpBeban = new TextField();
+        tTRpBeban = new TextField();
         tTRpBeban.setWidth(70);
         hp3.add(new FieldLabel(tTFKKvArh, "FK KvArh"), new BoxLayoutData(new Margins(0, 5, 0, 0)));
         hp3.add(new FieldLabel(tTKebKvArh, "Keb KvArh"), new BoxLayoutData(new Margins(0, 5, 0, 75)));
@@ -371,12 +673,28 @@ public class Form_21Entri {
         p.add(tabs);
 
         //Grid
-        IconDynamicGrid gpDataCN = new IconDynamicGrid();
-        gpDataCN.setGridHeader("Data Tagihan");
-        gpDataCN.setGridDimension(990, 200);
-        gpDataCN.setStoreUrl("BasicProject/thuGetString.json?name=store1");
+        gpData = new IconDynamicGrid();
+        gpData.setGridHeader("Data Tagihan");
+        gpData.setGridDimension(990, 200);
+        gpData.setStoreUrl("dummy/dummy.json?");
+        gpData.addColumn("SIMPAN", 50);
+        gpData.addColumn("HASIL", 50);
+        gpData.addColumn("NOMOR", 50);
+        gpData.addColumn("IDPEL", 100);
+        gpData.addColumn("BLTH", 80);
+        gpData.addColumn("RPTAG", 100);
+        gpData.addColumn("RPBK1", 100);
+        gpData.addColumn("RPBK2", 100);
+        gpData.addColumn("RPBK3", 100);
+        gpData.addColumn("TGLJTTEMPO", 100);
+        gpData.addColumn("STATUS", 100);
+        gpData.addColumn("KDPEMBPP", 100);
+        gpData.addColumn("KDGERAKMASUK", 100);
+        gpData.addColumn("KDKOREKSI", 100);
+        gpData.addColumn("TGKOREKSI", 100);
+        gpData.addColumn("NOREK", 100);
 
-        p.add(gpDataCN);
+        p.add(gpData);
 
         //FieldBawah
         FieldSet fieldSet1 = new FieldSet();
@@ -385,18 +703,17 @@ public class Form_21Entri {
         VerticalLayoutContainer FieldBawah = new VerticalLayoutContainer();
         fieldSet1.add(FieldBawah);
 
-        TextButton bBottomReset = new TextButton("Reset");
+        bBottomReset = new TextButton("Reset");
         bBottomReset.setWidth(100);
-        TextButton bBottomSimpan = new TextButton("Simpan");
+        bBottomSimpan = new TextButton("Simpan");
         bBottomSimpan.setWidth(100);
-        bBottomSimpan.setEnabled(false);
-        TextButton bBottomCetak = new TextButton("Cetak Rekg");
+        bBottomCetak = new TextButton("Cetak Rekg");
         bBottomCetak.setWidth(100);
-        TextButton bBottomCetakBA = new TextButton("Cetak Rekg");
+        bBottomCetakBA = new TextButton("Cetak BA");
         bBottomCetakBA.setWidth(100);
 
-        TextField tRpTag = new TextField();
-        TextField tRpBK = new TextField();
+        tRpTag = new TextField();
+        tRpBK = new TextField();
 
         HBoxLayoutContainer hp0 = new HBoxLayoutContainer();
         hp0.add(new FieldLabel(tRpTag, "RP Tagihan"));

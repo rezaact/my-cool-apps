@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
-public class cls_CloseDate {
+public class Cls_CloseDate {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -122,9 +122,9 @@ public class cls_CloseDate {
             sql = "{ ? = call FUNC_VALIDASICLOSEDATE(?,?,?) }";
             cst = con.prepareCall(sql);
             cst.registerOutParameter(1, OracleTypes.BIGINT);
-            cst.setString("V_KODETRANSAKSI", KodeTrans);
-            cst.setString("V_TGLBUKU", sTglBuku);
-            cst.registerOutParameter("V_URAIAN", OracleTypes.NVARCHAR);
+            cst.setString(2, KodeTrans);
+            cst.setString(3, sTglBuku);
+            cst.registerOutParameter(4, OracleTypes.NVARCHAR);
             cst.execute();
 
             Integer iFuncReturn = cst.getInt(1);
@@ -134,7 +134,7 @@ public class cls_CloseDate {
                 retValue.put("wsByRefError", "");
             } else {
                 retValue.put("wsReturn", false);
-                retValue.put("wsByRefError", cst.getString("V_URAIAN"));
+                retValue.put("wsByRefError", cst.getString(4));
             }
 
             con.close();

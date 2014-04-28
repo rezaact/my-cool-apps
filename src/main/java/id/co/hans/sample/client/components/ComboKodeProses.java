@@ -18,6 +18,12 @@ public class ComboKodeProses extends AbstractComboComponent {
 
     private String cbSelectedValue;
 
+    private Integer comboWidth = 79;
+    private Integer descriptionWidth = 120;
+    private boolean hideDescription = false;
+    private String unitUp = "";
+    private String blth = "";
+
     public IconComboBox getComboBox() {
         return this.cb;
     }
@@ -26,11 +32,32 @@ public class ComboKodeProses extends AbstractComboComponent {
         return this.cbSelectedValue;
     }
 
+    public void setHideDescription(boolean value) {
+        this.hideDescription = value;
+    }
+
+    public void setUnitUp(String value) {
+        this.unitUp = value;
+    }
+
+    public void setBlth(String value) {
+        this.blth = value;
+    }
+
+    public void setComboWidth(Integer value) {
+        this.comboWidth = value;
+    }
+
+    public void reloadStore() {
+        cb.setStoreUrl("components/getComboKodeProses.json?unitUp=" + this.unitUp + "&blth=" + this.blth);
+        cb.loadStore();
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("BasicProject/thuGetComboTahun.json");
-        cb.setComboWidth(79);
+        cb.setStoreUrl("components/getComboKodeProses.json?unitUp=" + this.unitUp + "&blth=" + this.blth);
+        cb.setComboWidth(comboWidth);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
             @Override
@@ -45,14 +72,18 @@ public class ComboKodeProses extends AbstractComboComponent {
         });
 
         tfDescription = new TextField();
+        tfDescription.setWidth(descriptionWidth);
 
         HorizontalPanel hl = new HorizontalPanel();
         hl.add(cb);
 
         hp = new HorizontalPanel();
         hp.add(hl);
-        hp.add(new Label(" "));
-        hp.add(tfDescription);
+
+        if (!hideDescription) {
+            hp.add(new Label(" "));
+            hp.add(tfDescription);
+        }
 
         cb.loadStore();
 

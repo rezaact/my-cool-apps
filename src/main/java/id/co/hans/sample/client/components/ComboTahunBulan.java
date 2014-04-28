@@ -33,6 +33,14 @@ public class ComboTahunBulan extends AbstractComboComponent {
         return this.cbBulanSelectedValue;
     }
 
+    public void setCbTahunSelectedValue(String inValue) {
+        this.cbTahunSelectedValue = inValue;
+    }
+
+    public void setCbBulanSelectedValue(String inValue) {
+        this.cbBulanSelectedValue = inValue;
+    }
+
     public void hideLabel() {
         this.hideLabel = true;
     }

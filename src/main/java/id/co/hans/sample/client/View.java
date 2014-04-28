@@ -3,6 +3,8 @@ package id.co.hans.sample.client;
 import id.co.hans.sample.client.form.creditnote.Form_BatalCN;
 import id.co.hans.sample.client.form.creditnote.Form_DataDana;
 import id.co.hans.sample.client.form.creditnote.Form_EntryCN;
+import id.co.hans.sample.client.form.proses.Form_11RekeningBaru;
+import id.co.hans.sample.client.form.proses.Form_11RekeningBaru_NewOra;
 import id.co.hans.sample.client.form.proses.Form_12Manual;
 import id.co.hans.sample.client.form.proses.Form_21Entri;
 import id.co.hans.sample.client.form.proses.Form_21Upload;
@@ -210,6 +212,19 @@ public class View implements IsWidget {
     }else if (id_menu.toUpperCase().equals("Form_EntryCN".toUpperCase())){
     widgetMenu =new Form_EntryCN().asWidget(idUser,unitupUser,levelUser);
     }
+
+    // form proses
+    else if (id_menu.toUpperCase().equals("Form_11RekeningBaru".toUpperCase())){
+    widgetMenu =new Form_11RekeningBaru().asWidget(idUser,unitupUser,levelUser);
+    }else if (id_menu.toUpperCase().equals("Form_11RekeningBaru_NewOra".toUpperCase())){
+    widgetMenu =new Form_11RekeningBaru_NewOra().asWidget(idUser,unitupUser,levelUser);
+    }else if (id_menu.toUpperCase().equals("Form_12Manual".toUpperCase())){
+    widgetMenu =new Form_12Manual().asWidget(idUser,unitupUser,levelUser);
+    }else if (id_menu.toUpperCase().equals("Form_31Idpel".toUpperCase())){
+    widgetMenu =new Form_31Idpel().asWidget(idUser,unitupUser,levelUser);
+    }else if (id_menu.toUpperCase().equals("Form_21Entri".toUpperCase())){
+    widgetMenu =new Form_21Entri().asWidget(idUser,unitupUser,levelUser);
+    }
     // end menu untuk testing
 
 
@@ -316,7 +331,7 @@ public class View implements IsWidget {
       widgetMenu = new Form_LaporanV02().asWidget(idUser, unitupUser, levelUser);
     }
 
-    // yk
+    //
     else if (id_menu.toUpperCase().equals("Form_23AnggotaNotaBuku".toUpperCase())) {
       widgetMenu = new Form_23AnggotaNotaBuku().asWidget(idUser, unitupUser, levelUser);
     } else if (id_menu.toUpperCase().equals("Form_23AnggotaNotaTerpusat".toUpperCase())) {

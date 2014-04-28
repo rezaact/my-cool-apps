@@ -91,6 +91,10 @@ public class ComboUnit extends AbstractComboComponent {
     return this.selectedValue;
   }
 
+  public void setSelectedValue(String inValue) {
+    this.selectedValue = inValue;
+  }
+
   public String getUserUnit() {
     return userUnit;
   }
