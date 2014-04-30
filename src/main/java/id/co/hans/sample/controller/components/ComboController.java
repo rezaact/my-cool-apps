@@ -586,6 +586,8 @@ public class ComboController {
         return retVal;
     }
 
+
+    //unused
     @RequestMapping(value = "**/components/getKodeBebanKantor.json", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public JSONObject getKodeBebanKantor(@RequestParam("strGlobalUnitupPetugas") String strGlobalUnitupPetugas) {
@@ -601,6 +603,34 @@ public class ComboController {
         Map<String, Object> wsData = ws_transaksiDao.GetDataKolektifNotaBukuUnitup("53577","0");
 //        Map<String, Object> wsData = ws_transaksiDao.GetViewIdPel_21entri("537316334606","IdPel","","");
 //        Map<String, Object> wsData = ws_transaksiDao.GetView21("53551","01122010","31122010");
+
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsData")) {
+            currData = new HashMap<String, Object>();
+
+            currData.put("fieldValue", tmp.get("kodekolektif"));
+            currData.put("displayValue", tmp.get("kodekolektif"));
+
+            dataList.add(currData);
+        }
+
+        retVal.put("records", dataList);
+        retVal.put("errmsg", wsData.get("wsError"));
+
+        wsData = null;
+
+        return retVal;
+    }
+
+    @RequestMapping(value = "**/components/GetDataKolektifNotaBukuUnitUPiBebanKantor.json", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public JSONObject GetDataKolektifNotaBukuUnitUPiBebanKantor(@RequestParam("strGlobalUnitupPetugas") String strGlobalUnitupPetugas,
+                                                                @RequestParam("iBebanKantor") String iBebanKantor) {
+        JSONObject retVal = new JSONObject();
+
+        List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> currData;
+
+        Map<String, Object> wsData = ws_transaksiDao.GetDataKolektifNotaBukuUnitup(strGlobalUnitupPetugas,iBebanKantor);
 
         for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsData")) {
             currData = new HashMap<String, Object>();

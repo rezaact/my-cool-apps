@@ -2214,7 +2214,7 @@ public class Ws_TransaksiController {
 
     }
 
-   @RequestMapping(value = "**/Ws_Transaksi/GetDataIdPelDil.json", method = RequestMethod.GET, produces = "application/json")
+   @RequestMapping(value = "**/Ws_Transaksi/GetDataIdPelDil.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetDataIdPelDil(@RequestParam(value = "tidpel", defaultValue = "")String tidpel) {
         Map<String, Object> retValue = new HashMap<String, Object>();
@@ -2225,9 +2225,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetDataIdPelDil(tidpel);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2236,7 +2233,7 @@ public class Ws_TransaksiController {
         return obj;
 
     }
-    @RequestMapping(value = "**/Ws_Transaksi/tNopel.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_Transaksi/GetDataNoPelDil.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetDataNoPelDil(@RequestParam(value = "tNopel", defaultValue = "")String tNopel) {
         Map<String, Object> retValue = new HashMap<String, Object>();
@@ -2247,9 +2244,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetDataNoPelDil(tNopel);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();

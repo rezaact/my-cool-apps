@@ -3848,7 +3848,8 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             ex.printStackTrace();
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     //--------kolektif23KIRIM
@@ -4073,22 +4074,32 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "GetDataIdPelDil ";
+            String sql;
             CallableStatement cst;
+
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tidpel);
+            cst.execute();
+
+            sql = " SELECT IDPEL,NOPEL,NAMA,NAMAPNJ FROM VIEW_KOLEKTIF23NOTA_IDPEL ";
             cst = con.prepareCall(sql);
 
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetDataIdPelDil", lMapData);
+            retValue.put("wsData", lMapData);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsData", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
@@ -4100,22 +4111,32 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "GetDataNoPelDil ";
+            String sql;
             CallableStatement cst;
+
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tNopel);
+            cst.execute();
+
+            sql = " SELECT IDPEL,NOPEL,NAMA,NAMAPNJ FROM VIEW_KOLEKTIF23NOTA_IDPEL ";
             cst = con.prepareCall(sql);
 
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetDataNoPelDil", lMapData);
+            retValue.put("wsData", lMapData);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsData", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override

@@ -333,7 +333,7 @@ public class View implements IsWidget {
 
     //
     else if (id_menu.toUpperCase().equals("Form_23AnggotaNotaBuku".toUpperCase())) {
-      widgetMenu = new Form_23AnggotaNotaBuku().asWidget(idUser, unitupUser, levelUser);
+      widgetMenu = new Form_23AnggotaNotaBuku().asWidget(idUser, unitupUser, levelUser, 0); // -------- iBebanKantor disesuaikan dengan url f123
     } else if (id_menu.toUpperCase().equals("Form_23AnggotaNotaTerpusat".toUpperCase())) {
       widgetMenu = new Form_23AnggotaNotaTerpusat().asWidget(idUser, unitupUser, levelUser);
     } else if (id_menu.toUpperCase().equals("Form_23KodeNotaTerpusat".toUpperCase())) {

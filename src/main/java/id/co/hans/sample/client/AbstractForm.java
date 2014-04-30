@@ -19,19 +19,37 @@ import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 
 public abstract class AbstractForm {
 
-  protected static final String DATE_FORMAT_PATTERN = "dd-MMM-yy";
+  protected static final String DATE_FORMAT_PATTERN = "yyyy-MM-dd";
   protected static final DateTimeFormat DEFAULT_DATETIME_FORMATER = DateTimeFormat
       .getFormat(DATE_FORMAT_PATTERN);
 
   private String idUser;
   private String unitupUser;
   private String levelUser;
+  private Integer iBebanKantor;
   private VerticalPanel vp;
+
+  protected AutoProgressMessageBox progressBox;
 
   public Widget asWidget(String idUser, String unitupUser, String levelUser) {
     this.idUser = idUser;
     this.unitupUser = unitupUser;
     this.levelUser = levelUser;
+
+    if (vp == null) {
+      vp = new VerticalPanel();
+      vp.setSpacing(5);
+      initKomponen();
+      initEvent();
+    }
+    return vp;
+  }
+
+  public Widget asWidget(String idUser, String unitupUser, String levelUser, Integer iBebanKantor) {
+    this.idUser = idUser;
+    this.unitupUser = unitupUser;
+    this.levelUser = levelUser;
+    this.iBebanKantor = iBebanKantor;
 
     if (vp == null) {
       vp = new VerticalPanel();
@@ -54,10 +72,14 @@ public abstract class AbstractForm {
     return unitupUser;
   }
 
+  public Integer getIBebanKantor() {
+    return iBebanKantor;
+  }
+
   protected abstract void initEvent();
 
   protected void initKomponen() {
-    AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
+    progressBox = new AutoProgressMessageBox("Progress", "please wait");
     progressBox.setProgressText("wait...");
     vp.add(panelMain());
   }
@@ -101,7 +123,7 @@ public abstract class AbstractForm {
       RequestCallback callback) {
 
     try {
-      RequestBuilder rb = new RequestBuilder(method, URL.encode(url));
+      RequestBuilder rb = new RequestBuilder(method, url);
       if (RequestBuilder.POST.equals(method)) {
         rb.setHeader("Content-type", "application/x-www-form-urlencoded");
       }
