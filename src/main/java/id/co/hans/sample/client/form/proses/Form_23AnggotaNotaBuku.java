@@ -12,10 +12,14 @@ import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.sencha.gxt.core.client.util.ToggleGroup;
+import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.FramedPanel;
+import com.sencha.gxt.widget.core.client.box.ConfirmMessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
 import id.co.hans.sample.client.AbstractForm;
@@ -58,6 +62,9 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
     private String wsByRefError;
     private IconAlertMessageBox mb;
 
+    String strIdPel = "";
+    String strNoPel = "";
+
     protected FramedPanel panelMain() {
 
         if (getIBebanKantor() == 0)
@@ -70,7 +77,7 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
             sLabel = "Bayar di Muka";
 
         FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Anggota Nota Buku");
+        panel.setHeadingText("Anggota " + sLabel);
         panel.setBodyStyle("background: none; padding: 5px");
         panel.setWidth(650);
 
@@ -83,23 +90,21 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         panelAnggotaNotaBuku.setHeadingText("Manajemen Anggota Kode " + sLabel);
         panelAnggotaNotaBuku.setBodyStyle("background: none; padding: 5px");
         panelAnggotaNotaBuku.setWidth(623);
-        panelAnggotaNotaBuku.setHeight(400);
+        panelAnggotaNotaBuku.setHeight(250);
 
         VerticalLayoutContainer vlcAnggotaNotaBuku = new VerticalLayoutContainer();
         panelAnggotaNotaBuku.add(vlcAnggotaNotaBuku);
 
         HorizontalPanel hlcAnggotaNotaBuku = new HorizontalPanel();
 
-        Label lbl01 = new Label("Pilih Kode");
-        lbl01.getElement().getStyle().setMarginLeft(5, Style.Unit.PX);
-        lbl01.getElement().getStyle().setMarginRight(5, Style.Unit.PX);
-        lbl01.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
-        hlcAnggotaNotaBuku.add(lbl01);
-
         cbPilihKode = new ComboNotaBukuUnitUPiBebanKantor();
+        cbPilihKode.setLabelCombo("Kode " + sLabel);
         cbPilihKode.setUnitUp(getUnitupUser());
         cbPilihKode.setIBebanKantor(String.valueOf(getIBebanKantor()));
         hlcAnggotaNotaBuku.add(cbPilihKode);
+
+        btnTampilData = new TextButton("Tampil Data");
+        hlcAnggotaNotaBuku.add(btnTampilData);
 
         vlcAnggotaNotaBuku.add(hlcAnggotaNotaBuku, new VerticalLayoutContainer.VerticalLayoutData(-1,1));
 
@@ -109,8 +114,6 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         FramedPanel panelTambahData = new FramedPanel();
         panelTambahData.setHeadingText("Tambah Data");
         panelTambahData.setBodyStyle("background: none; padding: 5px");
-//        panelTambahData.setWidth(400);
-//        panelTambahData.setHeight(250);
 
         hlcNota.add(panelTambahData);
 
@@ -118,6 +121,7 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
 
         HorizontalPanel hlcIdpelTambah = new HorizontalPanel();
         radioIdpelTambah = new Radio();
+        radioIdpelTambah.setWidth(105);
         radioIdpelTambah.setBoxLabel("ID Pelanggan");
         hlcIdpelTambah.add(radioIdpelTambah);
 
@@ -127,6 +131,7 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
 
         HorizontalPanel hlcNopelTambah = new HorizontalPanel();
         radioNopelTambah = new Radio();
+        radioNopelTambah.setWidth(105);
         radioNopelTambah.setBoxLabel("No Pelanggan");
         hlcNopelTambah.add(radioNopelTambah);
 
@@ -137,7 +142,7 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
 
         txket= new TextArea();
 
-        vlcTambahData.add(new FieldLabel(txket, "Keterangan"), new VerticalLayoutContainer.VerticalLayoutData(1, 100));
+        vlcTambahData.add(new FieldLabel(txket, "Keterangan"), new VerticalLayoutContainer.VerticalLayoutData(1, 50));
 
         btnTambah = new TextButton("Tambah");
         vlcTambahData.add(btnTambah);
@@ -150,13 +155,12 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         FramedPanel panelHapusData = new FramedPanel();
         panelHapusData.setHeadingText("Hapus Data");
         panelHapusData.setBodyStyle("background: none; padding: 5px");
-//        panelTambahData.setWidth(400);
-//        panelTambahData.setHeight(250);
 
         VerticalLayoutContainer vlcHapusData= new VerticalLayoutContainer();
 
         HorizontalPanel hlcIdpelHapus = new HorizontalPanel();
         radioIdpelHapus = new Radio();
+        radioIdpelHapus.setWidth(105);
         radioIdpelHapus.setBoxLabel("ID Pelanggan");
         hlcIdpelHapus.add(radioIdpelHapus);
 
@@ -167,6 +171,7 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         HorizontalPanel hlcNopelHapus = new HorizontalPanel();
 
         radioNopeHapus = new Radio();
+        radioNopeHapus.setWidth(105);
         radioNopeHapus.setBoxLabel("No Pelanggan");
         hlcNopelHapus.add(radioNopeHapus);
 
@@ -178,31 +183,15 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         btnHapus = new TextButton("Hapus");
         vlcHapusData.add(btnHapus);
 
-//        HorizontalPanel hlctxket = new HorizontalPanel();
-//        Label lblKet = new Label("Keterangan");
-//        lblKet.setWidth("25");
-//        hlctxket.add(lblKet);
         panelHapusData.add(vlcHapusData);
+
+        Label separator = new Label();
+        separator.setPixelSize(10, 1);
+
+        hlcNota.add(separator);
         hlcNota.add(panelHapusData);
 
         vlcAnggotaNotaBuku.add(hlcNota);
-
-
-        HorizontalPanel hlcNamaKode = new HorizontalPanel();
-        Label lbl03 = new Label("Nama Kode");
-        lbl03.getElement().getStyle().setMarginLeft(5, Style.Unit.PX);
-        lbl03.getElement().getStyle().setMarginRight(5, Style.Unit.PX);
-        lbl03.getElement().getStyle().setMarginTop(3, Style.Unit.PX);
-        hlcNamaKode.add(lbl03);
-
-        txtNamaKode= new TextField();
-        hlcNamaKode.add(txtNamaKode);
-        btnTampilData = new TextButton("Tampil Data");
-        hlcNamaKode.add(btnTampilData);
-        vlcAnggotaNotaBuku.add(new Label("_"));
-        vlcAnggotaNotaBuku.add(hlcNamaKode);
-
-        vlcAnggotaNotaBuku.add(new Label("_"));
 
         p.add(panelAnggotaNotaBuku);
 
@@ -213,17 +202,26 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         gpData.setGridHeader("Data Master");
         gpData.setGridDimension(623, 200);
         gpData.setStoreUrl("BasicProject/dummy.json");
-        gpData.addColumn("CEK", 100);
-        gpData.addColumn("KDPP", 100);
-        gpData.addColumn("NO_BATULV06", 100);
-        gpData.addColumn("TGLTRANSAKSI", 100);
-        gpData.addColumn("TRANSAKSIID", 100);
-        gpData.addColumn("TRANSAKSIBY", 100);
-        gpData.addColumn("TGL_PELUNASAN", 100);
-        gpData.addColumn("TGL_SETOR", 100);
-        gpData.addColumn("RPTOTAL", 100);
+        gpData.addColumn("IDPEL", 100);
+        gpData.addColumn("NOPEL", 100);
+        gpData.addColumn("NAMA", 100);
+        gpData.addColumn("NAMAPNJ", 100);
+        gpData.addColumn("TARIP", 100);
+        gpData.addColumn("DAYA", 100);
+        gpData.addColumn("KOGOL", 100);
+        gpData.addColumn("KDKELOMPOK", 100);
 
         p.add(gpData);
+
+        ToggleGroup tg1 = new ToggleGroup();
+        tg1.add(radioIdpelTambah);
+        tg1.add(radioNopelTambah);
+        radioIdpelTambah.setValue(true);
+
+        ToggleGroup tg2 = new ToggleGroup();
+        tg2.add(radioIdpelHapus);
+        tg2.add(radioNopeHapus);
+        radioIdpelHapus.setValue(true);
 
         return panel;
     }
@@ -234,6 +232,12 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
             @Override
             public void onSelect(SelectEvent event) {
                 try {
+
+                    if (cbPilihKode.getSelectedValue().equals("")) {
+                        mb = new IconAlertMessageBox("Kesalahan", "Kode kolektif belum dipilih", true);
+                        return;
+                    }
+
                     progressBox.show();
 
                     if (radioNopelTambah.getValue())
@@ -256,8 +260,6 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
                     rb.sendRequest(sb.toString(), new RequestCallback() {
                         @Override
                         public void onResponseReceived(Request request, Response response) {
-                            progressBox.hide();
-
                             if (200 == response.getStatusCode()) {
                                 JSONValue value = JSONParser.parse(response.getText());
                                 JSONObject jsonObject = value.isObject();
@@ -265,22 +267,26 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
                                 wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
 
                                 if (!wsByRefError.equals("")) {
+                                    progressBox.hide();
                                     mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
                                     return;
                                 }
 
-                                wsReturn = jsonObject.get("result").isObject().get("wsReturn").isString().stringValue();
+                                JSONArray array = jsonObject.get("result").isObject().get("wsReturn").isArray();
+                                if(array.size() == 0) {
+                                    progressBox.hide();
+                                    mb = new IconAlertMessageBox("Kesalahan", "Tidak ditemukan data Pelanggan tersebut.", true);
+                                    return;
+                                }
 
 
                                 List<Map<String, String>> datas = new ArrayList<Map<String, String>>();
                                 Map<String, String> rowData;
 
-                                if (jsonObject.containsKey("wsReturn")) {
-                                    JSONArray array = jsonObject.get("wsReturn").isArray();
+                                if (jsonObject.get("result").isObject().containsKey("wsReturn")) {
 
-                                    for (int idx = 0; idx < array.size(); idx++) {
+                                    for (int idx = 0; idx < 1; idx++) {
                                         rowData = new HashMap<String, String>();
-                                        rowData.put("id", String.valueOf(idx));
 
                                         JSONObject sourceRowData = array.get(idx).isObject();
 
@@ -291,10 +297,18 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
                                     }
                                 }
 
+                                strNoPel = datas.get(0).get("nopel");
 
-                                mb = new IconAlertMessageBox("Hasil", wsReturn, true);
+                                if (radioNopelTambah.getValue())
+                                    strIdPel = datas.get(0).get("idpel");
+                                else
+                                    strIdPel = txIdpelTambah.getValue();
+
+                                cekDataIdpelDPP(strIdPel);
                             } else {
+                                progressBox.hide();
                                 mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                                return;
                             }
                         }
 
@@ -314,16 +328,443 @@ public class Form_23AnggotaNotaBuku extends AbstractForm {
         btnHapus.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                final ConfirmMessageBox cmb = new ConfirmMessageBox("Hapus ?", "Anda yakin menghapus pelanggan tersebut..??");
+                cmb.addHideHandler(new HideEvent.HideHandler() {
+                    @Override
+                    public void onHide(HideEvent event) {
+                        if (cmb.getHideButton() == cmb.getButtonById(Dialog.PredefinedButton.YES.name())) {
+                            deleteRecord();
+                        } else if (cmb.getHideButton() == cmb.getButtonById(Dialog.PredefinedButton.NO.name())) {
+                            mb = new IconAlertMessageBox("Kesalahan", "Batal Hapus", true);
+                        }
+                    }
+                });
+                cmb.show();
             }
         });
 
         btnTampilData.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                try {
+
+                    progressBox.show();
+
+                    rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetDataIdPelNotaBuku.json");
+                    rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("tkodekolektif=" + cbPilihKode.getSelectedValue());
+
+                    // ***** send request
+                    rb.sendRequest(sb.toString(), new RequestCallback() {
+                        @Override
+                        public void onResponseReceived(Request request, Response response) {
+                            if (200 == response.getStatusCode()) {
+                                progressBox.hide();
+
+                                JSONValue value = JSONParser.parse(response.getText());
+                                JSONObject jsonObject = value.isObject();
+
+                                wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                                if (!wsByRefError.equals("")) {
+                                    mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                                    return;
+                                }
+
+                                JSONObject wsReturnData = jsonObject.get("result").isObject();
+
+                                gpData.setJsonData(wsReturnData);
+
+                            } else {
+                                progressBox.hide();
+                                mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                            }
+                        }
+
+                        @Override
+                        public void onError(Request request, Throwable throwable) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                        }
+                    });
+                } catch (RequestException ex) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+                }
             }
         });
     }
 
+    private void cekDataIdpelDPP(String idPel) {
+        try {
+
+            progressBox.show();
+
+            rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetDataIdPelDPP.json");
+            rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("tidpel=" + idPel);
+
+
+            // ***** send request
+            rb.sendRequest(sb.toString(), new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()) {
+                        JSONValue value = JSONParser.parse(response.getText());
+                        JSONObject jsonObject = value.isObject();
+
+                        wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                        if (!wsByRefError.equals("")) {
+                            mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                            return;
+                        }
+
+                        JSONArray array = jsonObject.get("result").isObject().get("wsReturn").isArray();
+                        if (array.size() != 0) {
+                            mb = new IconAlertMessageBox("Kesalahan", "Id Pelanggan sudah ada di kolektif lain", true);
+                            progressBox.hide();
+                            return;
+                        } else {
+                            simpanDataIdPel();
+                        }
+
+                        //mb = new IconAlertMessageBox("Hasil", wsReturn, true);
+                    } else {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                        return;
+                    }
+                }
+
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                }
+            });
+        } catch (RequestException ex) {
+            progressBox.hide();
+            mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+        }
+    }
+
+
+    private void simpanDataIdPel() {
+        try {
+
+            progressBox.show();
+
+            rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/simpandatapel.json");
+            rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("&tidpel=" + strIdPel);
+            sb.append("&tKdKolektif=" + cbPilihKode.getSelectedValue());
+            sb.append("&ket=" + txket.getValue());
+            sb.append("&Atransaksiby=" + getIdUser());
+            sb.append("&Atgl_transaksi=" + "");
+            sb.append("&tNopel=" + strNoPel);
+
+            // ***** send request
+            rb.sendRequest(sb.toString(), new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()) {
+                        JSONValue value = JSONParser.parse(response.getText());
+                        JSONObject jsonObject = value.isObject();
+
+                        wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                        if (!wsByRefError.equals("")) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                            return;
+                        }
+
+                        wsReturn = jsonObject.get("result").isObject().get("wsReturn").isString().stringValue();
+
+                        if (!wsReturn.equals("true")) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", "Pelanggan gagal disimpan", true);
+                            return;
+                        } else {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Informasi", "Pelanggan berhasil disimpan", true);
+                            getDataIdPelNotaBuku();
+                        }
+
+                    } else {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                    }
+                }
+
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                }
+            });
+        } catch (RequestException ex) {
+            progressBox.hide();
+            mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+        }
+    }
+
+
+    private void getDataIdPelNotaBuku() {
+        try {
+
+            progressBox.show();
+
+            rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetDataIdPelNotaBuku.json");
+            rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("tkodekolektif=" + cbPilihKode.getSelectedValue());
+
+            // ***** send request
+            rb.sendRequest(sb.toString(), new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()) {
+                        progressBox.hide();
+
+                        JSONValue value = JSONParser.parse(response.getText());
+                        JSONObject jsonObject = value.isObject();
+
+                        wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                        if (!wsByRefError.equals("")) {
+                            mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                            return;
+                        }
+
+                        JSONObject wsReturnData = jsonObject.get("result").isObject();
+
+                        gpData.setJsonData(wsReturnData);
+
+                    } else {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                    }
+                }
+
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                }
+            });
+        } catch (RequestException ex) {
+            progressBox.hide();
+            mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+        }
+    }
+
+    private void deleteRecord() {
+        try {
+
+            if (cbPilihKode.getSelectedValue().equals("")) {
+                mb = new IconAlertMessageBox("Kesalahan", "Kode kolektif belum dipilih", true);
+                return;
+            }
+
+            progressBox.show();
+
+            if (radioNopelTambah.getValue())
+                rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetDataNoPelDil.json");
+            else
+                rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetDataIdPelDil.json");
+
+
+            rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+            StringBuilder sb = new StringBuilder();
+
+            if (radioNopelTambah.getValue())
+                sb.append("tNopel=" + txNopelTambah.getText());
+            else
+                sb.append("tidpel=" + txIdpelTambah.getText());
+
+
+            // ***** send request
+            rb.sendRequest(sb.toString(), new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()) {
+                        JSONValue value = JSONParser.parse(response.getText());
+                        JSONObject jsonObject = value.isObject();
+
+                        wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                        if (!wsByRefError.equals("")) {
+                            mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                            return;
+                        }
+
+                        List<Map<String, String>> datas = new ArrayList<Map<String, String>>();
+                        Map<String, String> rowData;
+
+                        JSONArray array = jsonObject.get("result").isObject().get("wsReturn").isArray();
+
+                        if (array.size() == 0) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", "Pelanggan tidak ditemukan", true);
+                            return;
+                        }
+
+                        for (int idx = 0; idx < 1; idx++) {
+                            rowData = new HashMap<String, String>();
+
+                            JSONObject sourceRowData = array.get(idx).isObject();
+
+                            for (Object obj : sourceRowData.keySet()) {
+                                rowData.put(obj.toString().toUpperCase(), sourceRowData.get(obj.toString()).isString().stringValue());
+                            }
+                            datas.add(rowData);
+                        }
+
+                        if (radioNopelTambah.getValue())
+                            strIdPel = datas.get(0).get("idpel");
+                        else
+                            strIdPel = txIdpelTambah.getValue();
+
+                        getDataValidasiKolektifNotaBuku();
+                    } else {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                        return;
+                    }
+                }
+
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                }
+            });
+        } catch (RequestException ex) {
+            progressBox.hide();
+            mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+        }
+    }
+
+    private void getDataValidasiKolektifNotaBuku() {
+        try {
+            progressBox.show();
+
+            rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/GetDataValidasiKolektifNotaBuku.json");
+            rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("&tKdKolektif=" + cbPilihKode.getSelectedValue());
+            sb.append("&tidpel=" + strIdPel);
+
+            // ***** send request
+            rb.sendRequest(sb.toString(), new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()) {
+                        JSONValue value = JSONParser.parse(response.getText());
+                        JSONObject jsonObject = value.isObject();
+
+                        wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                        if (!wsByRefError.equals("")) {
+                            mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                            return;
+                        }
+
+                        List<Map<String, String>> datas = new ArrayList<Map<String, String>>();
+                        Map<String, String> rowData;
+
+                        JSONArray array = jsonObject.get("result").isObject().get("wsReturn").isArray();
+
+                        if (array.size() == 0) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", "Pelanggan tidak ada di daftar kolektif ini.", true);
+                        } else {
+                            deletedatapel();
+                        }
+
+                    } else {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                        return;
+                    }
+                }
+
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                }
+            });
+        } catch (RequestException ex) {
+            progressBox.hide();
+            mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+        }
+    }
+
+    private void deletedatapel() {
+        try {
+            progressBox.show();
+
+            rb = new RequestBuilder(RequestBuilder.POST, "Ws_Transaksi/deletedatapel.json");
+            rb.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("&tKdKolektif=" + cbPilihKode.getSelectedValue());
+            sb.append("&tidpel=" + strIdPel);
+
+            // ***** send request
+            rb.sendRequest(sb.toString(), new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()) {
+                        JSONValue value = JSONParser.parse(response.getText());
+                        JSONObject jsonObject = value.isObject();
+
+                        wsByRefError = jsonObject.get("result").isObject().get("wsByRefError").isString().stringValue();
+
+                        if (!wsByRefError.equals("")) {
+                            mb = new IconAlertMessageBox("Kesalahan", wsByRefError, true);
+                            return;
+                        }
+
+                        wsReturn = jsonObject.get("result").isObject().get("wsReturn").isString().stringValue();
+
+                        if (wsReturn.equals("true")) {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Informasi", "Pelanggan berhasil dihapus", true);
+                            getDataIdPelNotaBuku();
+                        } else {
+                            progressBox.hide();
+                            mb = new IconAlertMessageBox("Kesalahan", "Pelanggan gagal dihapus", true);
+                        }
+
+                    } else {
+                        progressBox.hide();
+                        mb = new IconAlertMessageBox("Kesalahan", "HTTP Error code: " + response.getStatusCode(), true);
+                        return;
+                    }
+                }
+
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    progressBox.hide();
+                    mb = new IconAlertMessageBox("Kesalahan", throwable.getMessage(), true);
+                }
+            });
+        } catch (RequestException ex) {
+            progressBox.hide();
+            mb = new IconAlertMessageBox("Kesalahan", ex.getMessage(), true);
+        }
+    }
 }

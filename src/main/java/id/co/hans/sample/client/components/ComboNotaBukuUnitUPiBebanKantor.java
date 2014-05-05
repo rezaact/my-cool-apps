@@ -14,9 +14,11 @@ public class ComboNotaBukuUnitUPiBebanKantor extends AbstractComboComponent {
 
     private HorizontalPanel hp;
     private IconComboBox cb;
+
+    private String lbCombo = "Pilih Kode";
     private TextField tfDescription;
 
-    private String cbSelectedValue;
+    private String cbSelectedValue = "";
 
     private String unitUp;
     private String iBebanKantor;
@@ -37,11 +39,15 @@ public class ComboNotaBukuUnitUPiBebanKantor extends AbstractComboComponent {
         this.iBebanKantor = iBebanKantor;
     }
 
+    public void setLabelCombo(String lbCombo) {
+        this.lbCombo = lbCombo;
+    }
+
     @Override
     public Widget asWidget() {
         cb = new IconComboBox();
-        cb.setStoreUrl("components/GetDataKolektifNotaBukuUnitUPiBebanKantor.json?unitUp=" + this.unitUp + "&iBebanKantor=" + this.iBebanKantor);
-        cb.setComboWidth(79);
+        cb.setStoreUrl("components/GetDataKolektifNotaBukuUnitUPiBebanKantor.json?strGlobalUnitupPetugas=" + this.unitUp + "&iBebanKantor=" + this.iBebanKantor);
+        cb.setComboWidth(120);
 
         cb.addSelectionHandler(new SelectionHandler<Map<String, String>>() {
             @Override
@@ -49,13 +55,14 @@ public class ComboNotaBukuUnitUPiBebanKantor extends AbstractComboComponent {
                 Map<String, String> data = (Map<String, String>)event.getSelectedItem();
                 cbSelectedValue = data.get("fieldValue");
 
-                tfDescription.setText(data.get("fieldValue"));
+                tfDescription.setText(data.get("descriptionValue"));
 
                 onComboChange(data.get("fieldValue"));
             }
         });
 
         tfDescription = new TextField();
+        tfDescription.setWidth(200);
 
         HorizontalPanel hl = new HorizontalPanel();
         hl.add(cb);
@@ -67,6 +74,6 @@ public class ComboNotaBukuUnitUPiBebanKantor extends AbstractComboComponent {
 
         cb.loadStore();
 
-        return new FieldLabel(hp, "Kode Nota Buku");
+        return new FieldLabel(hp, lbCombo);
     }
 }

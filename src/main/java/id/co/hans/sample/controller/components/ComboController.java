@@ -604,7 +604,7 @@ public class ComboController {
 //        Map<String, Object> wsData = ws_transaksiDao.GetViewIdPel_21entri("537316334606","IdPel","","");
 //        Map<String, Object> wsData = ws_transaksiDao.GetView21("53551","01122010","31122010");
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsData")) {
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
             currData = new HashMap<String, Object>();
 
             currData.put("fieldValue", tmp.get("kodekolektif"));
@@ -632,11 +632,12 @@ public class ComboController {
 
         Map<String, Object> wsData = ws_transaksiDao.GetDataKolektifNotaBukuUnitup(strGlobalUnitupPetugas,iBebanKantor);
 
-        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsData")) {
+        for (Map<String, String> tmp : (List<Map<String,String>>)wsData.get("wsReturn")) {
             currData = new HashMap<String, Object>();
 
             currData.put("fieldValue", tmp.get("kodekolektif"));
             currData.put("displayValue", tmp.get("kodekolektif"));
+            currData.put("descriptionValue", tmp.get("namakolektif"));
 
             dataList.add(currData);
         }
