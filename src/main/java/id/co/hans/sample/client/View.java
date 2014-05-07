@@ -345,7 +345,7 @@ public class View implements IsWidget {
     } else if (id_menu.toUpperCase().equals("Form_21Upload".toUpperCase())) {
       widgetMenu = new Form_21Upload().asWidget(idUser, unitupUser, levelUser);
     } else if (id_menu.toUpperCase().equals("Form_23KodeNotaBuku".toUpperCase())) {
-      widgetMenu = new Form_23KodeNotaBuku().asWidget(idUser, unitupUser, levelUser);
+      widgetMenu = new Form_23KodeNotaBuku().asWidget(idUser, unitupUser, levelUser, 0); // ------- iBebanKantor disesuaikan dengan url f123
     } else if (id_menu.toUpperCase().equals("Form_MonitoringPending".toUpperCase())) {
       widgetMenu = new Form_MonitoringPending().asWidget(idUser, unitupUser, levelUser);
     } else if (id_menu.toUpperCase().equals("Form_12Manual".toUpperCase())) {

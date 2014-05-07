@@ -25,6 +25,9 @@ public class ws_PrintStrukDaoImpl implements ws_PrintStrukDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private cls_CetakUlang clsCetakUlang;
+
     @Override
     public Map<String, Object> cetakRekg12(String tTgKoreksi, String tIdpel, String tBlth, String tNorek) {
         Map<String, Object> retValue = new HashMap<String, Object>();
@@ -585,8 +588,8 @@ public class ws_PrintStrukDaoImpl implements ws_PrintStrukDao {
                                                    String tUnitup) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        cls_CetakUlang cCetul = new cls_CetakUlang();
-        retValue = cCetul.getCetul_23NotaBuku(strPetugas, sKodeKolektif, sTglLunas, tUnitup);
+        //cls_CetakUlang cCetul = new cls_CetakUlang();
+        retValue = clsCetakUlang.getCetul_23NotaBuku(strPetugas, sKodeKolektif, sTglLunas, tUnitup);
 
         return retValue;
     }
@@ -608,8 +611,8 @@ public class ws_PrintStrukDaoImpl implements ws_PrintStrukDao {
                                             String sUnitup) {
         Map<String, Object> retValue = new HashMap<String, Object>();
 
-        cls_CetakUlang cCetul = new cls_CetakUlang();
-        retValue = cCetul.getCetul_23Terpusat(strPetugas, sKodeKolektif, sTglLunas, sUnitup);
+        //cls_CetakUlang cCetul = new cls_CetakUlang();
+        retValue = clsCetakUlang.getCetul_23Terpusat(strPetugas, sKodeKolektif, sTglLunas, sUnitup);
 
         return retValue;
     }

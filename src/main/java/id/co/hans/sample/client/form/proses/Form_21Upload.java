@@ -24,38 +24,83 @@ import com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayou
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
+import id.co.hans.sample.client.AbstractForm;
 import id.co.hans.sample.client.components.*;
 
-public class Form_21Upload {
-    private VerticalPanel vp;
-    ComboKodePP cbKdPP;
+public class Form_21Upload extends AbstractForm {
 
-    private String idUser, levelUser, unitUser;
-    public Widget asWidget(String idUser, String unitupUser, String levelUser) {
-        this.idUser=idUser;
-        this.unitUser=unitupUser;
-        this.levelUser=levelUser;
+    TextField IDPelunasan = new TextField();
+    TextButton bUploadPelunasan = new TextButton("Pilih Pelunasan File");
+    ComboKodePP cbKdPP = new ComboKodePP();
+    DateField tgllunas = new DateField();
+    TextField tUpload = new TextField();
 
-        if (vp == null) {
-            vp = new VerticalPanel();
-            vp.setSpacing(5);
-            initKomponen();
-        }
-        return vp;
+    TextField tLembar = new TextField();
+    TextField tTagih = new TextField();
+    TextField tBK = new TextField();
+    TextButton bLihatFile = new TextButton("Lihat File");
+
+    IconDynamicGrid gpData;
+
+    TextButton bBReset = new TextButton("Reset");
+    TextButton bBUpload = new TextButton("Upload");
+    TextButton bBCetakBA = new TextButton("Cetak BA");
+
+    TextField tBUpload = new TextField();
+    TextField tGUpload = new TextField();
+    TextField tBUpdate = new TextField();
+    TextField tGUpdate = new TextField();
+
+    TextField tBUpload0 = new TextField();
+    TextField tGUpload0 = new TextField();
+    TextField tBUpdate0 = new TextField();
+    TextField tGUpdate0 = new TextField();
+
+    TextField tBUpload1 = new TextField();
+    TextField tGUpload1 = new TextField();
+    TextField tBUpdate1 = new TextField();
+    TextField tGUpdate1 = new TextField();
+
+    @Override
+    protected void initEvent() {
+        bUploadPelunasan.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        bLihatFile.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        bBReset.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        bBUpload.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+        bBCetakBA.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
     }
 
-    private void initKomponen(){
-        AutoProgressMessageBox progressBox = new AutoProgressMessageBox("Progress", "please wait");
-        progressBox.setProgressText("wait...");
-
-        vp.add(panelMain());
-    }
-
-    private FramedPanel panelMain() {
+    protected FramedPanel panelMain() {
 
         FramedPanel panel = new FramedPanel();
-        panel.setHeadingText("Pembatalan Piutang (31)");
+        panel.setHeadingText("Upload Pelunasan Offline");
         panel.setBodyStyle("background: none; padding: 5px");
         panel.setWidth(650);
 
@@ -67,8 +112,8 @@ public class Form_21Upload {
 
         VerticalLayoutContainer FieldAtas = new VerticalLayoutContainer();
         fieldSet.add(FieldAtas);
-        TextField IDPelunasan = new TextField();
-        TextButton bUploadPelunasan = new TextButton("Pilih Pelunasan File");
+        IDPelunasan = new TextField();
+        bUploadPelunasan = new TextButton("Pilih Pelunasan File");
 
         HBoxLayoutContainer UPLOAD = new HBoxLayoutContainer();
         FieldAtas.add(UPLOAD);
@@ -79,8 +124,8 @@ public class Form_21Upload {
 
         HBoxLayoutContainer Date = new HBoxLayoutContainer();
         FieldAtas.add(Date);
-        DateField tgllunas = new DateField();
-        TextField tUpload = new TextField();
+        tgllunas = new DateField();
+        tUpload = new TextField();
         Date.add(new FieldLabel(tgllunas, "Tanggal Lunas"));
         Date.add(new FieldLabel(tUpload, "Upload Per"));
 
@@ -97,13 +142,13 @@ public class Form_21Upload {
         Bawah.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
         FieldBawah.add(Bawah);
 
-        TextField tLembar = new TextField();
+        tLembar = new TextField();
         tLembar.setWidth(60);
-        TextField tTagih = new TextField();
+        tTagih = new TextField();
         tTagih.setWidth(60);
-        TextField tBK = new TextField();
+        tBK = new TextField();
         tBK.setWidth(60);
-        TextButton bLihatFile = new TextButton("Lihat File");
+        bLihatFile = new TextButton("Lihat File");
         Bawah.add(new FieldLabel(tLembar, "Lembar"));
         Bawah.add(new FieldLabel(tTagih, "Rp Tagih"));
         Bawah.add(new FieldLabel(tBK, "Rp BK"));
@@ -113,23 +158,24 @@ public class Form_21Upload {
 
 
         //Grid
-        IconDynamicGrid gpDataCN = new IconDynamicGrid();
-        gpDataCN.setGridHeader("Data Master");
-        gpDataCN.setGridDimension(623, 200);
-        gpDataCN.setStoreUrl("BasicProject/thuGetString.json?name=store1");
-        gpDataCN.addColumn("No", 50);
-        gpDataCN.addColumn("ID Pel", 100);
-        gpDataCN.addColumn("BLH", 50);
-        gpDataCN.addColumn("KDPP", 100);
-        gpDataCN.addColumn("TGLBAYAR", 80);
-        gpDataCN.addColumn("RPTAG", 100);
-        gpDataCN.addColumn("KD", 100);
-        gpDataCN.addColumn("RPBK", 100);
-        gpDataCN.addColumn("KDP", 100);
-        gpDataCN.addColumn("UNITUP", 100);
-        gpDataCN.addColumn("USERID", 100);
+        gpData = new IconDynamicGrid();
+        gpData.setGridHeader("Data Pelunasan");
+        gpData.setGridDimension(623, 200);
+        gpData.setStoreUrl("dummy/dummy.json");
+        gpData.addColumn("NO", 50);
+        gpData.addColumn("IDPEL", 100);
+        gpData.addColumn("BLTH", 50);
+        gpData.addColumn("KDPP", 100);
+        gpData.addColumn("TGLBAYAR", 80);
+        gpData.addColumn("RPTAG", 100);
+        gpData.addColumn("KD", 100);
+        gpData.addColumn("RPBK", 100);
+        gpData.addColumn("KDP", 100);
+        gpData.addColumn("UNITUP", 100);
+        gpData.addColumn("USERID", 100);
+        gpData.addColumn("JAMBAYA", 100);
 
-        p.add(gpDataCN);
+        p.add(gpData);
 
         FramedPanel panelParameter = new FramedPanel();
         panelParameter.setBodyStyle("background: none; padding: 5px");
@@ -146,10 +192,10 @@ public class Form_21Upload {
         vlcPParameter.add(hp1);
 
         hp1 = new HBoxLayoutContainer();
-        TextButton bBReset = new TextButton("Reset");
-        TextButton bBUpload = new TextButton("Upload");
+        bBReset = new TextButton("Reset");
+        bBUpload = new TextButton("Upload");
         bBUpload.setEnabled(false);
-        TextButton bBCetakBA = new TextButton("Lihat File");
+        bBCetakBA = new TextButton("Lihat File");
         hp1.add(new Label("Upload"), new BoxLayoutData(new Margins(0, 20, 0, 110)));
         hp1.add(new Label("Upload"), new BoxLayoutData(new Margins(0, 15, 0, 6)));
         hp1.add(new Label("Update DPP"), new BoxLayoutData(new Margins(0, 10, 0, 0)));
@@ -161,19 +207,19 @@ public class Form_21Upload {
 
         hp1 = new HBoxLayoutContainer();
         hp1.setPadding(new Padding(5));
-        TextField tBUpload = new TextField();
+        tBUpload = new TextField();
         tBUpload.setEnabled(false);
         tBUpload.setEmptyText("0");
         tBUpload.setWidth(60);
-        TextField tGUpload = new TextField();
+        tGUpload = new TextField();
         tGUpload.setEnabled(false);
         tGUpload.setEmptyText("0");
         tGUpload.setWidth(60);
-        TextField tBUpdate = new TextField();
+        tBUpdate = new TextField();
         tBUpdate.setEnabled(false);
         tBUpdate.setEmptyText("0");
         tBUpdate.setWidth(60);
-        TextField tGUpdate = new TextField();
+        tGUpdate = new TextField();
         tGUpdate.setEnabled(false);
         tGUpdate.setEmptyText("0");
         tGUpdate.setWidth(60);
@@ -185,19 +231,19 @@ public class Form_21Upload {
 
         hp1 = new HBoxLayoutContainer();
         hp1.setPadding(new Padding(5));
-        TextField tBUpload0 = new TextField();
+        tBUpload0 = new TextField();
         tBUpload0.setEnabled(false);
         tBUpload0.setEmptyText("0");
         tBUpload0.setWidth(60);
-        TextField tGUpload0 = new TextField();
+        tGUpload0 = new TextField();
         tGUpload0.setEnabled(false);
         tGUpload0.setEmptyText("0");
         tGUpload0.setWidth(60);
-        TextField tBUpdate0 = new TextField();
+        tBUpdate0 = new TextField();
         tBUpdate0.setEnabled(false);
         tBUpdate0.setEmptyText("0");
         tBUpdate0.setWidth(60);
-        TextField tGUpdate0 = new TextField();
+        tGUpdate0 = new TextField();
         tGUpdate0.setEnabled(false);
         tGUpdate0.setEmptyText("0");
         tGUpdate0.setWidth(60);
@@ -209,19 +255,19 @@ public class Form_21Upload {
 
         hp1 = new HBoxLayoutContainer();
         hp1.setPadding(new Padding(5));
-        TextField tBUpload1 = new TextField();
+        tBUpload1 = new TextField();
         tBUpload1.setEnabled(false);
         tBUpload1.setEmptyText("0");
         tBUpload1.setWidth(60);
-        TextField tGUpload1 = new TextField();
+        tGUpload1 = new TextField();
         tGUpload1.setEnabled(false);
         tGUpload1.setEmptyText("0");
         tGUpload1.setWidth(60);
-        TextField tBUpdate1 = new TextField();
+        tBUpdate1 = new TextField();
         tBUpdate1.setEnabled(false);
         tBUpdate1.setEmptyText("0");
         tBUpdate1.setWidth(60);
-        TextField tGUpdate1 = new TextField();
+        tGUpdate1 = new TextField();
         tGUpdate1.setEnabled(false);
         tGUpdate1.setEmptyText("0");
         tGUpdate1.setWidth(60);
@@ -232,7 +278,6 @@ public class Form_21Upload {
         vlcPParameter.add(new FieldLabel(hp1,"Rp BK"));
 
         p.add(panelParameter);
-
 
         return panel;
     }

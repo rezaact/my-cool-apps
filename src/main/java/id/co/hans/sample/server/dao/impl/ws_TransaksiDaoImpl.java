@@ -837,8 +837,6 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
         try
         {
-            //todo: method ini mengembalikan dalam bentuk XML dan XMLSchema. Cek method pemanggil.
-
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
             CallableStatement cst;
@@ -953,8 +951,6 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
         try
         {
-            //todo: method ini mengembalikan dalam bentuk XML dan XMLSchema. Cek method pemanggil.
-
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
             CallableStatement cst;
@@ -4222,26 +4218,36 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "GetDataIdPelDPPGiralisasi ";
+            String sql;
             CallableStatement cst;
+
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tidpel);
+            cst.execute();
+
+            sql = " SELECT IDPEL FROM VIEW_KOLEKTIF21GIRAL_PLG ";
             cst = con.prepareCall(sql);
 
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetDataIdPelDPPGiralisasi", lMapData);
+            retValue.put("wsReturn", lMapData);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
-    public Map<String, Object> GetDataIdPelGiralisasi(String tidpel) {
+    public Map<String, Object> GetDataIdPelGiralisasi(String tkodekolektif) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         List<Map<String,String>> lMapData = new ArrayList<Map<String,String>>();
 
@@ -4249,22 +4255,32 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "GetDataIdPelGiralisasi ";
+            String sql;
             CallableStatement cst;
+
+            sql = "{ call PARAMETERVIEW.SetKodeKolektif(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tkodekolektif);
+            cst.execute();
+
+            sql = " SELECT IDPEL,NOPEL,NAMA, NAMAPNJ,TARIP,DAYA,KOGOL,KDKELOMPOK FROM VIEW_KOLEKTIF21GIRAL_KOLEKTIF ";
             cst = con.prepareCall(sql);
 
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetDataIdPelGiralisasi", lMapData);
+            retValue.put("wsReturn", lMapData);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
@@ -4383,22 +4399,28 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "simpandatapelGIRALISASI ";
+            String sql = "INSERT INTO KOLEKTIF21giralisasi(IDPEL,KODEKOLEKTIF,KETERANGAN,TRANSAKSIBY,TGLTRANSAKSI,NOPEL) VALUES (?,?,?,?,sysdate,?) ";
             CallableStatement cst;
             cst = con.prepareCall(sql);
+            cst.setString(1, tidpel);
+            cst.setString(2, tKdKolektif);
+            cst.setString(3, ket);
+            cst.setString(4, Atransaksiby);
+            cst.setString(5, tNopel);
 
-            ResultSet rs = cst.executeQuery();
+            cst.execute();
 
-            lMapData = CommonModule.convertResultsetToListStr(rs);
-
-            retValue.put("simpandatapelGIRALISASI", lMapData);
+            retValue.put("wsReturn", "true");
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "true");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;     }
+        return retValue;
+    }
 
 
     @Override
@@ -4510,22 +4532,37 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "GetDataValidasiKolektifGiralisasi ";
+            String sql;
             CallableStatement cst;
+
+            sql = "{ call PARAMETERVIEW.SetIdPel(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tIdpel);
+            cst.execute();
+
+            sql = "{ call PARAMETERVIEW.SetKodeKolektif(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tkodekolektif);
+            cst.execute();
+
+            sql = " SELECT IDPEL FROM VIEW_KOLEKTIF21GIRAL_VALIDASI ";
             cst = con.prepareCall(sql);
 
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetDataValidasiKolektifGiralisasi", lMapData);
+            retValue.put("wsReturn", lMapData);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;     }
+        return retValue;
+    }
 
 
     @Override
@@ -4564,22 +4601,24 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "deletedatapelGiralisasi ";
+            String sql = "DELETE KOLEKTIF21GIRALISASI WHERE IDPEL = ? ";
             CallableStatement cst;
             cst = con.prepareCall(sql);
+            cst.setString(1, tidpel);
 
-            ResultSet rs = cst.executeQuery();
+            cst.execute();
 
-            lMapData = CommonModule.convertResultsetToListStr(rs);
-
-            retValue.put("deletedatapelGiralisasi", lMapData);
+            retValue.put("wsReturn", "true");
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "false");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
@@ -4748,22 +4787,38 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "GetNamaKolektifGiralisasi ";
+            String sql;
             CallableStatement cst;
+
+            sql = "{ call PARAMETERVIEW.SetKodeKolektif(?) }";
+            cst = con.prepareCall(sql);
+            cst.setString(1, tkodekolektif);
+            cst.execute();
+
+            sql = " SELECT * FROM (SELECT NAMAKOLEKTIF,TGLTHRU FROM VIEW_KOLEKTIF21GIRAL_NAMA) ";
+            if (nulll.equals("TAMBAH")) {
+                // do nothing
+            } else if (nulll.equals("HAPUS")) {
+                sql = sql + " WHERE TGLTHRU is null ";
+            }
+
             cst = con.prepareCall(sql);
 
             ResultSet rs = cst.executeQuery();
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("GetNamaKolektifGiralisasi", lMapData);
+            retValue.put("wsReturn", lMapData);
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
@@ -4836,22 +4891,27 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "simpandatakolektifGiralisasi ";
+            String sql = "INSERT INTO KODEKOLEKTIF21GIRALISASI(KODEKOLEKTIF,NAMAKOLEKTIF,TRANSAKSIBY,TGLTRANSAKSI) VALUES (?,?,?,sysdate) ";
             CallableStatement cst;
             cst = con.prepareCall(sql);
 
-            ResultSet rs = cst.executeQuery();
+            cst.setString(1, tKdKolektif);
+            cst.setString(2, tnamakolektif);
+            cst.setString(3, tpetugas);
 
-            lMapData = CommonModule.convertResultsetToListStr(rs);
+            cst.execute();
 
-            retValue.put("simpandatakolektifGiralisasi", lMapData);
+            retValue.put("wsReturn", "true");
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "false");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;    }
+        return retValue;
+    }
 
 
     @Override
@@ -5076,7 +5136,7 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
         {
             Connection con = jdbcTemplate.getDataSource().getConnection();
 
-            String sql = "hapusdatakolektifGiralisasi ";
+            String sql = " UPDATE KODEKOLEKTIF21GIRALisasi SET TGLTHRU = SYSDATE, THRUBY = ? WHERE KODEKOLEKTIF = ? ";
             CallableStatement cst;
             cst = con.prepareCall(sql);
 
@@ -5084,14 +5144,17 @@ public class ws_TransaksiDaoImpl implements ws_TransaksiDao {
 
             lMapData = CommonModule.convertResultsetToListStr(rs);
 
-            retValue.put("hapusdatakolektifGiralisasi", lMapData);
+            retValue.put("wsReturn", "true");
+            retValue.put("wsByRefError", "");
 
             con.close();
         } catch (Exception ex)
         {
-            ex.printStackTrace();
+            retValue.put("wsReturn", "false");
+            retValue.put("wsByRefError", ex.getMessage());
         }
-        return retValue;     }
+        return retValue;
+    }
 
 
     @Override

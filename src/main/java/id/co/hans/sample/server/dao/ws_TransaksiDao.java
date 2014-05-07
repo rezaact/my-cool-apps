@@ -497,7 +497,7 @@ public interface ws_TransaksiDao {
 
 
 
-    public Map<String, Object> GetDataIdPelGiralisasi(String tidpel);
+    public Map<String, Object> GetDataIdPelGiralisasi(String tkodekolektif);
 
 
 

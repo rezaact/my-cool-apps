@@ -358,7 +358,7 @@ public class Ws_PrintStrukController {
     }
 
 
-    @RequestMapping(value = "**/Ws_PrintStruk/getCetul_23NotaBuku.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_PrintStruk/getCetul_23NotaBuku.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject getCetul_23NotaBuku(@RequestParam(value = "strPetugas", defaultValue = "")String strPetugas,
                                      @RequestParam(value = "sKodeKolektif", defaultValue = "")String sKodeKolektif,
@@ -376,11 +376,7 @@ public class Ws_PrintStrukController {
         catch (Exception ex) {
             obj.put("result", "Error parsing JSON. Msg: " + ex.getMessage());
         }
-
-        log.info(obj);
-
         return obj;
-
     }
 
 
@@ -421,9 +417,6 @@ public class Ws_PrintStrukController {
         try {
             retValue=  ws_printStrukDao.getCetul_23Terpusat(strPetugas,sKodeKolektif,sTglLunas,sUnitup);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();

@@ -373,11 +373,11 @@ public class Ws_TransaksiController {
     }
 
 
-    @RequestMapping(value = "**/Ws_Transaksi/GetViewKolektif_21giralisasi.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_Transaksi/GetViewKolektif_21giralisasi.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetViewKolektif_21giralisasi(@RequestParam(value = "tkodekolektif", defaultValue = "")String tkodekolektif,
-                                      @RequestParam(value = "tBLTH", defaultValue = "")String tBLTH,
-                                      @RequestParam(value = "tPetugas", defaultValue = "")String tPetugas) {
+                                            @RequestParam(value = "tBLTH", defaultValue = "")String tBLTH,
+                                            @RequestParam(value = "tPetugas", defaultValue = "")String tPetugas) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         JSONObject obj = new JSONObject();
         StringWriter out = new StringWriter();
@@ -386,9 +386,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKolektif_21giralisasi(tkodekolektif,tBLTH,tPetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -425,7 +422,7 @@ public class Ws_TransaksiController {
     }
 
 
-    @RequestMapping(value = "**/Ws_Transaksi/GetViewKolektif_23NOTA.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_Transaksi/GetViewKolektif_23NOTA.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetViewKolektif_23NOTA(@RequestParam(value = "tkodekolektif", defaultValue = "")String tkodekolektif,
                                       @RequestParam(value = "tBLTH", defaultValue = "")String tBLTH,
@@ -438,9 +435,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetViewKolektif_23NOTA(tkodekolektif,tBLTH,tPetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2292,7 +2286,7 @@ public class Ws_TransaksiController {
     }
 
 
-    @RequestMapping(value = "**/Ws_Transaksi/GetDataIdPelDPPGiralisasi.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_Transaksi/GetDataIdPelDPPGiralisasi.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetDataIdPelDPPGiralisasi(@RequestParam(value = "tidpel", defaultValue = "")String tidpel) {
         Map<String, Object> retValue = new HashMap<String, Object>();
@@ -2303,9 +2297,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetDataIdPelDPPGiralisasi(tidpel);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2317,25 +2308,20 @@ public class Ws_TransaksiController {
 
     @RequestMapping(value = "**/Ws_Transaksi/GetDataIdPelGiralisasi.json", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    JSONObject GetDataIdPelGiralisasi(@RequestParam(value = "tidpel", defaultValue = "")String tidpel) {
+    JSONObject GetDataIdPelGiralisasi(@RequestParam(value = "tkodekolektif", defaultValue = "")String tkodekolektif) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         JSONObject obj = new JSONObject();
         StringWriter out = new StringWriter();
 
         String retVal = "Init";
         try {
-            retValue=  ws_transaksiDao.GetDataIdPelGiralisasi(tidpel);
+            retValue=  ws_transaksiDao.GetDataIdPelGiralisasi(tkodekolektif);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
         }
-
         return obj;
-
     }
 
 
@@ -2439,9 +2425,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.simpandatapelGIRALISASI(tidpel,tKdKolektif,ket,Atransaksiby,Atgl_transaksi,tNopel);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2520,10 +2503,10 @@ public class Ws_TransaksiController {
 
     }
 
-    @RequestMapping(value = "**/Ws_Transaksi/GetDataValidasiKolektifGiralisasi.json", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "**/Ws_Transaksi/GetDataValidasiKolektifGiralisasi.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject GetDataValidasiKolektifGiralisasi(@RequestParam(value = "tKdKolektif", defaultValue = "")String tKdKolektif,
-                                                   @RequestParam(value = "tidpel", defaultValue = "")String tidpel) {
+                                                 @RequestParam(value = "tidpel", defaultValue = "")String tidpel) {
         Map<String, Object> retValue = new HashMap<String, Object>();
         JSONObject obj = new JSONObject();
         StringWriter out = new StringWriter();
@@ -2532,9 +2515,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetDataValidasiKolektifGiralisasi(tKdKolektif,tidpel);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2569,7 +2549,7 @@ public class Ws_TransaksiController {
     }
 
 
-     @RequestMapping(value = "**/Ws_Transaksi/deletedatapelGiralisasi.json", method = RequestMethod.GET, produces = "application/json")
+     @RequestMapping(value = "**/Ws_Transaksi/deletedatapelGiralisasi.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject deletedatapelGiralisasi(@RequestParam(value = "tidpel", defaultValue = "")String tidpel) {
         Map<String, Object> retValue = new HashMap<String, Object>();
@@ -2580,9 +2560,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.deletedatapelGiralisasi(tidpel);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2721,9 +2698,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.GetNamaKolektifGiralisasi(tKdKolektif,nulll);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2798,9 +2772,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.simpandatakolektifGiralisasi(tKdKolektif,tnamakolektif,tpetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
@@ -2979,7 +2950,7 @@ public class Ws_TransaksiController {
 
     }
 
-      @RequestMapping(value = "**/Ws_Transaksi/hapusdatakolektifGiralisasi.json", method = RequestMethod.GET, produces = "application/json")
+      @RequestMapping(value = "**/Ws_Transaksi/hapusdatakolektifGiralisasi.json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     JSONObject hapusdatakolektifGiralisasi(@RequestParam(value = "tKdKolektif", defaultValue = "")String tKdKolektif,
                                          @RequestParam(value = "tpetugas", defaultValue = "")String tpetugas) {
@@ -2991,9 +2962,6 @@ public class Ws_TransaksiController {
         try {
             retValue=  ws_transaksiDao.hapusdatakolektifGiralisasi(tKdKolektif,tpetugas);
             obj.put("result", retValue);
-//            obj.put("records", ws_usersDao.getPengelola());
-//            obj.writeJSONString(out);
-//            retVal = out.toString();
         }
         catch (Exception ex) {
             retVal = "Error parsing JSON. Msg: " + ex.getMessage();
