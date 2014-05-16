@@ -308,8 +308,8 @@ public class Form_EntryCN extends AbstractForm {
         // TODO : create dsValue
         String dsValue = "{}";
         dsJsonObject.put("ds", new JSONObject(JsonUtils.safeEval(dsValue)));
-        sendRequest(RequestBuilder.GET, WsCreditNoteUrlHelper.simpanDataCN(dsJsonObject, bEdit),
-            null);
+        //sendRequest(RequestBuilder.GET, WsCreditNoteUrlHelper.simpanDataCN(dsJsonObject, bEdit),
+        //    null);
       }
     });
   }
